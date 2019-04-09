@@ -1,4 +1,4 @@
-package com.moneyexperience;
+package runner;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
