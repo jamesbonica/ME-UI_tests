@@ -4,8 +4,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>ME-UI_tests</groupId>
-	<artifactId>ME-UI_tests</artifactId>
+	<groupId>ME-UI_tests_java</groupId>
+	<artifactId>ME-UI_tests_java</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
@@ -102,7 +102,7 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.7.25</version>
+			<version>1.7.26</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -139,9 +139,9 @@
 				<configuration>
 					<forkCount>2</forkCount>
 					<reuseForks>true</reuseForks>
-				<!-- 	<includes>
+					<includes>
 						<include>**/Parallel*IT.class</include>
-					</includes>-->
+					</includes>
 				</configuration>
 			</plugin>
 

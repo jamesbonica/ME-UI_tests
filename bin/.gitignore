@@ -1,0 +1,6 @@
+<<<<<<< HEAD
+/target/
+=======
+# Ignore folder named 'target'
+target/
+>>>>>>> 43bb3d8428dc23e4688fe036434b561f68c1e5f7

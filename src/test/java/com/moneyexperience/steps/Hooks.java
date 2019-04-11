@@ -19,9 +19,9 @@ import cucumber.api.java.Before;
 
 /**
  * 
- * @author Jim Bonica
+ * @author jimbonica
  *
- *         Oct 22, 2018
+ * @date Apr-10-2019
  */
 
 @Scope("cucumber-glue")
@@ -47,11 +47,13 @@ public class Hooks {
 		scenarioSession.setScenario(scenario);
 		driver.manage().deleteAllCookies();
 		System.out.println("In before hook");
-	//	String[] beans = appContext.getBeanDefinitionNames();
-	//	Arrays.sort(beans);
-	//	 for (String bean : beans) {
-	//	 System.out.println(bean);
-	//	 }
+//		 String[] beans = appContext.getBeanDefinitionNames();
+//		 Arrays.sort(beans);
+//		 for (String bean : beans) {
+//		 System.out.println(bean);
+//		 }
+		
+		System.out.println(driver.toString());
 	}
 
 	@After
@@ -60,12 +62,9 @@ public class Hooks {
 			final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 			scenario.embed(screenshot, "image/png"); // stick it in the report
 		}
-		 
+//	driver.close();
+		
 	}
 	
-//	@After("@End_Feature_File")
-	public void closeOut() {
-		driver.quit();
-	}
 
 }
