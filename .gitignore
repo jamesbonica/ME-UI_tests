@@ -3,7 +3,7 @@ target/
 # Ignore native Mac files
 .DS_Store
 # Ignore IDE settings
-.project:
+.project
 .settings/
 # Ignore classpath
 .classpath
