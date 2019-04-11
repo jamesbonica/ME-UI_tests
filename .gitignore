@@ -1,3 +1,4 @@
 # Ignore folder named 'target'
 target/
+# Ignore native Mac files
 .DS_Store
