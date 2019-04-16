@@ -8,8 +8,15 @@ Feature: 1000 User Login
   #1
   @smoketest
   Scenario: Money Experience displays the username of a registered user in the top menu
-    When a user "sara" logs in to ME with password "password"
-    Then ME must display the username "sara" in the top menu
+    When a user "joeyvitamins-counselor" logs in to ME with password "password"
+    Then ME must display the username "joeyvitamins-counselor!" in the top menu
+    And the user logs out
+    
+   #2
+  @smoketest
+  Scenario: Money Experience displays the username of a registered user in the top menu
+    When a user "joeyvitamins-counselor" logs in to ME with password "password"
+    Then ME must display the username "joeyvitamins-counselor" in the top menu
     And the user logs out
   
     

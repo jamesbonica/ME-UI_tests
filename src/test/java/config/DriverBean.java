@@ -10,28 +10,24 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-import org.springframework.test.annotation.DirtiesContext;
-
 import config.PropertiesLoader;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-@Component
+@Configuration
 public class DriverBean {
 
 	@Autowired
 	PropertiesLoader propertiesLoader;
 
-	@Bean(name = "driver", destroyMethod="close")
-//	@Scope("cucumber-glue")
+	@Bean(name = "driver", destroyMethod="quit")
 	public EventFiringWebDriver getEventFiringWebDriver() throws Exception {
 		System.out.println("In driver method");
 		String sauceName = "";
@@ -42,7 +38,7 @@ public class DriverBean {
 		ChromeOptions chromeOptions = new ChromeOptions();
 		FirefoxOptions firefoxOptions = new FirefoxOptions();
 
-		DesiredCapabilities desiredCapbilities = null;
+		DesiredCapabilities desiredCapabilities = null;
 
 		switch (testEnvironment) {
 		case "local":
@@ -57,7 +53,8 @@ public class DriverBean {
 			case "chrome":
 				System.out.println("Creating chrome local... ");
 				WebDriverManager.chromedriver().setup();
-				// chromeOptions.
+			//	desiredCapabilities.setCapability(CapabilityType.SUPPORTS_APPLICATION_CACHE,false);
+				chromeOptions.setCapability(CapabilityType.SUPPORTS_APPLICATION_CACHE,false);;
 				driver = new ChromeDriver(chromeOptions);
 
 				break;
@@ -74,25 +71,25 @@ public class DriverBean {
 				sauceName = "firefox test";
 				FirefoxProfile profile = new FirefoxProfile();
 				profile.setPreference("security.insecure_field_warning.contextual.enabled", false);
-				desiredCapbilities = DesiredCapabilities.firefox();
-				desiredCapbilities.setCapability(FirefoxDriver.PROFILE, profile);
+				desiredCapabilities = DesiredCapabilities.firefox();
+				desiredCapabilities.setCapability(FirefoxDriver.PROFILE, profile);
 				break;
 			case "chrome":
 				sauceName = "chrome test";
-				desiredCapbilities = DesiredCapabilities.chrome();
+				desiredCapabilities = DesiredCapabilities.chrome();
 				break;
 			case "edge":
 
 				break;
 			}
-			desiredCapbilities.setCapability("platform", "Windows 10");
+			desiredCapabilities.setCapability("platform", "Windows 10");
 			// desiredCapbilities.setCapability("version", "63.0");
-			desiredCapbilities.setCapability("recordVideo", "true");
-			desiredCapbilities.setCapability("screenResolution", "1920x1080");
-			desiredCapbilities.setCapability("name", sauceName);
+			desiredCapabilities.setCapability("recordVideo", "true");
+			desiredCapabilities.setCapability("screenResolution", "1920x1080");
+			desiredCapabilities.setCapability("name", sauceName);
 			driver = new RemoteWebDriver(new URL(
 					"https://jamesbonica:94d9e25b-9fee-4982-a3fa-fe8b1246ed44@ondemand.saucelabs.com:443/wd/hub"),
-					desiredCapbilities);
+					desiredCapabilities);
 			break;
 		}
 

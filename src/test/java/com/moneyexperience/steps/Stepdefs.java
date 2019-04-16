@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Scope;
 
 import com.moneyexperience.service.LoginService;
 
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -29,6 +30,7 @@ public class Stepdefs {
 	@Then("the user logs out")
 	public void the_user_logs_out() {
 		loginService.logout();
-	}
+	}	
+	
 
 }

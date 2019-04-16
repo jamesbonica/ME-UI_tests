@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
 		//tags = {""},
 		plugin = { "pretty", "html:target/html/1000_User_Login/",
-			"json:target/json/CucumbverTest.json" }, 
+			"json:target/json/1000_User_Login.json" }, 
 		features = {"src/test/resources/cucumber/1000_User_Login.feature"},
 		glue = {"/"},
 		monochrome = true)

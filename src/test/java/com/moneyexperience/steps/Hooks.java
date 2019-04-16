@@ -1,7 +1,11 @@
 package com.moneyexperience.steps;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
 
+import org.openqa.selenium.Cookie;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
@@ -45,15 +49,17 @@ public class Hooks {
 	@Before
 	public void setUp(Scenario scenario) {
 		scenarioSession.setScenario(scenario);
-		driver.manage().deleteAllCookies();
+		
 		System.out.println("In before hook");
+		
+		
 //		 String[] beans = appContext.getBeanDefinitionNames();
 //		 Arrays.sort(beans);
 //		 for (String bean : beans) {
 //		 System.out.println(bean);
 //		 }
-		
-		System.out.println(driver.toString());
+
+//		System.out.println(driver.toString());
 	}
 
 	@After
@@ -63,8 +69,7 @@ public class Hooks {
 			scenario.embed(screenshot, "image/png"); // stick it in the report
 		}
 //	driver.close();
-		
+		((JavascriptExecutor) driver).executeScript(String.format("window.localStorage.clear();"));
 	}
-	
 
 }
