@@ -14,7 +14,7 @@ import com.moneyexperience.pageObject.TopMenuPage;
  */
 
 @Service
-public class LoginService {
+public class UserService {
 
 	@Autowired
 	LoginPage loginPage;
@@ -24,12 +24,18 @@ public class LoginService {
 
 	public void loginToWebApp(String username, String password) {
 		loginPage.navigateToWebApp();
-		loginPage.enterUsername(username).enterPassword(password).clickLoginButton();
+		loginPage.enterUsername(username).enterPassword(password)
+		.clickLoginButton();
 
 	}
 
 	public void logout() {
 		topMenuPage.clickLogOutLink();
+	}
+
+	public void resetUserProgressThroughUI(Integer lessonNumber) {
+		topMenuPage.clickuserName().clickResetLessonLink(lessonNumber).clickAcceptProgressButton();
+		
 	}
 
 }

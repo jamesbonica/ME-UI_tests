@@ -18,6 +18,12 @@ Feature: 1000 User Login
     When a user "joeyvitamins-counselor" logs in to ME with password "password"
     Then ME must display the username "joeyvitamins-counselor" in the top menu
     And the user logs out
+    
+  #3
+  @experiment
+  Scenario: User resets lesson progress to Lesson 1
+  Given a user "joeyvitamins-counselor" logs in to ME with password "password"
+  When a user resets the user progress to Lesson 1
   
     
   
