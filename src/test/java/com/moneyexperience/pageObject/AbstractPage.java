@@ -2,6 +2,7 @@ package com.moneyexperience.pageObject;
 
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -16,6 +17,9 @@ public class AbstractPage {
 	
 	@Autowired
 	PropertiesLoader propertiesLoader;
+	
+	@FindBy(css = "html[style^='--primaryColor:#']")
+	protected WebElement htmlColorDefinedElement;
 
 	public AbstractPage navigateToWebApp() {
 		driver.navigate().to(propertiesLoader.getTestUrl());
@@ -39,5 +43,7 @@ public class AbstractPage {
 		}
 		return this;
 	}
+	
+	
 
 }
