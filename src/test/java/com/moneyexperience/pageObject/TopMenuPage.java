@@ -31,7 +31,7 @@ public class TopMenuPage extends AbstractPage {
 
 	// This returns a list of all Reset Lesson Links which could be as few as one or
 	// as many as nine
-	@FindAll(@FindBy(css = "div[class^='tooltiptext'] h2 ~ div > a"))
+	@FindAll(@FindBy(css = "div[class^='tooltiptext'][open] h2 ~ div > a"))
 	private List<WebElement> resetLessonLinkList;
 
 	public TopMenuPage(EventFiringWebDriver driver) {
@@ -57,7 +57,7 @@ public class TopMenuPage extends AbstractPage {
 	}
 
 	public TopMenuPage clickResetLessonLink(Integer lessonNumber) {
-
+        waitForElement(htmlColorDefinedElement);
 		for (WebElement element : resetLessonLinkList) {
 
 			if (element.getText().startsWith(lessonNumber.toString() + " ")) {
