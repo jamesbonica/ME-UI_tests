@@ -24,8 +24,7 @@ public class UserService {
 
 	public void loginToWebApp(String username, String password) {
 		loginPage.navigateToWebApp();
-		loginPage.enterUsername(username).enterPassword(password)
-		.clickLoginButton();
+		loginPage.enterUsername(username).enterPassword(password).clickLoginButton();
 
 	}
 
@@ -35,7 +34,6 @@ public class UserService {
 
 	public void resetUserProgressThroughUI(Integer lessonNumber) {
 		topMenuPage.clickuserName().clickResetLessonLink(lessonNumber).clickAcceptProgressButton();
-		
 	}
 
 }

@@ -11,19 +11,34 @@ Feature: 1000 User Login
     When a user "joeyvitamins-counselor" logs in to ME with password "password"
     Then ME must display the username "joeyvitamins-counselor" in the top menu
     And the user logs out
-    
-   #2
+
+  #2
   @smoketest
   Scenario: Money Experience displays the username of a registered user in the top menu
     When a user "joeyvitamins-counselor" logs in to ME with password "password"
     Then ME must display the username "joeyvitamins-counselor" in the top menu
     And the user logs out
-    
+
   #3
-  @experiment
+  @smoketest
   Scenario: User resets lesson progress to Lesson 1
-  Given a user "joeyvitamins-counselor" logs in to ME with password "password"
-  When a user resets the user progress to Lesson 1
-  
-    
-  
+    Given a user "joeyvitamins-counselor" logs in to ME with password "password"
+    When a user resets the user progress to Lesson 1
+
+  #4
+  @experiment
+  Scenario: User sets priorities at start of Lesson
+    Given a user "joeyvitamins-counselor" logs in to ME with password "password"
+    And a user resets the user progress to Lesson 1
+    And a user clicks the Begin Button at the start of the lesson
+    And a user sets priorities in the following order:
+      | Education   |
+      | Adventure   |
+      | Health      |
+      | Community   |
+      | Career      |
+      | Family      |
+      | Luxury      |
+      | Security    |
+      | Social Good |
+      | Free Time   |
