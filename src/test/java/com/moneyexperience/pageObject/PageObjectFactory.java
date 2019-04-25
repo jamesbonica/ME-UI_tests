@@ -14,4 +14,10 @@ public class PageObjectFactory {
 		return (LoginPage) appContext.getBean("loginPage");
 	}
 
+	public SetPrioritiesPage getSetPrioritiesPage() {
+		return (SetPrioritiesPage) appContext.getBean("setPrioritiesPage");
+	}
+	
+	
+
 }
