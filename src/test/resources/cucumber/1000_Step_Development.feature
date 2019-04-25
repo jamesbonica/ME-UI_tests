@@ -1,5 +1,5 @@
 #Author: jim@moneyexperience.com
-Feature: 1000 User Login
+Feature: 1000 Step Development
   Description:
   As an Administrator of the Money Experience Simulator
   I want to allow registered users to login using specific credentials
