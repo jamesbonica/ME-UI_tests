@@ -13,6 +13,13 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * 
+ * @author jimbonica
+ *
+ * @date May-02-2019
+ */
+
 @Component
 public class SetPrioritiesPage extends AbstractPage {
 
@@ -21,6 +28,9 @@ public class SetPrioritiesPage extends AbstractPage {
 
 	@Autowired
 	PageObjectFactory pageObjectFactory;
+
+	@FindBy(css = "div[class*='nextButton'] > a")
+	private WebElement nextButton;
 
 	@FindAll(@FindBy(css = "button[draggable = 'true']"))
 	private List<WebElement> draggablePriorities;
@@ -32,8 +42,6 @@ public class SetPrioritiesPage extends AbstractPage {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-	
-	
 
 	public SetPrioritiesPage dragAndDropPriorities(List<String> prioritiesList) {
 		WebElement priorityElement = null;
@@ -48,13 +56,19 @@ public class SetPrioritiesPage extends AbstractPage {
 					break;
 				}
 			}
-			
+
 			priorityElement.click();
 			dropzoneList.get(index).click();
-			
+
 		}
 
 		return this;
+	}
+
+	public LessonIntroPage clickNextButton() {
+		waitForElement(nextButton);
+		nextButton.click();
+		return pageObjectFactory.getLessonIntroPage();
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.moneyexperience.pageObject;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -29,16 +30,19 @@ public class LessonIntroPage extends AbstractPage {
 	}
 
 	// Clicking this button after resetting lesson has posed two major issues
-	// 1. StaleElementReferenceException which seems to be tied to the page reloading after resetting User Progress
-	// 2. WebDriverException which comes from a layer temporarily obscuring the Next button
+	// 1. StaleElementReferenceException which seems to be tied to the page
+	// reloading after resetting User Progress
+	// 2. WebDriverException which comes from a layer temporarily obscuring the Next
+	// button
 	public SetPrioritiesPage clickBeginButton() {
 		waitForElement(htmlColorDefinedElement);
-		waitForElement(beginButton);
+
 		try {
+			waitForElement(beginButton);
 			beginButton.click();
 		} catch (Exception e) {
 			waitForElement(beginButton);
-			((JavascriptExecutor) driver).executeScript("arguments[0].click();", beginButton);
+			driver.findElement(By.cssSelector("h3[aria-label] + button")).click();
 		}
 		return pageObjectFactory.getSetPrioritiesPage();
 	}
