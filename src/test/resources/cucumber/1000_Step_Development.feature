@@ -26,7 +26,7 @@ Feature: 1000 Step Development
     When a user resets the user progress to Lesson 1
 
   #4
-  @ME-905
+  @ME-937
   Scenario: User sets priorities at start of Lesson
     Given a user "joeyvitamins-counselor" logs in to ME with password "password"
     And a user resets the user progress to Lesson 1
