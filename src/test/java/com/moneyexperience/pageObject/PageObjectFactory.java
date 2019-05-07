@@ -17,6 +17,19 @@ public class PageObjectFactory {
 	public SetPrioritiesPage getSetPrioritiesPage() {
 		return (SetPrioritiesPage) appContext.getBean("setPrioritiesPage");
 	}
+
+	public ChatPage getChatPage() {
+		return (ChatPage) appContext.getBean("chatPage");
+		
+	}
+
+	public LessonIntroPage getLessonIntroPage() {
+		return (LessonIntroPage) appContext.getBean("lessonIntroPage");
+	}
+
+	public LessonCheckpointPage getLessonCheckpointPage() {
+		return (LessonCheckpointPage) appContext.getBean("lessonCheckpointPage");
+	}
 	
 	
 

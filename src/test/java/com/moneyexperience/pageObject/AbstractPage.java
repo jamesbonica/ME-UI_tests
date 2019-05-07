@@ -14,10 +14,10 @@ public class AbstractPage {
 
 	@Autowired
 	EventFiringWebDriver driver;
-	
+
 	@Autowired
 	PropertiesLoader propertiesLoader;
-	
+
 	@FindBy(css = "html[style^='--primaryColor:#']")
 	protected WebElement htmlColorDefinedElement;
 
@@ -36,14 +36,12 @@ public class AbstractPage {
 
 	public AbstractPage waitForElement(WebElement element) {
 		try {
-		WebDriverWait wait = new WebDriverWait(driver, 6);
-		wait.until(ExpectedConditions.elementToBeClickable(element));
-			} catch(TimeoutException t) {
+			WebDriverWait wait = new WebDriverWait(driver, 10);
+			wait.until(ExpectedConditions.elementToBeClickable(element));
+		} catch (TimeoutException t) {
 			System.out.println("element not found");
 		}
 		return this;
 	}
-	
-	
 
 }

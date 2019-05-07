@@ -42,3 +42,50 @@ Feature: 1000 Step Development
       | Security    |
       | Social Good |
       | Free Time   |
+    And a user clicks the Next Button
+    And a user clicks the Next Link 2 times
+    And a user chooses the following responses in the Chat with Tess:
+      | carouselOrSlider | choice    | navigationDirection |
+      # For example, let's pick a job for you to have during the summer after high school.
+      # What kind of job would you try to get?
+      | text carousel    | Farm Hand | right               |
+    And a user clicks the Next Link
+    And a user goes through the storyboards
+    And A user clicks Go when Tess sends a new message
+    And a user chooses the following responses in the Chat with Tess:
+      | carouselOrSlider | choice                            | navigationDirection |
+      # Do you plan to attend college after high school?
+      |                  | Yes I'm going to college          |                     |
+      # Will you need to take out student loans?
+      |                  | Yeah, I'll need loans             |                     |
+      # Do you know how much your student loans will be?
+      |                  | Yes                               |                     |
+      # How much will your loans be?
+      | slider           |                            80,000 |                     |
+      # Do you plan to pursue an advanced degree?
+      |                  | No                                |                     |
+      # You've selected a summer job already, but do you plan to have a job while in school?
+      |                  | Yes                               |                     |
+      | text carousel    | Fitness Instructor                | right               |
+      # Do you plan to work full-time or part-time?
+      |                  | Part-time                         |                     |
+      # What are your eating habits like?
+      |                  | Fresh and organic ($$)            |                     |
+      # What's your travel style?
+      |                  | Tent and a backpack ($)           |                     |
+      # What's your average weekend like?
+      |                  | Out on the town ($$)              |                     |
+      # What is your fitness routine like?
+      |                  | A morning run ($)                 |                     |
+      # What is your gadget status?
+      |                  | Last year's model works fine ($$) |                     |
+      # What best describes your fashion choices?
+      |                  | Thrift-store treasure hunt ($)    |                     |
+      # Ready to move on?
+      |                  | Yes                               |                     |
+      # At this age, what kind of place would you like to live in?  Choose an option...
+      | image carousel   | Live with Family                  | right               |
+      # What kind of car would you like to buy?
+      | image carousel   | Public Transportation             | right               |
+    And a user clicks the Next Button on the Optional Narratives Dashboard
+    And a user clicks the Finish Lesson on the Lessson Checkpoint Page
