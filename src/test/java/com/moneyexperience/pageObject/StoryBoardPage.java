@@ -90,7 +90,8 @@ public class StoryBoardPage extends AbstractPage {
 			if (!tessSpeechBubble.getText().trim().equals(currentText)) {
 				break;
 			} else {
-				pause(.1);
+				pause(.25);
+				counter++;
 			}
 		}
 
