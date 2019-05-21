@@ -3,6 +3,8 @@ package com.moneyexperience.pageObject;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
+import org.openqa.selenium.ElementClickInterceptedException;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -79,11 +81,16 @@ public class ChatPage extends AbstractPage {
 		int textCarouselOptions = carouselOptionList.size();
 		int count = 0;
 		do {
-			
+
 			waitUntilElementReturnsString(imageCarouselCenterOption);
 			if (imageCarouselCenterOption.getText().equalsIgnoreCase(choice)) {
+				try {
 				imageCarouselCenterOption.click();
 				break;
+				} catch(ElementClickInterceptedException e) {
+					((JavascriptExecutor) driver).executeScript("arguments[0].click();", imageCarouselCenterOption);
+					break;
+				}
 			} else {
 				if (navigationDirection.equalsIgnoreCase("left")) {
 					leftNavArrow.click();
@@ -104,15 +111,15 @@ public class ChatPage extends AbstractPage {
 
 	private void waitUntilElementReturnsString(WebElement imageCarouselCenterOption) {
 		int counter = 0;
-		while(counter < 10) {
-			if(!imageCarouselCenterOption.getText().equals("")) {
+		while (counter < 10) {
+			if (!imageCarouselCenterOption.getText().equals("")) {
 				break;
 			}
-			
+
 			pause(.1);
 			counter++;
 		}
-		
+
 	}
 
 	public ChatPage clickSendButton() {
@@ -135,7 +142,9 @@ public class ChatPage extends AbstractPage {
 
 	public ChatPage selectSlider(String choice) {
 		waitForElement(inputSliderPlusButton);
-		int convertedChoice = Integer.valueOf(StringUtils.replace(choice, ",", ""));
+		String cleanNumberString = StringUtils.replace(choice, ",", "");
+		cleanNumberString = StringUtils.replace(cleanNumberString, "%", "");
+		int convertedChoice = Integer.valueOf(cleanNumberString);
 
 		if (convertedChoice > Integer.valueOf(inputSlider.getAttribute("max"))) {
 			throw new NoSuchElementException("The value entered is more than the max value of the slider");

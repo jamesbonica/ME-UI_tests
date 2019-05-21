@@ -1,5 +1,7 @@
 package com.moneyexperience.pageObject;
 
+import java.util.List;
+
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -36,10 +38,24 @@ public class AbstractPage {
 
 	public AbstractPage waitForElement(WebElement element) {
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, 10);
+			WebDriverWait wait = new WebDriverWait(driver, 12);
 			wait.until(ExpectedConditions.elementToBeClickable(element));
 		} catch (TimeoutException t) {
-			System.out.println("element not found");
+			System.out.println(element.toString() + " not found");
+		}
+		return this;
+	}
+	
+	public AbstractPage waitForElementToLeave(List<WebElement> elementList) {
+		int counter = 0;
+		while (counter < 10) {
+			if ((elementList.size() > 0)) {
+		//		System.out.println("TEST!!!!!!!!!!!!!!!!!" + (elementList.size() > 0));
+			} else {
+				break;
+			}
+			pause(.5);
+			counter++;
 		}
 		return this;
 	}

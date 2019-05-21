@@ -2,6 +2,7 @@ package com.moneyexperience.pageObject;
 
 import java.util.List;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
@@ -43,10 +44,10 @@ public class StoryBoardPage extends AbstractPage {
 	@FindBy(css = "*[class*='speechBubble']")
 	private WebElement tessSpeechBubble;
 
-	@FindBy(css = "nav[class] > button:nth-child(2)")
+	@FindBy(css = "figure + nav[class] > button:nth-child(2)")
 	private WebElement nextLinkForStoryPanels;
 
-	@FindAll(@FindBy(css = "nav[class] > button"))
+	@FindAll(@FindBy(css = "figure + nav[class] > button"))
 	private List<WebElement> navLinksForStoryPanelsList;
 
 	@FindAll(@FindBy(css = "div[class*='modal']"))
@@ -99,7 +100,7 @@ public class StoryBoardPage extends AbstractPage {
 
 	public StoryBoardPage clicknextLinkForStoryPanels() {
 		waitForElement(nextLinkForStoryPanels);
-		// System.out.println("Click to next Panel");
+//		 System.out.println("Click to next Panel");
 		nextLinkForStoryPanels.click();
 		return this;
 	}
@@ -110,13 +111,27 @@ public class StoryBoardPage extends AbstractPage {
 		waitForElement(storyBoardImage);
 		int counter = 0;
 		boolean clickNext = false;
+
 		while (counter < 10) {
+
 			// Check if Next Link is present or if something on Dashboard is present
 			if (navLinksForStoryPanelsList.size() > 0) {
+
 				// Wait for src to change or for Chat alert from Tess to appear
 				int secondCounter = 0;
 				while (secondCounter < 10) {
-					String newSrc = storyBoardImage.getAttribute("src");
+					String newSrc = null;
+					/**
+					 * This additional check is here because the links might have been present at
+					 * the start of this method call but by the time it reaches here, the user has
+					 * moved on to the end of lesson Dashboard
+					 */
+
+					if (!(navLinksForStoryPanelsList.size() > 0)) {
+						break;
+					}
+					newSrc = storyBoardImage.getAttribute("src");
+
 					String oldSrc = scenarioSession.getStoryBoardSrc();
 					if (!newSrc.equals(oldSrc)) {
 						scenarioSession.setStoryBoardSrc(newSrc);

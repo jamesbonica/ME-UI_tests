@@ -47,6 +47,7 @@ public class Stepdefs {
 
 	@When("a user {string} logs in to ME with password {string}")
 	public void a_user_logs_in_to_ME_with_password(String username, String password) {
+
 		userService.loginToWebApp(username, password);
 	}
 
@@ -107,7 +108,7 @@ public class Stepdefs {
 	public void a_user_clicks_Go_when_Tess_sends_a_new_message() {
 		lessonService.clickGotoChatWithTess();
 	}
-	
+
 	@Given("a user clicks the Next Button on the Optional Narratives Dashboard")
 	public void a_user_clicks_the_Next_Button_on_the_Optional_Narratives_Dashboard() {
 		lessonService.clickTheNextButtonOnTheDashboardPage();

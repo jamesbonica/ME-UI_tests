@@ -17,6 +17,9 @@ public class PropertiesLoader {
 	@Value("${test.browser}")
 	private String browser;
 
+	@Value("${configured.user1}")
+	private String configuredUser1;
+
 	public String getTestUrl() {
 		return testUrl;
 	}
@@ -39,6 +42,14 @@ public class PropertiesLoader {
 
 	public void setBrowser(String browser) {
 		this.browser = browser;
+	}
+
+	public void setConfiguredUserOne(String configuredUser1) {
+		this.configuredUser1 = configuredUser1;
+	}
+
+	public String getConfiguredUserOne() {
+		return configuredUser1;
 	}
 
 }
