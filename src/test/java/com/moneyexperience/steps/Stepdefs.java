@@ -119,6 +119,11 @@ public class Stepdefs {
 		lessonService.clickFinishLessonButton();
 	}
 
+	@Given("a user clicks the Continue to Next Lesson Button on the Life Progress Page")
+	public void a_user_clicks_the_Continue_to_Next_Lesson_Button_on_the_Life_Progress_Page() {
+		lessonService.clickContinueToNextLessonButtonOnLifeProgressPage();
+	}
+
 	////////////////////////////////////////////
 
 	////// response steps //////////////////////////

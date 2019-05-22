@@ -218,3 +218,49 @@ Feature: 1000 Step Development
       |                  | OK                                                    |                     |
     And a user clicks the Next Button on the Optional Narratives Dashboard
     And a user clicks the Finish Lesson on the Lessson Checkpoint Page
+    # Lesson 5
+    And a user resets the user progress to Lesson 5
+    And a user clicks the Begin Button at the start of the lesson
+    And a user clicks the Next Button
+    And a user clicks the Next Link
+    And a user goes through the storyboards
+    And a user chooses the following responses in the Chat with Tess:
+      | carouselOrSlider | choice                                           | navigationDirection |
+      # What neighborhood do you see yourself living in?
+      |                  | Central and nice, but not extravagant ($$)       |                     |
+      # How is your place furnished?
+      |                  | Pretty bare. Just the essentials. ($)            |                     |
+      # How often do you get your car serviced?
+      |                  | Oil changes on time every time ($$)              |                     |
+      # How healthily do you live?
+      |                  | I pay attention to ingredients and calories ($$) |                     |
+      # What best describes your hobbies?
+      |                  | Something artistic ($)                           |                     |
+      # When you travel, how do you like to fly?
+      |                  | I’ll pay for extra legroom ($$)                  |                     |
+      # How many subscriptions do you carry?
+      |                  | Only a couple, like streaming music. ($)         |                     |
+      # What’s your idea of a great night out with friends?
+      |                  | Dinner at most ($)                               |                     |
+      # Your water heater has broken. What do you do?
+      |                  | Go buy a new one at the local home store ($$)    |                     |
+      # You have an important meeting in the heart of the city. How will you get there?
+      |                  | Take public transportation ($)                   |                     |
+      # How will you handle lunches at work?
+      |                  | I'll brown bag my lunch ($)                      |                     |
+      # If you do have a family, how will you travel?
+      |                  | Road trips and day trips ($)                     |                     |
+      # Your favorite artist is playing nearby for the first time in a long time. Where are your seats?
+      |                  | Best seats that are available ($$)               |                     |
+      # Suddenly your back is starting to get sore pretty often. How do you handle it?
+      |                  | Go to the doc just to be safe ($$)               |                     |
+      # Would you like to edit how much you contribute to a 401k?
+      |                  | No                                               |                     |
+      # How about a 529? Are you saving for your kids' education in your 30s?
+      |                  | No                                               |                     |
+      # OK lastly, would you like to adjust how much you're investing?
+      |                  | No                                               |                     |
+      # OK, let's move onto your dashboard.
+      |                  | OK                                               |                     |
+    And a user clicks the Next Button on the Optional Narratives Dashboard
+    And a user clicks the Continue to Next Lesson Button on the Life Progress Page
