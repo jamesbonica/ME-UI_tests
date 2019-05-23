@@ -77,7 +77,7 @@ public class ChatPage extends AbstractPage {
 	private void selectOptionInCarousel(String choice, String navigationDirection, List<WebElement> carouselOptionList,
 			WebElement imageCarouselCenterOption) {
 		// Get the total amount of options
-		waitForElement(imageCarouselCenterOption);
+		waitForElementInChat(imageCarouselCenterOption);
 		int textCarouselOptions = carouselOptionList.size();
 		int count = 0;
 		do {
@@ -129,7 +129,7 @@ public class ChatPage extends AbstractPage {
 	}
 
 	public ChatPage selectOption(String choice) {
-		waitForElement(firstTextOption);
+		waitForElementInChat(firstTextOption);
 		for (WebElement element : textOptionList) {
 			// System.out.println("TEST!!!!! " + element.getText());
 			if (element.getText().trim().equalsIgnoreCase(choice)) {
@@ -141,7 +141,7 @@ public class ChatPage extends AbstractPage {
 	}
 
 	public ChatPage selectSlider(String choice) {
-		waitForElement(inputSliderPlusButton);
+		waitForElementInChat(inputSliderPlusButton);
 		String cleanNumberString = StringUtils.replace(choice, ",", "");
 		cleanNumberString = StringUtils.replace(cleanNumberString, "%", "");
 		int convertedChoice = Integer.valueOf(cleanNumberString);

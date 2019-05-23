@@ -38,7 +38,17 @@ public class AbstractPage {
 
 	public AbstractPage waitForElement(WebElement element) {
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, 12);
+			WebDriverWait wait = new WebDriverWait(driver, 6);
+			wait.until(ExpectedConditions.elementToBeClickable(element));
+		} catch (TimeoutException t) {
+			System.out.println(element.toString() + " not found");
+		}
+		return this;
+	}
+	
+	public AbstractPage waitForElementInChat(WebElement element) {
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, 15);
 			wait.until(ExpectedConditions.elementToBeClickable(element));
 		} catch (TimeoutException t) {
 			System.out.println(element.toString() + " not found");
