@@ -2,7 +2,10 @@ package com.moneyexperience.pageObject;
 
 import java.util.List;
 
-import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
@@ -130,7 +133,12 @@ public class StoryBoardPage extends AbstractPage {
 					if (!(navLinksForStoryPanelsList.size() > 0)) {
 						break;
 					}
-					newSrc = storyBoardImage.getAttribute("src");
+					try {
+						newSrc = storyBoardImage.getAttribute("src");
+					} catch (StaleElementReferenceException s) {
+						storyBoardImage = driver.findElement(By.cssSelector("div[class*='storyboard'] > figure > img"));
+						newSrc = storyBoardImage.getAttribute("src");
+					}
 
 					String oldSrc = scenarioSession.getStoryBoardSrc();
 					if (!newSrc.equals(oldSrc)) {
@@ -158,7 +166,12 @@ public class StoryBoardPage extends AbstractPage {
 
 	public void clickGoToChatWithTess() {
 		waitForElement(goButtonOnChatWithTessModal);
-		goButtonOnChatWithTessModal.click();
+		try {
+			goButtonOnChatWithTessModal.click();
+		} catch (ElementClickInterceptedException e) {
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", goButtonOnChatWithTessModal);
+
+		}
 	}
 
 }

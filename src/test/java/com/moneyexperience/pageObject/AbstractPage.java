@@ -47,24 +47,24 @@ public class AbstractPage {
 	}
 	
 	public AbstractPage waitForElementInChat(WebElement element) {
-		try {
-			WebDriverWait wait = new WebDriverWait(driver, 15);
-			wait.until(ExpectedConditions.elementToBeClickable(element));
-		} catch (TimeoutException t) {
-			System.out.println(element.toString() + " not found");
-		}
+	//	try {
+			WebDriverWait wait = new WebDriverWait(driver, 20);
+			wait.until(ExpectedConditions.visibilityOf(element));
+	//	} catch (TimeoutException t) {
+	//		System.out.println(element.toString() + " not found in Chat");
+	//	}
 		return this;
 	}
 	
 	public AbstractPage waitForElementToLeave(List<WebElement> elementList) {
 		int counter = 0;
-		while (counter < 10) {
+		while (counter < 60) {
 			if ((elementList.size() > 0)) {
 		//		System.out.println("TEST!!!!!!!!!!!!!!!!!" + (elementList.size() > 0));
 			} else {
 				break;
 			}
-			pause(.5);
+			pause(.25);
 			counter++;
 		}
 		return this;
