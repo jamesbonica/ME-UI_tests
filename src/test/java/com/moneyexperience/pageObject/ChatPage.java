@@ -56,6 +56,9 @@ public class ChatPage extends AbstractPage {
 
 	@FindBy(css = "div > button[class^='primary']:not([disabled])")
 	private WebElement sendButton;
+	
+	@FindAll(@FindBy(css="footer"))
+	private List<WebElement> footerList;
 
 	public ChatPage(EventFiringWebDriver driver) {
 		this.driver = driver;
@@ -157,6 +160,10 @@ public class ChatPage extends AbstractPage {
 		}
 
 		return this;
+	}
+
+	public boolean footerElementPresent() {
+		return footerList.size() > 0;
 	}
 
 }
