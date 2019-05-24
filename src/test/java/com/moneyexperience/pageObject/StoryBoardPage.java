@@ -5,7 +5,6 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
@@ -103,60 +102,41 @@ public class StoryBoardPage extends AbstractPage {
 
 	public StoryBoardPage clicknextLinkForStoryPanels() {
 		waitForElement(nextLinkForStoryPanels);
-//		 System.out.println("Click to next Panel");
 		nextLinkForStoryPanels.click();
 		return this;
 	}
 
-	// This method needs to check for these conditions:
-	//
+	/*
+	 * This method checks if a loader element is present first which would indicate the storyBoards are done
+	 * and the simulator is going to a Chat or the ON Dashboard. If that isn't present then it will check every .25
+	 * seconds for 2.5 seconds to see if the src attribute has changed which means a new storyboard has loaded and the
+	 * user should click Next again or if the Chat with Tess modal has appeared which stops the user from trying to
+	 * click on the Next link -- jb
+	 */
+	
 	public boolean moveOnToNextStoryBoard() {
+		boolean clickNext = false;
+		if (loaderPresent()) {
+			return clickNext;
+		}
+
 		waitForElement(storyBoardImage);
 		int counter = 0;
-		boolean clickNext = false;
 
 		while (counter < 10) {
+			String newSrc = storyBoardImage.getAttribute("src");
+			String oldSrc = scenarioSession.getStoryBoardSrc();
 
-			// Check if Next Link is present or if something on Dashboard is present
-			if (navLinksForStoryPanelsList.size() > 0) {
-
-				// Wait for src to change or for Chat alert from Tess to appear
-				int secondCounter = 0;
-				while (secondCounter < 10) {
-					String newSrc = null;
-					/**
-					 * This additional check is here because the links might have been present at
-					 * the start of this method call but by the time it reaches here, the user has
-					 * moved on to the end of lesson Dashboard
-					 */
-
-					if (!(navLinksForStoryPanelsList.size() > 0)) {
-						break;
-					}
-					try {
-						newSrc = storyBoardImage.getAttribute("src");
-					} catch (StaleElementReferenceException s) {
-						storyBoardImage = driver.findElement(By.cssSelector("div[class*='storyboard'] > figure > img"));
-						newSrc = storyBoardImage.getAttribute("src");
-					}
-
-					String oldSrc = scenarioSession.getStoryBoardSrc();
-					if (!newSrc.equals(oldSrc)) {
-						scenarioSession.setStoryBoardSrc(newSrc);
-						// System.out.println("SRC changes");
-						clickNext = true;
-						break;
-					} else if (newMessageFromTessModalList.size() > 0) {
-						System.out.println("Tess interrupts!!!");
-						break;
-					}
-					pause(.25);
-					secondCounter++;
-				}
+			if (!newSrc.equals(oldSrc)) {
+				scenarioSession.setStoryBoardSrc(newSrc);
+				// System.out.println("SRC changes");
+				clickNext = true;
 				break;
-			} else {
-
+			} else if (newMessageFromTessModalList.size() > 0) {
+				System.out.println("Tess interrupts!!!");
+				break;
 			}
+
 			pause(.25);
 			counter++;
 		}
@@ -172,6 +152,14 @@ public class StoryBoardPage extends AbstractPage {
 			((JavascriptExecutor) driver).executeScript("arguments[0].click();", goButtonOnChatWithTessModal);
 
 		}
+	}
+
+	public boolean storyBoardLinkPresent() {
+		return navLinksForStoryPanelsList.size() > 0;
+	}
+
+	public boolean loaderPresent() {
+		return driver.findElements(By.cssSelector("div[class*='loader']")).size() > 0;
 	}
 
 }

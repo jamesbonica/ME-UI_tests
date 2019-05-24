@@ -80,10 +80,17 @@ public class LessonService {
 
 	public void goThroughStoryBoards() {
 
-		while (storyBoardPage.moveOnToNextStoryBoard() == true) {
-			storyBoardPage.clicknextLinkForStoryPanels();
-		}
+//		while (storyBoardPage.moveOnToNextStoryBoard() == true) {
+//			storyBoardPage.clicknextLinkForStoryPanels();
+//		}
 
+		while (true) {
+			if (storyBoardPage.moveOnToNextStoryBoard()) {
+				storyBoardPage.clicknextLinkForStoryPanels();
+			} else {
+				break;
+			}
+		}
 	}
 
 	public void clickGotoChatWithTess() {

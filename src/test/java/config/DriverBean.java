@@ -3,6 +3,7 @@ package config;
 import java.net.URL;
 
 import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -35,7 +36,8 @@ public class DriverBean {
 		WebDriver driver = null;
 		String browser = propertiesLoader.getBrowser().toLowerCase();
 		String testEnvironment = propertiesLoader.getTestEnvironment().toLowerCase();
-		ChromeOptions chromeOptions = new ChromeOptions();
+	
+			ChromeOptions chromeOptions = new ChromeOptions();
 		FirefoxOptions firefoxOptions = new FirefoxOptions();
 
 		DesiredCapabilities desiredCapabilities = null;
@@ -48,6 +50,7 @@ public class DriverBean {
 				WebDriverManager.firefoxdriver().setup();
 				System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE, "true");
 				System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "/dev/null");
+				
 				driver = new FirefoxDriver(firefoxOptions);
 				break;
 			case "chrome":
@@ -84,7 +87,9 @@ public class DriverBean {
 			}
 			desiredCapabilities.setCapability("platform", "Windows 10");
 			// desiredCapbilities.setCapability("version", "63.0");
-			desiredCapabilities.setCapability("recordVideo", "true");
+			desiredCapabilities.setCapability("recordVideo", "false");
+			desiredCapabilities.setCapability("recordScreenshots", "false");
+			desiredCapabilities.setCapability("maxDuration", 3600);
 			desiredCapabilities.setCapability("screenResolution", "1920x1080");
 			desiredCapabilities.setCapability("name", sauceName);
 			driver = new RemoteWebDriver(new URL(
