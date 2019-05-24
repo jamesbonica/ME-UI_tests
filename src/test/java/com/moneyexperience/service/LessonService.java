@@ -3,12 +3,14 @@ package com.moneyexperience.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import com.moneyexperience.pageObject.ChatPage;
 import com.moneyexperience.pageObject.DashboardPage;
 import com.moneyexperience.pageObject.LessonCheckpointPage;
 import com.moneyexperience.pageObject.LessonIntroPage;
+import com.moneyexperience.pageObject.LifeProgressPage;
 import com.moneyexperience.pageObject.SetPrioritiesPage;
 import com.moneyexperience.pageObject.StoryBoardPage;
 
@@ -20,6 +22,7 @@ import com.moneyexperience.pageObject.StoryBoardPage;
  */
 
 @Service
+@Scope("cucumber-glue")
 public class LessonService {
 
 	@Autowired
@@ -39,6 +42,9 @@ public class LessonService {
 
 	@Autowired
 	LessonCheckpointPage lessonCheckpointPage;
+
+	@Autowired
+	LifeProgressPage lifeProgressPage;
 
 	public void clickBeginButton() {
 		lessonIntroPage.clickBeginButton();
@@ -92,6 +98,11 @@ public class LessonService {
 
 	public void clickFinishLessonButton() {
 		lessonCheckpointPage.clicFinishLessonButton();
+
+	}
+
+	public void clickContinueToNextLessonButtonOnLifeProgressPage() {
+		lifeProgressPage.clicFinishLessonButton();
 
 	}
 

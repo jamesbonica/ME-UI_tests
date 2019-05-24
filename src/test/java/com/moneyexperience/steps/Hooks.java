@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Scope;
 
 import com.moneyexperience.pageObject.LoginPage;
 
+import config.CrossScenarioCache;
 import config.PropertiesLoader;
 import config.ScenarioSession;
 import cucumber.api.Scenario;
@@ -45,13 +46,12 @@ public class Hooks {
 
 	@Autowired
 	ScenarioSession scenarioSession;
-
+	
 	@Before
 	public void setUp(Scenario scenario) {
 		scenarioSession.setScenario(scenario);
 		
 		System.out.println("In before hook");
-		
 		
 //		 String[] beans = appContext.getBeanDefinitionNames();
 //		 Arrays.sort(beans);
@@ -64,6 +64,7 @@ public class Hooks {
 
 	@After
 	public void tearDown(Scenario scenario) {
+		
 		if (scenario.isFailed()) {
 			final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 			scenario.embed(screenshot, "image/png"); // stick it in the report

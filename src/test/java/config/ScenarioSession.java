@@ -25,6 +25,8 @@ public class ScenarioSession {
 	private Scenario scenario;
 	
 	private String storyBoardSrc;
+	
+	private String userForScenario;
 
 	public void setScenario(Scenario scenario) {
 		this.scenario = scenario;
@@ -50,6 +52,14 @@ public class ScenarioSession {
 
 	public void setStoryBoardSrc(String storyBoardSrc) {
 		this.storyBoardSrc = storyBoardSrc;
+	}
+
+	public String getUserForScenario() {
+		return userForScenario;
+	}
+
+	public void setUserForScenario(String userForScenario) {
+		this.userForScenario = userForScenario;
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.moneyexperience.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import com.moneyexperience.pageObject.ChatPage;
@@ -13,6 +14,7 @@ import com.moneyexperience.pageObject.ChatPage;
  */
 
 @Service
+@Scope("cucumber-glue")
 public class ResponseService {
 
 	@Autowired
