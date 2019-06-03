@@ -41,7 +41,7 @@ Feature: 1000 Complete Simulator Experience
       # Do you know how much your student loans will be?
       |                  | Yes                               |                     |
       # How much will your loans be?
-      | slider           |                            20,000 |                     |
+      | slider           |                            80,000 |                     |
       # Do you plan to pursue an advanced degree?
       |                  | No                                |                     |
       # You've selected a summer job already, but do you plan to have a job while in school?
@@ -159,7 +159,7 @@ Feature: 1000 Complete Simulator Experience
       |                  | I want to move                                        |                     |
       # Where would you like to move to?
       | text carousel    | A Southern city (Like Atlanta, or New Orleans)        | left                |
-      #  Would you still like to live in a Southern city like Atlanta, or New Orleans?
+      #  Would you still like to live in a southern city like Atlanta or New Orleans?
       |                  | Yes                                                   |                     |
       # Would you like to change your residence, or buy a house?
       |                  | Yes                                                   |                     |
