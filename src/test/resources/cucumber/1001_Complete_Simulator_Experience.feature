@@ -202,7 +202,7 @@ Feature: 1000 Complete Simulator Experience
       # OK lastly, would you like to invest any of your savings?
       |                  | Yes                                                   |                     |
       # How much of your savings would you like to invest going forward?
-      | slider           | 15%                                                   |                     |
+      | slider           | 10%                                                   |                     |
       # OK, let's move onto your dashboard.
       |                  | OK                                                    |                     |
     And a user clicks the Next Button on the Optional Narratives Dashboard
