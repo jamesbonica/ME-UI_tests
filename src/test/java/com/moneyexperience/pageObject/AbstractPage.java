@@ -48,7 +48,7 @@ public class AbstractPage {
 	
 	public AbstractPage waitForElementInChat(WebElement element) {
 	//	try {
-			WebDriverWait wait = new WebDriverWait(driver, 20);
+			WebDriverWait wait = new WebDriverWait(driver, 22);
 			wait.until(ExpectedConditions.visibilityOf(element));
 	//	} catch (TimeoutException t) {
 	//		System.out.println(element.toString() + " not found in Chat");
