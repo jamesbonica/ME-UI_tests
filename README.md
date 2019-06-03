@@ -11,7 +11,7 @@ To run the tests locally:
   
 3. Run the following command:
   
-mvn test -Dspring.profiles.active=regressions -Dtest.url=http://localhost:9000 -Dconfigured.user1=jane -Dcucumber.options='--tags "@Complete_Simulator_Experience"'
+mvn clean test -Dspring.profiles.active=regressions -Dtest.url=http://localhost:9000 -Dconfigured.user1=jane -Dcucumber.options='--tags "@Complete_Simulator_Experience"'
     
 Here's what each of the Java Spring variables mean:
 
