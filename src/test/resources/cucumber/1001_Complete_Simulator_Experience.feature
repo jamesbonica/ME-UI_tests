@@ -1,33 +1,13 @@
-#Author: jim@moneyexperience.com
-Feature: 1000 Step Development
-  Description:
-  As an Administrator of the Money Experience Simulator
-  I want to allow registered users to login using specific credentials
-  So I can ensure only licensed users are accessing a course
+#Author: Jim Bonica jim@moneyexperience.com
+@Complete_Simulator_Experience
+Feature: 1000 Complete Simulator Experience
+  Description: 
+  	As a Money Experience Engineer
+  	I want an automation tool to execute user choices for all TME Simulator lessons
+  	So I am not required to manually simulate a user experience
 
-  #1
-  @smoketest
-  Scenario: Money Experience displays the username of a registered user in the top menu
-    When a user "joeyvitamins-counselor" logs in to ME with password "password"
-    Then ME must display the username "joeyvitamins-counselor" in the top menu
-    And the user logs out
-
-  #2
-  @smoketest
-  Scenario: Money Experience displays the username of a registered user in the top menu
-    When a user "joeyvitamins-counselor" logs in to ME with password "password"
-    Then ME must display the username "joeyvitamins-counselor" in the top menu
-    And the user logs out
-
-  #3
-  @smoketest
-  Scenario: User resets lesson progress to Lesson 1
-    Given a user "joeyvitamins-counselor" logs in to ME with password "password"
-    When a user resets the user progress to Lesson 1
-
-  #4
-  @ME-937
-  Scenario: User sets priorities at start of Lesson
+  @Lesson1
+  Scenario: User completes Lesson 1
     Given a user "configured user 1" logs in to ME with password "password"
     And a user resets the user progress to Lesson 1
     And a user clicks the Begin Button at the start of the lesson
@@ -89,7 +69,10 @@ Feature: 1000 Step Development
       | image carousel   | Public Transportation             | right               |
     And a user clicks the Next Button on the Optional Narratives Dashboard
     And a user clicks the Finish Lesson on the Lessson Checkpoint Page
-    # Lesson 2
+
+  @Lesson2
+  Scenario: User completes Lesson 2
+    Given a user "configured user 1" logs in to ME with password "password"
     And a user resets the user progress to Lesson 2
     And a user clicks the Begin Button at the start of the lesson
     And a user clicks the Next Button
@@ -127,7 +110,10 @@ Feature: 1000 Step Development
     And a user goes through the storyboards
     And a user clicks the Next Button on the Optional Narratives Dashboard
     And a user clicks the Finish Lesson on the Lessson Checkpoint Page
-    # Lesson 3
+
+  @Lesson3
+  Scenario: User completes Lesson 3
+    Given a user "configured user 1" logs in to ME with password "password"
     And a user resets the user progress to Lesson 3
     And a user clicks the Begin Button at the start of the lesson
     And a user clicks the Next Button
@@ -158,7 +144,10 @@ Feature: 1000 Step Development
     And a user goes through the storyboards
     And a user clicks the Next Button on the Optional Narratives Dashboard
     And a user clicks the Finish Lesson on the Lessson Checkpoint Page
-    # Lesson 4
+
+  @Lesson4
+  Scenario: User completes Lesson 4
+    Given a user "configured user 1" logs in to ME with password "password"
     And a user resets the user progress to Lesson 4
     And a user clicks the Begin Button at the start of the lesson
     And a user clicks the Next Button
@@ -169,7 +158,7 @@ Feature: 1000 Step Development
       # First of all, are you still happy with where you're living, or would you like to move?
       |                  | I want to move                                        |                     |
       # Where would you like to move to?
-      | text carousel    | A Southern city (Like Atlanta, or New Orleans)   | left                |
+      | text carousel    | A Southern city (Like Atlanta, or New Orleans)        | left                |
       #  Would you still like to live in a Southern city like Atlanta, or New Orleans?
       |                  | Yes                                                   |                     |
       # Would you like to change your residence, or buy a house?
@@ -218,7 +207,10 @@ Feature: 1000 Step Development
       |                  | OK                                                    |                     |
     And a user clicks the Next Button on the Optional Narratives Dashboard
     And a user clicks the Finish Lesson on the Lessson Checkpoint Page
-    # Lesson 5
+
+  @Lesson5
+  Scenario: User completes Lesson 5
+    Given a user "configured user 1" logs in to ME with password "password"
     And a user resets the user progress to Lesson 5
     And a user clicks the Begin Button at the start of the lesson
     And a user clicks the Next Button
@@ -264,7 +256,10 @@ Feature: 1000 Step Development
       |                  | OK                                               |                     |
     And a user clicks the Next Button on the Optional Narratives Dashboard
     And a user clicks the Continue to Next Lesson Button on the Life Progress Page
-    # Lesson 6
+
+  @Lesson6
+  Scenario: User completes Lesson 6
+    Given a user "configured user 1" logs in to ME with password "password"
     And a user resets the user progress to Lesson 6
     And a user clicks the Begin Button at the start of the lesson
     And a user clicks the Next Button
@@ -312,7 +307,10 @@ Feature: 1000 Step Development
       |                  | OK                                                  |                     |
     And a user clicks the Next Button on the Optional Narratives Dashboard
     And a user clicks the Finish Lesson on the Lessson Checkpoint Page
-    # Lesson 7
+
+  @Lesson7
+  Scenario: User completes Lesson 7
+    Given a user "configured user 1" logs in to ME with password "password"
     And a user resets the user progress to Lesson 7
     And a user clicks the Begin Button at the start of the lesson
     And a user clicks the Next Button
@@ -352,7 +350,10 @@ Feature: 1000 Step Development
       |                  | OK                                                             |                     |
     And a user clicks the Next Button on the Optional Narratives Dashboard
     And a user clicks the Finish Lesson on the Lessson Checkpoint Page
-    # Lesson 8
+
+  @Lesson8
+  Scenario: User completes Lesson 8
+    Given a user "configured user 1" logs in to ME with password "password"
     And a user resets the user progress to Lesson 8
     And a user clicks the Begin Button at the start of the lesson
     And a user clicks the Next Button
@@ -380,7 +381,10 @@ Feature: 1000 Step Development
       |                  | OK                                                                 |                     |
     And a user clicks the Next Button on the Optional Narratives Dashboard
     And a user clicks the Finish Lesson on the Lessson Checkpoint Page
-    # Lesson 9
+
+  @Lesson9
+  Scenario: User completes Lesson 9
+    Given a user "configured user 1" logs in to ME with password "password"
     And a user resets the user progress to Lesson 9
     And a user clicks the Begin Button at the start of the lesson
     And a user clicks the Next Button
