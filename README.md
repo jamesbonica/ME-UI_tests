@@ -23,7 +23,7 @@ Here's what each of the Java Spring variables mean:
 
 <strong>cucumber.options</strong>: These are the tags for the tests you'd like to run. In Cucumber, tags can be used at the Feature File or the Scenario level. The tag inlcuded in the Maven command example above is for the Feature File designed to run a configured user from Lesson 1 through Lesson 9. If you want to only run a subset of scenarios, substitute @Complete_Simulator_Experience for something like "@Lesson1 or @Lesson2 or @Lesson3". This would run any scenarios with the tag of Lession1, Lession2 or Lession3. In the Feature File, the individual scenarios for each lesson are tagged @Lession1, @Lession2, etc. 
   
-# Chercking the results
+# Checking the results
 Cucumber generates an HTML report out of the box. It is not at cool or attractive as the Cucumber Sandwich Report Generator we use on our Jenkins server or your can use locally but it is simple and can provide info on where a test failed, which is all a Developer would need if the purpose of running the tests are to get their instance into a certain state. You can open an HTML report for the Complete Simulator Experience from this URL: file:///{path to test project}/ME-UI_tests/target/html/1001_Complete_Simulator_Experience/index.html
 
 If you see red on Lesson 7 and beyond and you need to run a user through the complete course, you can re-run the test with the following in the Maven command: -Dcucumber.options='--tags "@Lesson7 or @Lesson8 or @Lesson9"'
