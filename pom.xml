@@ -10,7 +10,8 @@
 	<packaging>jar</packaging>
 
 	<properties>
-		<cucumber.version>4.2.6</cucumber.version>
+		<cucumber.version>4.3.1</cucumber.version>
+		<!-- <cucumber.version>4.2.6</cucumber.version> -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -139,9 +140,7 @@
 				<configuration>
 					<forkCount>2</forkCount>
 					<reuseForks>true</reuseForks>
-				<!-- 	<includes>
-						<include>**/Parallel*IT.class</include>
-					</includes>-->
+					<!-- <includes> <include>**/Parallel*IT.class</include> </includes> -->
 				</configuration>
 			</plugin>
 

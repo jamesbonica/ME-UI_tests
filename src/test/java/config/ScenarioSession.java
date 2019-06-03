@@ -23,6 +23,10 @@ public class ScenarioSession {
 	EventFiringWebDriver driver;
 
 	private Scenario scenario;
+	
+	private String storyBoardSrc;
+	
+	private String userForScenario;
 
 	public void setScenario(Scenario scenario) {
 		this.scenario = scenario;
@@ -40,6 +44,22 @@ public class ScenarioSession {
 
 	public void writeToReport(String s) {
 		scenario.write(s);
+	}
+
+	public String getStoryBoardSrc() {
+		return storyBoardSrc;
+	}
+
+	public void setStoryBoardSrc(String storyBoardSrc) {
+		this.storyBoardSrc = storyBoardSrc;
+	}
+
+	public String getUserForScenario() {
+		return userForScenario;
+	}
+
+	public void setUserForScenario(String userForScenario) {
+		this.userForScenario = userForScenario;
 	}
 
 }

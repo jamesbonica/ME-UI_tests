@@ -19,7 +19,7 @@ public class LoginPage extends AbstractPage {
 	@FindBy(css = "input#password")
 	private WebElement passwordField;
 
-	@FindBy(css = "input[type=submit]")
+	@FindBy(css = "button[type=submit]")
 	private WebElement submitButton;
 
 	public LoginPage(EventFiringWebDriver driver) {
