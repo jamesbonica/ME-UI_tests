@@ -46,13 +46,13 @@ public class Hooks {
 
 	@Autowired
 	ScenarioSession scenarioSession;
-	
+
 	@Before
 	public void setUp(Scenario scenario) {
 		scenarioSession.setScenario(scenario);
-		
+
 		System.out.println("In before hook");
-		
+
 //		 String[] beans = appContext.getBeanDefinitionNames();
 //		 Arrays.sort(beans);
 //		 for (String bean : beans) {
@@ -64,13 +64,16 @@ public class Hooks {
 
 	@After
 	public void tearDown(Scenario scenario) {
-		
+
 		if (scenario.isFailed()) {
 			final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 			scenario.embed(screenshot, "image/png"); // stick it in the report
 		}
 //	driver.close();
-		((JavascriptExecutor) driver).executeScript(String.format("window.localStorage.clear();"));
+
+		if (!driver.getCurrentUrl().equals("data:,")) {
+			((JavascriptExecutor) driver).executeScript(String.format("window.localStorage.clear();"));
+		}
 	}
 
 }

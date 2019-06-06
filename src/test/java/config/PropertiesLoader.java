@@ -19,6 +19,9 @@ public class PropertiesLoader {
 
 	@Value("${configured.user1}")
 	private String configuredUser1;
+	
+	@Value("${configured.user1.password}")
+	private String configuredUser1Password;
 
 	public String getTestUrl() {
 		return testUrl;
@@ -50,6 +53,14 @@ public class PropertiesLoader {
 
 	public String getConfiguredUserOne() {
 		return configuredUser1;
+	}
+
+	public String getConfiguredUser1Password() {
+		return configuredUser1Password;
+	}
+
+	public void setConfiguredUser1Password(String configuredUser1Password) {
+		this.configuredUser1Password = configuredUser1Password;
 	}
 
 }
