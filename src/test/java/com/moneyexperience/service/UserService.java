@@ -39,12 +39,18 @@ public class UserService {
 
 	public void loginToWebApp(String username, String password) {
 		loginPage.navigateToWebApp();
-		if(username.toLowerCase().startsWith("configure")) {
+		if (username.toLowerCase().startsWith("configure")) {
 			username = getConfiguredUserName(username);
 			scenarioSession.writeToReport("The user for this scenario is " + username);
 		}
+
+		if (password.toLowerCase().contains("configure")) {
+			password = getConfiguredUserPassword(password);
+			scenarioSession.writeToReport("The password for this scenario is " + password);
+		}
+
 		loginPage.enterUsername(username).enterPassword(password).clickLoginButton();
-		
+
 	}
 
 	public void logout() {
@@ -56,8 +62,16 @@ public class UserService {
 	}
 
 	private String getConfiguredUserName(String username) {
-		if (username.endsWith("1")) {
+		if (username.endsWith(" 1")) {
 			return propertiesLoader.getConfiguredUserOne();
+		} else {
+			return null;
+		}
+	}
+
+	private String getConfiguredUserPassword(String password) {
+		if (password.contains("user 1")) {
+			return propertiesLoader.getConfiguredUser1Password();
 		} else {
 			return null;
 		}

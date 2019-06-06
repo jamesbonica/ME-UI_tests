@@ -169,7 +169,7 @@ Feature: 1000 Step Development
       # First of all, are you still happy with where you're living, or would you like to move?
       |                  | I want to move                                        |                     |
       # Where would you like to move to?
-      | text carousel    | A Southern city (Like Atlanta, or New Orleans)   | left                |
+      | text carousel    | A Southern city (Like Atlanta, or New Orleans)        | left                |
       #  Would you still like to live in a Southern city like Atlanta, or New Orleans?
       |                  | Yes                                                   |                     |
       # Would you like to change your residence, or buy a house?
@@ -406,3 +406,8 @@ Feature: 1000 Step Development
       |                  | Ok                                                           |                     |
     And a user clicks the Next Link
     And a user clicks the Next Button on the Optional Narratives Dashboard
+
+  @ME-1003
+  Scenario: APIs in ME
+  
+    Given "configured user 1" with password "password" is authenticated in the ME Simulator via API

@@ -8,7 +8,7 @@ Feature: 1000 Complete Simulator Experience
 
   @Lesson1
   Scenario: User completes Lesson 1
-    Given a user "configured user 1" logs in to ME with password "password"
+    Given a user "configured user 1" logs in to ME with password "for configured user 1"
     And a user resets the user progress to Lesson 1
     And a user clicks the Begin Button at the start of the lesson
     And a user sets priorities in the following order:
@@ -72,7 +72,7 @@ Feature: 1000 Complete Simulator Experience
 
   @Lesson2
   Scenario: User completes Lesson 2
-    Given a user "configured user 1" logs in to ME with password "password"
+    Given a user "configured user 1" logs in to ME with password "for configured user 1"
     And a user resets the user progress to Lesson 2
     And a user clicks the Begin Button at the start of the lesson
     And a user clicks the Next Button
@@ -113,7 +113,7 @@ Feature: 1000 Complete Simulator Experience
 
   @Lesson3
   Scenario: User completes Lesson 3
-    Given a user "configured user 1" logs in to ME with password "password"
+    Given a user "configured user 1" logs in to ME with password "for configured user 1"
     And a user resets the user progress to Lesson 3
     And a user clicks the Begin Button at the start of the lesson
     And a user clicks the Next Button
@@ -147,7 +147,7 @@ Feature: 1000 Complete Simulator Experience
 
   @Lesson4
   Scenario: User completes Lesson 4
-    Given a user "configured user 1" logs in to ME with password "password"
+    Given a user "configured user 1" logs in to ME with password "for configured user 1"
     And a user resets the user progress to Lesson 4
     And a user clicks the Begin Button at the start of the lesson
     And a user clicks the Next Button
@@ -157,9 +157,10 @@ Feature: 1000 Complete Simulator Experience
       | carouselOrSlider | choice                                                | navigationDirection |
       # First of all, are you still happy with where you're living, or would you like to move?
       |                  | I want to move                                        |                     |
-      # Where would you like to move to?
-      | text carousel    | A Southern city (Like Atlanta, or New Orleans)        | left                |
-      #  Would you still like to live in a southern city like Atlanta or New Orleans?
+      ##### **** Opportunity to change financial condition significantly in one choice ***** Where would you like to move to? <================
+   #   | text carousel    | A Southern city (Like Atlanta, or New Orleans)        | left                |
+       | text carousel    | A coastal big city (Like San Francisco, New York)     | left                |
+      #  Would you still like to live in {what you chose}
       |                  | Yes                                                   |                     |
       # Would you like to change your residence, or buy a house?
       |                  | Yes                                                   |                     |
@@ -210,7 +211,7 @@ Feature: 1000 Complete Simulator Experience
 
   @Lesson5
   Scenario: User completes Lesson 5
-    Given a user "configured user 1" logs in to ME with password "password"
+    Given a user "configured user 1" logs in to ME with password "for configured user 1"
     And a user resets the user progress to Lesson 5
     And a user clicks the Begin Button at the start of the lesson
     And a user clicks the Next Button
@@ -259,7 +260,7 @@ Feature: 1000 Complete Simulator Experience
 
   @Lesson6
   Scenario: User completes Lesson 6
-    Given a user "configured user 1" logs in to ME with password "password"
+    Given a user "configured user 1" logs in to ME with password "for configured user 1"
     And a user resets the user progress to Lesson 6
     And a user clicks the Begin Button at the start of the lesson
     And a user clicks the Next Button
@@ -310,7 +311,7 @@ Feature: 1000 Complete Simulator Experience
 
   @Lesson7
   Scenario: User completes Lesson 7
-    Given a user "configured user 1" logs in to ME with password "password"
+    Given a user "configured user 1" logs in to ME with password "for configured user 1"
     And a user resets the user progress to Lesson 7
     And a user clicks the Begin Button at the start of the lesson
     And a user clicks the Next Button
@@ -353,7 +354,7 @@ Feature: 1000 Complete Simulator Experience
 
   @Lesson8
   Scenario: User completes Lesson 8
-    Given a user "configured user 1" logs in to ME with password "password"
+    Given a user "configured user 1" logs in to ME with password "for configured user 1"
     And a user resets the user progress to Lesson 8
     And a user clicks the Begin Button at the start of the lesson
     And a user clicks the Next Button
@@ -384,7 +385,7 @@ Feature: 1000 Complete Simulator Experience
 
   @Lesson9
   Scenario: User completes Lesson 9
-    Given a user "configured user 1" logs in to ME with password "password"
+    Given a user "configured user 1" logs in to ME with password "for configured user 1"
     And a user resets the user progress to Lesson 9
     And a user clicks the Begin Button at the start of the lesson
     And a user clicks the Next Button
