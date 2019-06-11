@@ -407,7 +407,7 @@ Feature: 1000 Step Development
     And a user clicks the Next Link
     And a user clicks the Next Button on the Optional Narratives Dashboard
 
-  @ME-1003
+  @ME-1003 @API
   Scenario: APIs in ME
-  
-    Given "configured user 1" with password "password" is authenticated in the ME Simulator via API
+    Given a user "configured user 1" logs in to ME with password "for configured user 1"
+    Given user "configured user 1" with password "for configured user 1" resets the user progress to Lesson 1
