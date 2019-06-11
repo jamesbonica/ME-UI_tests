@@ -11,6 +11,9 @@ public class PropertiesLoader {
 	@Value("${test.url}")
 	private String testUrl;
 
+	@Value("${test.api.url}")
+	private String testApiUrl;
+
 	@Value("${test.environment}")
 	private String testEnvironment;
 
@@ -19,7 +22,7 @@ public class PropertiesLoader {
 
 	@Value("${configured.user1}")
 	private String configuredUser1;
-	
+
 	@Value("${configured.user1.password}")
 	private String configuredUser1Password;
 
@@ -29,6 +32,14 @@ public class PropertiesLoader {
 
 	public void setTestUrl(String testUrl) {
 		this.testUrl = testUrl;
+	}
+
+	public String getTestApiUrl() {
+		return testApiUrl;
+	}
+
+	public void setTestApiUrl(String testApiUrl) {
+		this.testApiUrl = testApiUrl;
 	}
 
 	public String getTestEnvironment() {

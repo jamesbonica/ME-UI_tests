@@ -158,8 +158,8 @@ Feature: 1000 Complete Simulator Experience
       # First of all, are you still happy with where you're living, or would you like to move?
       |                  | I want to move                                        |                     |
       ##### **** Opportunity to change financial condition significantly in one choice ***** Where would you like to move to? <================
-   #   | text carousel    | A Southern city (Like Atlanta, or New Orleans)        | left                |
-       | text carousel    | A coastal big city (Like San Francisco, New York)     | left                |
+      | text carousel    | A Southern city (Like Atlanta, or New Orleans)        | left                |
+      #    | text carousel    | A coastal big city (Like San Francisco, New York)     | left                |
       #  Would you still like to live in {what you chose}
       |                  | Yes                                                   |                     |
       # Would you like to change your residence, or buy a house?

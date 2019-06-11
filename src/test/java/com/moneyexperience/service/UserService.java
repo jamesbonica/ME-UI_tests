@@ -1,5 +1,7 @@
 package com.moneyexperience.service;
 
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
@@ -23,6 +25,9 @@ import config.ScenarioSession;
 public class UserService {
 
 	@Autowired
+	EventFiringWebDriver driver;
+
+	@Autowired
 	PropertiesLoader propertiesLoader;
 
 	@Autowired
@@ -39,15 +44,9 @@ public class UserService {
 
 	public void loginToWebApp(String username, String password) {
 		loginPage.navigateToWebApp();
-		if (username.toLowerCase().startsWith("configure")) {
-			username = getConfiguredUserName(username);
-			scenarioSession.writeToReport("The user for this scenario is " + username);
-		}
 
-		if (password.toLowerCase().contains("configure")) {
-			password = getConfiguredUserPassword(password);
-			scenarioSession.writeToReport("The password for this scenario is " + password);
-		}
+		username = getConfiguredUserName(username);
+		password = getConfiguredUserPassword(password);
 
 		loginPage.enterUsername(username).enterPassword(password).clickLoginButton();
 
@@ -61,16 +60,26 @@ public class UserService {
 		topMenuPage.clickuserName().clickResetLessonLink(lessonNumber).clickAcceptResetProgressButton();
 	}
 
-	private String getConfiguredUserName(String username) {
+	String getConfiguredUserName(String username) {
+		if (!username.toLowerCase().startsWith("configure")) {
+			return username;
+		}
+
 		if (username.endsWith(" 1")) {
+			scenarioSession.writeToReport("The user for this scenario is " + username);
 			return propertiesLoader.getConfiguredUserOne();
 		} else {
 			return null;
 		}
 	}
 
-	private String getConfiguredUserPassword(String password) {
+	String getConfiguredUserPassword(String password) {
+		if (!password.toLowerCase().contains("configure")) {
+			return password;
+		}
+
 		if (password.contains("user 1")) {
+			scenarioSession.writeToReport("The password for this scenario is " + password);
 			return propertiesLoader.getConfiguredUser1Password();
 		} else {
 			return null;

@@ -1,6 +1,7 @@
 package com.moneyexperience.steps;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -50,6 +51,8 @@ public class Hooks {
 	@Before
 	public void setUp(Scenario scenario) {
 		scenarioSession.setScenario(scenario);
+
+		// Collection<String> tagList = scenario.getSourceTagNames();
 
 		System.out.println("In before hook");
 

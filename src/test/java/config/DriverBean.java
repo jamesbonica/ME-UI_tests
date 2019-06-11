@@ -28,16 +28,17 @@ public class DriverBean {
 	@Autowired
 	PropertiesLoader propertiesLoader;
 
-	@Bean(name = "driver", destroyMethod="quit")
+	@Bean(name = "driver", destroyMethod = "quit")
 	public EventFiringWebDriver getEventFiringWebDriver() throws Exception {
+		
 		System.out.println("In driver method");
 		String sauceName = "";
 		EventFiringWebDriver eventFiringWebDriver = null;
 		WebDriver driver = null;
 		String browser = propertiesLoader.getBrowser().toLowerCase();
 		String testEnvironment = propertiesLoader.getTestEnvironment().toLowerCase();
-	
-			ChromeOptions chromeOptions = new ChromeOptions();
+
+		ChromeOptions chromeOptions = new ChromeOptions();
 		FirefoxOptions firefoxOptions = new FirefoxOptions();
 
 		DesiredCapabilities desiredCapabilities = null;
@@ -50,14 +51,15 @@ public class DriverBean {
 				WebDriverManager.firefoxdriver().setup();
 				System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE, "true");
 				System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "/dev/null");
-				
+
 				driver = new FirefoxDriver(firefoxOptions);
 				break;
 			case "chrome":
 				System.out.println("Creating chrome local... ");
 				WebDriverManager.chromedriver().setup();
-			//	desiredCapabilities.setCapability(CapabilityType.SUPPORTS_APPLICATION_CACHE,false);
-				chromeOptions.setCapability(CapabilityType.SUPPORTS_APPLICATION_CACHE,false);;
+				// desiredCapabilities.setCapability(CapabilityType.SUPPORTS_APPLICATION_CACHE,false);
+				chromeOptions.setCapability(CapabilityType.SUPPORTS_APPLICATION_CACHE, false);
+				;
 				driver = new ChromeDriver(chromeOptions);
 
 				break;
