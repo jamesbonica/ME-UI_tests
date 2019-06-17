@@ -67,6 +67,17 @@ Feature: 1001 Complete Simulator Experience
       | image carousel   | Live with Family                  | right               |
       # What kind of car would you like to buy?
       | image carousel   | Public Transportation             | right               |
+    And a user selects the "Take a Trip" Optional Narrative from the Dashboard
+    And the user chooses the following responses in the Optional Narrative Chat with Tess:
+      | carouselOrSlider | choice                                          | navigationDirection |
+      # Would you like to take a trip somewhere?
+      |                  | Probably                                        |                     |
+      # Where would you like to go?
+      | text carousel    | Glacier & fjord hiking in Scandinavia / Iceland |                     |
+      # A week in Scandanavia will run about $2000. Still game?
+      |                  | Book it!                                        |                     |
+      # For now, let's go back to the dashboard.
+      |                  | OK                                              |                     |
     And a user clicks the Next Button on the Optional Narratives Dashboard
     And a user clicks the Finish Lesson on the Lessson Checkpoint Page
 
@@ -108,6 +119,18 @@ Feature: 1001 Complete Simulator Experience
       # OK, that's it for now! Let's move on.
       |                  | Ok                                                            |                     |
     And a user goes through the storyboards
+    And a user selects the "Apply for a Credit Card" Optional Narrative from the Dashboard
+    And the user chooses the following responses in the Optional Narrative:
+      | carouselOrSlider | choice    | navigationDirection |
+      | image carousel   | Cash Back | right               |
+    And a user selects the "Who Are You Dating" Optional Narrative from the Dashboard
+    And the user chooses the following responses in the Optional Narrative:
+      | carouselOrSlider | choice | navigationDirection |
+      | dating app       | Jenn   | right               |
+    And a user selects the "Buy a Car" Optional Narrative from the Dashboard
+    And the user chooses the following responses in the Optional Narrative:
+      | carouselOrSlider | choice | navigationDirection |
+      | image carousel   | Sedan  | right               |
     And a user clicks the Next Button on the Optional Narratives Dashboard
     And a user clicks the Finish Lesson on the Lessson Checkpoint Page
 
@@ -142,6 +165,31 @@ Feature: 1001 Complete Simulator Experience
       # OK That's it for now! I heard Ria is back from the military, let's go see what she's up to.
       |                  | OK                                   |                     |
     And a user goes through the storyboards
+    And a user selects the "Get Married" Optional Narrative from the Dashboard
+    And the user chooses the following responses in the Optional Narrative Chat with Tess:
+      | carouselOrSlider | choice                                                    | navigationDirection |
+      # Would you like to get married?
+      |                  | Yes                                                       |                     |
+      # What kind of wedding do you imagine?
+      |                  | Modest, not taking things too seriously                   |                     |
+      # What % of this wedding will you be paying for?
+      | slider           | 80%                                                       |                     |
+      # What's the venue like?
+      |                  | A charming wedding facility                               |                     |
+      # How big is the guest list?
+      |                  | Extended family and social circles                        |                     |
+      # Tell me about the dress...
+      |                  | Off-the-rack                                              |                     |
+      # How about meals?
+      |                  | Reasonably good catering                                  |                     |
+      # And the bar tab?
+      |                  | Free drinks... until 8pm                                  |                     |
+      # What kind of music?
+      |                  | Hired professional DJ                                     |                     |
+      # Where is the honeymoon?
+      |                  | Let's kick this thing off: An unforgettable trip overseas |                     |
+      # Let's head back to the dashboard.
+      |                  | OK                                                        |                     |
     And a user clicks the Next Button on the Optional Narratives Dashboard
     And a user clicks the Finish Lesson on the Lessson Checkpoint Page
 
@@ -206,6 +254,41 @@ Feature: 1001 Complete Simulator Experience
       | slider           | 10%                                                   |                     |
       # OK, let's move onto your dashboard.
       |                  | OK                                                    |                     |
+    And a user selects the "Have a Child" Optional Narrative from the Dashboard
+    And the user chooses the following responses in the Optional Narrative Chat with Tess:
+      | carouselOrSlider | choice                                  | navigationDirection |
+      # Would you like to start a family, or add to the one you've started?
+      |                  | Yes                                     |                     |
+      # How many children would you like to have at this age?
+      |                  |                                       2 |                     |
+      # OK! Congrats! It's twins!
+      |                  | Yay!                                    |                     |
+      # What kind of childcare do you envision for your kids?
+      | text carousel    | I’ll bring them to a daycare facility   |                     |
+      # What type of primary school would you like your children to attend?
+      |                  | Public school                           |                     |
+      # What about college?
+      | text carousel    | In-state university                     |                     |
+      # Will you help them pay for college?
+      |                  | Yes                                     |                     |
+      # The best way to do that is with a 529 account. Would you like to start or change your 529 contribution now?
+      |                  | Yes                                     |                     |
+      # How much of your paycheck would you like to contribute to a 529?
+      | slider           | 8%                                      |                     |
+      # What kind of food will your kids eat?
+      |                  | Homemade with love                      |                     |
+      # What kind of clothes will they wear?
+      |                  | Who cares as long as it’s clean         |                     |
+      # Who is babysitting them on datenight?
+      |                  | Teenage son/daughter of a family friend |                     |
+      # How’s that stroller?
+      |                  | Well-reviewed and on sale               |                     |
+      # What kind of toys?
+      |                  | Lots of lights and noise                |                     |
+      # OK great, that gives me a pretty good idea of how much kids will cost you!
+      |                  | OK                                      |                     |
+      # Let's return to the dashboard.
+      |                  | OK                                      |                     |
     And a user clicks the Next Button on the Optional Narratives Dashboard
     And a user clicks the Finish Lesson on the Lessson Checkpoint Page
 
@@ -250,7 +333,9 @@ Feature: 1001 Complete Simulator Experience
       # Would you like to edit how much you contribute to a 401k?
       |                  | No                                               |                     |
       # How about a 529? Are you saving for your kids' education in your 30s?
-      |                  | No                                               |                     |
+      |                  | Yes                                              |                     |
+      # How much of your income are you saving?
+      | slider           | 8%                                               |                     |
       # OK lastly, would you like to adjust how much you're investing?
       |                  | No                                               |                     |
       # OK, let's move onto your dashboard.
@@ -301,7 +386,9 @@ Feature: 1001 Complete Simulator Experience
       # How much would you like to contribute?
       | slider           | 12%                                                 |                     |
       # How about a 529? Are you saving for your kids' education in your 40s?
-      |                  | No                                                  |                     |
+      |                  | Yes                                                  |                     |
+      # How much of your income are you saving?
+      | slider | 8% | |
       # OK lastly, would you like to adjust how much you're investing?
       |                  | No                                                  |                     |
       # OK, let's move onto your optional choices!

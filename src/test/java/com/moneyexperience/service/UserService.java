@@ -66,7 +66,7 @@ public class UserService {
 		}
 
 		if (username.endsWith(" 1")) {
-			scenarioSession.writeToReport("The user for this scenario is " + username);
+			scenarioSession.writeToReport("The user for this scenario is " + propertiesLoader.getConfiguredUserOne());
 			return propertiesLoader.getConfiguredUserOne();
 		} else {
 			return null;
@@ -79,7 +79,7 @@ public class UserService {
 		}
 
 		if (password.contains("user 1")) {
-			scenarioSession.writeToReport("The password for this scenario is " + password);
+			scenarioSession.writeToReport("The password for this scenario is " + propertiesLoader.getConfiguredUser1Password());
 			return propertiesLoader.getConfiguredUser1Password();
 		} else {
 			return null;

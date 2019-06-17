@@ -32,6 +32,40 @@ public class DashboardPage extends AbstractPage {
 	@FindBy(css = "footer > button[class*='finishLesson']")
 	private WebElement nextButton;
 
+	//// The icons for the optional narratives
+	@FindBy(css = "button[class*='tileButton'] > img[src*='credit_card']")
+	private WebElement creditCardIcon;
+
+	@FindBy(css = "button[class*='tileButton'] > img[src*='CAREER']")
+	private WebElement careerIcon;
+
+	@FindBy(css = "button[class*='tileButton'] > img[src*='firstcar']")
+	private WebElement carIcon;
+
+	@FindBy(css = "button[class*='tileButton'] > img[src*='HEART']")
+	private WebElement datingIcon;
+
+	@FindBy(css = "button[class*='tileButton'] > img[src*='marriage']")
+	private WebElement getMarriedIcon;
+
+	@FindBy(css = "button[class*='tileButton'] > img[src*='child']")
+	private WebElement haveAChildIcon;
+
+	@FindBy(css = "button[class*='tileButton'] > img[src*='travel']")
+	private WebElement takeATripIcon;
+
+	@FindBy(css = "button[class*='tileButton'] > img[src*='401k']")
+	private WebElement four01kIcon;
+
+	@FindBy(css = "button[class*='tileButton'] > img[src*='529']")
+	private WebElement five29Icon;
+
+	@FindBy(css = "button[class*='tileButton'] > img[src*='HOME']")
+	private WebElement changeResidenceIcon;
+
+	@FindBy(css = "button[class*='tileButton'] > img[src$='invest.png']")
+	private WebElement investmentIcon;
+
 	public DashboardPage(EventFiringWebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -41,6 +75,72 @@ public class DashboardPage extends AbstractPage {
 		waitForElement(nextButton);
 		nextButton.click();
 		return pageObjectFactory.getLessonCheckpointPage();
+	}
+
+	public ChatPage clickCreditCardIcon() {
+		waitForElement(creditCardIcon);
+		creditCardIcon.click();
+		return pageObjectFactory.getChatPage();
+	}
+
+	public ChatPage clickChangeCareerIcon() {
+		waitForElement(careerIcon);
+		careerIcon.click();
+		return pageObjectFactory.getChatPage();
+	}
+
+	public ChatPage clickBuyACarIcon() {
+		waitForElement(carIcon);
+		carIcon.click();
+		return pageObjectFactory.getChatPage();
+	}
+
+	public ChatPage clickDatingIcon() {
+		waitForElement(datingIcon);
+		datingIcon.click();
+		return pageObjectFactory.getChatPage();
+	}
+
+	public ChatPage clickMarriageIcon() {
+		waitForElement(getMarriedIcon);
+		getMarriedIcon.click();
+		return pageObjectFactory.getChatPage();
+	}
+
+	public ChatPage clickHaveAChildIcon() {
+		waitForElement(haveAChildIcon);
+		haveAChildIcon.click();
+		return pageObjectFactory.getChatPage();
+	}
+
+	public ChatPage clickTakeATripIcon() {
+		waitForElement(takeATripIcon);
+		takeATripIcon.click();
+		return pageObjectFactory.getChatPage();
+	}
+
+	public ChatPage clickFour01kIcon() {
+		waitForElement(four01kIcon);
+		four01kIcon.click();
+		return pageObjectFactory.getChatPage();
+	}
+
+	public ChatPage clickFive29Icon() {
+		waitForElement(five29Icon);
+		five29Icon.click();
+		return pageObjectFactory.getChatPage();
+	}
+
+	public ChatPage clickChangeResidenceIconIcon() {
+		waitForElement(changeResidenceIcon);
+		changeResidenceIcon.click();
+		return pageObjectFactory.getChatPage();
+	}
+
+	public ChatPage clickInvestmentIcon() {
+		waitForElement(investmentIcon);
+		investmentIcon.click();
+		return pageObjectFactory.getChatPage();
 	}
 
 }

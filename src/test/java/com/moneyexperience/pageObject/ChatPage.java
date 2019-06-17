@@ -35,6 +35,9 @@ public class ChatPage extends AbstractPage {
 
 	@FindBy(css = "li[style = 'order: 2;'] h3")
 	private WebElement imageCarouselCenterOption;
+	
+	@FindBy(css = "li[style = 'order: 1;'] h2")
+	private WebElement datingCarouselCenterOption;
 
 	@FindAll(@FindBy(css = "ul > li > button[id^='user_response']"))
 	private List<WebElement> textOptionList;
@@ -57,6 +60,9 @@ public class ChatPage extends AbstractPage {
 	@FindBy(css = "div > button[class^='primary']:not([disabled])")
 	private WebElement sendButton;
 	
+	@FindBy(css = "ul div > button[class^='primary']:not([disabled])")
+	private WebElement selectButton;
+	
 	@FindAll(@FindBy(css="footer"))
 	private List<WebElement> footerList;
 
@@ -76,6 +82,11 @@ public class ChatPage extends AbstractPage {
 		selectOptionInCarousel(choice, navigationDirection, carouselOptionList, imageCarouselCenterOption);
 		return this;
 	}
+	
+	public ChatPage selectDatingOption(String choice, String navigationDirection) {
+		selectOptionInCarousel(choice, navigationDirection, carouselOptionList, datingCarouselCenterOption);
+		return this;
+	}
 
 	private void selectOptionInCarousel(String choice, String navigationDirection, List<WebElement> carouselOptionList,
 			WebElement imageCarouselCenterOption) {
@@ -86,7 +97,7 @@ public class ChatPage extends AbstractPage {
 		do {
 
 			waitUntilElementReturnsString(imageCarouselCenterOption);
-			if (imageCarouselCenterOption.getText().equalsIgnoreCase(choice)) {
+			if (imageCarouselCenterOption.getText().toLowerCase().contains(choice.toLowerCase())) {
 				try {
 				imageCarouselCenterOption.click();
 				break;
@@ -128,6 +139,12 @@ public class ChatPage extends AbstractPage {
 	public ChatPage clickSendButton() {
 		waitForElement(sendButton);
 		sendButton.click();
+		return this;
+	}
+	
+	//This is added because the dating app wouldn't respond to an element.click()
+	public ChatPage clickSelectButton() {
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", selectButton);
 		return this;
 	}
 
