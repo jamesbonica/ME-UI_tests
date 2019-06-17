@@ -141,4 +141,22 @@ public class Stepdefs {
 		}
 	}
 
+	@Given("a user selects the {string} Optional Narrative from the Dashboard")
+	public void a_user_selects_the_Optional_Narrative_from_the_Dashboard(String optionalNarrativeChoice) {
+		lessonService.chooseOptionalNarrative(optionalNarrativeChoice);
+	}
+
+	// Added just to differentiate the wording of interacting with Tess in an
+	// Optional Narrative from the Lesson Chats
+	@Given("the user chooses the following responses in the Optional Narrative Chat with Tess:")
+	public void the_user_choses_the_following_responses_in_the_Optional_Narrative_with_Tess(DataTable responses) {
+		a_user_chooses_the_following_responses_in_the_Chat_with_Tess(responses);
+	}
+	
+	@Given("the user chooses the following responses in the Optional Narrative:")
+	public void the_user_choses_the_following_responses_in_the_Optional_Narrative(DataTable responses) {
+		a_user_chooses_the_following_responses_in_the_Chat_with_Tess(responses);
+	}
+	
+
 }

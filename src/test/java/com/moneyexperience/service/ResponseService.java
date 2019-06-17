@@ -27,6 +27,8 @@ public class ResponseService {
 			chatPage.selectOptionInImageCarousel(choice, navigationDirection).clickSendButton();
 		} else if (carouselOrSlider.equalsIgnoreCase("slider")) {
 			chatPage.selectSlider(choice).clickSendButton();
+		} else if (carouselOrSlider.equalsIgnoreCase("dating app")) {
+			chatPage.selectDatingOption(choice, navigationDirection).clickSelectButton();
 		} else if (carouselOrSlider.equals("")) {
 			chatPage.selectOption(choice).clickSendButton();
 		}
