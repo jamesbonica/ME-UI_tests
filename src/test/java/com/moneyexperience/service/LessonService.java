@@ -85,13 +85,17 @@ public class LessonService {
 //			storyBoardPage.clicknextLinkForStoryPanels();
 //		}
 
-		while (true) {
-			if (storyBoardPage.moveOnToNextStoryBoard()) {
-				storyBoardPage.clicknextLinkForStoryPanels();
-			} else {
-				break;
-			}
-		}
+//		while (true) {
+//			if (storyBoardPage.moveOnToNextStoryBoard()) {
+//				storyBoardPage.clicknextLinkForStoryPanels();
+//			} else {
+//				break;
+//			}
+//		}
+
+		do {
+			storyBoardPage.clicknextLinkForStoryPanels();
+		} while (storyBoardPage.moveOnToNextStoryBoard());
 	}
 
 	public void clickGotoChatWithTess() {
