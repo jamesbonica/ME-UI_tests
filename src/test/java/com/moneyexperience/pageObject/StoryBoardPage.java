@@ -112,27 +112,42 @@ public class StoryBoardPage extends AbstractPage {
 	/*
 	 * This method checks if a loader element is present first which would indicate
 	 * the storyBoards are done and the simulator is going to a Chat or the ON
-	 * Dashboard. If that isn't present then it will check every .25 seconds for a total of 2.5
-	 * seconds to see if the src attribute has changed which means a new storyboard
-	 * has loaded and the user should click Next again or if the Chat with Tess
-	 * modal has appeared which stops the user from trying to click on the Next link
-	 * -- jb
+	 * Dashboard. If that isn't present then it will check every .25 seconds for a
+	 * total of 2.5 seconds to see if the src attribute has changed which means a
+	 * new storyboard has loaded and the user should click Next again or if the Chat
+	 * with Tess modal has appeared which stops the user from trying to click on the
+	 * Next link -- jb
 	 */
 
 	public boolean moveOnToNextStoryBoard() {
 		boolean clickNext = false;
-		if (loaderPresent()) {	
+		if (loaderPresent()) {
 			System.out.println("============================= loader present");
 			return clickNext;
 		}
 
-		// We need something here because this is occasionally failing on SauceLabs with the 
-		// screenshot showing the user is on the Chat but the test thinks it's still on 
+		// We need something here because this is occasionally failing on SauceLabs with
+		// the
+		// screenshot showing the user is on the Chat but the test thinks it's still on
 		// the storyboards -- jb 6/18/19
-		
-		
-		waitForElement(storyBoardImage);
+
 		int counter = 0;
+
+		while (counter < 10) {
+			if (chatPage.footerElementPresent()) {
+				System.println("Footer detected; failure averted!");
+				return clickNext;
+			}
+
+			if (navigationLinkList.size() > 0) {
+				break;
+			}
+
+			pause(.15);
+			counter++;
+		}
+
+		counter = 0;
 
 		while (counter < 10) {
 			String newSrc = storyBoardImage.getAttribute("src");
