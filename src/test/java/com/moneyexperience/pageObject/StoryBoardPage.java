@@ -121,7 +121,8 @@ public class StoryBoardPage extends AbstractPage {
 
 	public boolean moveOnToNextStoryBoard() {
 		boolean clickNext = false;
-		if (loaderPresent()) {			
+		if (loaderPresent()) {	
+			System.out.println("============================= loader present");
 			return clickNext;
 		}
 
@@ -129,9 +130,6 @@ public class StoryBoardPage extends AbstractPage {
 		// screenshot showing the user is on the Chat but the test thinks it's still on 
 		// the storyboards -- jb 6/18/19
 		
-		if(storyBoardImage.getAttribute("src").equals("") || storyBoardImage.getAttribute("src") == null){
-			System.out.println("============================= src is empty or null");
-		}
 		
 		waitForElement(storyBoardImage);
 		int counter = 0;

@@ -28,6 +28,8 @@ public class DriverBean {
 	@Autowired
 	PropertiesLoader propertiesLoader;
 
+	final String recordScreenshotsProperty = "recordScreenshots";
+	
 	@Bean(name = "driver", destroyMethod = "quit")
 	public EventFiringWebDriver getEventFiringWebDriver() throws Exception {
 		
