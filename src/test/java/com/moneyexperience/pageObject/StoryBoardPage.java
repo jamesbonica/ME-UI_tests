@@ -31,6 +31,9 @@ public class StoryBoardPage extends AbstractPage {
 	@Autowired
 	ScenarioSession scenarioSession;
 
+	@Autowired
+	ChatPage chatPage;
+
 	@FindAll(@FindBy(css = "nav:not([class]) > button"))
 	private List<WebElement> navigationLinkList;
 
@@ -107,19 +110,29 @@ public class StoryBoardPage extends AbstractPage {
 	}
 
 	/*
-	 * This method checks if a loader element is present first which would indicate the storyBoards are done
-	 * and the simulator is going to a Chat or the ON Dashboard. If that isn't present then it will check every .25
-	 * seconds for 2.5 seconds to see if the src attribute has changed which means a new storyboard has loaded and the
-	 * user should click Next again or if the Chat with Tess modal has appeared which stops the user from trying to
-	 * click on the Next link -- jb
+	 * This method checks if a loader element is present first which would indicate
+	 * the storyBoards are done and the simulator is going to a Chat or the ON
+	 * Dashboard. If that isn't present then it will check every .25 seconds for a total of 2.5
+	 * seconds to see if the src attribute has changed which means a new storyboard
+	 * has loaded and the user should click Next again or if the Chat with Tess
+	 * modal has appeared which stops the user from trying to click on the Next link
+	 * -- jb
 	 */
-	
+
 	public boolean moveOnToNextStoryBoard() {
 		boolean clickNext = false;
-		if (loaderPresent()) {
+		if (loaderPresent()) {			
 			return clickNext;
 		}
 
+		// We need something here because this is occasionally failing on SauceLabs with the 
+		// screenshot showing the user is on the Chat but the test thinks it's still on 
+		// the storyboards -- jb 6/18/19
+		
+		if(storyBoardImage.getAttribute("src").equals("") || storyBoardImage.getAttribute("src") == null){
+			System.out.println("============================= src is empty or null");
+		}
+		
 		waitForElement(storyBoardImage);
 		int counter = 0;
 
