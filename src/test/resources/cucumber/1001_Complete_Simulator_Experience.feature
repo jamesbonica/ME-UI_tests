@@ -207,7 +207,7 @@ Feature: 1001 Complete Simulator Experience
       |                  | I want to move                                        |                     |
       ##### **** Opportunity to change financial condition significantly in one choice ***** Where would you like to move to? <================
       | text carousel    | A Southern city (Like Atlanta, or New Orleans)        | left                |
-      #    | text carousel    | A coastal big city (Like San Francisco, New York)     | left                |
+      #   | text carousel    | A coastal big city (Like San Francisco, New York)     | left                |
       #  Would you still like to live in {what you chose}
       |                  | Yes                                                   |                     |
       # Would you like to change your residence, or buy a house?
@@ -386,9 +386,9 @@ Feature: 1001 Complete Simulator Experience
       # How much would you like to contribute?
       | slider           | 12%                                                 |                     |
       # How about a 529? Are you saving for your kids' education in your 40s?
-      |                  | Yes                                                  |                     |
+      |                  | Yes                                                 |                     |
       # How much of your income are you saving?
-      | slider | 8% | |
+      | slider           | 8%                                                  |                     |
       # OK lastly, would you like to adjust how much you're investing?
       |                  | No                                                  |                     |
       # OK, let's move onto your optional choices!
