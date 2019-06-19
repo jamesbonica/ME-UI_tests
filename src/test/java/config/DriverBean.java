@@ -83,23 +83,34 @@ public class DriverBean {
 				break;
 			case "chrome":
 				sauceName = "chrome test";
-				desiredCapabilities = DesiredCapabilities.chrome();
+			//	desiredCapabilities = DesiredCapabilities.chrome();
+				chromeOptions.setCapability("browserName", "chrome");
+				chromeOptions.setCapability("platform", "Windows 10");
+				chromeOptions.setCapability("recordVideo", "false");
+				chromeOptions.setCapability("recordScreenshots", "false");
+				chromeOptions.setCapability("maxDuration", 3600);
+				chromeOptions.setCapability("screenResolution", "1920x1080");
+				chromeOptions.setCapability("name", sauceName);
+	//			chromeOptions.setCapability("passed", true);;
+				driver = new RemoteWebDriver(new URL(
+						"https://jamesbonica:94d9e25b-9fee-4982-a3fa-fe8b1246ed44@ondemand.saucelabs.com:443/wd/hub"),
+						chromeOptions);
 				break;
 			case "edge":
 
 				break;
 			}
-			desiredCapabilities.setCapability("platform", "Windows 10");
-			// desiredCapbilities.setCapability("version", "63.0");
-			desiredCapabilities.setCapability("recordVideo", "false");
-			desiredCapabilities.setCapability("recordScreenshots", "false");
-			desiredCapabilities.setCapability("maxDuration", 3600);
-			desiredCapabilities.setCapability("screenResolution", "1920x1080");
-			desiredCapabilities.setCapability("name", sauceName);
-			driver = new RemoteWebDriver(new URL(
-					"https://jamesbonica:94d9e25b-9fee-4982-a3fa-fe8b1246ed44@ondemand.saucelabs.com:443/wd/hub"),
-					desiredCapabilities);
-			break;
+//			desiredCapabilities.setCapability("platform", "Windows 10");
+//			// desiredCapbilities.setCapability("version", "63.0");
+//			desiredCapabilities.setCapability("recordVideo", "false");
+//			desiredCapabilities.setCapability("recordScreenshots", "false");
+//			desiredCapabilities.setCapability("maxDuration", 3600);
+//			desiredCapabilities.setCapability("screenResolution", "1920x1080");
+//			desiredCapabilities.setCapability("name", sauceName);
+//			driver = new RemoteWebDriver(new URL(
+//					"https://jamesbonica:94d9e25b-9fee-4982-a3fa-fe8b1246ed44@ondemand.saucelabs.com:443/wd/hub"),
+//					desiredCapabilities);
+//			break;
 		}
 
 		if (driver == null) {
