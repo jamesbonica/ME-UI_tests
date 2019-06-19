@@ -5,6 +5,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
@@ -105,7 +106,11 @@ public class StoryBoardPage extends AbstractPage {
 
 	public StoryBoardPage clicknextLinkForStoryPanels() {
 		waitForElement(nextLinkForStoryPanels);
+		try {
 		nextLinkForStoryPanels.click();
+		} catch (ElementClickInterceptedException e) {
+			nextLinkForStoryPanels.click();	
+		}
 		return this;
 	}
 
@@ -129,28 +134,16 @@ public class StoryBoardPage extends AbstractPage {
 		// We need something here because this is occasionally failing on SauceLabs with
 		// the
 		// screenshot showing the user is on the Chat but the test thinks it's still on
-		// the storyboards -- jb 6/18/19
-
+		// the storyboards until it fails -- jb 6/18/19
+		
+		
 		int counter = 0;
 
 		while (counter < 10) {
-			if (chatPage.footerElementPresent()) {
-				System.out.println("Footer detected; failure averted!");
-				return clickNext;
-			}
-
-			if (navigationLinkList.size() > 0) {
-				break;
-			}
-
-			pause(.15);
-			counter++;
-		}
-
-		counter = 0;
-
-		while (counter < 10) {
-			String newSrc = storyBoardImage.getAttribute("src");
+			String newSrc;
+			
+			newSrc = storyBoardImage.getAttribute("src");
+			
 			String oldSrc = scenarioSession.getStoryBoardSrc();
 
 			if (!newSrc.equals(oldSrc)) {
