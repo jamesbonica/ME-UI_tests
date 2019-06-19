@@ -135,7 +135,7 @@ public class StoryBoardPage extends AbstractPage {
 
 		while (counter < 10) {
 			if (chatPage.footerElementPresent()) {
-				System.println("Footer detected; failure averted!");
+				System.out.println("Footer detected; failure averted!");
 				return clickNext;
 			}
 
