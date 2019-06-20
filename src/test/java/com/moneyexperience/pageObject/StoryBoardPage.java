@@ -64,6 +64,9 @@ public class StoryBoardPage extends AbstractPage {
 
 	@FindBy(css = "div[class*='storyboard'] > figure > img")
 	private WebElement storyBoardImage;
+	
+	@FindAll(@FindBy(css = "div[class*='storyboard'] > figure > img"))
+	private List<WebElement> storyBoardImageList;
 
 	public StoryBoardPage(EventFiringWebDriver driver) {
 		this.driver = driver;
@@ -136,13 +139,19 @@ public class StoryBoardPage extends AbstractPage {
 		// screenshot showing the user is on the Chat but the test thinks it's still on
 		// the storyboards until it fails -- jb 6/18/19
 		
-		
+		// Check if storyboard or footer is present?
 		int counter = 0;
 
 		while (counter < 10) {
-			String newSrc;
+			String newSrc = "";
 			
+			try {
 			newSrc = storyBoardImage.getAttribute("src");
+			} catch (NoSuchElementException n) {
+				System.out.println("footer present" + (chatPage.footerElementPresent()));
+				System.out.println("test");
+				break;
+			}
 			
 			String oldSrc = scenarioSession.getStoryBoardSrc();
 
