@@ -148,8 +148,8 @@ public class StoryBoardPage extends AbstractPage {
 			try {
 			newSrc = storyBoardImage.getAttribute("src");
 			} catch (NoSuchElementException n) {
-				System.out.println("footer present" + (chatPage.footerElementPresent()));
-				System.out.println("test");
+				System.out.println("footer present " + (chatPage.footerElementPresent()));
+				System.out.println("test saved?!");
 				break;
 			}
 			

@@ -151,7 +151,8 @@ public class ChatPage extends AbstractPage {
 	public ChatPage selectOption(String choice) {
 		waitForElementInChat(firstTextOption);
 		for (WebElement element : textOptionList) {
-			// System.out.println("TEST!!!!! " + element.getText());
+		//	System.out.println("Expected option is: " + choice);
+		//	 System.out.println("TEST!!!!! " + element.getText());
 			if (element.getText().trim().equalsIgnoreCase(choice)) {
 				element.click();
 			}
