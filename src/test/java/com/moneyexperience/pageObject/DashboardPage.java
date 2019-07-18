@@ -29,41 +29,41 @@ public class DashboardPage extends AbstractPage {
 	@Autowired
 	PageObjectFactory pageObjectFactory;
 
-	@FindBy(css = "footer > button[class*='finishLesson']")
+	@FindBy(css = "footer > button[class*='primary undefined']")
 	private WebElement nextButton;
 
 	//// The icons for the optional narratives
-	@FindBy(css = "button[class*='tileButton'] > img[src*='credit_card']")
+	@FindBy(css = "button > img[src*='credit_card']")
 	private WebElement creditCardIcon;
 
-	@FindBy(css = "button[class*='tileButton'] > img[src*='CAREER']")
+	@FindBy(css = "button > img[src*='CAREER']")
 	private WebElement careerIcon;
 
-	@FindBy(css = "button[class*='tileButton'] > img[src*='firstcar']")
+	@FindBy(css = "button > img[src*='firstcar']")
 	private WebElement carIcon;
 
-	@FindBy(css = "button[class*='tileButton'] > img[src*='HEART']")
+	@FindBy(css = "button > img[src*='HEART']")
 	private WebElement datingIcon;
 
-	@FindBy(css = "button[class*='tileButton'] > img[src*='marriage']")
+	@FindBy(css = "button > img[src*='marriage']")
 	private WebElement getMarriedIcon;
 
-	@FindBy(css = "button[class*='tileButton'] > img[src*='child']")
+	@FindBy(css = "button > img[src*='child']")
 	private WebElement haveAChildIcon;
 
-	@FindBy(css = "button[class*='tileButton'] > img[src*='travel']")
+	@FindBy(css = "button > img[src*='travel']")
 	private WebElement takeATripIcon;
 
-	@FindBy(css = "button[class*='tileButton'] > img[src*='401k']")
+	@FindBy(css = "button > img[src*='401k']")
 	private WebElement four01kIcon;
 
-	@FindBy(css = "button[class*='tileButton'] > img[src*='529']")
+	@FindBy(css = "button > img[src*='529']")
 	private WebElement five29Icon;
 
-	@FindBy(css = "button[class*='tileButton'] > img[src*='HOME']")
+	@FindBy(css = "button > img[src*='HOME']")
 	private WebElement changeResidenceIcon;
 
-	@FindBy(css = "button[class*='tileButton'] > img[src$='invest.png']")
+	@FindBy(css = "button > img[src$='invest.png']")
 	private WebElement investmentIcon;
 
 	public DashboardPage(EventFiringWebDriver driver) {
