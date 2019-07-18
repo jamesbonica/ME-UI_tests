@@ -35,16 +35,16 @@ public class StoryBoardPage extends AbstractPage {
 	@Autowired
 	ChatPage chatPage;
 
-	@FindAll(@FindBy(css = "nav:not([class]) > button"))
+	@FindAll(@FindBy(css = "nav > button[class*='styles__textButton']"))
 	private List<WebElement> navigationLinkList;
 
-	@FindBy(css = "nav:not([class]) > button")
+	@FindBy(css = "nav > button[class*='styles__textButton']")
 	private WebElement nextLinkWhenTheresNoGoingBack;
 
-	@FindBy(css = "nav:not([class]) > button:nth-child(1)")
+	@FindBy(css = "nav > button[class*='styles__textButton']:nth-child(1)")
 	private WebElement previousOrBackLink;
 
-	@FindBy(css = "nav:not([class]) > button:nth-child(2)")
+	@FindBy(css = "nav > button[class*='styles__textButton']:nth-child(2)")
 	private WebElement nextLinkWhenThereIsABackOrPreviousLink;
 
 	@FindBy(css = "*[class*='speechBubble']")
