@@ -47,7 +47,7 @@ public class StoryBoardPage extends AbstractPage {
 	@FindBy(css = "nav > button[class*='styles__textButton']:nth-child(2)")
 	private WebElement nextLinkWhenThereIsABackOrPreviousLink;
 
-	@FindBy(css = "*[class*='speechBubble']")
+	@FindBy(css = "p[class*='speechBubble']")
 	private WebElement tessSpeechBubble;
 
 	@FindBy(css = "figure + nav[class] > button:nth-child(2)")
