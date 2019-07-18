@@ -250,43 +250,43 @@ Feature: 1001 Complete Simulator Experience
       | slider           | 10%                                                   |                     |
       # OK, let's move onto your dashboard.
       |                  | OK                                                    |                     |
-    And a user selects the "Have a Child" Optional Narrative from the Dashboard
-    And the user chooses the following responses in the Optional Narrative Chat with Tess:
-      | carouselOrSlider | choice                                  | navigationDirection |
-      # Would you like to start a family, or add to the one you've started?
-      |                  | Yes                                     |                     |
-      # How many children would you like to have at this age?
-      |                  |                                       2 |                     |
-      # OK! Congrats! It's twins!
-      |                  | Yay!                                    |                     |
-      # What kind of childcare do you envision for your kids?
-      | text carousel    | I’ll bring them to a daycare facility   |                     |
-      # What type of primary school would you like your children to attend?
-      |                  | Public school                           |                     |
-      # What about college?
-      | text carousel    | In-state university                     |                     |
-      # Will you help them pay for college?
-      |                  | Yes                                     |                     |
-      # The best way to do that is with a 529 account. Would you like to start or change your 529 contribution now?
-      |                  | Yes                                     |                     |
-      # How much of your paycheck would you like to contribute to a 529?
-      | slider           | 8%                                      |                     |
-      # What kind of food will your kids eat?
-      |                  | Homemade with love                      |                     |
-      # What kind of clothes will they wear?
-      |                  | Who cares as long as it’s clean         |                     |
-      # Who is babysitting them on datenight?
-      |                  | Teenage son/daughter of a family friend |                     |
-      # How’s that stroller?
-      |                  | Well-reviewed and on sale               |                     |
-      # What kind of toys?
-      |                  | Lots of lights and noise                |                     |
-      # OK great, that gives me a pretty good idea of how much kids will cost you!
-      |                  | OK                                      |                     |
-      # Let's return to the dashboard.
-      |                  | OK                                      |                     |
-    And a user clicks the Next Button on the Optional Narratives Dashboard
-    And a user clicks the Finish Lesson on the Lessson Checkpoint Page
+#    And a user selects the "Have a Child" Optional Narrative from the Dashboard
+#    And the user chooses the following responses in the Optional Narrative Chat with Tess:
+#      | carouselOrSlider | choice                                  | navigationDirection |
+#      # Would you like to start a family, or add to the one you've started?
+#      |                  | Yes                                     |                     |
+#      # How many children would you like to have at this age?
+#      |                  |                                       2 |                     |
+#      # OK! Congrats! It's twins!
+#      |                  | Yay!                                    |                     |
+#      # What kind of childcare do you envision for your kids?
+#      | text carousel    | I’ll bring them to a daycare facility   |                     |
+#      # What type of primary school would you like your children to attend?
+#      |                  | Public school                           |                     |
+#      # What about college?
+#      | text carousel    | In-state university                     |                     |
+#      # Will you help them pay for college?
+#      |                  | Yes                                     |                     |
+#      # The best way to do that is with a 529 account. Would you like to start or change your 529 contribution now?
+#      |                  | Yes                                     |                     |
+#      # How much of your paycheck would you like to contribute to a 529?
+#      | slider           | 8%                                      |                     |
+#      # What kind of food will your kids eat?
+#      |                  | Homemade with love                      |                     |
+#      # What kind of clothes will they wear?
+#      |                  | Who cares as long as it’s clean         |                     |
+#      # Who is babysitting them on datenight?
+#      |                  | Teenage son/daughter of a family friend |                     |
+#      # How’s that stroller?
+#      |                  | Well-reviewed and on sale               |                     |
+#      # What kind of toys?
+#      |                  | Lots of lights and noise                |                     |
+#      # OK great, that gives me a pretty good idea of how much kids will cost you!
+#      |                  | OK                                      |                     |
+#      # Let's return to the dashboard.
+#      |                  | OK                                      |                     |
+#    And a user clicks the Next Button on the Optional Narratives Dashboard
+#    And a user clicks the Finish Lesson on the Lessson Checkpoint Page
 
   @Lesson5
   Scenario: User completes Lesson 5

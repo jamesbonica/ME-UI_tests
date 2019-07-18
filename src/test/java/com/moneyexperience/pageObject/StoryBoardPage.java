@@ -89,8 +89,9 @@ public class StoryBoardPage extends AbstractPage {
 	}
 
 	public String getTessSpeechBubble() {
-		waitForElement(tessSpeechBubble);
-		return tessSpeechBubble.getText().trim();
+		WebElement element = driver.findElement(By.cssSelector("p[class*='speechBubble']"));
+		waitForElement(element);
+		return element.getText().trim();
 	}
 
 	public void waitForTessDialogToUpdate(String currentText) {
