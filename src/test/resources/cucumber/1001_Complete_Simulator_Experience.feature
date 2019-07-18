@@ -207,7 +207,7 @@ Feature: 1001 Complete Simulator Experience
       |                  | I want to move                                        |                     |
       ##### **** Opportunity to change financial condition significantly in one choice ***** Where would you like to move to? <================
       | text carousel    | A Southern city (Like Atlanta, or New Orleans)        | left                |
-      #   | text carousel    | A coastal big city (Like San Francisco, New York)     | left                |
+   #   | text carousel    | A coastal big city (Like San Francisco, New York)     | left                |
       #  Would you still like to live in {what you chose}
       |                  | Yes                                                   |                     |
       # Would you like to change your residence, or buy a house?
@@ -492,5 +492,5 @@ Feature: 1001 Complete Simulator Experience
       |                  | Frequent checkups with preventative action plans ($$)        |                     |
       # OK, that's it for your lifestyle in your senior years, let's move on.
       |                  | Ok                                                           |                     |
-#    And a user clicks the Next Link
-#    And a user clicks the Next Button on the Optional Narratives Dashboard
+    And a user clicks the Next Link
+    And a user clicks the Next Button on the Optional Narratives Dashboard
