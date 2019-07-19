@@ -127,10 +127,10 @@ Feature: 1001 Complete Simulator Experience
     And the user chooses the following responses in the Optional Narrative:
       | carouselOrSlider | choice | navigationDirection |
       | dating app       | Jenn   | right               |
-    And a user selects the "Buy a Car" Optional Narrative from the Dashboard
-    And the user chooses the following responses in the Optional Narrative:
-      | carouselOrSlider | choice | navigationDirection |
-      | image carousel   | Sedan  | right               |
+#    And a user selects the "Buy a Car" Optional Narrative from the Dashboard
+#    And the user chooses the following responses in the Optional Narrative:
+#      | carouselOrSlider | choice | navigationDirection |
+#      | image carousel   | Sedan  | right               |
     And a user clicks the Next Button on the Optional Narratives Dashboard
     And a user clicks the Finish Lesson on the Lessson Checkpoint Page
 
@@ -165,31 +165,31 @@ Feature: 1001 Complete Simulator Experience
       # OK That's it for now! I heard Ria is back from the military, let's go see what she's up to.
       |                  | OK                                   |                     |
     And a user goes through the storyboards
-    And a user selects the "Get Married" Optional Narrative from the Dashboard
-    And the user chooses the following responses in the Optional Narrative Chat with Tess:
-      | carouselOrSlider | choice                                                          | navigationDirection |
-      # Would you like to get married?
-      |                  | Yes                                                             |                     |
-      # What kind of wedding do you imagine?
-      |                  | Modest, not taking things too seriously                         |                     |
-      # What % of this wedding will you be paying for?
-      | slider           | 80%                                                             |                     |
-      # What's the venue like?
-      |                  | A charming wedding facility ($$)                                |                     |
-      # How big is the guest list?
-      |                  | Extended family and social circles ($$)                         |                     |
-      # Tell me about the dress...
-      |                  | Off-the-rack ($$)                                               |                     |
-      # How about meals?
-      |                  | Reasonably good catering ($$)                                   |                     |
-      # And the bar tab?
-      |                  | Free drinks... until 8pm ($$)                                   |                     |
-      # What kind of music?
-      |                  | Hired professional DJ ($$)                                      |                     |
-      # Where is the honeymoon?
-      |                  | Let's kick this thing off: An unforgettable trip overseas ($$$) |                     |
-      # Let's head back to the dashboard.
-      |                  | OK                                                              |                     |
+#    And a user selects the "Get Married" Optional Narrative from the Dashboard
+#    And the user chooses the following responses in the Optional Narrative Chat with Tess:
+#      | carouselOrSlider | choice                                                          | navigationDirection |
+#      # Would you like to get married?
+#      |                  | Yes                                                             |                     |
+#      # What kind of wedding do you imagine?
+#      |                  | Modest, not taking things too seriously                         |                     |
+#      # What % of this wedding will you be paying for?
+#      | slider           | 80%                                                             |                     |
+#      # What's the venue like?
+#      |                  | A charming wedding facility ($$)                                |                     |
+#      # How big is the guest list?
+#      |                  | Extended family and social circles ($$)                         |                     |
+#      # Tell me about the dress...
+#      |                  | Off-the-rack ($$)                                               |                     |
+#      # How about meals?
+#      |                  | Reasonably good catering ($$)                                   |                     |
+#      # And the bar tab?
+#      |                  | Free drinks... until 8pm ($$)                                   |                     |
+#      # What kind of music?
+#      |                  | Hired professional DJ ($$)                                      |                     |
+#      # Where is the honeymoon?
+#      |                  | Let's kick this thing off: An unforgettable trip overseas ($$$) |                     |
+#      # Let's head back to the dashboard.
+#      |                  | OK                                                              |                     |
     And a user clicks the Next Button on the Optional Narratives Dashboard
     And a user clicks the Finish Lesson on the Lessson Checkpoint Page
 
@@ -207,7 +207,7 @@ Feature: 1001 Complete Simulator Experience
       |                  | I want to move                                        |                     |
       ##### **** Opportunity to change financial condition significantly in one choice ***** Where would you like to move to? <================
       | text carousel    | A Southern city (Like Atlanta, or New Orleans)        | left                |
-   #   | text carousel    | A coastal big city (Like San Francisco, New York)     | left                |
+      #   | text carousel    | A coastal big city (Like San Francisco, New York)     | left                |
       #  Would you still like to live in {what you chose}
       |                  | Yes                                                   |                     |
       # Would you like to change your residence, or buy a house?
@@ -237,7 +237,7 @@ Feature: 1001 Complete Simulator Experience
       # How will you reply to your friend's invite to a destination wedding?
       |                  | I'll go, but that is my wedding gift to you. ($$)     |                     |
       # How will you spend an average night out with friends?
-      |                  | Low key dinner. I'll probably leave early ($)         |                     | 
+      |                  | Low key dinner. I'll probably leave early ($)         |                     |
       # Now that you're settling into your career, would you like to adjust your 401k contribution?
       |                  | Yes                                                   |                     |
       # How much of your salary would you like to contribute?
@@ -336,9 +336,9 @@ Feature: 1001 Complete Simulator Experience
       |                  | No                                               |                     |
       # OK, let's move onto your dashboard.
       |                  | OK                                               |                     |
+#    And a user clicks the Next Button on the Optional Narratives Dashboard
+#    And a user clicks the Continue to Next Lesson Button on the Life Progress Page
 
-      And a user clicks the Next Button on the Optional Narratives Dashboard
-      And a user clicks the Continue to Next Lesson Button on the Life Progress Page
   @Lesson6
   Scenario: User completes Lesson 6
     Given a user "configured user 1" logs in to ME with password "for configured user 1"
