@@ -47,7 +47,7 @@ public class StoryBoardPage extends AbstractPage {
 	@FindBy(css = "nav > button[class*='styles__textButton']:nth-child(2)")
 	private WebElement nextLinkWhenThereIsABackOrPreviousLink;
 
-	@FindBy(css = "p[class*='speechBubble']")
+	@FindBy(css = "*[class*='speechBubble']")
 	private WebElement tessSpeechBubble;
 
 	@FindBy(css = "figure + nav[class] > button:nth-child(2)")
@@ -91,6 +91,7 @@ public class StoryBoardPage extends AbstractPage {
 	public String getTessSpeechBubble() {
 		
 		waitForElement(tessSpeechBubble);
+		tessSpeechBubble = driver.findElement(By.cssSelector("*[class*='speechBubble']"));
 		return tessSpeechBubble.getText().trim();
 	}
 
