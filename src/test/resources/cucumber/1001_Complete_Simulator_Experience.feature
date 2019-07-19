@@ -336,8 +336,8 @@ Feature: 1001 Complete Simulator Experience
       |                  | No                                               |                     |
       # OK, let's move onto your dashboard.
       |                  | OK                                               |                     |
-#    And a user clicks the Next Button on the Optional Narratives Dashboard
-#    And a user clicks the Continue to Next Lesson Button on the Life Progress Page
+    And a user clicks the Next Button on the Optional Narratives Dashboard
+    And a user clicks the Continue to Next Lesson Button on the Life Progress Page
 
   @Lesson6
   Scenario: User completes Lesson 6
