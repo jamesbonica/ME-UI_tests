@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
@@ -89,10 +90,14 @@ public class StoryBoardPage extends AbstractPage {
 	}
 
 	public String getTessSpeechBubble() {
-		
-		waitForElement(tessSpeechBubble);
-		tessSpeechBubble = driver.findElement(By.cssSelector("*[class*='speechBubble']"));
-		return tessSpeechBubble.getText().trim();
+
+		try {
+			waitForElement(tessSpeechBubble);
+			return tessSpeechBubble.getText().trim();
+		} catch (StaleElementReferenceException s) {
+			waitForElement(tessSpeechBubble);
+			return tessSpeechBubble.getText().trim();
+		}
 	}
 
 	public void waitForTessDialogToUpdate(String currentText) {
