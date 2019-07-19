@@ -64,7 +64,7 @@ public class StoryBoardPage extends AbstractPage {
 
 	@FindBy(css = "div[class*='storyboard'] > figure > img")
 	private WebElement storyBoardImage;
-	
+
 	@FindAll(@FindBy(css = "div[class*='storyboard'] > figure > img"))
 	private List<WebElement> storyBoardImageList;
 
@@ -89,9 +89,9 @@ public class StoryBoardPage extends AbstractPage {
 	}
 
 	public String getTessSpeechBubble() {
-		WebElement element = driver.findElement(By.cssSelector("p[class*='speechBubble']"));
-		waitForElement(element);
-		return element.getText().trim();
+		
+		waitForElement(tessSpeechBubble);
+		return tessSpeechBubble.getText().trim();
 	}
 
 	public void waitForTessDialogToUpdate(String currentText) {
@@ -111,9 +111,9 @@ public class StoryBoardPage extends AbstractPage {
 	public StoryBoardPage clicknextLinkForStoryPanels() {
 		waitForElement(nextLinkForStoryPanels);
 		try {
-		nextLinkForStoryPanels.click();
+			nextLinkForStoryPanels.click();
 		} catch (ElementClickInterceptedException e) {
-			nextLinkForStoryPanels.click();	
+			nextLinkForStoryPanels.click();
 		}
 		return this;
 	}
@@ -139,21 +139,21 @@ public class StoryBoardPage extends AbstractPage {
 		// the
 		// screenshot showing the user is on the Chat but the test thinks it's still on
 		// the storyboards until it fails -- jb 6/18/19
-		
+
 		// Check if storyboard or footer is present?
 		int counter = 0;
 
 		while (counter < 10) {
 			String newSrc = "";
-			
+
 			try {
-			newSrc = storyBoardImage.getAttribute("src");
+				newSrc = storyBoardImage.getAttribute("src");
 			} catch (NoSuchElementException n) {
 				System.out.println("footer present " + (chatPage.footerElementPresent()));
 				System.out.println("test saved?!");
 				break;
 			}
-			
+
 			String oldSrc = scenarioSession.getStoryBoardSrc();
 
 			if (!newSrc.equals(oldSrc)) {
