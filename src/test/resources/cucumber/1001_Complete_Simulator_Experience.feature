@@ -33,40 +33,42 @@ Feature: 1001 Complete Simulator Experience
     And a user goes through the storyboards
     And A user clicks Go when Tess sends a new message
     And a user chooses the following responses in the Chat with Tess:
-      | carouselOrSlider | choice                            | navigationDirection |
+      | carouselOrSlider | choice                                          | navigationDirection |
       # Do you plan to attend college after high school?
-      |                  | Yes I'm going to college          |                     |
+      |                  | Yes I'm going to college                        |                     |
       # Will you need to take out student loans?
-      |                  | Yeah, I'll need loans             |                     |
+      |                  | Yeah, I'll need loans                           |                     |
       # Do you know how much your student loans will be?
-      |                  | Yes                               |                     |
+      |                  | Yes                                             |                     |
       # How much will your loans be?
-      | slider           |                            80,000 |                     |
+      | slider           |                                          80,000 |                     |
       # Do you plan to pursue an advanced degree?
-      |                  | No                                |                     |
+      |                  | No                                              |                     |
       # You've selected a summer job already, but do you plan to have a job while in school?
-      |                  | Yes                               |                     |
-      | text carousel    | Fitness Instructor                | right               |
+      |                  | Yes                                             |                     |
+      | text carousel    | Fitness Instructor                              | right               |
       # Do you plan to work full-time or part-time?
-      |                  | Part-time                         |                     |
+      |                  | Part-time                                       |                     |
       # What are your eating habits like?
-      |                  | Fresh and organic ($$)            |                     |
+      |                  | Fresh and organic ($$)                          |                     |
       # What's your travel style?
-      |                  | Tent and a backpack ($)           |                     |
+      |                  | Tent and a backpack ($)                         |                     |
       # What's your average weekend like?
-      |                  | Out on the town ($$)              |                     |
+      |                  | Out on the town ($$)                            |                     |
       # What is your fitness routine like?
-      |                  | A morning run ($)                 |                     |
+      |                  | A morning run ($)                               |                     |
       # What is your gadget status?
-      |                  | Last year's model works fine ($$) |                     |
+      |                  | Last year's model works fine ($$)               |                     |
       # What best describes your fashion choices?
-      |                  | Thrift-store treasure hunt ($)    |                     |
+      |                  | Thrift-store treasure hunt ($)                  |                     |
+      # What best describes the region where you will be living?
+      | text carousel    | A smaller, up & coming city (Like Portland, ME) |                     |
       # Ready to move on?
-      |                  | Yes                               |                     |
+      |                  | Yes                                             |                     |
       # At this age, what kind of place would you like to live in?  Choose an option...
-      | image carousel   | Live with Family                  | right               |
+      | image carousel   | Live with Family                                | right               |
       # What kind of car would you like to buy?
-      | image carousel   | Public Transportation             | right               |
+      | image carousel   | Public Transportation                           | right               |
     And a user selects the "Take a Trip" Optional Narrative from the Dashboard
     And the user chooses the following responses in the Optional Narrative Chat with Tess:
       | carouselOrSlider | choice                                          | navigationDirection |
@@ -114,8 +116,8 @@ Feature: 1001 Complete Simulator Experience
       | text carousel    | A smaller, up & coming city (Like Portland, ME)               |                     |
       # Would you still like to live in a smaller up & coming city like Portland, Maine?
       |                  | Yes                                                           |                     |
-      # Would you like to change the type of residence that you live in?
-      |                  | No                                                            |                     |
+      # Where would you like to live?
+      | text carousel    | Rent-free with Family $0/mo                                   |                     |
       # OK, that's it for now! Let's move on.
       |                  | Ok                                                            |                     |
     And a user goes through the storyboards
@@ -127,10 +129,10 @@ Feature: 1001 Complete Simulator Experience
     And the user chooses the following responses in the Optional Narrative:
       | carouselOrSlider | choice | navigationDirection |
       | dating app       | Jenn   | right               |
-#    And a user selects the "Buy a Car" Optional Narrative from the Dashboard
-#    And the user chooses the following responses in the Optional Narrative:
-#      | carouselOrSlider | choice | navigationDirection |
-#      | image carousel   | Sedan  | right               |
+    And a user selects the "Buy a Car" Optional Narrative from the Dashboard
+    And the user chooses the following responses in the Optional Narrative:
+      | carouselOrSlider | choice | navigationDirection |
+      | image carousel   | Sedan  | right               |
     And a user clicks the Next Button on the Optional Narratives Dashboard
     And a user clicks the Finish Lesson on the Lessson Checkpoint Page
 
@@ -144,10 +146,10 @@ Feature: 1001 Complete Simulator Experience
     And a user goes through the storyboards
     And a user chooses the following responses in the Chat with Tess:
       | carouselOrSlider | choice                               | navigationDirection |
-      # Would you like to change your living situation by renting or buying a new place?
-      |                  | No, stay where I am                  |                     |
       # Would you like to try living in a different region?
       |                  | No                                   |                     |
+      # Would you like to change your living situation by renting or buying a new place?
+      |                  | No, stay where I am                  |                     |
       # OK let's talk about your career! What kind of career are you looking for?
       | text carousel    | Something in technology              | right               |
       # What kind of technology career?
@@ -165,31 +167,31 @@ Feature: 1001 Complete Simulator Experience
       # OK That's it for now! I heard Ria is back from the military, let's go see what she's up to.
       |                  | OK                                   |                     |
     And a user goes through the storyboards
-#    And a user selects the "Get Married" Optional Narrative from the Dashboard
-#    And the user chooses the following responses in the Optional Narrative Chat with Tess:
-#      | carouselOrSlider | choice                                                          | navigationDirection |
-#      # Would you like to get married?
-#      |                  | Yes                                                             |                     |
-#      # What kind of wedding do you imagine?
-#      |                  | Modest, not taking things too seriously                         |                     |
-#      # What % of this wedding will you be paying for?
-#      | slider           | 80%                                                             |                     |
-#      # What's the venue like?
-#      |                  | A charming wedding facility ($$)                                |                     |
-#      # How big is the guest list?
-#      |                  | Extended family and social circles ($$)                         |                     |
-#      # Tell me about the dress...
-#      |                  | Off-the-rack ($$)                                               |                     |
-#      # How about meals?
-#      |                  | Reasonably good catering ($$)                                   |                     |
-#      # And the bar tab?
-#      |                  | Free drinks... until 8pm ($$)                                   |                     |
-#      # What kind of music?
-#      |                  | Hired professional DJ ($$)                                      |                     |
-#      # Where is the honeymoon?
-#      |                  | Let's kick this thing off: An unforgettable trip overseas ($$$) |                     |
-#      # Let's head back to the dashboard.
-#      |                  | OK                                                              |                     |
+    And a user selects the "Get Married" Optional Narrative from the Dashboard
+    And the user chooses the following responses in the Optional Narrative Chat with Tess:
+      | carouselOrSlider | choice                                                          | navigationDirection |
+      # Would you like to get married?
+      |                  | Yes                                                             |                     |
+      # What kind of wedding do you imagine?
+      |                  | Modest, not taking things too seriously                         |                     |
+      # What % of this wedding will you be paying for?
+      | slider           | 80%                                                             |                     |
+      # What's the venue like?
+      |                  | A charming wedding facility ($$)                                |                     |
+      # How big is the guest list?
+      |                  | Extended family and social circles ($$)                         |                     |
+      # Tell me about the dress...
+      |                  | Off-the-rack ($$)                                               |                     |
+      # How about meals?
+      |                  | Reasonably good catering ($$)                                   |                     |
+      # And the bar tab?
+      |                  | Free drinks... until 8pm ($$)                                   |                     |
+      # What kind of music?
+      |                  | Hired professional DJ ($$)                                      |                     |
+      # Where is the honeymoon?
+      |                  | Let's kick this thing off: An unforgettable trip overseas ($$$) |                     |
+      # Let's head back to the dashboard.
+      |                  | OK                                                              |                     |
     And a user clicks the Next Button on the Optional Narratives Dashboard
     And a user clicks the Finish Lesson on the Lessson Checkpoint Page
 
@@ -207,10 +209,8 @@ Feature: 1001 Complete Simulator Experience
       |                  | I want to move                                        |                     |
       ##### **** Opportunity to change financial condition significantly in one choice ***** Where would you like to move to? <================
       | text carousel    | A Southern city (Like Atlanta, or New Orleans)        | left                |
-      #   | text carousel    | A coastal big city (Like San Francisco, New York)     | left                |
+      #         | text carousel    | A coastal big city (Like San Francisco, New York)     | left                |
       #  Would you still like to live in {what you chose}
-      |                  | Yes                                                   |                     |
-      # Would you like to change your residence, or buy a house?
       |                  | Yes                                                   |                     |
       # Where would you like to live?
       | text carousel    | Starter Home                                          | right               |
@@ -252,39 +252,39 @@ Feature: 1001 Complete Simulator Experience
       |                  | OK                                                    |                     |
     And a user selects the "Have a Child" Optional Narrative from the Dashboard
     And the user chooses the following responses in the Optional Narrative Chat with Tess:
-      | carouselOrSlider | choice                                  | navigationDirection |
+      | carouselOrSlider | choice                                       | navigationDirection |
       # Would you like to start a family, or add to the one you've started?
-      |                  | Yes                                     |                     |
+      |                  | Yes                                          |                     |
       # How many children would you like to have at this age?
-      |                  |                                       2 |                     |
+      |                  |                                            2 |                     |
       # OK! Congrats! It's twins!
-      |                  | Yay!                                    |                     |
+      |                  | Yay!                                         |                     |
       # What kind of childcare do you envision for your kids?
-      | text carousel    | I’ll bring them to a daycare facility   |                     |
+      | text carousel    | I’ll bring them to a daycare facility        |                     |
       # What type of primary school would you like your children to attend?
-      |                  | Public school                           |                     |
+      |                  | Public school $0/year                        |                     |
       # What about college?
-      | text carousel    | In-state university                     |                     |
+      | text carousel    | In-state university                          |                     |
       # Will you help them pay for college?
-      |                  | Yes                                     |                     |
+      |                  | Yes                                          |                     |
       # The best way to do that is with a 529 account. Would you like to start or change your 529 contribution now?
-      |                  | Yes                                     |                     |
+      |                  | Yes                                          |                     |
       # How much of your paycheck would you like to contribute to a 529?
-      | slider           | 8%                                      |                     |
+      | slider           | 8%                                           |                     |
       # What kind of food will your kids eat?
-      |                  | Homemade with love                      |                     |
+      |                  | Homemade with love ($$)                      |                     |
       # What kind of clothes will they wear?
-      |                  | Who cares as long as it’s clean         |                     |
+      |                  | Who cares as long as it’s clean ($$)         |                     |
       # Who is babysitting them on datenight?
-      |                  | Teenage son/daughter of a family friend |                     |
+      |                  | Teenage son/daughter of a family friend ($$) |                     |
       # How’s that stroller?
-      |                  | Well-reviewed and on sale               |                     |
+      |                  | Well-reviewed and on sale ($$)               |                     |
       # What kind of toys?
-      |                  | Lots of lights and noise                |                     |
+      |                  | Lots of lights and noise ($$)                |                     |
       # OK great, that gives me a pretty good idea of how much kids will cost you!
-      |                  | OK                                      |                     |
+      |                  | OK                                           |                     |
       # Let's return to the dashboard.
-      |                  | OK                                      |                     |
+      |                  | OK                                           |                     |
     And a user clicks the Next Button on the Optional Narratives Dashboard
     And a user clicks the Finish Lesson on the Lessson Checkpoint Page
 

@@ -58,7 +58,7 @@ public class AbstractPage {
 	
 	public AbstractPage waitForElementToLeave(List<WebElement> elementList) {
 		int counter = 0;
-		while (counter < 100) {
+		while (counter < 160) {
 			if ((elementList.size() > 0)) {
 		//		System.out.println("TEST!!!!!!!!!!!!!!!!!" + (elementList.size() > 0));
 			} else {
