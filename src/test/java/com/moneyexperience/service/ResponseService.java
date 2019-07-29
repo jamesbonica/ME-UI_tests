@@ -21,6 +21,7 @@ public class ResponseService {
 	ChatPage chatPage;;
 
 	public void enterUserResponse(String carouselOrSlider, String choice, String navigationDirection) {
+	//	System.out.println("============= carouselOrSlider is " + carouselOrSlider + " choice is " + choice + " navigationDirection is " + navigationDirection);
 		if (carouselOrSlider.equalsIgnoreCase("text carousel")) {
 			chatPage.selectOptionInTextCarousel(choice, navigationDirection).clickSendButton();
 		} else if (carouselOrSlider.equalsIgnoreCase("image carousel")) {
