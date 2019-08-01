@@ -29,7 +29,7 @@ public class DashboardPage extends AbstractPage {
 	@Autowired
 	PageObjectFactory pageObjectFactory;
 
-	@FindBy(css = "footer > button[class*='primary undefined']")
+	@FindBy(css = "div[display='flex'] > button[class]:not([aria-label])")
 	private WebElement nextButton;
 
 	//// The icons for the optional narratives

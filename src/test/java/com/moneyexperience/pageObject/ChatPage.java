@@ -57,11 +57,14 @@ public class ChatPage extends AbstractPage {
 	@FindBy(css = "input[aria-label = 'amount-slider'] + * + button")
 	private WebElement inputSliderPlusButton;
 
-	@FindBy(css = "div > button[class^='primary']:not([disabled])")
+	@FindBy(css = "div[display = 'flex']:not([font-family]) > button[class]:not([disabled])")
 	private WebElement sendButton;
 	
-	@FindBy(css = "ul div > button[class^='primary']:not([disabled])")
-	private WebElement selectButton;
+	@FindBy(css = "ul div[display='flex'] > button[class]")
+	private WebElement selectButtonDatingApp;
+	
+	@FindBy(css = "button[class]:not([disabled]) > div[class='loadedContent']")
+	private WebElement selectButtonImageCarousel;
 	
 	@FindAll(@FindBy(css="footer"))
 	private List<WebElement> footerList;
@@ -143,8 +146,13 @@ public class ChatPage extends AbstractPage {
 	}
 	
 	//This is added because the dating app wouldn't respond to an element.click()
+	public ChatPage clickSelectButtonOnDatingApp() {
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", selectButtonDatingApp);
+		return this;
+	}
+	
 	public ChatPage clickSelectButton() {
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", selectButton);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", selectButtonImageCarousel);
 		return this;
 	}
 
@@ -176,7 +184,6 @@ public class ChatPage extends AbstractPage {
 		for (int i = 1; i <= clicks; i++) {
 			inputSliderPlusButton.click();
 		}
-
 		return this;
 	}
 
