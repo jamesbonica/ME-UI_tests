@@ -35,6 +35,13 @@ Feature: 1001 Complete Simulator Experience
     And a user chooses the following responses in the Chat with Tess:
       | carouselOrSlider | choice                                          | navigationDirection |
       # Do you plan to attend college after high school?
+      # ================================ No College Route ===================================
+      #    |                  | No I'm not going to college                     |                     |
+      #    # What kind of job are you most likely to get?
+      #    | text carousel    | Construction                                    |                     |
+      #    # Do you plan to work full-time or part-time?
+      #    |                  | Full-time                                       |                     |
+      # ================================ No College Route ===================================
       |                  | Yes I'm going to college                        |                     |
       # Will you need to take out student loans?
       |                  | Yeah, I'll need loans                           |                     |
@@ -48,7 +55,7 @@ Feature: 1001 Complete Simulator Experience
       |                  | Yes                                             |                     |
       | text carousel    | Fitness Instructor                              | right               |
       # Do you plan to work full-time or part-time?
-      |                  | Part-time                                       |                     |
+       |                  | Part-time                                       |                     |
       # What are your eating habits like?
       |                  | Fresh and organic ($$)                          |                     |
       # What's your travel style?
@@ -150,7 +157,12 @@ Feature: 1001 Complete Simulator Experience
       |                  | No                                   |                     |
       # Would you like to change your living situation by renting or buying a new place?
       |                  | No, stay where I am                  |                     |
-      # OK let's talk about your career! What kind of career are you looking for?
+      # # ============ No college track ======================
+      # # OK let's talk about your career! What kind of career are you looking for?
+      # | text carousel    | Something in business                | right               |
+      # # What kind of business career?
+      # | text carousel    | Entrepreneur                         | left                |
+      # # =========================================================
       | text carousel    | Something in technology              | right               |
       # What kind of technology career?
       |                  | Tech / software developer            |                     |

@@ -51,10 +51,10 @@ public class StoryBoardPage extends AbstractPage {
 	@FindBy(css = "*[class*='speechBubble']")
 	private WebElement tessSpeechBubble;
 
-	@FindBy(css = "figure + nav[class] > button:nth-child(2)")
+	@FindBy(css = "figure + nav > button[class^='styles__textButton']:nth-child(2)")
 	private WebElement nextLinkForStoryPanels;
 
-	@FindAll(@FindBy(css = "figure + nav[class] > button"))
+	@FindAll(@FindBy(css = "figure + nav > button[class^='styles__textButton']"))
 	private List<WebElement> navLinksForStoryPanelsList;
 
 	@FindAll(@FindBy(css = "div[class*='modal']"))

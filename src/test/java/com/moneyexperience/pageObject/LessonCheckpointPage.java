@@ -23,7 +23,7 @@ public class LessonCheckpointPage extends AbstractPage {
 	@Autowired
 	PageObjectFactory pageObjectFactory;
 
-	@FindBy(css = "div > button[class*='primary']")
+	@FindBy(css = "div[display='flex'] > button[class]")
 	private WebElement finishLessonButton;
 
 	public LessonCheckpointPage(EventFiringWebDriver driver) {
