@@ -1,5 +1,6 @@
 package com.moneyexperience.pageObject;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -23,7 +24,7 @@ public class LessonCheckpointPage extends AbstractPage {
 	@Autowired
 	PageObjectFactory pageObjectFactory;
 
-	@FindBy(css = "div[display='flex'] > button[class]")
+	@FindBy(css = "div[display='flex'][class] > button[class]")
 	private WebElement finishLessonButton;
 
 	public LessonCheckpointPage(EventFiringWebDriver driver) {
@@ -33,8 +34,11 @@ public class LessonCheckpointPage extends AbstractPage {
 
 	public LessonIntroPage clicFinishLessonButton() {
 		waitForElement(finishLessonButton);
+		scrollToElement(finishLessonButton);
 		finishLessonButton.click();
+
 		return pageObjectFactory.getLessonIntroPage();
 	}
+
 
 }

@@ -36,11 +36,11 @@ Feature: 1001 Complete Simulator Experience
       | carouselOrSlider | choice                                          | navigationDirection |
       # Do you plan to attend college after high school?
       # ================================ No College Route ===================================
-      #    |                  | No I'm not going to college                     |                     |
-      #    # What kind of job are you most likely to get?
-      #    | text carousel    | Construction                                    |                     |
-      #    # Do you plan to work full-time or part-time?
-      #    |                  | Full-time                                       |                     |
+          |                  | No I'm not going to college                     |                     |
+          # What kind of job are you most likely to get?
+          | text carousel    | Construction                                    |                     |
+          # Do you plan to work full-time or part-time?
+          |                  | Full-time                                       |                     |
       # ================================ No College Route ===================================
       |                  | Yes I'm going to college                        |                     |
       # Will you need to take out student loans?
@@ -221,7 +221,7 @@ Feature: 1001 Complete Simulator Experience
       |                  | I want to move                                        |                     |
       ##### **** Opportunity to change financial condition significantly in one choice ***** Where would you like to move to? <================
       | text carousel    | A Southern city (Like Atlanta, or New Orleans)        | left                |
-      #         | text carousel    | A coastal big city (Like San Francisco, New York)     | left                |
+     #          | text carousel    | A coastal big city (Like San Francisco, New York)     | left                |
       #  Would you still like to live in {what you chose}
       |                  | Yes                                                   |                     |
       # Where would you like to live?
