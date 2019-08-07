@@ -109,12 +109,12 @@ public class LessonService {
 	}
 
 	public void clickFinishLessonButton() {
-		lessonCheckpointPage.clicFinishLessonButton();
+		lessonCheckpointPage.clicFinishLessonButton().waitForBeginButton();
 
 	}
 
 	public void clickContinueToNextLessonButtonOnLifeProgressPage() {
-		lifeProgressPage.clicFinishLessonButton();
+		lifeProgressPage.clicFinishLessonButton().waitForBeginButton();
 
 	}
 

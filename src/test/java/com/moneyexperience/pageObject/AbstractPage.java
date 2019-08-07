@@ -2,6 +2,7 @@ package com.moneyexperience.pageObject;
 
 import java.util.List;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -68,6 +69,12 @@ public class AbstractPage {
 			counter++;
 		}
 		return this;
+	}
+	
+	public AbstractPage scrollToElement(WebElement element) {
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		return this;
+		
 	}
 
 }
