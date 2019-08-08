@@ -36,11 +36,11 @@ Feature: 1001 Complete Simulator Experience
       | carouselOrSlider | choice                                          | navigationDirection |
       # Do you plan to attend college after high school?
       # ================================ No College Route ===================================
-          |                  | No I'm not going to college                     |                     |
-          # What kind of job are you most likely to get?
-          | text carousel    | Construction                                    |                     |
-          # Do you plan to work full-time or part-time?
-          |                  | Full-time                                       |                     |
+      #   |                  | No I'm not going to college                     |                     |
+      #   # What kind of job are you most likely to get?
+      #   | text carousel    | Construction                                    |                     |
+      #   # Do you plan to work full-time or part-time?
+      #   |                  | Full-time                                       |                     |
       # ================================ No College Route ===================================
       |                  | Yes I'm going to college                        |                     |
       # Will you need to take out student loans?
@@ -53,9 +53,10 @@ Feature: 1001 Complete Simulator Experience
       |                  | No                                              |                     |
       # You've selected a summer job already, but do you plan to have a job while in school?
       |                  | Yes                                             |                     |
+      # What kind of job are you most likely to get?
       | text carousel    | Fitness Instructor                              | right               |
       # Do you plan to work full-time or part-time?
-       |                  | Part-time                                       |                     |
+      |                  | Part-time                                       |                     |
       # What are your eating habits like?
       |                  | Fresh and organic ($$)                          |                     |
       # What's your travel style?
@@ -157,12 +158,12 @@ Feature: 1001 Complete Simulator Experience
       |                  | No                                   |                     |
       # Would you like to change your living situation by renting or buying a new place?
       |                  | No, stay where I am                  |                     |
+      # OK let's talk about your career! What kind of career are you looking for?
       # # ============ No college track ======================
-      # # OK let's talk about your career! What kind of career are you looking for?
-      # | text carousel    | Something in business                | right               |
-      # # What kind of business career?
-      # | text carousel    | Entrepreneur                         | left                |
-      # # =========================================================
+      #  | text carousel    | Something in business                | right               |
+      #  # What kind of business career?
+      #  | text carousel    | Entrepreneur                         | left                |
+      # =========================================================
       | text carousel    | Something in technology              | right               |
       # What kind of technology career?
       |                  | Tech / software developer            |                     |
@@ -221,13 +222,16 @@ Feature: 1001 Complete Simulator Experience
       |                  | I want to move                                        |                     |
       ##### **** Opportunity to change financial condition significantly in one choice ***** Where would you like to move to? <================
       | text carousel    | A Southern city (Like Atlanta, or New Orleans)        | left                |
-     #          | text carousel    | A coastal big city (Like San Francisco, New York)     | left                |
+      #           | text carousel    | A coastal big city (Like San Francisco, New York)     | left                |
       #  Would you still like to live in {what you chose}
       |                  | Yes                                                   |                     |
       # Where would you like to live?
-      | text carousel    | Starter Home                                          | right               |
+      #   | text carousel    | Starter Home                                          | right               |
+      | text carousel    | A two bedroom apartment                               | right               |
       # Would you still like to choose this option?
       |                  | Yes                                                   |                     |
+      # Would you like to live with a roommate?
+      |                  | No                                                    |                     |
       # Now let's get back to some basics. What's for dinner?
       |                  | A home cooked meal ($$)                               |                     |
       # How about your daily coffee habit?
