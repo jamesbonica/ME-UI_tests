@@ -35,9 +35,12 @@ public class ChatPage extends AbstractPage {
 
 	@FindBy(css = "li[style = 'order: 2;'] h3")
 	private WebElement imageCarouselCenterOption;
-	
+
 	@FindBy(css = "li[style = 'order: 1;'] h2")
 	private WebElement datingCarouselCenterOption;
+
+	@FindBy(css = "li[style = 'order: 1;'] button")
+	private WebElement datingAppSelectButton;
 
 	@FindAll(@FindBy(css = "ul > li > button[id^='user_response']"))
 	private List<WebElement> textOptionList;
@@ -59,14 +62,11 @@ public class ChatPage extends AbstractPage {
 
 	@FindBy(css = "div[display = 'flex']:not([font-family]) > button[class]:not([disabled])")
 	private WebElement sendButton;
-	
-	@FindBy(css = "ul div[display='flex'] > button[class]")
-	private WebElement selectButtonDatingApp;
-	
+
 	@FindBy(css = "button[class]:not([disabled]) > div[class='loadedContent']")
 	private WebElement selectButtonImageCarousel;
-	
-	@FindAll(@FindBy(css="footer"))
+
+	@FindAll(@FindBy(css = "footer"))
 	private List<WebElement> footerList;
 
 	public ChatPage(EventFiringWebDriver driver) {
@@ -75,42 +75,43 @@ public class ChatPage extends AbstractPage {
 	}
 
 	public ChatPage selectOptionInTextCarousel(String choice, String navigationDirection) {
-		selectOptionInCarousel(choice, navigationDirection, carouselOptionList, textCarouselCenterOption);
+		selectOptionInCarousel(choice, navigationDirection, carouselOptionList, textCarouselCenterOption,
+				textCarouselCenterOption);
 
 		return this;
 
 	}
 
 	public ChatPage selectOptionInImageCarousel(String choice, String navigationDirection) {
-		selectOptionInCarousel(choice, navigationDirection, carouselOptionList, imageCarouselCenterOption);
-		return this;
-	}
-	
-	public ChatPage selectDatingOption(String choice, String navigationDirection) {
-		selectOptionInCarousel(choice, navigationDirection, carouselOptionList, datingCarouselCenterOption);
+		selectOptionInCarousel(choice, navigationDirection, carouselOptionList, imageCarouselCenterOption,
+				selectButtonImageCarousel);
 		return this;
 	}
 
+	public ChatPage selectDatingOption(String choice, String navigationDirection) {
+		selectOptionInCarousel(choice, navigationDirection, carouselOptionList, datingCarouselCenterOption,
+				datingAppSelectButton);
+		return this;
+
+	}
+
 	private void selectOptionInCarousel(String choice, String navigationDirection, List<WebElement> carouselOptionList,
-			WebElement imageCarouselCenterOption) {
+			WebElement imageCarouselCenterOption, WebElement carouselCenterClickable) {
 		// Get the total amount of options
 		waitForElementInChat(imageCarouselCenterOption);
 		int textCarouselOptions = carouselOptionList.size();
 		int count = 0;
 		do {
-
 			waitUntilElementReturnsString(imageCarouselCenterOption);
-			if (imageCarouselCenterOption.getText().toLowerCase().contains(choice.toLowerCase())) {
-				try {
-				imageCarouselCenterOption.click();
+			if (imageCarouselCenterOption.getText().toLowerCase().startsWith(choice.toLowerCase())) {
+
+				carouselCenterClickable.click();
 				break;
-				} catch(ElementClickInterceptedException e) {
-					((JavascriptExecutor) driver).executeScript("arguments[0].click();", imageCarouselCenterOption);
-					break;
-				}
+
 			} else {
 				if (navigationDirection.equalsIgnoreCase("left")) {
 					leftNavArrow.click();
+
 				} else {
 					rightNavArrow.click();
 				}
@@ -144,23 +145,12 @@ public class ChatPage extends AbstractPage {
 		sendButton.click();
 		return this;
 	}
-	
-	//This is added because the dating app wouldn't respond to an element.click()
-	public ChatPage clickSelectButtonOnDatingApp() {
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", selectButtonDatingApp);
-		return this;
-	}
-	
-	public ChatPage clickSelectButton() {
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", selectButtonImageCarousel);
-		return this;
-	}
 
 	public ChatPage selectOption(String choice) {
 		waitForElementInChat(firstTextOption);
 		for (WebElement element : textOptionList) {
-		//	System.out.println("Expected option is: " + choice);
-		//	 System.out.println("TEST!!!!! " + element.getText());
+			// System.out.println("Expected option is: " + choice);
+			// System.out.println("TEST!!!!! " + element.getText());
 			if (element.getText().trim().equalsIgnoreCase(choice)) {
 				element.click();
 			}

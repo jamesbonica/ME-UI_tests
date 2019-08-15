@@ -88,7 +88,7 @@ Feature: 1001 Complete Simulator Experience
       |                  | Book it!                                        |                     |
       # For now, let's go back to the dashboard.
       |                  | OK                                              |                     |
-    And a user clicks the Next Button on the Optional Narratives Dashboard
+	   And a user clicks the Next Button on the Optional Narratives Dashboard
     And a user clicks the Finish Lesson on the Lessson Checkpoint Page
 
   @Lesson2
@@ -132,15 +132,15 @@ Feature: 1001 Complete Simulator Experience
     And a user selects the "Apply for a Credit Card" Optional Narrative from the Dashboard
     And the user chooses the following responses in the Optional Narrative:
       | carouselOrSlider | choice    | navigationDirection |
-      | image carousel   | Cash Back | right               |
-    And a user selects the "Who Are You Dating" Optional Narrative from the Dashboard
+      | image carousel   |  $500 bonus and 3% cash back at your favorite online retailer | right               |
+   And a user selects the "Who Are You Dating" Optional Narrative from the Dashboard
     And the user chooses the following responses in the Optional Narrative:
       | carouselOrSlider | choice | navigationDirection |
       | dating app       | Jenn   | right               |
     And a user selects the "Buy a Car" Optional Narrative from the Dashboard
     And the user chooses the following responses in the Optional Narrative:
       | carouselOrSlider | choice | navigationDirection |
-      | image carousel   | Sedan  | right               |
+      | image carousel   | Hatchback  | right               |
     And a user clicks the Next Button on the Optional Narratives Dashboard
     And a user clicks the Finish Lesson on the Lessson Checkpoint Page
 
@@ -222,16 +222,16 @@ Feature: 1001 Complete Simulator Experience
       |                  | I want to move                                        |                     |
       ##### **** Opportunity to change financial condition significantly in one choice ***** Where would you like to move to? <================
       | text carousel    | A Southern city (Like Atlanta, or New Orleans)        | left                |
-      #           | text carousel    | A coastal big city (Like San Francisco, New York)     | left                |
+     #            | text carousel    | A coastal big city (Like San Francisco, New York)     | left                |
       #  Would you still like to live in {what you chose}
       |                  | Yes                                                   |                     |
       # Where would you like to live?
-      #   | text carousel    | Starter Home                                          | right               |
-      | text carousel    | A two bedroom apartment                               | right               |
+      | text carousel    | Starter Home                                          | right               |
+     #   | text carousel    | A two bedroom apartment                               | right               |
       # Would you still like to choose this option?
       |                  | Yes                                                   |                     |
-      # Would you like to live with a roommate?
-      |                  | No                                                    |                     |
+     # # Would you like to live with a roommate?
+     # |                  | No                                                    |                     |
       # Now let's get back to some basics. What's for dinner?
       |                  | A home cooked meal ($$)                               |                     |
       # How about your daily coffee habit?
