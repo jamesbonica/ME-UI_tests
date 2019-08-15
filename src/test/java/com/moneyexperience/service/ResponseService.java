@@ -25,11 +25,11 @@ public class ResponseService {
 		if (carouselOrSlider.equalsIgnoreCase("text carousel")) {
 			chatPage.selectOptionInTextCarousel(choice, navigationDirection).clickSendButton();
 		} else if (carouselOrSlider.equalsIgnoreCase("image carousel")) {
-			chatPage.selectOptionInImageCarousel(choice, navigationDirection).clickSelectButton();
+			chatPage.selectOptionInImageCarousel(choice, navigationDirection);
 		} else if (carouselOrSlider.equalsIgnoreCase("slider")) {
 			chatPage.selectSlider(choice).clickSendButton();
 		} else if (carouselOrSlider.equalsIgnoreCase("dating app")) {
-			chatPage.selectDatingOption(choice, navigationDirection).clickSelectButtonOnDatingApp();
+			chatPage.selectDatingOption(choice, navigationDirection);
 		} else if (carouselOrSlider.equals("")) {
 			chatPage.selectOption(choice).clickSendButton();
 		}
