@@ -34,29 +34,34 @@ Feature: 1001 Complete Simulator Experience
     And A user clicks Go when Tess sends a new message
     And a user chooses the following responses in the Chat with Tess:
       | carouselOrSlider | choice                                          | navigationDirection |
-      # Do you plan to attend college after high school?
-      # ================================ No College Route ===================================
-      #   |                  | No I'm not going to college                     |                     |
-      #   # What kind of job are you most likely to get?
-      #   | text carousel    | Construction                                    |                     |
-      #   # Do you plan to work full-time or part-time?
-      #   |                  | Full-time                                       |                     |
-      # ================================ No College Route ===================================
+      #   # Do you plan to attend college after high school?
+     #     # ================================ No College Route ===================================
+     #        |                  | No I'm not going to college                     |                     |
+     #        # What kind of job are you most likely to get?
+     #        | text carousel    | Construction                                    |                     |
+     #        # Do you plan to work full-time or part-time?
+     #        |                  | Full-time                                       |                     |
+     #     # ================================ No College Route ===================================
       |                  | Yes I'm going to college                        |                     |
       # Will you need to take out student loans?
+      # =============== Student Loans ================================
       |                  | Yeah, I'll need loans                           |                     |
-      # Do you know how much your student loans will be?
+      #  Do you know how much your student loans will be?
       |                  | Yes                                             |                     |
-      # How much will your loans be?
+      #  How much will your loans be?
       | slider           |                                          80,000 |                     |
+      # # ==============================================================
+     #    |                  | No, I won't need them                           |                     |
+     #    # That's great! What kind of school do you plan to go to?
+         | text carousel    | In-state University                               |                     |
       # Do you plan to pursue an advanced degree?
       |                  | No                                              |                     |
       # You've selected a summer job already, but do you plan to have a job while in school?
       |                  | Yes                                             |                     |
       # What kind of job are you most likely to get?
-      | text carousel    | Fitness Instructor                              | right               |
+      | text carousel    | Bartender                             | right               |
       # Do you plan to work full-time or part-time?
-      |                  | Part-time                                       |                     |
+      |                  |Part-time                                       |                     |
       # What are your eating habits like?
       |                  | Fresh and organic ($$)                          |                     |
       # What's your travel style?
@@ -88,7 +93,7 @@ Feature: 1001 Complete Simulator Experience
       |                  | Book it!                                        |                     |
       # For now, let's go back to the dashboard.
       |                  | OK                                              |                     |
-	   And a user clicks the Next Button on the Optional Narratives Dashboard
+    And a user clicks the Next Button on the Optional Narratives Dashboard
     And a user clicks the Finish Lesson on the Lessson Checkpoint Page
 
   @Lesson2
@@ -131,16 +136,16 @@ Feature: 1001 Complete Simulator Experience
     And a user goes through the storyboards
     And a user selects the "Apply for a Credit Card" Optional Narrative from the Dashboard
     And the user chooses the following responses in the Optional Narrative:
-      | carouselOrSlider | choice    | navigationDirection |
-      | image carousel   |  $500 bonus and 3% cash back at your favorite online retailer | right               |
-   And a user selects the "Who Are You Dating" Optional Narrative from the Dashboard
+      | carouselOrSlider | choice                                                       | navigationDirection |
+      | image carousel   | $500 bonus and 3% cash back at your favorite online retailer | right               |
+    And a user selects the "Who Are You Dating" Optional Narrative from the Dashboard
     And the user chooses the following responses in the Optional Narrative:
       | carouselOrSlider | choice | navigationDirection |
       | dating app       | Jenn   | right               |
     And a user selects the "Buy a Car" Optional Narrative from the Dashboard
     And the user chooses the following responses in the Optional Narrative:
-      | carouselOrSlider | choice | navigationDirection |
-      | image carousel   | Hatchback  | right               |
+      | carouselOrSlider | choice       | navigationDirection |
+      | image carousel   | Sports Sedan | right               |
     And a user clicks the Next Button on the Optional Narratives Dashboard
     And a user clicks the Finish Lesson on the Lessson Checkpoint Page
 
@@ -159,13 +164,12 @@ Feature: 1001 Complete Simulator Experience
       # Would you like to change your living situation by renting or buying a new place?
       |                  | No, stay where I am                  |                     |
       # OK let's talk about your career! What kind of career are you looking for?
-      # # ============ No college track ======================
-      #  | text carousel    | Something in business                | right               |
-      #  # What kind of business career?
-      #  | text carousel    | Entrepreneur                         | left                |
+     # # ============ No college track ======================
+     # | text carousel    | Something in business                | right               |
+     # # What kind of business career?
+     # | text carousel    | Entrepreneur                         | left                |
       # =========================================================
-      | text carousel    | Something in technology              | right               |
-      # What kind of technology career?
+      | text carousel    | Something in technology              | left                |
       |                  | Tech / software developer            |                     |
       # Are you someone who cooks or eats out a lot?
       |                  | I cook at home a lot ($)             |                     |
@@ -222,16 +226,16 @@ Feature: 1001 Complete Simulator Experience
       |                  | I want to move                                        |                     |
       ##### **** Opportunity to change financial condition significantly in one choice ***** Where would you like to move to? <================
       | text carousel    | A Southern city (Like Atlanta, or New Orleans)        | left                |
-     #            | text carousel    | A coastal big city (Like San Francisco, New York)     | left                |
+      # | text carousel    | A coastal big city (Like San Francisco, New York)     | left                |
       #  Would you still like to live in {what you chose}
       |                  | Yes                                                   |                     |
       # Where would you like to live?
       | text carousel    | Starter Home                                          | right               |
-     #   | text carousel    | A two bedroom apartment                               | right               |
+      #   | text carousel    | A two bedroom apartment                               | right               |
       # Would you still like to choose this option?
       |                  | Yes                                                   |                     |
-     # # Would you like to live with a roommate?
-     # |                  | No                                                    |                     |
+      # # Would you like to live with a roommate?
+      # |                  | No                                                    |                     |
       # Now let's get back to some basics. What's for dinner?
       |                  | A home cooked meal ($$)                               |                     |
       # How about your daily coffee habit?
