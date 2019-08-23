@@ -60,6 +60,9 @@ public class ChatPage extends AbstractPage {
 	@FindBy(css = "input[aria-label = 'amount-slider'] + * + button")
 	private WebElement inputSliderPlusButton;
 
+	@FindBy(css = "div[font-family = 'Knockout-JuniorWelterweight'] > button")
+	private WebElement inputSliderMinusButton;
+
 	@FindBy(css = "div[display = 'flex']:not([font-family]) > button[class]:not([disabled])")
 	private WebElement sendButton;
 
@@ -149,8 +152,8 @@ public class ChatPage extends AbstractPage {
 	public ChatPage selectOption(String choice) {
 		waitForElementInChat(firstTextOption);
 		for (WebElement element : textOptionList) {
-			// System.out.println("Expected option is: " + choice);
-			// System.out.println("TEST!!!!! " + element.getText());
+		//	 System.out.println("Expected option is: " + choice);
+		//	 System.out.println("TEST!!!!! " + element.getText());
 			if (element.getText().trim().equalsIgnoreCase(choice)) {
 				element.click();
 			}
@@ -168,11 +171,15 @@ public class ChatPage extends AbstractPage {
 		if (convertedChoice > Integer.valueOf(inputSlider.getAttribute("max"))) {
 			throw new NoSuchElementException("The value entered is more than the max value of the slider");
 		}
+		if (convertedChoice == 0) {
+			inputSliderMinusButton.click();
+		} else {
 
-		int clicks = convertedChoice / Integer.valueOf(inputSlider.getAttribute("step"));
+			int clicks = convertedChoice / Integer.valueOf(inputSlider.getAttribute("step"));
 
-		for (int i = 1; i <= clicks; i++) {
-			inputSliderPlusButton.click();
+			for (int i = 1; i <= clicks; i++) {
+				inputSliderPlusButton.click();
+			}
 		}
 		return this;
 	}
