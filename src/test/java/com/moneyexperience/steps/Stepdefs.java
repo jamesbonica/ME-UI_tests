@@ -80,6 +80,7 @@ public class Stepdefs {
 	@Given("a user clicks the Next Button")
 	public void a_user_clicks_the_Next_Button() {
 		lessonService.clickNextButton();
+		
 	}
 
 	@Given("a user clicks the Send Button")
@@ -152,11 +153,26 @@ public class Stepdefs {
 	public void the_user_choses_the_following_responses_in_the_Optional_Narrative_with_Tess(DataTable responses) {
 		a_user_chooses_the_following_responses_in_the_Chat_with_Tess(responses);
 	}
-	
+
 	@Given("the user chooses the following responses in the Optional Narrative:")
 	public void the_user_choses_the_following_responses_in_the_Optional_Narrative(DataTable responses) {
 		a_user_chooses_the_following_responses_in_the_Chat_with_Tess(responses);
 	}
+
+	@Given("a user completes the Baseline Assessment if the user has not completed it before")
+	public void a_user_completes_the_Baseline_Assessment_if_the_user_has_not_completed_it_before() {
+		responseService.answerAssessmentQuestions("baseline", 5);
+	}
 	
+	@Given("a user answers {int} Post Survey Questions")
+	public void a_user_answers_Post_Survey_Questions(Integer questions) {
+		int pages = questions/2;
+		responseService.answerAssessmentQuestions("post", pages);
+	}
+	
+	@Given("a user answers {int} Post Survey Question")
+	public void a_user_answers_Post_Survey_Question(Integer questions) {
+		responseService.answerAssessmentQuestions("post", questions);
+	}
 
 }

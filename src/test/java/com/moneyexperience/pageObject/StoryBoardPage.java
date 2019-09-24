@@ -74,6 +74,10 @@ public class StoryBoardPage extends AbstractPage {
 		PageFactory.initElements(driver, this);
 	}
 
+	public boolean beyondSurvey() {
+		return navigationLinkList.size() > 0;
+	}
+	
 	public StoryBoardPage clickNextLink() {
 		waitForElement(htmlColorDefinedElement);
 		waitForElement(nextLinkWhenTheresNoGoingBack);

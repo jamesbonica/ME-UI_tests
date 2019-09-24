@@ -1,12 +1,6 @@
 package com.moneyexperience.pageObject;
 
-import java.time.Duration;
-import java.util.List;
-
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
@@ -29,7 +23,7 @@ public class DashboardPage extends AbstractPage {
 	@Autowired
 	PageObjectFactory pageObjectFactory;
 
-	@FindBy(css = "div[display='flex'] > button[class]:not([aria-label])")
+	@FindBy(css = "div[display='flex'] > button[class]:not([aria-label]):not([data-testid])")
 	private WebElement nextButton;
 
 	//// The icons for the optional narratives
