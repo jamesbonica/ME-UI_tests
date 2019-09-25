@@ -199,6 +199,7 @@ Feature: 1001 Complete Simulator Experience
       # OK That's it for now! I heard Ria is back from the military, let's go see what she's up to.
       |                  | OK                                   |                     |
     And a user goes through the storyboards
+    And a user answers 2 Post Survey Questions
     And a user selects the "Get Married" Optional Narrative from the Dashboard
     And the user chooses the following responses in the Optional Narrative Chat with Tess:
       | carouselOrSlider | choice                                                          | navigationDirection |
@@ -288,6 +289,7 @@ Feature: 1001 Complete Simulator Experience
       | slider           | 10%                                                   |                     |
       # OK, let's move onto your dashboard.
       |                  | OK                                                    |                     |
+    And a user answers 1 Post Survey Question
     And a user selects the "Have a Child" Optional Narrative from the Dashboard
     And the user chooses the following responses in the Optional Narrative Chat with Tess:
       | carouselOrSlider | choice                                       | navigationDirection |
@@ -426,6 +428,7 @@ Feature: 1001 Complete Simulator Experience
       |                  | No                                                  |                     |
       # OK, let's move onto your optional choices!
       |                  | OK                                                  |                     |
+    And a user answers 1 Post Survey Question
     And a user clicks the Next Button on the Optional Narratives Dashboard
     And a user clicks the Finish Lesson on the Lessson Checkpoint Page
 
@@ -469,6 +472,7 @@ Feature: 1001 Complete Simulator Experience
       |                  | No                                                             |                     |
       # OK, let's move onto your dashboard.
       |                  | OK                                                             |                     |
+    And a user answers 1 Post Survey Question
     And a user clicks the Next Button on the Optional Narratives Dashboard
     And a user clicks the Finish Lesson on the Lessson Checkpoint Page
 
@@ -529,5 +533,5 @@ Feature: 1001 Complete Simulator Experience
       |                  | Frequent checkups with preventative action plans ($$)        |                     |
       # OK, that's it for your lifestyle in your senior years, let's move on.
       |                  | Ok                                                           |                     |
-    And a user clicks the Next Link
+    And a user answers 1 Post Survey Question
     And a user clicks the Next Button on the Optional Narratives Dashboard
