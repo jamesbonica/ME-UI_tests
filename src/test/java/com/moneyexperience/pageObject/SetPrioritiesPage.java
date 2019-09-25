@@ -65,10 +65,9 @@ public class SetPrioritiesPage extends AbstractPage {
 		return this;
 	}
 
-	public LessonIntroPage clickNextButton() {
+	public void clickNextButton() {
 		waitForElement(nextButton);
 		nextButton.click();
-		return pageObjectFactory.getLessonIntroPage();
 	}
 
 }

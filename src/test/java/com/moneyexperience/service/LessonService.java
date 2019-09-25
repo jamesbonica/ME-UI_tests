@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
+import com.moneyexperience.pageObject.AssessmentPage;
 import com.moneyexperience.pageObject.ChatPage;
 import com.moneyexperience.pageObject.DashboardPage;
 import com.moneyexperience.pageObject.LessonCheckpointPage;
@@ -14,6 +15,8 @@ import com.moneyexperience.pageObject.LessonIntroPage;
 import com.moneyexperience.pageObject.LifeProgressPage;
 import com.moneyexperience.pageObject.SetPrioritiesPage;
 import com.moneyexperience.pageObject.StoryBoardPage;
+
+import config.PropertiesLoader;
 
 /**
  * 
@@ -46,6 +49,12 @@ public class LessonService {
 
 	@Autowired
 	LifeProgressPage lifeProgressPage;
+	
+	@Autowired
+	AssessmentPage assessmentPage;
+	
+	@Autowired
+	PropertiesLoader propertiesLoader;
 
 	public void clickBeginButton() {
 		lessonIntroPage.clickBeginButton();
@@ -147,6 +156,23 @@ public class LessonService {
 			throw new NoSuchElementException("There is not a choice matching what is in the step");
 		}
 
+	}
+	
+	public Boolean onAssessmentPage() {	
+		Boolean onAssessmentPage = false;
+		int counter = 0;
+		while(counter < 10) {
+			if(storyBoardPage.beyondSurvey()) {
+				break;
+			}
+			if(assessmentPage.disabledNextButtonPresent()) {
+				onAssessmentPage = true;
+				break;
+			}
+			setPrioritiesPage.pause(.5);
+			counter++;
+		}
+		return onAssessmentPage;
 	}
 
 }

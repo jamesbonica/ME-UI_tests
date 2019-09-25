@@ -31,6 +31,10 @@ public class PageObjectFactory {
 		return (LessonCheckpointPage) appContext.getBean("lessonCheckpointPage");
 	}
 	
+	public AssessmentPage getAssessmentPage() {
+		return (AssessmentPage) appContext.getBean("assessmentPage");
+	}
+	
 	
 
 }
