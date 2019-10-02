@@ -1,6 +1,6 @@
 #Author: Jim Bonica jim@moneyexperience.com
 @Complete_Simulator_Essentials5
-Feature: 1001 Complete Simulator Experience
+Feature: 1001 Complete Simulator Essentials 5
   Description: 
   	As a Money Experience Engineer
   	I want an automation tool to execute user choices for all TME Simulator lessons
