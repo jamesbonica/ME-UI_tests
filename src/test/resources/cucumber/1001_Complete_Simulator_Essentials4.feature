@@ -1,6 +1,6 @@
 #Author: Jim Bonica jim@moneyexperience.com
 @Complete_Simulator_Essentials4
-Feature: 1001 Complete Simulator Experience
+Feature: 1001 Complete Simulator Essentials 4
   Description: 
   	As a Money Experience Engineer
   	I want an automation tool to execute user choices for all TME Simulator lessons
@@ -71,7 +71,7 @@ Feature: 1001 Complete Simulator Experience
       # What kind of job are you most likely to get?
       | text carousel    | Fitness instructor                              | right               |
       # Do you plan to work full-time or part-time?
-      |                  | Full-time                                       |                     |
+      |                  | Part-time                                       |                     |
       # What are your eating habits like?
       |                  | Fresh and organic ($$)                          |                     |
       # What's your travel style?
