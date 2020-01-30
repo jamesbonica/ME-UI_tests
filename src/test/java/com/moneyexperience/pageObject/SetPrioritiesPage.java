@@ -1,5 +1,7 @@
 package com.moneyexperience.pageObject;
 
+import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
+
 import java.time.Duration;
 import java.util.List;
 
@@ -11,6 +13,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 /**
@@ -21,6 +24,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
+@Scope(SCOPE_CUCUMBER_GLUE)
 public class SetPrioritiesPage extends AbstractPage {
 
 	@Autowired
@@ -37,6 +41,12 @@ public class SetPrioritiesPage extends AbstractPage {
 
 	@FindAll(@FindBy(css = "#wallet button[aria-label^= dropzone]"))
 	private List<WebElement> dropzoneList;
+	
+	@FindBy(css= "button[data-testid = 'ready-button']")
+	private WebElement imReadyButton;
+	
+	@FindBy(css = "button[data-testid = 'priority-forward-button']")
+	private WebElement continueButton;
 
 	public SetPrioritiesPage(EventFiringWebDriver driver) {
 		this.driver = driver;
@@ -68,6 +78,20 @@ public class SetPrioritiesPage extends AbstractPage {
 	public void clickNextButton() {
 		waitForElement(nextButton);
 		nextButton.click();
+	}
+
+	public SetPrioritiesPage dismissTessInstructions() {
+		waitForElement(imReadyButton);
+		imReadyButton.click();
+		return this;
+
+	}
+
+	public void clickContinueButton() {
+		waitForElement(continueButton);
+		continueButton.click();
+		pause(5);
+		
 	}
 
 }

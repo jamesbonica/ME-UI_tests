@@ -9,9 +9,10 @@ import  static org.hamcrest.Matchers.is;
 import com.moneyexperience.pageObject.TopMenuPage;
 
 import config.ScenarioSession;
-import cucumber.api.java.en.Then;
+import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
+import io.cucumber.java.en.Then;
 
-@Scope("cucumber-glue")
+@Scope(SCOPE_CUCUMBER_GLUE)
 public class AssertionSteps {
 
 	@Autowired
@@ -23,7 +24,7 @@ public class AssertionSteps {
 	@Then("ME must display the username {string} in the top menu")
 	public void me_must_display_the_username_in_the_top_menu(String expectedUsername) {
 		assertThat(topMenuPage.getUsernameText(), is(expectedUsername));
-		scenarioSession.takeScreenShot();
+		scenarioSession.takeScreenShot("top_menu");
 	}
 
 }

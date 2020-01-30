@@ -6,9 +6,11 @@ import org.springframework.context.annotation.Scope;
 import com.moneyexperience.service.ApiService;
 
 import config.ScenarioSession;
-import cucumber.api.java.en.Given;
+import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseOptions;
+import io.cucumber.java.en.Given;
+
 
 /**
  * 
@@ -17,7 +19,7 @@ import io.restassured.response.ResponseOptions;
  * @date Jun-03-2019
  */
 
-@Scope("cucumber-glue")
+@Scope(SCOPE_CUCUMBER_GLUE)
 public class ApiSteps {
 
 	@Autowired

@@ -5,6 +5,7 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
+import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
 
 import com.moneyexperience.pageObject.LoginPage;
 import com.moneyexperience.pageObject.TopMenuPage;
@@ -21,7 +22,7 @@ import config.ScenarioSession;
  */
 
 @Service
-@Scope("cucumber-glue")
+@Scope(SCOPE_CUCUMBER_GLUE)
 public class UserService {
 
 	@Autowired
@@ -57,7 +58,7 @@ public class UserService {
 	}
 
 	public void resetUserProgressThroughUI(Integer lessonNumber) {
-		topMenuPage.clickuserName().clickResetLessonLink(lessonNumber).clickAcceptResetProgressButton();
+		topMenuPage.clickMeIcon().clickResetProgressButton().clickResetLessonLink(lessonNumber).waitForTopMenuToDisappear(); //.clickAcceptResetProgressButton();
 	}
 
 	String getConfiguredUserName(String username) {

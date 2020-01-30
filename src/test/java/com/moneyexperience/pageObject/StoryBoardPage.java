@@ -1,5 +1,7 @@
 package com.moneyexperience.pageObject;
 
+import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
+
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -13,6 +15,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import config.ScenarioSession;
@@ -25,6 +28,7 @@ import config.ScenarioSession;
  */
 
 @Component
+@Scope(SCOPE_CUCUMBER_GLUE)
 public class StoryBoardPage extends AbstractPage {
 
 	@Autowired
@@ -79,7 +83,6 @@ public class StoryBoardPage extends AbstractPage {
 	}
 	
 	public StoryBoardPage clickNextLink() {
-		waitForElement(htmlColorDefinedElement);
 		waitForElement(nextLinkWhenTheresNoGoingBack);
 		// check if there is two-way or one-way navigation on the page
 		int navigationLinks = navigationLinkList.size();

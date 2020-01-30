@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
  *
  * @date Apr-09-2019
  */
+
 @Configuration
 public class CrossScenarioCache {
 

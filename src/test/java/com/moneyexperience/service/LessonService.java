@@ -6,6 +6,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
+import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
 
 import com.moneyexperience.pageObject.AssessmentPage;
 import com.moneyexperience.pageObject.ChatPage;
@@ -26,7 +27,7 @@ import config.PropertiesLoader;
  */
 
 @Service
-@Scope("cucumber-glue")
+@Scope(SCOPE_CUCUMBER_GLUE)
 public class LessonService {
 
 	@Autowired
@@ -62,13 +63,19 @@ public class LessonService {
 	}
 
 	public void setPriorities(List<String> prioritiesList) {
-		setPrioritiesPage.dragAndDropPriorities(prioritiesList);
+	setPrioritiesPage.dismissTessInstructions();
+		//	setPrioritiesPage.dragAndDropPriorities(prioritiesList);
 
 	}
 
 	public void clickNextButton() {
 		setPrioritiesPage.clickNextButton();
 
+	}
+	
+	public void clickContinueButton() {
+		setPrioritiesPage.clickContinueButton();
+		
 	}
 
 	public void clickSendButton() {
@@ -89,18 +96,6 @@ public class LessonService {
 	}
 
 	public void goThroughStoryBoards() {
-
-//		while (storyBoardPage.moveOnToNextStoryBoard() == true) {
-//			storyBoardPage.clicknextLinkForStoryPanels();
-//		}
-
-//		while (true) {
-//			if (storyBoardPage.moveOnToNextStoryBoard()) {
-//				storyBoardPage.clicknextLinkForStoryPanels();
-//			} else {
-//				break;
-//			}
-//		}
 
 		do {
 			storyBoardPage.clicknextLinkForStoryPanels();
@@ -174,5 +169,6 @@ public class LessonService {
 		}
 		return onAssessmentPage;
 	}
+
 
 }
