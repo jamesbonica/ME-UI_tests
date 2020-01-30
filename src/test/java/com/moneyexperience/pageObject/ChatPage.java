@@ -1,5 +1,7 @@
 package com.moneyexperience.pageObject;
 
+import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
+
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -12,6 +14,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 /**
@@ -22,6 +25,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
+@Scope(SCOPE_CUCUMBER_GLUE)
 public class ChatPage extends AbstractPage {
 
 	@Autowired
@@ -35,6 +39,12 @@ public class ChatPage extends AbstractPage {
 
 	@FindBy(css = "li[style = 'order: 2;'] h3")
 	private WebElement imageCarouselCenterOption;
+
+	@FindBy(css = "li[style = 'order: 1;'] h2")
+	private WebElement datingCarouselCenterOption;
+
+	@FindBy(css = "li[style = 'order: 1;'] button")
+	private WebElement datingAppSelectButton;
 
 	@FindAll(@FindBy(css = "ul > li > button[id^='user_response']"))
 	private List<WebElement> textOptionList;
@@ -54,10 +64,16 @@ public class ChatPage extends AbstractPage {
 	@FindBy(css = "input[aria-label = 'amount-slider'] + * + button")
 	private WebElement inputSliderPlusButton;
 
-	@FindBy(css = "div > button[class^='primary']:not([disabled])")
+	@FindBy(css = "div[font-family = 'Knockout-JuniorWelterweight'] > button")
+	private WebElement inputSliderMinusButton;
+
+	@FindBy(css = "div[display = 'flex']:not([font-family]) > button[class]:not([disabled])")
 	private WebElement sendButton;
-	
-	@FindAll(@FindBy(css="footer"))
+
+	@FindBy(css = "button[class]:not([disabled]) > div[class='loadedContent']")
+	private WebElement selectButtonImageCarousel;
+
+	@FindAll(@FindBy(css = "footer"))
 	private List<WebElement> footerList;
 
 	public ChatPage(EventFiringWebDriver driver) {
@@ -66,37 +82,43 @@ public class ChatPage extends AbstractPage {
 	}
 
 	public ChatPage selectOptionInTextCarousel(String choice, String navigationDirection) {
-		selectOptionInCarousel(choice, navigationDirection, carouselOptionList, textCarouselCenterOption);
+		selectOptionInCarousel(choice, navigationDirection, carouselOptionList, textCarouselCenterOption,
+				textCarouselCenterOption);
 
 		return this;
 
 	}
 
 	public ChatPage selectOptionInImageCarousel(String choice, String navigationDirection) {
-		selectOptionInCarousel(choice, navigationDirection, carouselOptionList, imageCarouselCenterOption);
+		selectOptionInCarousel(choice, navigationDirection, carouselOptionList, imageCarouselCenterOption,
+				selectButtonImageCarousel);
 		return this;
 	}
 
+	public ChatPage selectDatingOption(String choice, String navigationDirection) {
+		selectOptionInCarousel(choice, navigationDirection, carouselOptionList, datingCarouselCenterOption,
+				datingAppSelectButton);
+		return this;
+
+	}
+
 	private void selectOptionInCarousel(String choice, String navigationDirection, List<WebElement> carouselOptionList,
-			WebElement imageCarouselCenterOption) {
+			WebElement imageCarouselCenterOption, WebElement carouselCenterClickable) {
 		// Get the total amount of options
 		waitForElementInChat(imageCarouselCenterOption);
 		int textCarouselOptions = carouselOptionList.size();
 		int count = 0;
 		do {
-
 			waitUntilElementReturnsString(imageCarouselCenterOption);
-			if (imageCarouselCenterOption.getText().equalsIgnoreCase(choice)) {
-				try {
-				imageCarouselCenterOption.click();
+			if (imageCarouselCenterOption.getText().toLowerCase().startsWith(choice.toLowerCase())) {
+
+				carouselCenterClickable.click();
 				break;
-				} catch(ElementClickInterceptedException e) {
-					((JavascriptExecutor) driver).executeScript("arguments[0].click();", imageCarouselCenterOption);
-					break;
-				}
+
 			} else {
 				if (navigationDirection.equalsIgnoreCase("left")) {
 					leftNavArrow.click();
+
 				} else {
 					rightNavArrow.click();
 				}
@@ -134,9 +156,12 @@ public class ChatPage extends AbstractPage {
 	public ChatPage selectOption(String choice) {
 		waitForElementInChat(firstTextOption);
 		for (WebElement element : textOptionList) {
-			// System.out.println("TEST!!!!! " + element.getText());
+		//	 System.out.println("Expected option is: " + choice);
+		//	 System.out.println("TEST!!!!! " + element.getText());
 			if (element.getText().trim().equalsIgnoreCase(choice)) {
+		//		System.out.println("CLICK!!!!!!!!!");
 				element.click();
+				break;
 			}
 		}
 		return this;
@@ -152,13 +177,16 @@ public class ChatPage extends AbstractPage {
 		if (convertedChoice > Integer.valueOf(inputSlider.getAttribute("max"))) {
 			throw new NoSuchElementException("The value entered is more than the max value of the slider");
 		}
+		if (convertedChoice == 0) {
+			inputSliderMinusButton.click();
+		} else {
 
-		int clicks = convertedChoice / Integer.valueOf(inputSlider.getAttribute("step"));
+			int clicks = convertedChoice / Integer.valueOf(inputSlider.getAttribute("step"));
 
-		for (int i = 1; i <= clicks; i++) {
-			inputSliderPlusButton.click();
+			for (int i = 1; i <= clicks; i++) {
+				inputSliderPlusButton.click();
+			}
 		}
-
 		return this;
 	}
 

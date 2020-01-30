@@ -1,10 +1,9 @@
 package com.moneyexperience.steps;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
 
-import org.openqa.selenium.Cookie;
+import java.util.Arrays;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -15,12 +14,14 @@ import org.springframework.context.annotation.Scope;
 
 import com.moneyexperience.pageObject.LoginPage;
 
-import config.CrossScenarioCache;
 import config.PropertiesLoader;
 import config.ScenarioSession;
-import cucumber.api.Scenario;
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
+
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
+
+
 
 /**
  * 
@@ -29,7 +30,7 @@ import cucumber.api.java.Before;
  * @date Apr-10-2019
  */
 
-@Scope("cucumber-glue")
+@Scope(SCOPE_CUCUMBER_GLUE)
 public class Hooks {
 
 	@Autowired
@@ -46,13 +47,15 @@ public class Hooks {
 
 	@Autowired
 	ScenarioSession scenarioSession;
-	
+
 	@Before
 	public void setUp(Scenario scenario) {
 		scenarioSession.setScenario(scenario);
-		
-		System.out.println("In before hook");
-		
+
+	//	 Collection<String> tagList = scenario.getSourceTagNames();
+
+		System.out.println("In before hook"); 
+
 //		 String[] beans = appContext.getBeanDefinitionNames();
 //		 Arrays.sort(beans);
 //		 for (String bean : beans) {
@@ -60,17 +63,22 @@ public class Hooks {
 //		 }
 
 //		System.out.println(driver.toString());
+		
 	}
 
 	@After
 	public void tearDown(Scenario scenario) {
+
 		
 		if (scenario.isFailed()) {
 			final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-			scenario.embed(screenshot, "image/png"); // stick it in the report
+			scenario.embed(screenshot, "image/png", ""); // stick it in the report
 		}
 //	driver.close();
-		((JavascriptExecutor) driver).executeScript(String.format("window.localStorage.clear();"));
+
+		if (!driver.getCurrentUrl().equals("data:,")) {
+			((JavascriptExecutor) driver).executeScript(String.format("window.localStorage.clear();"));
+		}
 	}
 
 }

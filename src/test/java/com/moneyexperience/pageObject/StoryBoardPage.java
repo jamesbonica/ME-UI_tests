@@ -1,16 +1,21 @@
 package com.moneyexperience.pageObject;
 
+import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
+
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import config.ScenarioSession;
@@ -23,6 +28,7 @@ import config.ScenarioSession;
  */
 
 @Component
+@Scope(SCOPE_CUCUMBER_GLUE)
 public class StoryBoardPage extends AbstractPage {
 
 	@Autowired
@@ -31,25 +37,28 @@ public class StoryBoardPage extends AbstractPage {
 	@Autowired
 	ScenarioSession scenarioSession;
 
-	@FindAll(@FindBy(css = "nav:not([class]) > button"))
+	@Autowired
+	ChatPage chatPage;
+
+	@FindAll(@FindBy(css = "nav > button[class*='styles__textButton']"))
 	private List<WebElement> navigationLinkList;
 
-	@FindBy(css = "nav:not([class]) > button")
+	@FindBy(css = "nav > button[class*='styles__textButton']")
 	private WebElement nextLinkWhenTheresNoGoingBack;
 
-	@FindBy(css = "nav:not([class]) > button:nth-child(1)")
+	@FindBy(css = "nav > button[class*='styles__textButton']:nth-child(1)")
 	private WebElement previousOrBackLink;
 
-	@FindBy(css = "nav:not([class]) > button:nth-child(2)")
+	@FindBy(css = "nav > button[class*='styles__textButton']:nth-child(2)")
 	private WebElement nextLinkWhenThereIsABackOrPreviousLink;
 
 	@FindBy(css = "*[class*='speechBubble']")
 	private WebElement tessSpeechBubble;
 
-	@FindBy(css = "figure + nav[class] > button:nth-child(2)")
+	@FindBy(css = "figure + nav > button[class^='styles__textButton']:nth-child(2)")
 	private WebElement nextLinkForStoryPanels;
 
-	@FindAll(@FindBy(css = "figure + nav[class] > button"))
+	@FindAll(@FindBy(css = "figure + nav > button[class^='styles__textButton']"))
 	private List<WebElement> navLinksForStoryPanelsList;
 
 	@FindAll(@FindBy(css = "div[class*='modal']"))
@@ -61,13 +70,19 @@ public class StoryBoardPage extends AbstractPage {
 	@FindBy(css = "div[class*='storyboard'] > figure > img")
 	private WebElement storyBoardImage;
 
+	@FindAll(@FindBy(css = "div[class*='storyboard'] > figure > img"))
+	private List<WebElement> storyBoardImageList;
+
 	public StoryBoardPage(EventFiringWebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 
+	public boolean beyondSurvey() {
+		return navigationLinkList.size() > 0;
+	}
+	
 	public StoryBoardPage clickNextLink() {
-		waitForElement(htmlColorDefinedElement);
 		waitForElement(nextLinkWhenTheresNoGoingBack);
 		// check if there is two-way or one-way navigation on the page
 		int navigationLinks = navigationLinkList.size();
@@ -82,8 +97,14 @@ public class StoryBoardPage extends AbstractPage {
 	}
 
 	public String getTessSpeechBubble() {
-		waitForElement(tessSpeechBubble);
-		return tessSpeechBubble.getText().trim();
+
+		try {
+			waitForElement(tessSpeechBubble);
+			return tessSpeechBubble.getText().trim();
+		} catch (StaleElementReferenceException s) {
+			waitForElement(tessSpeechBubble);
+			return tessSpeechBubble.getText().trim();
+		}
 	}
 
 	public void waitForTessDialogToUpdate(String currentText) {
@@ -102,29 +123,50 @@ public class StoryBoardPage extends AbstractPage {
 
 	public StoryBoardPage clicknextLinkForStoryPanels() {
 		waitForElement(nextLinkForStoryPanels);
-		nextLinkForStoryPanels.click();
+		try {
+			nextLinkForStoryPanels.click();
+		} catch (ElementClickInterceptedException e) {
+			nextLinkForStoryPanels.click();
+		}
 		return this;
 	}
 
 	/*
-	 * This method checks if a loader element is present first which would indicate the storyBoards are done
-	 * and the simulator is going to a Chat or the ON Dashboard. If that isn't present then it will check every .25
-	 * seconds for 2.5 seconds to see if the src attribute has changed which means a new storyboard has loaded and the
-	 * user should click Next again or if the Chat with Tess modal has appeared which stops the user from trying to
-	 * click on the Next link -- jb
+	 * This method checks if a loader element is present first which would indicate
+	 * the storyBoards are done and the simulator is going to a Chat or the ON
+	 * Dashboard. If that isn't present then it will check every .25 seconds for a
+	 * total of 2.5 seconds to see if the src attribute has changed which means a
+	 * new storyboard has loaded and the user should click Next again or if the Chat
+	 * with Tess modal has appeared which stops the user from trying to click on the
+	 * Next link -- jb
 	 */
-	
+
 	public boolean moveOnToNextStoryBoard() {
 		boolean clickNext = false;
 		if (loaderPresent()) {
+			System.out.println("============================= loader present");
 			return clickNext;
 		}
 
-		waitForElement(storyBoardImage);
+		// We need something here because this is occasionally failing on SauceLabs with
+		// the
+		// screenshot showing the user is on the Chat but the test thinks it's still on
+		// the storyboards until it fails -- jb 6/18/19
+
+		// Check if storyboard or footer is present?
 		int counter = 0;
 
 		while (counter < 10) {
-			String newSrc = storyBoardImage.getAttribute("src");
+			String newSrc = "";
+
+			try {
+				newSrc = storyBoardImage.getAttribute("src");
+			} catch (NoSuchElementException n) {
+				System.out.println("footer present " + (chatPage.footerElementPresent()));
+				System.out.println("test saved?!");
+				break;
+			}
+
 			String oldSrc = scenarioSession.getStoryBoardSrc();
 
 			if (!newSrc.equals(oldSrc)) {

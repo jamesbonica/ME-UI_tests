@@ -1,5 +1,7 @@
 package com.moneyexperience.pageObject;
 
+import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
+
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -10,9 +12,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
+@Scope(SCOPE_CUCUMBER_GLUE)
 public class TopMenuPage extends AbstractPage {
 
 	@Autowired
@@ -20,6 +24,12 @@ public class TopMenuPage extends AbstractPage {
 
 	@Autowired
 	PageObjectFactory pageObjectFactory;
+
+	@FindBy(css = "div[role='navigation'] + div span")
+	private WebElement meIcon;
+
+	@FindBy(css = "div[role='navigation'] ~ div > nav div:nth-child(2) button:nth-child(2)")
+	private WebElement resetProgressButton;
 
 	@FindBy(css = "nav svg + span")
 	private WebElement usernameDropdown;
@@ -29,9 +39,10 @@ public class TopMenuPage extends AbstractPage {
 
 	@FindBy(css = "div[role ='dialog']")
 	private WebElement resetUserModal;
+	
+	@FindAll(@FindBy(css = "img[data-testid = 'full-logo']"))
+	private List<WebElement> meFullLogoList;
 
-	@FindAll(@FindBy(css = "div[role ='dialog']"))
-	private List<WebElement> resetUserModalList;
 
 	// This returns a list of all Reset Lesson Links which could be as few as one or
 	// as many as nine
@@ -41,6 +52,12 @@ public class TopMenuPage extends AbstractPage {
 	public TopMenuPage(EventFiringWebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
+	}
+
+	public TopMenuPage clickMeIcon() {
+		waitForElement(meIcon);
+		meIcon.click();
+		return this;
 	}
 
 	public String getUsernameText() {
@@ -54,19 +71,12 @@ public class TopMenuPage extends AbstractPage {
 		return pageObjectFactory.getLoginPage();
 	}
 
-	public TopMenuPage clickuserName() {
-		waitForElement(usernameDropdown);
-		usernameDropdown.click();
-		return this;
-	}
-
 	public TopMenuPage clickResetLessonLink(Integer lessonNumber) {
-		waitForElement(htmlColorDefinedElement);
 		List<WebElement> resetLessonLinkList = waitForResetLessonLinksListToBeFullyLoaded(lessonNumber);
 		for (WebElement element : resetLessonLinkList) {
-
 			if (element.getText().startsWith(lessonNumber.toString() + " ")) {
 				element.click();
+
 			}
 		}
 		return this;
@@ -76,7 +86,7 @@ public class TopMenuPage extends AbstractPage {
 		int counter = 0;
 		List<WebElement> resetLessonLinkList = null;
 		while (counter <= 5) {
-			resetLessonLinkList = driver.findElements(By.cssSelector("div[class^='tooltiptext'][open] h2 ~ div > a"));
+			resetLessonLinkList = driver.findElements(By.cssSelector("div[role='dialog'] button:not([disabled])>span"));
 			if (resetLessonLinkList.size() >= lessonNumber) {
 				break;
 			}
@@ -99,9 +109,21 @@ public class TopMenuPage extends AbstractPage {
 					"The Reset Progress Modal is not present. Check the click on the Reset User to Lesson ... dropdown functionality");
 		}
 
-		waitForElementToLeave(resetUserModalList);
+		waitForElementToLeave(meFullLogoList);
 
 		return this;
+	}
+
+	public TopMenuPage clickResetProgressButton() {
+		waitForElement(resetProgressButton);
+		resetProgressButton.click();
+		return this;
+	}
+
+	public LessonIntroPage waitForTopMenuToDisappear() {
+		waitForElementToLeave(meFullLogoList);
+		return pageObjectFactory.getLessonIntroPage();
+
 	}
 
 }

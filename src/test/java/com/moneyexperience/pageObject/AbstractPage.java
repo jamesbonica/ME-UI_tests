@@ -2,9 +2,9 @@ package com.moneyexperience.pageObject;
 
 import java.util.List;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -20,8 +20,6 @@ public class AbstractPage {
 	@Autowired
 	PropertiesLoader propertiesLoader;
 
-	@FindBy(css = "html[style^='--primaryColor:#']")
-	protected WebElement htmlColorDefinedElement;
 
 	public AbstractPage navigateToWebApp() {
 		driver.navigate().to(propertiesLoader.getTestUrl());
@@ -58,7 +56,7 @@ public class AbstractPage {
 	
 	public AbstractPage waitForElementToLeave(List<WebElement> elementList) {
 		int counter = 0;
-		while (counter < 60) {
+		while (counter < 160) {
 			if ((elementList.size() > 0)) {
 		//		System.out.println("TEST!!!!!!!!!!!!!!!!!" + (elementList.size() > 0));
 			} else {
@@ -68,6 +66,12 @@ public class AbstractPage {
 			counter++;
 		}
 		return this;
+	}
+	
+	public AbstractPage scrollToElement(WebElement element) {
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		return this;
+		
 	}
 
 }

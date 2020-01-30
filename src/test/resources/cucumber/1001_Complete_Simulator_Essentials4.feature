@@ -1,6 +1,6 @@
 #Author: Jim Bonica jim@moneyexperience.com
-@Complete_Simulator_Experience
-Feature: 1000 Complete Simulator Experience
+@Complete_Simulator_Essentials4
+Feature: 1001 Complete Simulator Essentials 4
   Description: 
   	As a Money Experience Engineer
   	I want an automation tool to execute user choices for all TME Simulator lessons
@@ -8,7 +8,7 @@ Feature: 1000 Complete Simulator Experience
 
   @Lesson1
   Scenario: User completes Lesson 1
-    Given a user "configured user 1" logs in to ME with password "password"
+    Given a user "configured user 1" logs in to ME with password "for configured user 1"
     And a user resets the user progress to Lesson 1
     And a user clicks the Begin Button at the start of the lesson
     And a user sets priorities in the following order:
@@ -22,57 +22,93 @@ Feature: 1000 Complete Simulator Experience
       | Security    |
       | Social Good |
       | Free Time   |
-    And a user clicks the Next Button
-    And a user clicks the Next Link 2 times
-    And a user chooses the following responses in the Chat with Tess:
-      | carouselOrSlider | choice    | navigationDirection |
-      # For example, let's pick a job for you to have during the summer after high school.
-      # What kind of job would you try to get?
-      | text carousel    | Farm Hand | right               |
-    And a user clicks the Next Link
-    And a user goes through the storyboards
-    And A user clicks Go when Tess sends a new message
-    And a user chooses the following responses in the Chat with Tess:
-      | carouselOrSlider | choice                            | navigationDirection |
-      # Do you plan to attend college after high school?
-      |                  | Yes I'm going to college          |                     |
-      # Will you need to take out student loans?
-      |                  | Yeah, I'll need loans             |                     |
-      # Do you know how much your student loans will be?
-      |                  | Yes                               |                     |
-      # How much will your loans be?
-      | slider           |                            80,000 |                     |
-      # Do you plan to pursue an advanced degree?
-      |                  | No                                |                     |
-      # You've selected a summer job already, but do you plan to have a job while in school?
-      |                  | Yes                               |                     |
-      | text carousel    | Fitness Instructor                | right               |
-      # Do you plan to work full-time or part-time?
-      |                  | Part-time                         |                     |
-      # What are your eating habits like?
-      |                  | Fresh and organic ($$)            |                     |
-      # What's your travel style?
-      |                  | Tent and a backpack ($)           |                     |
-      # What's your average weekend like?
-      |                  | Out on the town ($$)              |                     |
-      # What is your fitness routine like?
-      |                  | A morning run ($)                 |                     |
-      # What is your gadget status?
-      |                  | Last year's model works fine ($$) |                     |
-      # What best describes your fashion choices?
-      |                  | Thrift-store treasure hunt ($)    |                     |
-      # Ready to move on?
-      |                  | Yes                               |                     |
-      # At this age, what kind of place would you like to live in?  Choose an option...
-      | image carousel   | Live with Family                  | right               |
-      # What kind of car would you like to buy?
-      | image carousel   | Public Transportation             | right               |
-    And a user clicks the Next Button on the Optional Narratives Dashboard
-    And a user clicks the Finish Lesson on the Lessson Checkpoint Page
+    And a user clicks the Continue Button
+  #  And a user completes the Baseline Assessment if the user has not completed it before
+  #  And a user clicks the Next Link 2 times
+  #  And a user chooses the following responses in the Chat with Tess:
+  #    | carouselOrSlider | choice    | navigationDirection |
+  #    # For example, let's pick a job for you to have during the summer after high school.
+  #    # What kind of job would you try to get?
+  #    | text carousel    | Farm Hand | right               |
+  #  And a user clicks the Next Link
+  #  And a user goes through the storyboards
+  #  And A user clicks Go when Tess sends a new message
+  #  And a user chooses the following responses in the Chat with Tess:
+  #    | carouselOrSlider | choice                                          | navigationDirection |
+  #    # Do you plan to attend college after high school?
+  #    #    # ================================ No College Route ===================================
+  #    #     |                  | No I'm not going to college                     |                     |
+  #    #     # What kind of job are you most likely to get?
+  #    #     | text carousel    | Barista                                    |                     |
+  #    #     # Do you plan to work full-time or part-time?
+  #    #     |                  | Full-time                                       |                     |
+  #    #    # ================================ No College Route ===================================
+  #    |                  | Yes I'm going to college                        |                     |
+  #    # Will you need to take out student loans?
+  #    # =============== Student Loans ================================
+  #    |                  | Yeah, I'll need loans                           |                     |
+  #    #  Do you know how much your student loans will be?
+  #    |                  | Yes                                             |                     |
+  #    #  How much will your loans be?
+  #    | slider           |                                          80,000 |                     |
+  #    # # ==============================================================
+  #    #    |                  | No, I won't need them                           |                     |
+  #    # What kind of school do you plan to go to?
+  #    | text carousel    | In-state University                             |                     |
+  #    # Do you plan to pursue an advanced degree?
+  #    |                  | No                                              |                     |
+  #    #  # ====================== Choosing an advanced degree ==========================
+  #    #   |                  | Yes                                             |                     |
+  #    #   # What type of advanced degree?
+  #    #   | text carousel    | A Law Degree                                    |                     |
+  #    #   # What type of school will you attend for your advanced degree?
+  #    #   |                  | In-State University                             |                     |
+  #    #   # How much financial support will you get from family, scholarships, or other means?
+  #    #   | slider           |                                          50,000 |                     |
+  #    #   # ==============================================================================
+  #    # You've selected a summer job already, but do you plan to have a job while in school?
+  #    |                  | Yes                                             |                     |
+  #    # What kind of job are you most likely to get?
+  #    | text carousel    | Fitness instructor                              | right               |
+  #    # Do you plan to work full-time or part-time?
+  #    |                  | Part-time                                       |                     |
+  #    # What are your eating habits like?
+  #    |                  | Fresh and organic ($$)                          |                     |
+  #    # What's your travel style?
+  #    |                  | Tent and a backpack ($)                         |                     |
+  #    # What's your average weekend like?
+  #    |                  | Out on the town ($$)                            |                     |
+  #    # What is your fitness routine like?
+  #    |                  | A morning run ($)                               |                     |
+  #    # What is your gadget status?
+  #    |                  | Last year's model works fine ($$)               |                     |
+  #    # What best describes your fashion choices?
+  #    |                  | Thrift-store treasure hunt ($)                  |                     |
+  #    # What best describes the region where you will be living?
+  #    | text carousel    | A smaller, up & coming city (Like Portland, ME) |                     |
+  #    # Ready to move on?
+  #    |                  | Yes                                             |                     |
+  #    # At this age, what kind of place would you like to live in?  Choose an option...
+  #    | image carousel   | Live with Family                                | right               |
+  #    # What kind of car would you like to buy?
+  #    | image carousel   | Public Transportation                           | right               |
+  #  And a user selects the "Take a Trip" Optional Narrative from the Dashboard
+  #  And the user chooses the following responses in the Optional Narrative Chat with Tess:
+  #    | carouselOrSlider | choice                           | navigationDirection |
+  #    # Would you like to take a trip somewhere?
+  #    |                  | Probably                         |                     |
+  #    # Where would you like to go?
+  #    | text carousel    | Outdoor adventure in New Zealand |                     |
+  #    # A week in ... Still game?
+  #    |                  | Book it!                         |                     |
+  #    # For now, let's go back to the dashboard.
+  #    |                  | OK                               |                     |
+  #  And a user clicks the Next Button on the Optional Narratives Dashboard
+  #  And a user clicks the Finish Lesson on the Lessson Checkpoint Page
 
   @Lesson2
   Scenario: User completes Lesson 2
-    Given a user "configured user 1" logs in to ME with password "password"
+    Given a user "configured user 1" logs in to ME with password "for configured user 1"
     And a user resets the user progress to Lesson 2
     And a user clicks the Begin Button at the start of the lesson
     And a user clicks the Next Button
@@ -103,17 +139,30 @@ Feature: 1000 Complete Simulator Experience
       | text carousel    | A smaller, up & coming city (Like Portland, ME)               |                     |
       # Would you still like to live in a smaller up & coming city like Portland, Maine?
       |                  | Yes                                                           |                     |
-      # Would you like to change the type of residence that you live in?
-      |                  | No                                                            |                     |
+      # Where would you like to live?
+      | text carousel    | Rent-free with Family $0/mo                                   |                     |
       # OK, that's it for now! Let's move on.
       |                  | Ok                                                            |                     |
     And a user goes through the storyboards
+    And a user answers 4 Post Survey Questions
+    And a user selects the "Apply for a Credit Card" Optional Narrative from the Dashboard
+    And the user chooses the following responses in the Optional Narrative:
+      | carouselOrSlider | choice                                                       | navigationDirection |
+      | image carousel   | $500 bonus and 3% cash back at your favorite online retailer | right               |
+    And a user selects the "Who Are You Dating" Optional Narrative from the Dashboard
+    And the user chooses the following responses in the Optional Narrative:
+      | carouselOrSlider | choice | navigationDirection |
+      | dating app       | Jenn   | right               |
+    And a user selects the "Buy a Car" Optional Narrative from the Dashboard
+    And the user chooses the following responses in the Optional Narrative:
+      | carouselOrSlider | choice    | navigationDirection |
+      | image carousel   | Hatchback | right               |
     And a user clicks the Next Button on the Optional Narratives Dashboard
     And a user clicks the Finish Lesson on the Lessson Checkpoint Page
 
   @Lesson3
   Scenario: User completes Lesson 3
-    Given a user "configured user 1" logs in to ME with password "password"
+    Given a user "configured user 1" logs in to ME with password "for configured user 1"
     And a user resets the user progress to Lesson 3
     And a user clicks the Begin Button at the start of the lesson
     And a user clicks the Next Button
@@ -121,14 +170,22 @@ Feature: 1000 Complete Simulator Experience
     And a user goes through the storyboards
     And a user chooses the following responses in the Chat with Tess:
       | carouselOrSlider | choice                               | navigationDirection |
-      # Would you like to change your living situation by renting or buying a new place?
-      |                  | No, stay where I am                  |                     |
       # Would you like to try living in a different region?
       |                  | No                                   |                     |
+      # Would you like to change your living situation by renting or buying a new place?
+      |                  | No, stay where I am                  |                     |
       # OK let's talk about your career! What kind of career are you looking for?
-      | text carousel    | Something in technology              | right               |
-      # What kind of technology career?
-      |                  | Tech / software developer            |                     |
+      # # ============ No college track ======================
+      | text carousel    | Something in business                | right               |
+      # What kind of business career?
+      | text carousel    | Investment manager                   | left                |
+      # # =========================================================
+      # | text carousel    | Something in technology              | left                |
+      # # What kind of technology career?
+      # |                  | Tech / software developer            |                     |
+      #    | text carousel    | Something in public service          | left                |
+      # What kind of public service career?
+      #    | text carousel    | Police officer                               |                     |
       # Are you someone who cooks or eats out a lot?
       |                  | I cook at home a lot ($)             |                     |
       # When you eat out, what type of stuff do you get?
@@ -142,12 +199,38 @@ Feature: 1000 Complete Simulator Experience
       # OK That's it for now! I heard Ria is back from the military, let's go see what she's up to.
       |                  | OK                                   |                     |
     And a user goes through the storyboards
+    And a user answers 2 Post Survey Questions
+    And a user selects the "Get Married" Optional Narrative from the Dashboard
+    And the user chooses the following responses in the Optional Narrative Chat with Tess:
+      | carouselOrSlider | choice                                                          | navigationDirection |
+      # Would you like to get married?
+      |                  | Yes                                                             |                     |
+      # What kind of wedding do you imagine?
+      |                  | Modest, not taking things too seriously                         |                     |
+      # What % of this wedding will you be paying for?
+      | slider           | 80%                                                             |                     |
+      # What's the venue like?
+      |                  | A charming wedding facility ($$)                                |                     |
+      # How big is the guest list?
+      |                  | Extended family and social circles ($$)                         |                     |
+      # How is the wedding party dressed?
+      |                  | Formal ($$)                                                     |                     |
+      # How about meals?
+      |                  | Reasonably good catering ($$)                                   |                     |
+      # And the bar tab?
+      |                  | Free drinks... until 8pm ($$)                                   |                     |
+      # What kind of music?
+      |                  | Hired professional DJ ($$)                                      |                     |
+      # Where is the honeymoon?
+      |                  | Let's kick this thing off: An unforgettable trip overseas ($$$) |                     |
+      # Let's head back to the dashboard.
+      |                  | OK                                                              |                     |
     And a user clicks the Next Button on the Optional Narratives Dashboard
     And a user clicks the Finish Lesson on the Lessson Checkpoint Page
 
   @Lesson4
   Scenario: User completes Lesson 4
-    Given a user "configured user 1" logs in to ME with password "password"
+    Given a user "configured user 1" logs in to ME with password "for configured user 1"
     And a user resets the user progress to Lesson 4
     And a user clicks the Begin Button at the start of the lesson
     And a user clicks the Next Button
@@ -157,24 +240,27 @@ Feature: 1000 Complete Simulator Experience
       | carouselOrSlider | choice                                                | navigationDirection |
       # First of all, are you still happy with where you're living, or would you like to move?
       |                  | I want to move                                        |                     |
-      # Where would you like to move to?
+      ##### **** Opportunity to change financial condition significantly in one choice ***** Where would you like to move to? <================
       | text carousel    | A Southern city (Like Atlanta, or New Orleans)        | left                |
-      #  Would you still like to live in a southern city like Atlanta or New Orleans?
-      |                  | Yes                                                   |                     |
-      # Would you like to change your residence, or buy a house?
+      # | text carousel    | An idyllic suburb (Like Brookline, MA)        | left                |
+      #      | text carousel    | A coastal big city (Like San Francisco, New York)     | left                |
+      #  Would you still like to live in {what you chose}
       |                  | Yes                                                   |                     |
       # Where would you like to live?
-      | text carousel    | Starter Home                                          | right               |
+      | text carousel    | "Forever" Home                                        | right               |
+      #     | text carousel    | A two bedroom apartment                                      | right               |
       # Would you still like to choose this option?
       |                  | Yes                                                   |                     |
+      # # ======================= Rental option ===================================
+      ## Would you like to live with a roommate?
+      #  |                  | No                                                    |                     |
+      # # =======================================================================
       # Now let's get back to some basics. What's for dinner?
       |                  | A home cooked meal ($$)                               |                     |
       # How about your daily coffee habit?
       |                  | Daily stop to the corner cafe ($$$)                   |                     |
       # How do you stay active?
       |                  | Regular walks or runs ($)                             |                     |
-      # How about your social activities?
-      |                  | Quiet nights, like dinner out and a movie ($)         |                     |
       # How important is technology?
       |                  | I like tech stuff, but don't think about it much ($$) |                     |
       # Do you have any pets?
@@ -191,8 +277,6 @@ Feature: 1000 Complete Simulator Experience
       |                  | I'll go, but that is my wedding gift to you. ($$)     |                     |
       # How will you spend an average night out with friends?
       |                  | Low key dinner. I'll probably leave early ($)         |                     |
-      # How much are you actively staying fit?
-      |                  | Weekly fitness classes ($$$)                          |                     |
       # Now that you're settling into your career, would you like to adjust your 401k contribution?
       |                  | Yes                                                   |                     |
       # How much of your salary would you like to contribute?
@@ -205,12 +289,49 @@ Feature: 1000 Complete Simulator Experience
       | slider           | 10%                                                   |                     |
       # OK, let's move onto your dashboard.
       |                  | OK                                                    |                     |
+    And a user answers 1 Post Survey Question
+    And a user selects the "Have a Child" Optional Narrative from the Dashboard
+    And the user chooses the following responses in the Optional Narrative Chat with Tess:
+      | carouselOrSlider | choice                                       | navigationDirection |
+      # Would you like to start a family, or add to the one you've started?
+      |                  | Yes                                          |                     |
+      # How many children would you like to have at this age?
+      |                  |                                            2 |                     |
+      # OK! Congrats! ...
+      |                  | Yay!                                         |                     |
+      #  |                  | Great!                                         |                     |
+      # What kind of childcare do you envision for your kids?
+      | text carousel    | I’ll bring them to a daycare facility        |    left                 |
+      # What type of primary school would you like your children to attend?
+      |                  | Public school $0/year                        |                     |
+      # What about college?
+      | text carousel    | In-state university                          |      right               |
+      # Will you help them pay for college?
+      |                  | Yes                                          |                     |
+      # The best way to do that is with a 529 account. Would you like to start or change your 529 contribution now?
+      |                  | Yes                                          |                     |
+      # How much of your paycheck would you like to contribute to a 529?
+      | slider           | 8%                                           |                     |
+      # What kind of food will your kids eat?
+      |                  | Homemade with love ($$)                      |                     |
+      # What kind of clothes will they wear?
+      |                  | Who cares as long as it’s clean ($$)         |                     |
+      # Who is babysitting them on datenight?
+      |                  | Teenage son/daughter of a family friend ($$) |                     |
+      # How’s that stroller?
+      |                  | Well-reviewed and on sale ($$)               |                     |
+      # What kind of toys?
+      |                  | Lots of lights and noise ($$)                |                     |
+      # OK great, that gives me a pretty good idea of how much kids will cost you!
+      |                  | OK                                           |                     |
+      # Let's return to the dashboard.
+      |                  | OK                                           |                     |
     And a user clicks the Next Button on the Optional Narratives Dashboard
     And a user clicks the Finish Lesson on the Lessson Checkpoint Page
 
   @Lesson5
   Scenario: User completes Lesson 5
-    Given a user "configured user 1" logs in to ME with password "password"
+    Given a user "configured user 1" logs in to ME with password "for configured user 1"
     And a user resets the user progress to Lesson 5
     And a user clicks the Begin Button at the start of the lesson
     And a user clicks the Next Button
@@ -249,7 +370,9 @@ Feature: 1000 Complete Simulator Experience
       # Would you like to edit how much you contribute to a 401k?
       |                  | No                                               |                     |
       # How about a 529? Are you saving for your kids' education in your 30s?
-      |                  | No                                               |                     |
+      |                  | Yes                                              |                     |
+      # How much of your income are you saving?
+      | slider           | 8%                                               |                     |
       # OK lastly, would you like to adjust how much you're investing?
       |                  | No                                               |                     |
       # OK, let's move onto your dashboard.
@@ -259,7 +382,7 @@ Feature: 1000 Complete Simulator Experience
 
   @Lesson6
   Scenario: User completes Lesson 6
-    Given a user "configured user 1" logs in to ME with password "password"
+    Given a user "configured user 1" logs in to ME with password "for configured user 1"
     And a user resets the user progress to Lesson 6
     And a user clicks the Begin Button at the start of the lesson
     And a user clicks the Next Button
@@ -283,8 +406,6 @@ Feature: 1000 Complete Simulator Experience
       |                  | I'll read a book ($)                                |                     |
       # When you go to a concert or sporting event, where are your seats?
       |                  | Somewhere in the middle ($$)                        |                     |
-      # You wake up one morning and notice your bathroom is looking pretty dingy. How will you handle it?
-      |                  | Gut renovation. Rip everything out. ($$$)           |                     |
       # Your friend brought his dog in your car, and he had a little accident in the backseat.
       |                  | Vinegar and water, scrub until clean ($)            |                     |
       # You're pretty busy, and food prep is swallowing your time. How do you make it more efficient?
@@ -300,17 +421,20 @@ Feature: 1000 Complete Simulator Experience
       # How much would you like to contribute?
       | slider           | 12%                                                 |                     |
       # How about a 529? Are you saving for your kids' education in your 40s?
-      |                  | No                                                  |                     |
+      |                  | Yes                                                 |                     |
+      # How much of your income are you saving?
+      | slider           | 8%                                                  |                     |
       # OK lastly, would you like to adjust how much you're investing?
       |                  | No                                                  |                     |
       # OK, let's move onto your optional choices!
       |                  | OK                                                  |                     |
+    And a user answers 1 Post Survey Question
     And a user clicks the Next Button on the Optional Narratives Dashboard
     And a user clicks the Finish Lesson on the Lessson Checkpoint Page
 
   @Lesson7
   Scenario: User completes Lesson 7
-    Given a user "configured user 1" logs in to ME with password "password"
+    Given a user "configured user 1" logs in to ME with password "for configured user 1"
     And a user resets the user progress to Lesson 7
     And a user clicks the Begin Button at the start of the lesson
     And a user clicks the Next Button
@@ -348,12 +472,13 @@ Feature: 1000 Complete Simulator Experience
       |                  | No                                                             |                     |
       # OK, let's move onto your dashboard.
       |                  | OK                                                             |                     |
+    And a user answers 1 Post Survey Question
     And a user clicks the Next Button on the Optional Narratives Dashboard
     And a user clicks the Finish Lesson on the Lessson Checkpoint Page
 
   @Lesson8
   Scenario: User completes Lesson 8
-    Given a user "configured user 1" logs in to ME with password "password"
+    Given a user "configured user 1" logs in to ME with password "for configured user 1"
     And a user resets the user progress to Lesson 8
     And a user clicks the Begin Button at the start of the lesson
     And a user clicks the Next Button
@@ -384,7 +509,7 @@ Feature: 1000 Complete Simulator Experience
 
   @Lesson9
   Scenario: User completes Lesson 9
-    Given a user "configured user 1" logs in to ME with password "password"
+    Given a user "configured user 1" logs in to ME with password "for configured user 1"
     And a user resets the user progress to Lesson 9
     And a user clicks the Begin Button at the start of the lesson
     And a user clicks the Next Button
@@ -408,5 +533,5 @@ Feature: 1000 Complete Simulator Experience
       |                  | Frequent checkups with preventative action plans ($$)        |                     |
       # OK, that's it for your lifestyle in your senior years, let's move on.
       |                  | Ok                                                           |                     |
-    And a user clicks the Next Link
+    And a user answers 1 Post Survey Question
     And a user clicks the Next Button on the Optional Narratives Dashboard

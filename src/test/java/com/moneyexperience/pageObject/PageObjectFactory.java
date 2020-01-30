@@ -1,10 +1,14 @@
 package com.moneyexperience.pageObject;
 
+import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
+@Scope(SCOPE_CUCUMBER_GLUE)
 public class PageObjectFactory {
 
 	@Autowired
@@ -29,6 +33,14 @@ public class PageObjectFactory {
 
 	public LessonCheckpointPage getLessonCheckpointPage() {
 		return (LessonCheckpointPage) appContext.getBean("lessonCheckpointPage");
+	}
+	
+	public AssessmentPage getAssessmentPage() {
+		return (AssessmentPage) appContext.getBean("assessmentPage");
+	}
+	
+	public StoryBoardPage getStoryBoardPage() {
+		return (StoryBoardPage) appContext.getBean("storyBoardPage");
 	}
 	
 	

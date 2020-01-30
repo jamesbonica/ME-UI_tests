@@ -11,10 +11,12 @@ import com.moneyexperience.service.ResponseService;
 import com.moneyexperience.service.UserService;
 
 import config.ScenarioSession;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
+import io.cucumber.java.en.Then;
 import io.cucumber.datatable.DataTable;
+
+import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
 
 /**
  * 
@@ -23,7 +25,7 @@ import io.cucumber.datatable.DataTable;
  * @date Apr-10-2019
  */
 
-@Scope("cucumber-glue")
+@Scope(SCOPE_CUCUMBER_GLUE)
 public class Stepdefs {
 
 	@Autowired
@@ -47,8 +49,9 @@ public class Stepdefs {
 
 	@When("a user {string} logs in to ME with password {string}")
 	public void a_user_logs_in_to_ME_with_password(String username, String password) {
+		
 
-		userService.loginToWebApp(username, password);
+	//	userService.loginToWebApp(username, password);
 	}
 
 	@Then("the user logs out")
@@ -73,13 +76,20 @@ public class Stepdefs {
 	public void a_user_sets_priorities_in_the_following_order(List<String> prioritiesList) {
 
 		lessonService.setPriorities(prioritiesList);
-		scenarioSession.takeScreenShot();
+		scenarioSession.takeScreenShot("priorities_set");
 
 	}
 
 	@Given("a user clicks the Next Button")
 	public void a_user_clicks_the_Next_Button() {
 		lessonService.clickNextButton();
+		
+	}
+	
+	@Given("a user clicks the Continue Button")
+	public void a_user_clicks_the_Continue_Button() {
+		lessonService.clickContinueButton();
+		
 	}
 
 	@Given("a user clicks the Send Button")
@@ -139,6 +149,39 @@ public class Stepdefs {
 			responseService.enterUserResponse(carouselOrSlider, choice, navigationDirection);
 
 		}
+	}
+
+	@Given("a user selects the {string} Optional Narrative from the Dashboard")
+	public void a_user_selects_the_Optional_Narrative_from_the_Dashboard(String optionalNarrativeChoice) {
+		lessonService.chooseOptionalNarrative(optionalNarrativeChoice);
+	}
+
+	// Added just to differentiate the wording of interacting with Tess in an
+	// Optional Narrative from the Lesson Chats
+	@Given("the user chooses the following responses in the Optional Narrative Chat with Tess:")
+	public void the_user_choses_the_following_responses_in_the_Optional_Narrative_with_Tess(DataTable responses) {
+		a_user_chooses_the_following_responses_in_the_Chat_with_Tess(responses);
+	}
+
+	@Given("the user chooses the following responses in the Optional Narrative:")
+	public void the_user_choses_the_following_responses_in_the_Optional_Narrative(DataTable responses) {
+		a_user_chooses_the_following_responses_in_the_Chat_with_Tess(responses);
+	}
+
+	@Given("a user completes the Baseline Assessment if the user has not completed it before")
+	public void a_user_completes_the_Baseline_Assessment_if_the_user_has_not_completed_it_before() {
+		responseService.answerAssessmentQuestions("baseline", 5);
+	}
+	
+	@Given("a user answers {int} Post Survey Questions")
+	public void a_user_answers_Post_Survey_Questions(Integer questions) {
+		int pages = questions/2;
+		responseService.answerAssessmentQuestions("post", pages);
+	}
+	
+	@Given("a user answers {int} Post Survey Question")
+	public void a_user_answers_Post_Survey_Question(Integer questions) {
+		responseService.answerAssessmentQuestions("post", questions);
 	}
 
 }
