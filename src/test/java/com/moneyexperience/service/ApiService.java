@@ -15,6 +15,8 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseOptions;
 
+import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
+
 /**
  * 
  * @author jimbonica
@@ -23,7 +25,7 @@ import io.restassured.response.ResponseOptions;
  */
 
 @Service
-@Scope("cucumber-glue")
+@Scope(SCOPE_CUCUMBER_GLUE)
 public class ApiService {
 
 	@Autowired

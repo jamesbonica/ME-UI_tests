@@ -1,10 +1,13 @@
 package com.moneyexperience.pageObject;
 
+import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 /**
@@ -15,6 +18,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
+@Scope(SCOPE_CUCUMBER_GLUE)
 public class DashboardPage extends AbstractPage {
 
 	@Autowired
@@ -27,13 +31,13 @@ public class DashboardPage extends AbstractPage {
 	private WebElement nextButton;
 
 	//// The icons for the optional narratives
-	@FindBy(css = "button > img[src*='credit_card']")
+	@FindBy(css = "button > img[src*='credit']")
 	private WebElement creditCardIcon;
 
 	@FindBy(css = "button > img[src*='CAREER']")
 	private WebElement careerIcon;
 
-	@FindBy(css = "button > img[src*='firstcar']")
+	@FindBy(css = "button > img[src*='/car']")
 	private WebElement carIcon;
 
 	@FindBy(css = "button > img[src*='HEART']")

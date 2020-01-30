@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
+import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
 
 import com.moneyexperience.pageObject.AssessmentPage;
 import com.moneyexperience.pageObject.ChatPage;
@@ -23,7 +24,7 @@ import config.SurveyQuestionAndResponse;
  */
 
 @Service
-@Scope("cucumber-glue")
+@Scope(SCOPE_CUCUMBER_GLUE)
 public class ResponseService {
 
 	@Autowired

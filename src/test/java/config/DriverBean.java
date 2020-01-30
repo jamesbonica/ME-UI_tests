@@ -1,5 +1,7 @@
 package config;
 
+import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
+
 import java.net.URL;
 
 import org.openqa.selenium.Capabilities;
@@ -18,6 +20,8 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
+
 import config.PropertiesLoader;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -30,6 +34,7 @@ public class DriverBean {
 
 	final String recordScreenshotsProperty = "recordScreenshots";
 	
+	@Scope(SCOPE_CUCUMBER_GLUE)
 	@Bean(name = "driver", destroyMethod = "quit")
 	public EventFiringWebDriver getEventFiringWebDriver() throws Exception {
 		
@@ -62,7 +67,7 @@ public class DriverBean {
 				// desiredCapabilities.setCapability(CapabilityType.SUPPORTS_APPLICATION_CACHE,false);
 				chromeOptions.setCapability(CapabilityType.SUPPORTS_APPLICATION_CACHE, false);
 				;
-				driver = new ChromeDriver(chromeOptions);
+				driver = new ChromeDriver(chromeOptions); 
 
 				break;
 			case "edge":

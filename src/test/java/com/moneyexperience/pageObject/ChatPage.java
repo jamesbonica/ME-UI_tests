@@ -1,5 +1,7 @@
 package com.moneyexperience.pageObject;
 
+import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
+
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -12,6 +14,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 /**
@@ -22,6 +25,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
+@Scope(SCOPE_CUCUMBER_GLUE)
 public class ChatPage extends AbstractPage {
 
 	@Autowired
@@ -155,7 +159,9 @@ public class ChatPage extends AbstractPage {
 		//	 System.out.println("Expected option is: " + choice);
 		//	 System.out.println("TEST!!!!! " + element.getText());
 			if (element.getText().trim().equalsIgnoreCase(choice)) {
+		//		System.out.println("CLICK!!!!!!!!!");
 				element.click();
+				break;
 			}
 		}
 		return this;

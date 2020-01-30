@@ -6,7 +6,10 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
-import cucumber.api.Scenario;
+
+import io.cucumber.java.Scenario;
+
+import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
 
 /**
  * 
@@ -16,7 +19,7 @@ import cucumber.api.Scenario;
  */
 
 @Configuration
-@Scope("cucumber-glue")
+@Scope(SCOPE_CUCUMBER_GLUE)
 public class ScenarioSession {
 
 	@Autowired
@@ -36,9 +39,9 @@ public class ScenarioSession {
 		return scenario;
 	}
 
-	public void takeScreenShot() {
+	public void takeScreenShot(String name) {
 		final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-		scenario.embed(screenshot, "image/png"); // stick it in the report
+		scenario.embed(screenshot, "image/png", name); // stick it in the report
 
 	}
 
