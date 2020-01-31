@@ -9,7 +9,7 @@ Feature: 1002 Complete Simulator Essentials 5
   @Lesson1
   Scenario: User completes Lesson 1
     Given a user "configured user 1" logs in to ME with password "for configured user 1"
-#    And a user resets the user progress to Lesson 1
+    And a user resets the user progress to Lesson 1
 #    And a user clicks the Begin Button at the start of the lesson
 #    And a user sets priorities in the following order:
 #      | Education   |

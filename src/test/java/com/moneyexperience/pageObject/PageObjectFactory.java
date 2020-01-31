@@ -43,6 +43,10 @@ public class PageObjectFactory {
 		return (StoryBoardPage) appContext.getBean("storyBoardPage");
 	}
 	
+	public UserMenuPage getUserMenuPage() {
+		return (UserMenuPage) appContext.getBean("userMenuPage");
+	}
+	
 	
 
 }
