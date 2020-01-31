@@ -2,9 +2,12 @@ package com.moneyexperience.pageObject;
 
 import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
@@ -23,10 +26,12 @@ public class LessonIntroPage extends AbstractPage {
 
 	@Autowired
 	PageObjectFactory pageObjectFactory;
-	
 
 	@FindBy(css = "button[data-testid = 'begin-button']")
 	private WebElement beginButton;
+
+	@FindAll(@FindBy(css = "div[data-testid = 'lesson-img']"))
+	private List<WebElement> splashImageList;
 
 	@FindBy(css = "footer")
 	private WebElement footer;
@@ -46,6 +51,15 @@ public class LessonIntroPage extends AbstractPage {
 	public SetPrioritiesPage waitForBeginButton() {
 		waitForElement(beginButton);
 		return pageObjectFactory.getSetPrioritiesPage();
+	}
+
+	public boolean onLessonStartPage() {
+		waitForElement(lessonTitleAndNumberElement);
+		return splashImageList.size() > 0;
+	}
+
+	public boolean lessonDesiredLesson(Integer lessonNumber) {	
+		return lessonTitleAndNumberElement.getText().trim().startsWith(String.valueOf(lessonNumber));
 	}
 
 }

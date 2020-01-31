@@ -46,6 +46,7 @@ public class LoginPage extends AbstractPage {
 	public void clickLoginButton() {
 		waitForElement(submitButton);
 		submitButton.click();
+		waitForElement(lessonTitleAndNumberElement);
 	}
 
 }

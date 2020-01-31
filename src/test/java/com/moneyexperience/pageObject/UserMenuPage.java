@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
@@ -17,7 +18,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Scope(SCOPE_CUCUMBER_GLUE)
-public class TopMenuPage extends AbstractPage {
+public class UserMenuPage extends AbstractPage {
 
 	@Autowired
 	EventFiringWebDriver driver;
@@ -25,11 +26,14 @@ public class TopMenuPage extends AbstractPage {
 	@Autowired
 	PageObjectFactory pageObjectFactory;
 
-	@FindBy(css = "div[role='navigation'] + div span")
-	private WebElement meIcon;
+	@FindBy(css = "button > img[src*='burger']")
+	private WebElement hamburgerIcon;
 
-	@FindBy(css = "div[role='navigation'] ~ div > nav div:nth-child(2) button:nth-child(2)")
+	@FindBy(css = "nav[font-family] > div button:not([display]):last-of-type")
 	private WebElement resetProgressButton;
+
+	@FindAll(@FindBy(css = "nav[font-family] > div button:not([display]):last-of-type"))
+	private List<WebElement> resetProgressButtonList;
 
 	@FindBy(css = "nav svg + span")
 	private WebElement usernameDropdown;
@@ -39,24 +43,23 @@ public class TopMenuPage extends AbstractPage {
 
 	@FindBy(css = "div[role ='dialog']")
 	private WebElement resetUserModal;
-	
+
 	@FindAll(@FindBy(css = "img[data-testid = 'full-logo']"))
 	private List<WebElement> meFullLogoList;
-
 
 	// This returns a list of all Reset Lesson Links which could be as few as one or
 	// as many as nine
 //	@FindAll(@FindBy(css = "div[class^='tooltiptext'][open] h2 ~ div > a"))
 //	private List<WebElement> resetLessonLinkList;
 
-	public TopMenuPage(EventFiringWebDriver driver) {
+	public UserMenuPage(EventFiringWebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 
-	public TopMenuPage clickMeIcon() {
-		waitForElement(meIcon);
-		meIcon.click();
+	public UserMenuPage clickHamburgerIcon() {
+		waitForElement(hamburgerIcon);
+		hamburgerIcon.click();
 		return this;
 	}
 
@@ -71,14 +74,16 @@ public class TopMenuPage extends AbstractPage {
 		return pageObjectFactory.getLoginPage();
 	}
 
-	public TopMenuPage clickResetLessonLink(Integer lessonNumber) {
-		List<WebElement> resetLessonLinkList = waitForResetLessonLinksListToBeFullyLoaded(lessonNumber);
-		for (WebElement element : resetLessonLinkList) {
-			if (element.getText().startsWith(lessonNumber.toString() + " ")) {
-				element.click();
+	public UserMenuPage clickResetLessonLink(Integer lessonNumber) {
+		
+		List<WebElement> linkList = waitForResetLessonLinksListToBeFullyLoaded(lessonNumber);
+		
+		
 
-			}
-		}
+	// We're going to call the element again because we keep getting a StaleElementRefefenceException
+		String locator = "div[role='dialog'] button:not([disabled]):nth-of-type(" + lessonNumber + ")>span";
+		driver.findElement(By.cssSelector(locator)).click();
+
 		return this;
 	}
 
@@ -100,7 +105,7 @@ public class TopMenuPage extends AbstractPage {
 		return resetLessonLinkList;
 	}
 
-	public TopMenuPage clickAcceptResetProgressButton() {
+	public UserMenuPage clickAcceptResetProgressButton() {
 		waitForElement(resetUserModal);
 		try {
 			resetUserModal.findElement(By.cssSelector(" button:nth-of-type(2)")).click();
@@ -114,14 +119,14 @@ public class TopMenuPage extends AbstractPage {
 		return this;
 	}
 
-	public TopMenuPage clickResetProgressButton() {
+	public UserMenuPage clickResetProgressButton() {
 		waitForElement(resetProgressButton);
 		resetProgressButton.click();
 		return this;
 	}
 
-	public LessonIntroPage waitForTopMenuToDisappear() {
-		waitForElementToLeave(meFullLogoList);
+	public LessonIntroPage waitForUserMenuToDisappear() {
+		waitForElementToLeave(resetProgressButtonList);
 		return pageObjectFactory.getLessonIntroPage();
 
 	}
