@@ -51,7 +51,7 @@ public class Stepdefs {
 	public void a_user_logs_in_to_ME_with_password(String username, String password) {
 		
 
-	//	userService.loginToWebApp(username, password);
+		userService.loginToWebApp(username, password);
 	}
 
 	@Then("the user logs out")

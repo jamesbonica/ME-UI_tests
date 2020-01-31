@@ -7,8 +7,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
 
+import com.moneyexperience.pageObject.LessonIntroPage;
 import com.moneyexperience.pageObject.LoginPage;
-import com.moneyexperience.pageObject.TopMenuPage;
+import com.moneyexperience.pageObject.UserMenuPage;
 
 import config.CrossScenarioCache;
 import config.PropertiesLoader;
@@ -41,7 +42,10 @@ public class UserService {
 	LoginPage loginPage;
 
 	@Autowired
-	TopMenuPage topMenuPage;
+	UserMenuPage userMenuPage;
+
+	@Autowired
+	LessonIntroPage lessonIntroPage;
 
 	public void loginToWebApp(String username, String password) {
 		loginPage.navigateToWebApp();
@@ -54,11 +58,16 @@ public class UserService {
 	}
 
 	public void logout() {
-		topMenuPage.clickLogOutLink();
+		userMenuPage.clickLogOutLink();
 	}
 
 	public void resetUserProgressThroughUI(Integer lessonNumber) {
-		topMenuPage.clickMeIcon().clickResetProgressButton().clickResetLessonLink(lessonNumber).waitForTopMenuToDisappear(); //.clickAcceptResetProgressButton();
+		if (lessonIntroPage.onLessonStartPage() && lessonIntroPage.lessonDesiredLesson(lessonNumber)) {
+			// Do nothing
+		} else {
+			userMenuPage.clickHamburgerIcon().clickResetProgressButton().clickResetLessonLink(lessonNumber)
+					.waitForUserMenuToDisappear();
+		}
 	}
 
 	String getConfiguredUserName(String username) {
@@ -80,7 +89,8 @@ public class UserService {
 		}
 
 		if (password.contains("user 1")) {
-			scenarioSession.writeToReport("The password for this scenario is " + propertiesLoader.getConfiguredUser1Password());
+			scenarioSession.writeToReport(
+					"The password for this scenario is " + propertiesLoader.getConfiguredUser1Password());
 			return propertiesLoader.getConfiguredUser1Password();
 		} else {
 			return null;

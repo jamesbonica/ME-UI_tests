@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Scope;
 import static org.hamcrest.MatcherAssert.assertThat; 
 import  static org.hamcrest.Matchers.is;
 
-import com.moneyexperience.pageObject.TopMenuPage;
+import com.moneyexperience.pageObject.UserMenuPage;
 
 import config.ScenarioSession;
 import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
@@ -19,11 +19,11 @@ public class AssertionSteps {
 	ScenarioSession scenarioSession;
 	
 	@Autowired
-	TopMenuPage topMenuPage;
+	UserMenuPage userMenuPage;
 
 	@Then("ME must display the username {string} in the top menu")
 	public void me_must_display_the_username_in_the_top_menu(String expectedUsername) {
-		assertThat(topMenuPage.getUsernameText(), is(expectedUsername));
+		assertThat(userMenuPage.getUsernameText(), is(expectedUsername));
 		scenarioSession.takeScreenShot("top_menu");
 	}
 
