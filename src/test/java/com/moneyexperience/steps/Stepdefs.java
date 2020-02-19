@@ -49,7 +49,6 @@ public class Stepdefs {
 
 	@When("a user {string} logs in to ME with password {string}")
 	public void a_user_logs_in_to_ME_with_password(String username, String password) {
-		
 
 		userService.loginToWebApp(username, password);
 	}
@@ -80,16 +79,9 @@ public class Stepdefs {
 
 	}
 
-	@Given("a user clicks the Next Button")
-	public void a_user_clicks_the_Next_Button() {
-		lessonService.clickNextButton();
-		
-	}
-	
-	@Given("a user clicks the Continue Button")
-	public void a_user_clicks_the_Continue_Button() {
-		lessonService.clickContinueButton();
-		
+	@Given("a user confirms the priorities")
+	public void a_user_confirms_those_priorities() {
+		lessonService.confirmPriorities();
 	}
 
 	@Given("a user clicks the Send Button")
@@ -142,11 +134,11 @@ public class Stepdefs {
 	public void a_user_chooses_the_following_responses_in_the_Chat_with_Tess(DataTable responses) {
 		List<Map<String, String>> list = responses.asMaps(String.class, String.class);
 		for (int i = 0; i < list.size(); i++) {
-			String carouselOrSlider = list.get(i).get("carouselOrSlider");
+			String choiceType = list.get(i).get("choiceType");
 			String choice = list.get(i).get("choice");
 			String navigationDirection = list.get(i).get("navigationDirection");
 
-			responseService.enterUserResponse(carouselOrSlider, choice, navigationDirection);
+			responseService.enterUserResponse(choiceType, choice, navigationDirection);
 
 		}
 	}
@@ -172,13 +164,13 @@ public class Stepdefs {
 	public void a_user_completes_the_Baseline_Assessment_if_the_user_has_not_completed_it_before() {
 		responseService.answerAssessmentQuestions("baseline", 5);
 	}
-	
+
 	@Given("a user answers {int} Post Survey Questions")
 	public void a_user_answers_Post_Survey_Questions(Integer questions) {
-		int pages = questions/2;
+		int pages = questions / 2;
 		responseService.answerAssessmentQuestions("post", pages);
 	}
-	
+
 	@Given("a user answers {int} Post Survey Question")
 	public void a_user_answers_Post_Survey_Question(Integer questions) {
 		responseService.answerAssessmentQuestions("post", questions);

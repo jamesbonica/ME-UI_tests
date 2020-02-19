@@ -38,22 +38,22 @@ public class ResponseService {
 
 	@Autowired
 	PropertiesLoader propertiesLoader;
-	
+
 	@Autowired
 	ScenarioSession scenarioSession;
 
-	public void enterUserResponse(String carouselOrSlider, String choice, String navigationDirection) {
+	public void enterUserResponse(String choiceType, String choice, String navigationDirection) {
 		// System.out.println("============= carouselOrSlider is " + carouselOrSlider +
 		// " choice is " + choice + " navigationDirection is " + navigationDirection);
-		if (carouselOrSlider.equalsIgnoreCase("text carousel")) {
-			chatPage.selectOptionInTextCarousel(choice, navigationDirection).clickSendButton();
-		} else if (carouselOrSlider.equalsIgnoreCase("image carousel")) {
-			chatPage.selectOptionInImageCarousel(choice, navigationDirection);
-		} else if (carouselOrSlider.equalsIgnoreCase("slider")) {
+		
+		
+		if (choiceType.equalsIgnoreCase("text stack")) {
+			chatPage.selectOptionInTextStack(choice).clickSendButton();
+		} else if (choiceType.equalsIgnoreCase("slider")) {
 			chatPage.selectSlider(choice).clickSendButton();
-		} else if (carouselOrSlider.equalsIgnoreCase("dating app")) {
+		} else if (choiceType.equalsIgnoreCase("dating app")) {
 			chatPage.selectDatingOption(choice, navigationDirection);
-		} else if (carouselOrSlider.equals("")) {
+		} else if (choiceType.equals("")) {
 			chatPage.selectOption(choice).clickSendButton();
 		}
 
@@ -83,7 +83,7 @@ public class ResponseService {
 
 		// determine how many questions there are
 		int questionsOnPage = assessmentPage.countQuestionsOnPage();
-		
+
 		int counter = 0;
 
 		// Use a loop to go through and answer each question
@@ -121,6 +121,7 @@ public class ResponseService {
 			scenarioSession.writeToReport("User's Answer: " + userAnswer);
 			counter++;
 		}
+		
 
 		// When loop is completed click Next Button
 		assessmentPage.clickNextButton();

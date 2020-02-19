@@ -42,8 +42,6 @@ public class SetPrioritiesPage extends AbstractPage {
 	@FindAll(@FindBy(css = "#wallet button[aria-label^= dropzone]"))
 	private List<WebElement> dropzoneList;
 	
-	@FindBy(css= "button[data-testid = 'ready-button']")
-	private WebElement imReadyButton;
 	
 	@FindBy(css = "button[data-testid = 'priority-forward-button']")
 	private WebElement continueButton;
@@ -82,7 +80,7 @@ public class SetPrioritiesPage extends AbstractPage {
 
 	public SetPrioritiesPage dismissTessInstructions() {
 		waitForElement(imReadyButton);
-		imReadyButton.click();
+		imReadyButton.click(); 
 		return this;
 
 	}
@@ -90,7 +88,6 @@ public class SetPrioritiesPage extends AbstractPage {
 	public void clickContinueButton() {
 		waitForElement(continueButton);
 		continueButton.click();
-		pause(5);
 		
 	}
 
