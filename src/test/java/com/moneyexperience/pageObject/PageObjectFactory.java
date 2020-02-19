@@ -24,7 +24,7 @@ public class PageObjectFactory {
 
 	public ChatPage getChatPage() {
 		return (ChatPage) appContext.getBean("chatPage");
-		
+
 	}
 
 	public LessonIntroPage getLessonIntroPage() {
@@ -34,19 +34,21 @@ public class PageObjectFactory {
 	public LessonCheckpointPage getLessonCheckpointPage() {
 		return (LessonCheckpointPage) appContext.getBean("lessonCheckpointPage");
 	}
-	
+
 	public AssessmentPage getAssessmentPage() {
 		return (AssessmentPage) appContext.getBean("assessmentPage");
 	}
-	
+
 	public StoryBoardPage getStoryBoardPage() {
 		return (StoryBoardPage) appContext.getBean("storyBoardPage");
 	}
-	
+
 	public UserMenuPage getUserMenuPage() {
 		return (UserMenuPage) appContext.getBean("userMenuPage");
 	}
-	
-	
+
+	public ConfirmPrioritiesPage getConfirmPrioritiesPage() {
+		return (ConfirmPrioritiesPage) appContext.getBean("confirmPrioritiesPage");
+	}
 
 }

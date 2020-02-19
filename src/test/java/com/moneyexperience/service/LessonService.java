@@ -10,6 +10,7 @@ import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
 
 import com.moneyexperience.pageObject.AssessmentPage;
 import com.moneyexperience.pageObject.ChatPage;
+import com.moneyexperience.pageObject.ConfirmPrioritiesPage;
 import com.moneyexperience.pageObject.DashboardPage;
 import com.moneyexperience.pageObject.LessonCheckpointPage;
 import com.moneyexperience.pageObject.LessonIntroPage;
@@ -37,6 +38,9 @@ public class LessonService {
 	SetPrioritiesPage setPrioritiesPage;
 
 	@Autowired
+	ConfirmPrioritiesPage confirmPrioritiesPage;
+
+	@Autowired
 	StoryBoardPage storyBoardPage;
 
 	@Autowired
@@ -50,10 +54,10 @@ public class LessonService {
 
 	@Autowired
 	LifeProgressPage lifeProgressPage;
-	
+
 	@Autowired
 	AssessmentPage assessmentPage;
-	
+
 	@Autowired
 	PropertiesLoader propertiesLoader;
 
@@ -63,24 +67,19 @@ public class LessonService {
 	}
 
 	public void setPriorities(List<String> prioritiesList) {
-	setPrioritiesPage.dismissTessInstructions();
-		//	setPrioritiesPage.dragAndDropPriorities(prioritiesList);
+		setPrioritiesPage.dismissTessInstructions().clickContinueButton();
+		;
+		// setPrioritiesPage.dragAndDropPriorities(prioritiesList);
 
-	}
-
-	public void clickNextButton() {
-		setPrioritiesPage.clickNextButton();
-
-	}
-	
-	public void clickContinueButton() {
-		setPrioritiesPage.clickContinueButton();
-		
 	}
 
 	public void clickSendButton() {
 		chatPage.clickSendButton();
 
+	}
+
+	public void confirmPriorities() {
+		confirmPrioritiesPage.dismissTessInstructions().clickNextButton();
 	}
 
 	public void clickNextLink(int timesToClick) {
@@ -152,23 +151,23 @@ public class LessonService {
 		}
 
 	}
-	
-	public Boolean onAssessmentPage() {	
+
+	public Boolean onAssessmentPage() {
 		Boolean onAssessmentPage = false;
 		int counter = 0;
-		while(counter < 10) {
-			if(storyBoardPage.beyondSurvey()) {
+		while (counter < 10) {
+			if (storyBoardPage.beyondSurvey()) {
 				break;
 			}
-			if(assessmentPage.disabledNextButtonPresent()) {
+			if (assessmentPage.disabledNextButtonPresent()) {
 				onAssessmentPage = true;
 				break;
 			}
 			setPrioritiesPage.pause(.5);
 			counter++;
 		}
+
 		return onAssessmentPage;
 	}
-
 
 }
