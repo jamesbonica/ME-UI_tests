@@ -22,10 +22,10 @@ public class AssessmentPage extends AbstractPage {
 
 	@Autowired
 	PageObjectFactory pageObjectFactory;
-	
+
 	@FindBy(css = "button[data-testid='survey-button']:enabled")
 	private WebElement nextButton;
-	
+
 	@FindBy(css = "h4[data-testid]")
 	private WebElement firstQuestion;
 
@@ -44,23 +44,24 @@ public class AssessmentPage extends AbstractPage {
 
 	public int countQuestionsOnPage() {
 		waitForElement(firstQuestion);
+
 		return driver.findElements(By.cssSelector("h4[data-testid]")).size();
 	}
 
 	public List<WebElement> getAnswerElements(int i) {
 
-		return driver.findElements(By.cssSelector("div[display]:nth-of-type(" + (i + 1)
+		return driver.findElements(By.cssSelector("div:nth-of-type(" + (i + 1)
 				+ ") h4[data-testid *= 'single'] ~ button[data-testid *= 'single-answer-choice-']"));
 
 	}
 
 	public String getQuestionText(int i) {
 
-		return driver
-				.findElement(By.cssSelector("div[display]:nth-of-type(" + (i + 1) + ") h4[data-testid *= 'single']"))
-				.getText().trim();
+		return driver.findElement(By.cssSelector("div:nth-of-type(" + (i + 1) + ") h4[data-testid *= 'single']")).getText()
+				.trim();
+
 	}
-	
+
 	public AssessmentPage clickNextButton() {
 		waitForElement(nextButton);
 		nextButton.click();

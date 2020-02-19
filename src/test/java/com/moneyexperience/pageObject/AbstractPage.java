@@ -25,6 +25,10 @@ public class AbstractPage {
 	// menu
 	@FindBy(css = "div[role = 'navigation'] + div > button + p")
 	protected WebElement lessonTitleAndNumberElement;
+	
+	// Here because Tess's Instructions must be dismissed on multiple pages
+	@FindBy(css= "button[data-testid = 'ready-button']")
+	protected WebElement imReadyButton;
 
 	public AbstractPage navigateToWebApp() {
 		driver.navigate().to(propertiesLoader.getTestUrl());

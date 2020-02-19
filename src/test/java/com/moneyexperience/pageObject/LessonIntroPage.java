@@ -42,7 +42,6 @@ public class LessonIntroPage extends AbstractPage {
 	}
 
 	public SetPrioritiesPage clickBeginButton() {
-
 		waitForElement(beginButton);
 		beginButton.click();
 		return pageObjectFactory.getSetPrioritiesPage();
@@ -58,7 +57,7 @@ public class LessonIntroPage extends AbstractPage {
 		return splashImageList.size() > 0;
 	}
 
-	public boolean lessonDesiredLesson(Integer lessonNumber) {	
+	public boolean lessonDesiredLesson(Integer lessonNumber) {
 		return lessonTitleAndNumberElement.getText().trim().startsWith(String.valueOf(lessonNumber));
 	}
 

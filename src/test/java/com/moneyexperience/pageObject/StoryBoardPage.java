@@ -40,11 +40,11 @@ public class StoryBoardPage extends AbstractPage {
 	@Autowired
 	ChatPage chatPage;
 
-	@FindAll(@FindBy(css = "nav > button[class*='styles__textButton']"))
+	@FindAll(@FindBy(css = "button[data-testid*='Next']"))
 	private List<WebElement> navigationLinkList;
 
-	@FindBy(css = "nav > button[class*='styles__textButton']")
-	private WebElement nextLinkWhenTheresNoGoingBack;
+	@FindBy(css = "button[data-testid ='Next']")
+	private WebElement nextLink;
 
 	@FindBy(css = "nav > button[class*='styles__textButton']:nth-child(1)")
 	private WebElement previousOrBackLink;
@@ -52,22 +52,22 @@ public class StoryBoardPage extends AbstractPage {
 	@FindBy(css = "nav > button[class*='styles__textButton']:nth-child(2)")
 	private WebElement nextLinkWhenThereIsABackOrPreviousLink;
 
-	@FindBy(css = "*[class*='speechBubble']")
+	@FindBy(css = "*[data-testid='speech-bubble']")
 	private WebElement tessSpeechBubble;
 
-	@FindBy(css = "figure + nav > button[class^='styles__textButton']:nth-child(2)")
+	@FindBy(css = "button[data-testid='next-button']")
 	private WebElement nextLinkForStoryPanels;
 
 	@FindAll(@FindBy(css = "figure + nav > button[class^='styles__textButton']"))
 	private List<WebElement> navLinksForStoryPanelsList;
 
-	@FindAll(@FindBy(css = "div[class*='modal']"))
+	@FindAll(@FindBy(css = "div[id = 'react-aria-modal-dialog']"))
 	private List<WebElement> newMessageFromTessModalList;
 
-	@FindBy(css = "div[class*='modal'] > button[class*='primaryButton']")
+	@FindBy(css = "button[data-testid = 'action-button-0']")
 	private WebElement goButtonOnChatWithTessModal;
 
-	@FindBy(css = "div[class*='storyboard'] > figure > img")
+	@FindBy(css = "img[data-testid = 'story-img']")
 	private WebElement storyBoardImage;
 
 	@FindAll(@FindBy(css = "div[class*='storyboard'] > figure > img"))
@@ -81,17 +81,11 @@ public class StoryBoardPage extends AbstractPage {
 	public boolean beyondSurvey() {
 		return navigationLinkList.size() > 0;
 	}
-	
-	public StoryBoardPage clickNextLink() {
-		waitForElement(nextLinkWhenTheresNoGoingBack);
-		// check if there is two-way or one-way navigation on the page
-		int navigationLinks = navigationLinkList.size();
 
-		if (navigationLinks > 1) {
-			nextLinkWhenThereIsABackOrPreviousLink.click();
-		} else {
-			nextLinkWhenTheresNoGoingBack.click();
-		}
+	public StoryBoardPage clickNextLink() {
+		waitForElement(nextLink);
+
+		nextLink.click();
 
 		return this;
 	}
@@ -123,6 +117,8 @@ public class StoryBoardPage extends AbstractPage {
 
 	public StoryBoardPage clicknextLinkForStoryPanels() {
 		waitForElement(nextLinkForStoryPanels);
+		// set the scr value first
+		scenarioSession.setStoryBoardSrc(storyBoardImage.getAttribute("src"));
 		try {
 			nextLinkForStoryPanels.click();
 		} catch (ElementClickInterceptedException e) {
@@ -143,29 +139,13 @@ public class StoryBoardPage extends AbstractPage {
 
 	public boolean moveOnToNextStoryBoard() {
 		boolean clickNext = false;
-		if (loaderPresent()) {
-			System.out.println("============================= loader present");
-			return clickNext;
-		}
 
-		// We need something here because this is occasionally failing on SauceLabs with
-		// the
-		// screenshot showing the user is on the Chat but the test thinks it's still on
-		// the storyboards until it fails -- jb 6/18/19
-
-		// Check if storyboard or footer is present?
 		int counter = 0;
 
 		while (counter < 10) {
 			String newSrc = "";
 
-			try {
-				newSrc = storyBoardImage.getAttribute("src");
-			} catch (NoSuchElementException n) {
-				System.out.println("footer present " + (chatPage.footerElementPresent()));
-				System.out.println("test saved?!");
-				break;
-			}
+			newSrc = storyBoardImage.getAttribute("src");
 
 			String oldSrc = scenarioSession.getStoryBoardSrc();
 
@@ -183,6 +163,7 @@ public class StoryBoardPage extends AbstractPage {
 			counter++;
 		}
 
+		System.out.println("clicknext = " + clickNext);
 		return clickNext;
 	}
 
