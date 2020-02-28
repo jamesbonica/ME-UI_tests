@@ -5,6 +5,7 @@ import java.util.List;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -25,10 +26,13 @@ public class AbstractPage {
 	// menu
 	@FindBy(css = "div[role = 'navigation'] + div > button + p")
 	protected WebElement lessonTitleAndNumberElement;
-	
+
 	// Here because Tess's Instructions must be dismissed on multiple pages
-	@FindBy(css= "button[data-testid = 'ready-button']")
+	@FindBy(css = "button[data-testid = 'ready-button']")
 	protected WebElement imReadyButton;
+
+	@FindAll(@FindBy(css = "button[data-testid = 'ready-button']"))
+	protected List<WebElement> imReadyButtonList;
 
 	public AbstractPage navigateToWebApp() {
 		driver.navigate().to(propertiesLoader.getTestUrl());
@@ -83,5 +87,16 @@ public class AbstractPage {
 		return this;
 
 	}
+
+	public boolean imReadyButtonPresent() {
+		return imReadyButtonList.size() > 0;
+	}
+	
+	public AbstractPage dismissImReadyButton() {
+		waitForElement(imReadyButton);
+		imReadyButton.click();
+		return this;
+	}
+	
 
 }
