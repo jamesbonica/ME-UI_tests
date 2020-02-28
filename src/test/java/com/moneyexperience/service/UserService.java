@@ -65,6 +65,9 @@ public class UserService {
 		if (lessonIntroPage.onLessonStartPage() && lessonIntroPage.lessonDesiredLesson(lessonNumber)) {
 			// Do nothing
 		} else {
+			if (userMenuPage.imReadyButtonPresent()) {
+				userMenuPage.dismissImReadyButton();
+			}
 			userMenuPage.clickHamburgerIcon().clickResetProgressButton().clickResetLessonLink(lessonNumber)
 					.waitForUserMenuToDisappear();
 		}

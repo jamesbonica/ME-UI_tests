@@ -163,7 +163,7 @@ public class StoryBoardPage extends AbstractPage {
 			counter++;
 		}
 
-		System.out.println("clicknext = " + clickNext);
+	//	System.out.println("clicknext = " + clickNext);
 		return clickNext;
 	}
 

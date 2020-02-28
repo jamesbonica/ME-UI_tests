@@ -9,7 +9,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -34,7 +36,7 @@ public class ChatPage extends AbstractPage {
 
 	@FindBy(css = "button[id = 'user_response_0']")
 	private WebElement firstResponseInAnswerStack;
-	
+
 	@FindAll(@FindBy(css = "button[id^= 'user_response_']"))
 	private List<WebElement> textResponseStack;
 
@@ -77,6 +79,9 @@ public class ChatPage extends AbstractPage {
 	@FindBy(css = "button[data-testid='multi-choice-send-button']")
 	private WebElement sendButton;
 
+	@FindBy(css = "button[data-testid='send-number-button']")
+	private WebElement numberSendButton;
+
 	@FindBy(css = "button[class]:not([disabled]) > div[class='loadedContent']")
 	private WebElement selectButtonImageCarousel;
 
@@ -90,14 +95,15 @@ public class ChatPage extends AbstractPage {
 
 	public ChatPage selectOptionInTextStack(String choice) {
 		waitForElementInChat(firstResponseInAnswerStack);
+
 		int counter = 0;
 		while (counter < textResponseStack.size()) {
 			WebElement element = textResponseStack.get(counter);
 			if (element.getText().trim().equalsIgnoreCase(choice)) {
-				scrollToElement(element);
 				element.click();
 				break;
 			}
+
 			counter++;
 
 			if (counter == textResponseStack.size()) {
@@ -173,6 +179,13 @@ public class ChatPage extends AbstractPage {
 		return this;
 	}
 
+	public ChatPage clickNumberSendButton() {
+		waitForElement(numberSendButton);
+		scrollToElement(numberSendButton);
+		numberSendButton.click();
+		return this;
+	}
+
 	public ChatPage selectOption(String choice) {
 		waitForElementInChat(firstTextOption);
 		for (WebElement element : textOptionList) {
@@ -203,15 +216,11 @@ public class ChatPage extends AbstractPage {
 
 			int clicks = convertedChoice / Integer.valueOf(inputSlider.getAttribute("step"));
 
-			for (int i = 1; i <= clicks; i++) {
+			for (int i = 0; i <= clicks; i++) {
 				inputSliderPlusButton.click();
 			}
 		}
 		return this;
-	}
-
-	public boolean footerElementPresent() {
-		return footerList.size() > 0;
 	}
 
 }
