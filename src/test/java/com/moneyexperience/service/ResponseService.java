@@ -50,7 +50,7 @@ public class ResponseService {
 		if (choiceType.equalsIgnoreCase("text stack")) {
 			chatPage.selectOptionInTextStack(choice).clickSendButton();
 		} else if (choiceType.equalsIgnoreCase("slider")) {
-			chatPage.selectSlider(choice).clickSendButton();
+			chatPage.selectSlider(choice).clickNumberSendButton();
 		} else if (choiceType.equalsIgnoreCase("dating app")) {
 			chatPage.selectDatingOption(choice, navigationDirection);
 		} else if (choiceType.equals("")) {

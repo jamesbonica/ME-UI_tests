@@ -75,12 +75,11 @@ public class UserMenuPage extends AbstractPage {
 	}
 
 	public UserMenuPage clickResetLessonLink(Integer lessonNumber) {
-		
-		List<WebElement> linkList = waitForResetLessonLinksListToBeFullyLoaded(lessonNumber);
-		
-		
 
-	// We're going to call the element again because we keep getting a StaleElementRefefenceException
+		waitForResetLessonLinksListToBeFullyLoaded(lessonNumber);
+
+		// We're going to call the element again because we keep getting a
+		// StaleElementRefefenceException
 		String locator = "div[role='dialog'] button:not([disabled]):nth-of-type(" + lessonNumber + ")>span";
 		driver.findElement(By.cssSelector(locator)).click();
 

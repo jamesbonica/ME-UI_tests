@@ -34,79 +34,58 @@ Feature: 1002 Complete Simulator Essentials 5
       | text stack | OK        |                     |
     And a user goes through the storyboards
     And A user clicks Go when Tess sends a new message
+    And a user chooses the following responses in the Chat with Tess:
+      | choiceType | choice                                          | navigationDirection |
+      # Do you plan to attend college after high school?
+      | text stack | Yes I'm going to college                        |                     |
+      # Will you need to take out student loans?
+      | text stack | Yeah, I'll need loans                           |                     |
+      #  Do you know how much your student loans will be?
+      | text stack | Yes                                             |                     |
+      #  How much will your loans be?
+      | slider     |                                          80,000 |                     |
+      # What kind of school do you plan to go to?
+      | text stack | In-state University                             |                     |
+      # Do you plan to pursue an advanced degree?
+      | text stack | No                                              |                     |
+      # You've selected a summer job already, but do you plan to have a job while in school?
+      | text stack | Yes                                             |                     |
+      # What kind of job are you most likely to get?
+      | text stack | Fitness Instructor                              |                     |
+      # Do you plan to work full-time or part-time?
+      | text stack | Part-time                                       |                     |
+      # What are your eating habits like?
+      | text stack | Fresh and organic ($$)                          |                     |
+      # What's your travel style?
+      | text stack | Tent and a backpack ($)                         |                     |
+      # What's your average weekend like?
+      | text stack | Out on the town ($$)                            |                     |
+      # What is your fitness routine like?
+      | text stack | A morning run ($)                               |                     |
+      # What is your gadget status?
+      | text stack | Last year's model works fine ($$)               |                     |
+      # What best describes your fashion choices?
+      | text stack | Thrift-store treasure hunt ($)                  |                     |
+      # What best describes the region where you will be living?
+      | text stack | A smaller, up & coming city (Like Portland, ME) |                     |
+      # What kind of place would you like to live in?
+      | text stack | Rent-free with Family $0/mo                     |                     |
+      # Ready to move on?
+      | text stack | Yes                                             |                     |
+    #  And a user selects the "Take a Trip" Optional Narrative from the Dashboard
+    #    And the user chooses the following responses in the Optional Narrative Chat with Tess:
+    #      | carouselOrSlider | choice                           | navigationDirection |
+    #      # Would you like to take a trip somewhere?
+    #      |                  | Probably                         |                     |
+    #      # Where would you like to go?
+    #      | text carousel    | Outdoor adventure in New Zealand |                     |
+    #      # A week in ... Still game?
+    #      |                  | Book it!                         |                     |
+    #      # For now, let's go back to the dashboard.
+    #      |                  | OK                               |                     |
+    And a user clicks the Next Button on the Optional Narratives Dashboard
+    And a user clicks the Finish Lesson on the Lessson Checkpoint Page
 
-  #    And a user chooses the following responses in the Chat with Tess:
-  #      | carouselOrSlider | choice                                          | navigationDirection |
-  #      # Do you plan to attend college after high school?
-  #      #    # ================================ No College Route ===================================
-  #      #     |                  | No I'm not going to college                     |                     |
-  #      #     # What kind of job are you most likely to get?
-  #      #     | text carousel    | Barista                                    |                     |
-  #      #     # Do you plan to work full-time or part-time?
-  #      #     |                  | Full-time                                       |                     |
-  #      #    # ================================ No College Route ===================================
-  #      |                  | Yes I'm going to college                        |                     |
-  #      # Will you need to take out student loans?
-  #      # =============== Student Loans ================================
-  #      |                  | Yeah, I'll need loans                           |                     |
-  #      #  Do you know how much your student loans will be?
-  #      |                  | Yes                                             |                     |
-  #      #  How much will your loans be?
-  #      | slider           |                                          80,000 |                     |
-  #      # # ==============================================================
-  #      #    |                  | No, I won't need them                           |                     |
-  #      # What kind of school do you plan to go to?
-  #      | text carousel    | In-state University                             |                     |
-  #      # Do you plan to pursue an advanced degree?
-  #      |                  | No                                              |                     |
-  #      #  # ====================== Choosing an advanced degree ==========================
-  #      #   |                  | Yes                                             |                     |
-  #      #   # What type of advanced degree?
-  #      #   | text carousel    | A Law Degree                                    |                     |
-  #      #   # What type of school will you attend for your advanced degree?
-  #      #   |                  | In-State University                             |                     |
-  #      #   # How much financial support will you get from family, scholarships, or other means?
-  #      #   | slider           |                                          50,000 |                     |
-  #      #   # ==============================================================================
-  #      # You've selected a summer job already, but do you plan to have a job while in school?
-  #      |                  | Yes                                             |                     |
-  #      # What kind of job are you most likely to get?
-  #      | text carousel    | Fitness instructor                              | right               |
-  #      # Do you plan to work full-time or part-time?
-  #      |                  | Part-time                                       |                     |
-  #      # What are your eating habits like?
-  #      |                  | Fresh and organic ($$)                          |                     |
-  #      # What's your travel style?
-  #      |                  | Tent and a backpack ($)                         |                     |
-  #      # What's your average weekend like?
-  #      |                  | Out on the town ($$)                            |                     |
-  #      # What is your fitness routine like?
-  #      |                  | A morning run ($)                               |                     |
-  #      # What is your gadget status?
-  #      |                  | Last year's model works fine ($$)               |                     |
-  #      # What best describes your fashion choices?
-  #      |                  | Thrift-store treasure hunt ($)                  |                     |
-  #      # What best describes the region where you will be living?
-  #      | text carousel    | A smaller, up & coming city (Like Portland, ME) |                     |
-  #      # Ready to move on?
-  #      |                  | Yes                                             |                     |
-  #      # At this age, what kind of place would you like to live in?  Choose an option...
-  #      | image carousel   | Live with Family                                | right               |
-  #      # What kind of car would you like to buy?
-  #      | image carousel   | Public Transportation                           | right               |
-  #    And a user selects the "Take a Trip" Optional Narrative from the Dashboard
-  #    And the user chooses the following responses in the Optional Narrative Chat with Tess:
-  #      | carouselOrSlider | choice                           | navigationDirection |
-  #      # Would you like to take a trip somewhere?
-  #      |                  | Probably                         |                     |
-  #      # Where would you like to go?
-  #      | text carousel    | Outdoor adventure in New Zealand |                     |
-  #      # A week in ... Still game?
-  #      |                  | Book it!                         |                     |
-  #      # For now, let's go back to the dashboard.
-  #      |                  | OK                               |                     |
-  #    And a user clicks the Next Button on the Optional Narratives Dashboard
-  #    And a user clicks the Finish Lesson on the Lessson Checkpoint Page
   @Lesson2
   Scenario: User completes Lesson 2
     Given a user "configured user 1" logs in to ME with password "for configured user 1"
