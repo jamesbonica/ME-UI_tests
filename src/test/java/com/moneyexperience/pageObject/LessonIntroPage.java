@@ -47,9 +47,9 @@ public class LessonIntroPage extends AbstractPage {
 		return pageObjectFactory.getSetPrioritiesPage();
 	}
 
-	public SetPrioritiesPage waitForBeginButton() {
+	public LessonIntroPage waitForBeginButton() {
 		waitForElement(beginButton);
-		return pageObjectFactory.getSetPrioritiesPage();
+		return this;
 	}
 
 	public boolean onLessonStartPage() {

@@ -89,12 +89,12 @@ public class Stepdefs {
 		lessonService.clickSendButton();
 	}
 
-	@Given("a user clicks the Next Link")
+	@Given("a user clicks Next")
 	public void a_user_clicks_the_Next_Link() {
 		lessonService.clickNextLink(1);
 	}
 
-	@Given("a user clicks the Next Link {int} times")
+	@Given("a user clicks Next {int} times")
 	public void a_user_clicks_the_Next_Link_times(Integer timesToClick) {
 
 		lessonService.clickNextLink(timesToClick);
@@ -111,19 +111,20 @@ public class Stepdefs {
 		lessonService.clickGotoChatWithTess();
 	}
 
+	@Given("a user clicks Continue on the Optional Narratives Dashboard")
 	@Given("a user clicks the Next Button on the Optional Narratives Dashboard")
 	public void a_user_clicks_the_Next_Button_on_the_Optional_Narratives_Dashboard() {
-		lessonService.clickTheNextButtonOnTheDashboardPage();
+		lessonService.clickContinueOnONDashboard();
 	}
 
-	@Given("a user clicks the Finish Lesson on the Lessson Checkpoint Page")
+	@Given("a user clicks Continue on the Lesson Checkpoint Page")
 	public void a_user_clicks_the_Finish_Lesson_on_the_Lessson_Checkpoint_Page() {
-		lessonService.clickFinishLessonButton();
+		lessonService.clickContinueOnLessonCheckpointPage();
 	}
 
-	@Given("a user clicks the Continue to Next Lesson Button on the Life Progress Page")
-	public void a_user_clicks_the_Continue_to_Next_Lesson_Button_on_the_Life_Progress_Page() {
-		lessonService.clickContinueToNextLessonButtonOnLifeProgressPage();
+	@Given("a user clicks Continue on the Simulator Conclusion Page")
+	public void a_user_clicks_Continue_on_the_Simulator_Conclusion_Page() {
+		lessonService.clickContinueOnTheSimulatorConclusionPage();
 	}
 
 	////////////////////////////////////////////

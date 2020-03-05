@@ -119,6 +119,7 @@ public class StoryBoardPage extends AbstractPage {
 		waitForElement(nextLinkForStoryPanels);
 		// set the scr value first
 		scenarioSession.setStoryBoardSrc(storyBoardImage.getAttribute("src"));
+
 		try {
 			nextLinkForStoryPanels.click();
 		} catch (ElementClickInterceptedException e) {
@@ -145,6 +146,13 @@ public class StoryBoardPage extends AbstractPage {
 		while (counter < 10) {
 			String newSrc = "";
 
+			if (newMessageFromTessModalList.size() > 0) {
+				System.out.println("Tess interrupts!!!");
+				break;
+			} else if (notOnStoryBoardPage()) {
+				break;
+			}
+
 			newSrc = storyBoardImage.getAttribute("src");
 
 			String oldSrc = scenarioSession.getStoryBoardSrc();
@@ -154,16 +162,13 @@ public class StoryBoardPage extends AbstractPage {
 				// System.out.println("SRC changes");
 				clickNext = true;
 				break;
-			} else if (newMessageFromTessModalList.size() > 0) {
-				System.out.println("Tess interrupts!!!");
-				break;
 			}
 
 			pause(.25);
 			counter++;
 		}
 
-	//	System.out.println("clicknext = " + clickNext);
+		// System.out.println("clicknext = " + clickNext);
 		return clickNext;
 	}
 

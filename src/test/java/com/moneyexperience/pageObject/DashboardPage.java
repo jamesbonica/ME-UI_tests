@@ -27,8 +27,8 @@ public class DashboardPage extends AbstractPage {
 	@Autowired
 	PageObjectFactory pageObjectFactory;
 
-	@FindBy(css = "div[display='flex'] > button[class]:not([aria-label]):not([data-testid])")
-	private WebElement nextButton;
+	@FindBy(css = "button > p[data-testid = 'undefined-text']")
+	private WebElement continueButton;
 
 	//// The icons for the optional narratives
 	@FindBy(css = "button > img[src*='credit']")
@@ -69,9 +69,14 @@ public class DashboardPage extends AbstractPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	public LessonCheckpointPage clickNextButton() {
-		waitForElement(nextButton);
-		nextButton.click();
+	public boolean imReadyButtonPresent() {
+		waitForElement(continueButton);
+		return imReadyButtonList.size() > 0;
+	}
+	
+	public LessonCheckpointPage clickContinueButton() {
+		waitForElement(continueButton);
+		continueButton.click();
 		return pageObjectFactory.getLessonCheckpointPage();
 	}
 
