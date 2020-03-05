@@ -14,8 +14,8 @@ import com.moneyexperience.pageObject.ConfirmPrioritiesPage;
 import com.moneyexperience.pageObject.DashboardPage;
 import com.moneyexperience.pageObject.LessonCheckpointPage;
 import com.moneyexperience.pageObject.LessonIntroPage;
-import com.moneyexperience.pageObject.LifeProgressPage;
 import com.moneyexperience.pageObject.SetPrioritiesPage;
+import com.moneyexperience.pageObject.SimulatorConclusionPage;
 import com.moneyexperience.pageObject.StoryBoardPage;
 
 import config.PropertiesLoader;
@@ -53,10 +53,10 @@ public class LessonService {
 	LessonCheckpointPage lessonCheckpointPage;
 
 	@Autowired
-	LifeProgressPage lifeProgressPage;
-
-	@Autowired
 	AssessmentPage assessmentPage;
+	
+	@Autowired
+	SimulatorConclusionPage simulatorConclusionPage;
 
 	@Autowired
 	PropertiesLoader propertiesLoader;
@@ -106,18 +106,16 @@ public class LessonService {
 
 	}
 
-	public void clickTheNextButtonOnTheDashboardPage() {
-		dashboardPage.clickNextButton();
+	public void clickContinueOnONDashboard() {
+		if (dashboardPage.imReadyButtonPresent()) {
+			dashboardPage.dismissImReadyButton();
+		}
+		dashboardPage.clickContinueButton();
 
 	}
 
-	public void clickFinishLessonButton() {
-		lessonCheckpointPage.clicFinishLessonButton().waitForBeginButton();
-
-	}
-
-	public void clickContinueToNextLessonButtonOnLifeProgressPage() {
-		lifeProgressPage.clicFinishLessonButton().waitForBeginButton();
+	public void clickContinueOnLessonCheckpointPage() {
+		lessonCheckpointPage.clickContinue().waitForBeginButton();
 
 	}
 
@@ -168,6 +166,11 @@ public class LessonService {
 		}
 
 		return onAssessmentPage;
+	}
+
+	public void clickContinueOnTheSimulatorConclusionPage() {
+		simulatorConclusionPage.clickContinueButton();
+
 	}
 
 }
