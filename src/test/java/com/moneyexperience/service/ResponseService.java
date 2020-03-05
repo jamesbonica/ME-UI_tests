@@ -43,8 +43,7 @@ public class ResponseService {
 	ScenarioSession scenarioSession;
 
 	public void enterUserResponse(String choiceType, String choice, String navigationDirection) {
-		// System.out.println("============= carouselOrSlider is " + carouselOrSlider +
-		// " choice is " + choice + " navigationDirection is " + navigationDirection);
+		
 		
 		
 		if (choiceType.equalsIgnoreCase("text stack")) {

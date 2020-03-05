@@ -28,18 +28,21 @@ public class LessonCheckpointPage extends AbstractPage {
 	@Autowired
 	PageObjectFactory pageObjectFactory;
 
-	@FindBy(css = "div[id = 'wallet'] + div[display='flex'][class] > button[class]")
-	private WebElement finishLessonButton;
+	@FindBy(css = "button > p[data-testid]")
+	private WebElement continueButton;
+	
+	@FindBy(css = "svg[id = 'wealth-chart-final-summary']")
+	private WebElement wealthChartSummary;
 
 	public LessonCheckpointPage(EventFiringWebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 
-	public LessonIntroPage clicFinishLessonButton() {
-		waitForElement(finishLessonButton);
-		scrollToElement(finishLessonButton);
-		finishLessonButton.click();
+	public LessonIntroPage clickContinue() {
+		waitForElement(wealthChartSummary);
+		scrollToElement(continueButton);
+		continueButton.click();
 
 		return pageObjectFactory.getLessonIntroPage();
 	}

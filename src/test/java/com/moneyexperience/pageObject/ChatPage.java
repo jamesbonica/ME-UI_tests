@@ -99,7 +99,7 @@ public class ChatPage extends AbstractPage {
 		int counter = 0;
 		while (counter < textResponseStack.size()) {
 			WebElement element = textResponseStack.get(counter);
-			if (element.getText().trim().equalsIgnoreCase(choice)) {
+			if (element.getText().toLowerCase().trim().startsWith(choice.toLowerCase())) {
 				element.click();
 				break;
 			}
@@ -107,7 +107,7 @@ public class ChatPage extends AbstractPage {
 			counter++;
 
 			if (counter == textResponseStack.size()) {
-				throw new NoSuchElementException("The choice in the feature file is not present");
+				throw new NoSuchElementException("The choice: \"" + choice + "\" listed in the in the feature file is not present in the Content");
 			}
 		}
 

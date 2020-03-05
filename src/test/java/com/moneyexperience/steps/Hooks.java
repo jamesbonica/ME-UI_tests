@@ -21,8 +21,6 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 
-
-
 /**
  * 
  * @author jimbonica
@@ -52,9 +50,9 @@ public class Hooks {
 	public void setUp(Scenario scenario) {
 		scenarioSession.setScenario(scenario);
 
-	//	 Collection<String> tagList = scenario.getSourceTagNames();
+		// Collection<String> tagList = scenario.getSourceTagNames();
 
-		System.out.println("In before hook"); 
+		System.out.println("In before hook");
 
 //		 String[] beans = appContext.getBeanDefinitionNames();
 //		 Arrays.sort(beans);
@@ -63,22 +61,21 @@ public class Hooks {
 //		 }
 
 //		System.out.println(driver.toString());
-		
+
 	}
 
 	@After
 	public void tearDown(Scenario scenario) {
 
-		
 		if (scenario.isFailed()) {
 			final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 			scenario.embed(screenshot, "image/png", ""); // stick it in the report
 		}
-//	driver.close();
 
 		if (!driver.getCurrentUrl().equals("data:,")) {
 			((JavascriptExecutor) driver).executeScript(String.format("window.localStorage.clear();"));
 		}
+		driver.close();
 	}
 
 }
