@@ -4,6 +4,7 @@ import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -58,7 +59,7 @@ public class LessonIntroPage extends AbstractPage {
 	}
 
 	public boolean lessonDesiredLesson(Integer lessonNumber) {
-		return lessonTitleAndNumberElement.getText().trim().startsWith(String.valueOf(lessonNumber));
+		return StringUtils.substringBetween(lessonTitleAndNumberElement.getText(), "LESSON", "OF").trim().equals(String.valueOf(lessonNumber));
 	}
 
 }

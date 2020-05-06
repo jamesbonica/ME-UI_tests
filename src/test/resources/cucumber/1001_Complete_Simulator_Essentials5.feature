@@ -26,12 +26,12 @@ Feature: 1002 Complete Simulator Essentials 5
     And a user completes the Baseline Assessment if the user has not completed it before
     And a user clicks Next 2 times
     And a user chooses the following responses in the Chat with Tess:
-      | choiceType | choice    | navigationDirection |
+      | choiceType | choice    |
       # For example, let's pick a job for you to have during the summer after high school.
       # What kind of job would you try to get?
-      | text stack | Farm Hand |                     |
+      | text stack | Farm Hand |                     
       # Anyway that's the basic idea. Now let's meet the others, and think about your life into your early 20s.
-      | text stack | OK        |                     |
+      | text stack | OK        |                     
     And a user goes through the storyboards
     And A user clicks Go when Tess sends a new message
     And a user chooses the following responses in the Chat with Tess:
@@ -90,24 +90,24 @@ Feature: 1002 Complete Simulator Essentials 5
       #
       # Ready to move on?
       | text stack | Yes                                             |
-    #  And a user selects the "Take a Trip" Optional Narrative from the Dashboard
-    #    And the user chooses the following responses in the Optional Narrative Chat with Tess:
-    #      | carouselOrSlider | choice                           |
-    #      # Would you like to take a trip somewhere?
-    #      |                  | Probably                         |
-    #      # Where would you like to go?
-    #      | text carousel    | Outdoor adventure in New Zealand |
-    #      # A week in ... Still game?
-    #      |                  | Book it!                         |
-    #      # For now, let's go back to the dashboard.
-    #      |                  | OK                               |
-    And a user clicks Continue on the Optional Narratives Dashboard
-    And a user clicks Continue on the Lesson Checkpoint Page
 
+  #  And a user selects the "Take a Trip" Optional Narrative from the Dashboard
+  #    And the user chooses the following responses in the Optional Narrative Chat with Tess:
+  #      | carouselOrSlider | choice                           |
+  #      # Would you like to take a trip somewhere?
+  #      |                  | Probably                         |
+  #      # Where would you like to go?
+  #      | text carousel    | Outdoor adventure in New Zealand |
+  #      # A week in ... Still game?
+  #      |                  | Book it!                         |
+  #      # For now, let's go back to the dashboard.
+  #      |                  | OK                               |
+      And a user clicks Continue on the Optional Narratives Dashboard
+      And a user clicks Continue on the Lesson Checkpoint Page
   @Lesson2
   Scenario: User completes Lesson 2
     Given a user "configured user 1" logs in to ME with password "for configured user 1"
-#    And a user resets the user progress to Lesson 2
+    And a user resets the user progress to Lesson 2
     And a user clicks the Begin Button at the start of the lesson
     And a user sets priorities in the following order:
       | Education   |
@@ -184,7 +184,7 @@ Feature: 1002 Complete Simulator Essentials 5
   @Lesson3
   Scenario: User completes Lesson 3
     Given a user "configured user 1" logs in to ME with password "for configured user 1"
-#    And a user resets the user progress to Lesson 3
+    And a user resets the user progress to Lesson 3
     And a user clicks the Begin Button at the start of the lesson
     And a user sets priorities in the following order:
       | Education   |
@@ -279,7 +279,7 @@ Feature: 1002 Complete Simulator Essentials 5
   @Lesson4
   Scenario: User completes Lesson 4
     Given a user "configured user 1" logs in to ME with password "for configured user 1"
-#    And a user resets the user progress to Lesson 4
+    And a user resets the user progress to Lesson 4
     And a user clicks the Begin Button at the start of the lesson
     And a user sets priorities in the following order:
       | Education   |
@@ -402,7 +402,7 @@ Feature: 1002 Complete Simulator Essentials 5
   @Lesson5
   Scenario: User completes Lesson 5
     Given a user "configured user 1" logs in to ME with password "for configured user 1"
-#    And a user resets the user progress to Lesson 5
+    And a user resets the user progress to Lesson 5
     And a user clicks the Begin Button at the start of the lesson
     And a user sets priorities in the following order:
       | Education   |
@@ -482,7 +482,7 @@ Feature: 1002 Complete Simulator Essentials 5
   @Lesson6
   Scenario: User completes Lesson 6
     Given a user "configured user 1" logs in to ME with password "for configured user 1"
-#    And a user resets the user progress to Lesson 6
+    And a user resets the user progress to Lesson 6
     And a user clicks the Begin Button at the start of the lesson
     And a user sets priorities in the following order:
       | Education   |
@@ -563,7 +563,7 @@ Feature: 1002 Complete Simulator Essentials 5
   @Lesson7
   Scenario: User completes Lesson 7
     Given a user "configured user 1" logs in to ME with password "for configured user 1"
-#    And a user resets the user progress to Lesson 7
+    And a user resets the user progress to Lesson 7
     And a user clicks the Begin Button at the start of the lesson
     And a user sets priorities in the following order:
       | Education   |
@@ -632,7 +632,7 @@ Feature: 1002 Complete Simulator Essentials 5
   @Lesson8
   Scenario: User completes Lesson 8
     Given a user "configured user 1" logs in to ME with password "for configured user 1"
-#    And a user resets the user progress to Lesson 8
+    And a user resets the user progress to Lesson 8
     And a user clicks the Begin Button at the start of the lesson
     And a user sets priorities in the following order:
       | Education   |
@@ -652,7 +652,7 @@ Feature: 1002 Complete Simulator Essentials 5
       # Would you like to adjust your 401k contribution?
       | text stack | Yes                                                                |
       # How much of your income would you like to contribute?
-      | slider     | 15%                                                                |
+      | slider     | 16%                                                                |
       # Would you like to buy an investment property?
       | text stack | No that's a terrible idea                                          |
       # Uh oh. There's a water stain on the ceiling. Your roof is leaking.
@@ -673,7 +673,7 @@ Feature: 1002 Complete Simulator Essentials 5
   @Lesson9
   Scenario: User completes Lesson 9
     Given a user "configured user 1" logs in to ME with password "for configured user 1"
-#    And a user resets the user progress to Lesson 9
+    And a user resets the user progress to Lesson 9
     And a user clicks the Begin Button at the start of the lesson
     And a user sets priorities in the following order:
       | Education   |
