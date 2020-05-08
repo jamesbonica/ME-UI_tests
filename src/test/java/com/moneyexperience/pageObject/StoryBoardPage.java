@@ -70,7 +70,7 @@ public class StoryBoardPage extends AbstractPage {
 	@FindBy(css = "img[data-testid = 'story-img']")
 	private WebElement storyBoardImage;
 
-	@FindAll(@FindBy(css = "div[class*='storyboard'] > figure > img"))
+	@FindAll(@FindBy(css = "img[data-testid = 'story-img']"))
 	private List<WebElement> storyBoardImageList;
 
 	public StoryBoardPage(EventFiringWebDriver driver) {
@@ -79,7 +79,7 @@ public class StoryBoardPage extends AbstractPage {
 	}
 
 	public boolean beyondSurvey() {
-		return navigationLinkList.size() > 0;
+		return storyBoardImageList.size() > 0;
 	}
 
 	public StoryBoardPage clickNextLink() {

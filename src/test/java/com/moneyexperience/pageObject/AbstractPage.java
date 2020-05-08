@@ -106,7 +106,7 @@ public class AbstractPage {
 	
 	// The Storyboards do not have an age range displayed
 	public boolean notOnStoryBoardPage() {
-		return lessonAgeRangeList.size() > 0;
+		return (lessonAgeRangeList.size() > 0 || imReadyButtonList.size() > 0);
 	}
 	
 

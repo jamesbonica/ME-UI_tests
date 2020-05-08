@@ -50,5 +50,9 @@ public class PageObjectFactory {
 	public ConfirmPrioritiesPage getConfirmPrioritiesPage() {
 		return (ConfirmPrioritiesPage) appContext.getBean("confirmPrioritiesPage");
 	}
+	
+	public AssessmentV2Page getAssessmentV2Page() {
+		return (AssessmentV2Page) appContext.getBean("assessmentV2Page");
+	}
 
 }

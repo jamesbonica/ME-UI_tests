@@ -43,4 +43,9 @@ public class SurveyQuestionAndResponse {
 		this.postAnswer = postAnswer;
 	}
 	
+	@Override
+    public String toString() { 
+        return "Question: " + surveyQuestion + ", Baseline Answer: " + baselineAnswer + ", postAnswer: " + postAnswer; 
+    } 
+	
 }

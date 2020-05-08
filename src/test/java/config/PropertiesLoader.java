@@ -116,6 +116,87 @@ public class PropertiesLoader {
 	@Value("${post.survey.answer10}")
 	private String postSurveyAnswer10;
 
+	@Value("${survey.v2.question1}")
+	private String surveyV2Question1;
+
+	@Value("${survey.v2.question2}")
+	private String surveyV2Question2;
+
+	@Value("${survey.v2.question3}")
+	private String surveyV2Question3;
+
+	@Value("${survey.v2.question4}")
+	private String surveyV2Question4;;
+
+	@Value("${survey.v2.question5}")
+	private String surveyV2Question5;
+
+	@Value("${survey.v2.question6}")
+	private String surveyV2Question6;
+
+	@Value("${survey.v2.question7}")
+	private String surveyV2Question7;
+
+	@Value("${survey.v2.question8}")
+	private String surveyV2Question8;
+
+	@Value("${survey.v2.question9}")
+	private String surveyV2Question9;
+
+	@Value("${pre.survey.v2.answer1}")
+	private String preSurveyV2Answer1;
+
+	@Value("${post.survey.v2.answer1}")
+	private String postSurveyV2Answer1;
+
+	@Value("${pre.survey.v2.answer2}")
+	private String preSurveyV2Answer2;
+
+	@Value("${post.survey.v2.answer2}")
+	private String postSurveyV2Answer2;
+
+	@Value("${pre.survey.v2.answer3}")
+	private String preSurveyV2Answer3;
+
+	@Value("${post.survey.v2.answer3}")
+	private String postSurveyV2Answer3;
+
+	@Value("${pre.survey.v2.answer4}")
+	private String preSurveyV2Answer4;
+
+	@Value("${post.survey.v2.answer4}")
+	private String postSurveyV2Answer4;
+
+	@Value("${pre.survey.v2.answer5}")
+	private String preSurveyV2Answer5;
+
+	@Value("${post.survey.v2.answer5}")
+	private String postSurveyV2Answer5;
+
+	@Value("${pre.survey.v2.answer6}")
+	private String preSurveyV2Answer6;
+
+	@Value("${post.survey.v2.answer6}")
+	private String postSurveyV2Answer6;
+
+	@Value("${pre.survey.v2.answer7}")
+	private String preSurveyV2Answer7;
+
+	@Value("${post.survey.v2.answer7}")
+	private String postSurveyV2Answer7;
+
+	@Value("${pre.survey.v2.answer8}")
+	private String preSurveyV2Answer8;
+
+	@Value("${post.survey.v2.answer8}")
+	private String postSurveyV2Answer8;
+
+	@Value("${pre.survey.v2.answer9}")
+	private String preSurveyV2Answer9;
+
+	@Value("${post.survey.v2.answer9}")
+	private String postSurveyV2Answer9;
+
 	public String getTestUrl() {
 		return testUrl;
 	}
@@ -402,6 +483,222 @@ public class PropertiesLoader {
 
 	public void setPostSurveyAnswer10(String postSurveyAnswer10) {
 		this.postSurveyAnswer10 = postSurveyAnswer10;
+	}
+
+	public String getSurveyV2Question1() {
+		return surveyV2Question1;
+	}
+
+	public void setSurveyV2Question1(String surveyV2Question1) {
+		this.surveyV2Question1 = surveyV2Question1;
+	}
+
+	public String getSurveyV2Question2() {
+		return surveyV2Question2;
+	}
+
+	public void setSurveyV2Question2(String surveyV2Question2) {
+		this.surveyV2Question2 = surveyV2Question2;
+	}
+
+	public String getSurveyV2Question3() {
+		return surveyV2Question3;
+	}
+
+	public void setSurveyV2Question3(String surveyV2Question3) {
+		this.surveyV2Question3 = surveyV2Question3;
+	}
+
+	public String getSurveyV2Question4() {
+		return surveyV2Question4;
+	}
+
+	public void setSurveyV2Question4(String surveyV2Question4) {
+		this.surveyV2Question4 = surveyV2Question4;
+	}
+
+	public String getSurveyV2Question5() {
+		return surveyV2Question5;
+	}
+
+	public void setSurveyV2Question5(String surveyV2Question5) {
+		this.surveyV2Question5 = surveyV2Question5;
+	}
+
+	public String getSurveyV2Question6() {
+		return surveyV2Question6;
+	}
+
+	public void setSurveyV2Question6(String surveyV2Question6) {
+		this.surveyV2Question6 = surveyV2Question6;
+	}
+
+	public String getSurveyV2Question7() {
+		return surveyV2Question7;
+	}
+
+	public void setSurveyV2Question7(String surveyV2Question7) {
+		this.surveyV2Question7 = surveyV2Question7;
+	}
+
+	public String getSurveyV2Question8() {
+		return surveyV2Question8;
+	}
+
+	public void setSurveyV2Question8(String surveyV2Question8) {
+		this.surveyV2Question8 = surveyV2Question8;
+	}
+
+	public String getSurveyV2Question9() {
+		return surveyV2Question9;
+	}
+
+	public void setSurveyV2Question9(String surveyV2Question9) {
+		this.surveyV2Question9 = surveyV2Question9;
+	}
+
+	public String getPreSurveyV2Answer1() {
+		return preSurveyV2Answer1;
+	}
+
+	public void setPreSurveyV2Answer1(String preSurveyV2Answer1) {
+		this.preSurveyV2Answer1 = preSurveyV2Answer1;
+	}
+
+	public String getPostSurveyV2Answer1() {
+		return postSurveyV2Answer1;
+	}
+
+	public void setPostSurveyV2Answer1(String postSurveyV2Answer1) {
+		this.postSurveyV2Answer1 = postSurveyV2Answer1;
+	}
+
+	public String getPreSurveyV2Answer2() {
+		return preSurveyV2Answer2;
+	}
+
+	public void setPreSurveyV2Answer2(String preSurveyV2Answer2) {
+		this.preSurveyV2Answer2 = preSurveyV2Answer2;
+	}
+
+	public String getPostSurveyV2Answer2() {
+		return postSurveyV2Answer2;
+	}
+
+	public void setPostSurveyV2Answer2(String postSurveyV2Answer2) {
+		this.postSurveyV2Answer2 = postSurveyV2Answer2;
+	}
+
+	public String getPreSurveyV2Answer3() {
+		return preSurveyV2Answer3;
+	}
+
+	public void setPreSurveyV2Answer3(String preSurveyV2Answer3) {
+		this.preSurveyV2Answer3 = preSurveyV2Answer3;
+	}
+
+	public String getPostSurveyV2Answer3() {
+		return postSurveyV2Answer3;
+	}
+
+	public void setPostSurveyV2Answer3(String postSurveyV2Answer3) {
+		this.postSurveyV2Answer3 = postSurveyV2Answer3;
+	}
+
+	public String getPreSurveyV2Answer4() {
+		return preSurveyV2Answer4;
+	}
+
+	public void setPreSurveyV2Answer4(String preSurveyV2Answer4) {
+		this.preSurveyV2Answer4 = preSurveyV2Answer4;
+	}
+
+	public String getPostSurveyV2Answer4() {
+		return postSurveyV2Answer4;
+	}
+
+	public void setPostSurveyV2Answer4(String postSurveyV2Answer4) {
+		this.postSurveyV2Answer4 = postSurveyV2Answer4;
+	}
+
+	public String getPreSurveyV2Answer5() {
+		return preSurveyV2Answer5;
+	}
+
+	public void setPreSurveyV2Answer5(String preSurveyV2Answer5) {
+		this.preSurveyV2Answer5 = preSurveyV2Answer5;
+	}
+
+	public String getPostSurveyV2Answer5() {
+		return postSurveyV2Answer5;
+	}
+
+	public void setPostSurveyV2Answer5(String postSurveyV2Answer5) {
+		this.postSurveyV2Answer5 = postSurveyV2Answer5;
+	}
+
+	public String getPreSurveyV2Answer6() {
+		return preSurveyV2Answer6;
+	}
+
+	public void setPreSurveyV2Answer6(String preSurveyV2Answer6) {
+		this.preSurveyV2Answer6 = preSurveyV2Answer6;
+	}
+
+	public String getPostSurveyV2Answer6() {
+		return postSurveyV2Answer6;
+	}
+
+	public void setPostSurveyV2Answer6(String postSurveyV2Answer6) {
+		this.postSurveyV2Answer6 = postSurveyV2Answer6;
+	}
+
+	public String getPreSurveyV2Answer7() {
+		return preSurveyV2Answer7;
+	}
+
+	public void setPreSurveyV2Answer7(String preSurveyV2Answer7) {
+		this.preSurveyV2Answer7 = preSurveyV2Answer7;
+	}
+
+	public String getPostSurveyV2Answer7() {
+		return postSurveyV2Answer7;
+	}
+
+	public void setPostSurveyV2Answer7(String postSurveyV2Answer7) {
+		this.postSurveyV2Answer7 = postSurveyV2Answer7;
+	}
+
+	public String getPreSurveyV2Answer8() {
+		return preSurveyV2Answer8;
+	}
+
+	public void setPreSurveyV2Answer8(String preSurveyV2Answer8) {
+		this.preSurveyV2Answer8 = preSurveyV2Answer8;
+	}
+
+	public String getPostSurveyV2Answer8() {
+		return postSurveyV2Answer8;
+	}
+
+	public void setPostSurveyV2Answer8(String postSurveyV2Answer8) {
+		this.postSurveyV2Answer8 = postSurveyV2Answer8;
+	}
+
+	public String getPreSurveyV2Answer9() {
+		return preSurveyV2Answer9;
+	}
+
+	public void setPreSurveyV2Answer9(String preSurveyV2Answer9) {
+		this.preSurveyV2Answer9 = preSurveyV2Answer9;
+	}
+
+	public String getPostSurveyV2Answer9() {
+		return postSurveyV2Answer9;
+	}
+
+	public void setPostSurveyV2Answer9(String postSurveyV2Answer9) {
+		this.postSurveyV2Answer9 = postSurveyV2Answer9;
 	}
 
 }
