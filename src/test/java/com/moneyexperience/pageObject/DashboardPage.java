@@ -2,6 +2,7 @@ package com.moneyexperience.pageObject;
 
 import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -27,7 +28,7 @@ public class DashboardPage extends AbstractPage {
 	@Autowired
 	PageObjectFactory pageObjectFactory;
 
-	@FindBy(css = "button > p[data-testid = 'undefined-text']")
+	@FindBy(css = "button[color = '$white'] > p[data-testid]")
 	private WebElement continueButton;
 
 	//// The icons for the optional narratives
@@ -70,10 +71,11 @@ public class DashboardPage extends AbstractPage {
 	}
 
 	public boolean imReadyButtonPresent() {
-		waitForElement(continueButton);
+		waitForElement(tessIcon);
 		return imReadyButtonList.size() > 0;
+
 	}
-	
+
 	public LessonCheckpointPage clickContinueButton() {
 		waitForElement(continueButton);
 		continueButton.click();

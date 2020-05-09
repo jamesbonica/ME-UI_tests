@@ -79,7 +79,7 @@ public class StoryBoardPage extends AbstractPage {
 	}
 
 	public boolean beyondSurvey() {
-		return storyBoardImageList.size() > 0;
+		return storyBoardImageList.size() > 0 || tessIconList.size() > 0;
 	}
 
 	public StoryBoardPage clickNextLink() {
@@ -189,5 +189,5 @@ public class StoryBoardPage extends AbstractPage {
 	public boolean loaderPresent() {
 		return driver.findElements(By.cssSelector("div[class*='loader']")).size() > 0;
 	}
-
+	
 }

@@ -112,7 +112,7 @@ public class LessonService {
 
 	public void clickContinueOnONDashboard() {
 		if (dashboardPage.imReadyButtonPresent()) {
-			dashboardPage.dismissImReadyButton();
+				dashboardPage.dismissImReadyButton();
 		}
 		dashboardPage.clickContinueButton();
 

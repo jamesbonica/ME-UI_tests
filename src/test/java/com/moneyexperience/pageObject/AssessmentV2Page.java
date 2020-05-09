@@ -38,6 +38,9 @@ public class AssessmentV2Page extends AbstractPage {
 
 	@FindAll(@FindBy(css = "p[data-testid]"))
 	private List<WebElement> questionList;
+	
+	@FindAll(@FindBy(css = "div > textarea[data-testid]"))
+	private List<WebElement> textareaList;
 
 	public AssessmentV2Page(EventFiringWebDriver driver) {
 		this.driver = driver;
@@ -58,7 +61,6 @@ public class AssessmentV2Page extends AbstractPage {
 		pause(.25);
 	}
 
-
 	public boolean nextButtonPresent() {
 		return nextButtonList.size() > 0;
 	}
@@ -71,7 +73,7 @@ public class AssessmentV2Page extends AbstractPage {
 		String question = questionList.get(i).getText().trim();
 
 		if (question.trim().equals("")) {
-			return driver.findElement(By.xpath("//p[@font-weight='bold']/following-sibling::p")).getText();
+			return driver.findElement(By.xpath("(//p[@font-weight='bold']/following-sibling::p)[" + (i + 1) + "]")).getText();
 		} else {
 			return question;
 		}
@@ -87,6 +89,14 @@ public class AssessmentV2Page extends AbstractPage {
 	public boolean meBigLogoPresent() {
 
 		return meBigLogoList.size() > 0;
+	}
+
+	public AssessmentV2Page enterAnswerInTextbox(String userAnswer, int counter) {
+		WebElement element = textareaList.get(counter);
+		element.clear();
+		element.sendKeys(userAnswer);
+		return this;
+
 	}
 
 }
