@@ -39,6 +39,12 @@ public class AbstractPage {
 	
 	@FindAll(@FindBy(css ="div[data-testid = 'age-string']"))
 	protected List<WebElement> lessonAgeRangeList;
+	
+	@FindBy(css = "div[width= '100%'] > button > img[src *= 'penny.png']")
+	protected WebElement tessIcon;
+	
+	@FindAll(@FindBy(css ="div[width= '100%'] > button > img[src *= 'penny.png']"))
+	protected List<WebElement> tessIconList;
 
 	public AbstractPage navigateToWebApp() {
 		driver.navigate().to(propertiesLoader.getTestUrl());
@@ -106,7 +112,7 @@ public class AbstractPage {
 	
 	// The Storyboards do not have an age range displayed
 	public boolean notOnStoryBoardPage() {
-		return lessonAgeRangeList.size() > 0;
+		return (lessonAgeRangeList.size() > 0 || imReadyButtonList.size() > 0);
 	}
 	
 

@@ -1,6 +1,6 @@
 #Author: Jim Bonica jim@moneyexperience.com
-@Complete_Simulator_Essentials5
-Feature: 1002 Complete Simulator Essentials 5
+@Complete_Simulator_Essentials6
+Feature: 1002 Complete Simulator Essentials 6
   Description: 
   	As a Money Experience Engineer
   	I want an automation tool to execute user choices for all TME Simulator lessons
@@ -11,6 +11,8 @@ Feature: 1002 Complete Simulator Essentials 5
     Given a user "configured user 1" logs in to ME with password "for configured user 1"
     And a user resets the user progress to Lesson 1
     And a user clicks the Begin Button at the start of the lesson
+    And a user completes the V2 Baseline Assessment if the user has not completed it before
+    And a user goes through the storyboards
     And a user sets priorities in the following order:
       | Education   |
       | Adventure   |
@@ -22,9 +24,6 @@ Feature: 1002 Complete Simulator Essentials 5
       | Security    |
       | Social Good |
       | Free Time   |
-    And a user confirms the priorities
-    And a user completes the Baseline Assessment if the user has not completed it before
-    And a user clicks Next 2 times
     And a user chooses the following responses in the Chat with Tess:
       | choiceType | choice    |
       # For example, let's pick a job for you to have during the summer after high school.
@@ -51,9 +50,6 @@ Feature: 1002 Complete Simulator Essentials 5
       #
       # What kind of school do you plan to go to?
       | text stack | In-state University                             |
-      #
-      # Do you plan to pursue an advanced degree?
-      | text stack | No                                              |
       #
       # You've selected a summer job already, but do you plan to have a job while in school?
       | text stack | Yes                                             |
@@ -109,6 +105,7 @@ Feature: 1002 Complete Simulator Essentials 5
     Given a user "configured user 1" logs in to ME with password "for configured user 1"
     And a user resets the user progress to Lesson 2
     And a user clicks the Begin Button at the start of the lesson
+    And a user clicks Next
     And a user sets priorities in the following order:
       | Education   |
       | Adventure   |
@@ -120,11 +117,22 @@ Feature: 1002 Complete Simulator Essentials 5
       | Security    |
       | Social Good |
       | Free Time   |
-    And a user clicks Next
     And a user goes through the storyboards
     And A user clicks Go when Tess sends a new message
     And a user chooses the following responses in the Chat with Tess:
       | choiceType | choice                                             |
+      #
+      # Where do you see yourself in your mid 20s?
+      | text stack | Starting a new career or changing my career        |
+      #
+      # OK let's talk about your career! What kind of career are you looking for?
+      | text stack | Something in business                              |
+      #
+      # What kind of business career?
+      | text stack | Investment manager                                 |
+      #
+      # Do you plan to work full-time or part-time?
+      | text stack | Full-time                                          |
       #
       # Let's say your laptop breaks and you need a new one. What will you buy?
       | text stack | A new basic machine ($$)                           |
@@ -160,12 +168,17 @@ Feature: 1002 Complete Simulator Essentials 5
       | text stack | Yes                                                |
       #
       # Where would you like to live?
-      | text stack | Rent-free with Family $0/mo                        |
+      | text stack | Studio Apartment $1,012/mo                         |
+      #
+      # Would you still like to choose this option
+      | text stack | Yes                                                |
+      #
+      # Would you like to live with a roommate?
+      | text stack | No                                                 |
       #
       # OK, that's it for now! Let's move on.
       | text stack | Ok                                                 |
     And a user goes through the storyboards
-    And a user answers 4 Post Survey Questions
     #    And a user selects the "Apply for a Credit Card" Optional Narrative from the Dashboard
     #    And the user chooses the following responses in the Optional Narrative:
     #      | carouselOrSlider | choice                                                       | navigationDirection |
@@ -186,6 +199,7 @@ Feature: 1002 Complete Simulator Essentials 5
     Given a user "configured user 1" logs in to ME with password "for configured user 1"
     And a user resets the user progress to Lesson 3
     And a user clicks the Begin Button at the start of the lesson
+    And a user clicks Next
     And a user sets priorities in the following order:
       | Education   |
       | Adventure   |
@@ -197,57 +211,49 @@ Feature: 1002 Complete Simulator Essentials 5
       | Security    |
       | Social Good |
       | Free Time   |
-    And a user clicks Next
     And a user goes through the storyboards
     And a user chooses the following responses in the Chat with Tess:
-      | choiceType | choice                                         |
+      | choiceType | choice                               |
       #
-      # OK let's talk about your career! What kind of career are you looking for?
-      | text stack | Something in business                          |
+      # Would you like to start a new career or change your career?
+      | text stack | No, I'm happy with my current career |
       #
-      # What kind of business career?
-      | text stack | Investment manager                             |
+      # Now that you've settled into a career, would you like to start or change your contribution to a 401k account?
+      | text stack | Yes                                  |
       #
-      # Do you plan to work full-time or part-time?
-      | text stack | Full-time                                      |
+      # How much of each paycheck would you like to contribute?
+      | slider     | 10%                                  |
       #
-      # Would you like to try living in a different region?
-      | text stack | Yes                                            |
+      # How would you like to invest your money in this account?
+      | text stack | High risk strategy                   |
       #
-      # Where would you like to move to?
-      | text stack | A Southern city (Like Atlanta, or New Orleans) |
+      # What about investments? Would you like to invest some of your savings in stocks or bonds?
+      | text stack | Yes                                  |
       #
-      # Would you still like to live in a southern city like Atlanta or New Orleans?
-      | text stack | Yes                                            |
+      # How much of your available savings would you like to invest?
+      | slider     | 50%                                  |
       #
-      # Where would you like to live?
-      | text stack | A two bedroom apartment $1,652/mo              |
-      #
-      # Would you still like to choose this option?
-      | text stack | Yes                                            |
-      #
-      # Would you like to live with a roommate?
-      | text stack | I'll have a roommate                           |
+      # How would you like to invest your money in this account?
+      | text stack | High risk strategy                   |
       #
       # Are you someone who cooks or eats out a lot?
-      | text stack | I cook at home a lot ($)                       |
+      | text stack | I cook at home a lot ($)             |
       #
       # When you eat out, what type of stuff do you get?
-      | text stack | Mostly healthy take-out ($$)                   |
+      | text stack | Mostly healthy take-out ($$)         |
       #
       # What kind of stuff do you like to do when out with friends?
-      | text stack | Dinner and movie ($$)                          |
+      | text stack | Dinner and movie ($$)                |
       #
       # What about date night?
-      | text stack | Dinner and dancing ($$)                        |
+      | text stack | Dinner and dancing ($$)              |
       #
       # How will you watch stuff at home?
-      | text stack | Big-screen with surround sound ($$$)           |
+      | text stack | Big-screen with surround sound ($$$) |
       #
       # OK That's it for now! I heard Ria is back from the military, let's go see what she's up to.
-      | text stack | OK                                             |
+      | text stack | OK                                   |
     And a user goes through the storyboards
-    And a user answers 2 Post Survey Questions
     #  And a user selects the "Get Married" Optional Narrative from the Dashboard
     #  And the user chooses the following responses in the Optional Narrative Chat with Tess:
     #    | carouselOrSlider | choice                                                          |
@@ -281,6 +287,7 @@ Feature: 1002 Complete Simulator Essentials 5
     Given a user "configured user 1" logs in to ME with password "for configured user 1"
     And a user resets the user progress to Lesson 4
     And a user clicks the Begin Button at the start of the lesson
+    And a user clicks Next
     And a user sets priorities in the following order:
       | Education   |
       | Adventure   |
@@ -292,22 +299,9 @@ Feature: 1002 Complete Simulator Essentials 5
       | Security    |
       | Social Good |
       | Free Time   |
-    And a user clicks Next
     And a user goes through the storyboards
     And a user chooses the following responses in the Chat with Tess:
       | choiceType | choice                                                   |
-      #
-      # First of all, are you still happy with where you're living, or would you like to move?
-      | text stack | I don't want to move                                     |
-      #
-      # Would you like to change your residence, or buy a house?
-      | text stack | Yes                                                      |
-      #
-      # Where would you like to live?
-      | text stack | "Forever" Home $2,845/mo                                 |
-      #
-      # Would you still like to choose this option?
-      | text stack | Yes                                                      |
       #
       # Now let's get back to some basics. What's for dinner?
       | text stack | A home cooked meal ($$)                                  |
@@ -342,24 +336,8 @@ Feature: 1002 Complete Simulator Essentials 5
       # How will you spend an average night out with friends?
       | text stack | Low key dinner. I'll probably leave early ($)            |
       #
-      # Now that you're settling into your career, would you like to adjust your 401k contribution?
-      | text stack | Yes                                                      |
-      #
-      # How much of your salary would you like to contribute?
-      | slider     | 10%                                                      |
-      #
-      # How about a 529? Are you saving for your kids' future education?
-      | text stack | No                                                       |
-      #
-      # OK lastly, would you like to invest any of your savings?
-      | text stack | Yes                                                      |
-      #
-      # How much of your savings would you like to invest going forward?
-      | slider     | 50%                                                      |
-      #
       # OK, let's move onto your dashboard.
       | text stack | OK                                                       |
-    And a user answers 1 Post Survey Question
     #  And a user selects the "Have a Child" Optional Narrative from the Dashboard
     #  And the user chooses the following responses in the Optional Narrative Chat with Tess:
     #    | carouselOrSlider | choice                                             | navigationDirection |
@@ -404,6 +382,7 @@ Feature: 1002 Complete Simulator Essentials 5
     Given a user "configured user 1" logs in to ME with password "for configured user 1"
     And a user resets the user progress to Lesson 5
     And a user clicks the Begin Button at the start of the lesson
+    And a user clicks Next
     And a user sets priorities in the following order:
       | Education   |
       | Adventure   |
@@ -415,7 +394,6 @@ Feature: 1002 Complete Simulator Essentials 5
       | Security    |
       | Social Good |
       | Free Time   |
-    And a user clicks Next
     And a user goes through the storyboards
     And a user chooses the following responses in the Chat with Tess:
       | choiceType | choice                                                       |
@@ -462,18 +440,6 @@ Feature: 1002 Complete Simulator Essentials 5
       # Suddenly your back is starting to get sore pretty often. How do you handle it?
       | text stack | Go to the doc just to be safe ($$)                           |
       #
-      # Would you like to edit how much you contribute to a 401k?
-      | text stack | No                                                           |
-      #
-      # How about a 529? Are you saving for your kids' education in your 30s?
-      | text stack | Yes                                                          |
-      #
-      # How much of your income are you saving?
-      | slider     | 8%                                                           |
-      #
-      # OK lastly, would you like to adjust how much you're investing?
-      | text stack | No                                                           |
-      #
       # OK, let's move onto your dashboard.
       | text stack | OK                                                           |
     And a user clicks Continue on the Optional Narratives Dashboard
@@ -484,6 +450,7 @@ Feature: 1002 Complete Simulator Essentials 5
     Given a user "configured user 1" logs in to ME with password "for configured user 1"
     And a user resets the user progress to Lesson 6
     And a user clicks the Begin Button at the start of the lesson
+    And a user clicks Next
     And a user sets priorities in the following order:
       | Education   |
       | Adventure   |
@@ -495,13 +462,9 @@ Feature: 1002 Complete Simulator Essentials 5
       | Security    |
       | Social Good |
       | Free Time   |
-    And a user clicks Next
     And a user goes through the storyboards
     And a user chooses the following responses in the Chat with Tess:
       | choiceType | choice                                              |
-      #
-      # Would you still like to live in the same place?
-      | text stack | Yes I'm happy where I am.                           |
       #
       # How often would you like to travel?
       | text stack | A few times per year. ($$)                          |
@@ -539,24 +502,8 @@ Feature: 1002 Complete Simulator Essentials 5
       # You've found out a certain health condition runs in your family. How do you handle?
       | text stack | Get tested as a precaution ($$)                     |
       #
-      # Would you like to edit how much you contribute to a 401k?
-      | text stack | Yes                                                 |
-      #
-      # How much would you like to contribute?
-      | slider     | 12%                                                 |
-      #
-      # How about a 529? Are you saving for your kids' education in your 40s?
-      | text stack | Yes                                                 |
-      #
-      # How much of your income are you saving?
-      | slider     | 8%                                                  |
-      #
-      # OK lastly, would you like to adjust how much you're investing?
-      | text stack | No                                                  |
-      #
       # OK, let's move onto your optional choices!
       | text stack | OK                                                  |
-    And a user answers 1 Post Survey Question
     And a user clicks Continue on the Optional Narratives Dashboard
     And a user clicks Continue on the Lesson Checkpoint Page
 
@@ -565,6 +512,7 @@ Feature: 1002 Complete Simulator Essentials 5
     Given a user "configured user 1" logs in to ME with password "for configured user 1"
     And a user resets the user progress to Lesson 7
     And a user clicks the Begin Button at the start of the lesson
+    And a user clicks Next
     And a user sets priorities in the following order:
       | Education   |
       | Adventure   |
@@ -576,7 +524,6 @@ Feature: 1002 Complete Simulator Essentials 5
       | Security    |
       | Social Good |
       | Free Time   |
-    And a user clicks Next
     And a user goes through the storyboards
     And a user chooses the following responses in the Chat with Tess:
       | choiceType | choice                                                         |
@@ -614,18 +561,8 @@ Feature: 1002 Complete Simulator Essentials 5
       # You have a pain in your foot that won't go away without surgery. What do you do?
       | text stack | Get surgery as soon as possible ($$$)                          |
       #
-      # Would you like to edit how much you contribute to your 401k?
-      | text stack | No                                                             |
-      #
-      # How about a 529? Are you still saving for your kids' education in your 50s?
-      | text stack | No                                                             |
-      #
-      # OK lastly, would you like to adjust how much you're investing?
-      | text stack | No                                                             |
-      #
       # OK, let's move onto your dashboard.
       | text stack | OK                                                             |
-    And a user answers 1 Post Survey Question
     And a user clicks Continue on the Optional Narratives Dashboard
     And a user clicks Continue on the Lesson Checkpoint Page
 
@@ -634,6 +571,7 @@ Feature: 1002 Complete Simulator Essentials 5
     Given a user "configured user 1" logs in to ME with password "for configured user 1"
     And a user resets the user progress to Lesson 8
     And a user clicks the Begin Button at the start of the lesson
+    And a user clicks Next
     And a user sets priorities in the following order:
       | Education   |
       | Adventure   |
@@ -645,26 +583,37 @@ Feature: 1002 Complete Simulator Essentials 5
       | Security    |
       | Social Good |
       | Free Time   |
-    And a user clicks Next
     And a user goes through the storyboards
     And a user chooses the following responses in the Chat with Tess:
       | choiceType | choice                                                             |
+      #
       # Would you like to adjust your 401k contribution?
       | text stack | Yes                                                                |
+      #
       # How much of your income would you like to contribute?
       | slider     | 16%                                                                |
+      #
+      # How would you like to invest your money in this account?
+      | text stack | High risk strategy                                         |
+      #
       # Would you like to buy an investment property?
       | text stack | No that's a terrible idea                                          |
+      #
       # Uh oh. There's a water stain on the ceiling. Your roof is leaking.
       | text stack | Replace the roof ($$)                                              |
+      #
       # Your car is due for a 100,000 mile service
       | text stack | Get the oil and filters changed, the minimum. ($$)                 |
+      #
       # You're in your 60s now, and looking at a fixed income in retirement.
       | text stack | I'll buy groceries on sale, but I'm not fussing with coupons ($$)  |
+      #
       # You'll have a lot more free time in retirement. How do you spend it?
       | text stack | Throw myself into a new hobby. Like kayaking. Or sky diving. ($$$) |
+      #
       # In your 60s, how much is your health on your mind?
       | text stack | I'm making an effort to be active and healthy ($$)                 |
+      #
       # OK, let's move on!
       | text stack | OK                                                                 |
     And a user clicks Continue on the Optional Narratives Dashboard
@@ -675,6 +624,7 @@ Feature: 1002 Complete Simulator Essentials 5
     Given a user "configured user 1" logs in to ME with password "for configured user 1"
     And a user resets the user progress to Lesson 9
     And a user clicks the Begin Button at the start of the lesson
+    And a user clicks Next
     And a user sets priorities in the following order:
       | Education   |
       | Adventure   |
@@ -686,7 +636,6 @@ Feature: 1002 Complete Simulator Essentials 5
       | Security    |
       | Social Good |
       | Free Time   |
-    And a user clicks Next
     And a user goes through the storyboards
     And a user chooses the following responses in the Chat with Tess:
       | choiceType | choice                                                       |
@@ -714,7 +663,7 @@ Feature: 1002 Complete Simulator Essentials 5
       #
       # OK, that's it for your lifestyle in your senior years, let's move on.
       | text stack | Ok                                                           |
-    And a user answers 1 Post Survey Question
-    And a user clicks Continue on the Optional Narratives Dashboard
-    And a user clicks Continue on the Simulator Conclusion Page
-    ## Do I want to add some assertion step here or something????
+ #   And a user completes the V2 Post-Course Assessment
+ #   And a user clicks Continue on the Optional Narratives Dashboard
+ #   And a user clicks Continue on the Simulator Conclusion Page
+ #   ## Do I want to add some assertion step here or something????
