@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
 
 import com.moneyexperience.pageObject.AssessmentPage;
+import com.moneyexperience.pageObject.AssessmentV2Page;
 import com.moneyexperience.pageObject.ChatPage;
 import com.moneyexperience.pageObject.ConfirmPrioritiesPage;
 import com.moneyexperience.pageObject.DashboardPage;
@@ -54,7 +55,10 @@ public class LessonService {
 
 	@Autowired
 	AssessmentPage assessmentPage;
-	
+
+	@Autowired
+	AssessmentV2Page assessmentV2Page;
+
 	@Autowired
 	SimulatorConclusionPage simulatorConclusionPage;
 
@@ -108,7 +112,7 @@ public class LessonService {
 
 	public void clickContinueOnONDashboard() {
 		if (dashboardPage.imReadyButtonPresent()) {
-			dashboardPage.dismissImReadyButton();
+				dashboardPage.dismissImReadyButton();
 		}
 		dashboardPage.clickContinueButton();
 
@@ -166,6 +170,35 @@ public class LessonService {
 		}
 
 		return onAssessmentPage;
+	}
+
+	public String inV2SurveyOrBeyondIt() {
+		String currentPage = "";
+		int counter = 0;
+		while (counter < 10) {
+
+			// Begin button is present you're on Survey Cover
+			if (assessmentV2Page.meBigLogoPresent()) {
+				currentPage = "Survey Cover";
+				break;
+			}
+
+			if (assessmentV2Page.nextButtonPresent()) {
+				currentPage = "Survey Body";
+				break;
+			}
+
+			if (storyBoardPage.beyondSurvey()) {
+				currentPage = "Beyond Survey";
+				break;
+			}
+
+			// This can be any page to use this Pause method
+			setPrioritiesPage.pause(.5);
+			counter++;
+		}
+
+		return currentPage;
 	}
 
 	public void clickContinueOnTheSimulatorConclusionPage() {

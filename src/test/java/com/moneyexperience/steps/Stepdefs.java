@@ -177,4 +177,14 @@ public class Stepdefs {
 		responseService.answerAssessmentQuestions("post", questions);
 	}
 
+	@Given("a user completes the V2 Baseline Assessment if the user has not completed it before")
+	public void a_user_completes_the_V2_Baseline_Assessment_if_the_user_has_not_completed_it_before() {
+		responseService.answerV2AssessmentQuestions("baseline");
+	}
+	
+	@Given("a user completes the V2 Post-Course Assessment")
+	public void a_user_completes_the_V2_Post_Course_Assessment() {
+		responseService.answerV2AssessmentQuestions("post");
+	}
+
 }
