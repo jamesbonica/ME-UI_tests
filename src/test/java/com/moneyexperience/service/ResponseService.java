@@ -53,8 +53,10 @@ public class ResponseService {
 			chatPage.selectOptionInTextStack(choice).clickSendButton();
 		} else if (choiceType.equalsIgnoreCase("slider")) {
 			chatPage.selectSlider(choice).clickNumberSendButton();
-		} else if (choiceType.equalsIgnoreCase("dating app")) {
-			chatPage.selectDatingOption(choice, navigationDirection);
+		} else if (choiceType.equalsIgnoreCase("phone app")) {
+			chatPage.selectPhoneAppOption(choice, navigationDirection);
+		} else if (choiceType.equals("image carousel")) {
+			chatPage.selectOptionInImageCarousel(choice, navigationDirection).clickSendButton();
 		} else if (choiceType.equals("")) {
 			chatPage.selectOption(choice).clickSendButton();
 		}
@@ -92,7 +94,6 @@ public class ResponseService {
 		while (counter < questionsOnPage) {
 			// Get text of the question
 			String question = assessmentPage.getQuestionText(counter + 1);
-			
 
 			String userAnswer = "";
 
@@ -356,7 +357,7 @@ public class ResponseService {
 				}
 
 				page = lessonService.inV2SurveyOrBeyondIt();
-			//	System.out.println("page at end of loop is " + page);
+				// System.out.println("page at end of loop is " + page);
 
 			}
 

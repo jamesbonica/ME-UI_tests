@@ -86,17 +86,17 @@ Feature: 1002 Complete Simulator Essentials 6
       #
       # Ready to move on?
       | text stack | Yes                                             |
-    #  And a user selects the "Take a Trip" Optional Narrative from the Dashboard
-    #    And the user chooses the following responses in the Optional Narrative Chat with Tess:
-    #      | carouselOrSlider | choice                           |
-    #      # Would you like to take a trip somewhere?
-    #      |                  | Probably                         |
-    #      # Where would you like to go?
-    #      | text carousel    | Outdoor adventure in New Zealand |
-    #      # A week in ... Still game?
-    #      |                  | Book it!                         |
-    #      # For now, let's go back to the dashboard.
-    #      |                  | OK                               |
+    And a user selects the "Take a trip" Optional Narrative in the "Travel" Inventory on the Dashboard
+    And the user chooses the following responses in the Optional Narrative Chat with Tess:
+      | choiceType | choice                                  |
+      # Would you like to take a trip somewhere?
+      | text stack | Probably                                |
+      # Where would you like to go?
+      | text stack | Outdoor adventure in New Zealand $3,000 |
+      # A week in ... Still interested?
+      | text stack | Book it!                                |
+      # For now, let's go back to the dashboard.
+      | text stack | OK                                      |
     And a user clicks Continue on the Optional Narratives Dashboard
     And a user clicks Continue on the Lesson Checkpoint Page
 
@@ -122,10 +122,10 @@ Feature: 1002 Complete Simulator Essentials 6
     And a user chooses the following responses in the Chat with Tess:
       | choiceType | choice                                             |
       #
-      # Where do you see yourself in your mid 20s?
-      | text stack | Starting a new career or changing my career        |
+      # Your adult life is beginning to take shape! What would you like to do?
+      | text stack | Start a new career or change my career             |
       #
-      # OK let's talk about your career! What kind of career are you looking for?
+      # What kind of career are you looking for?
       | text stack | Something in business                              |
       #
       # What kind of business career?
@@ -179,18 +179,18 @@ Feature: 1002 Complete Simulator Essentials 6
       # OK, that's it for now! Let's move on.
       | text stack | Ok                                                 |
     And a user goes through the storyboards
-    #    And a user selects the "Apply for a Credit Card" Optional Narrative from the Dashboard
-    #    And the user chooses the following responses in the Optional Narrative:
-    #      | carouselOrSlider | choice                                                       | navigationDirection |
-    #      | image carousel   | $500 bonus and 3% cash back at your favorite online retailer | right               |
-    #    And a user selects the "Who Are You Dating" Optional Narrative from the Dashboard
-    #    And the user chooses the following responses in the Optional Narrative:
-    #      | carouselOrSlider | choice | navigationDirection |
-    #      | dating app       | Jenn   | right               |
-    #    And a user selects the "Buy a Car" Optional Narrative from the Dashboard
-    #    And the user chooses the following responses in the Optional Narrative:
-    #      | carouselOrSlider | choice    | navigationDirection |
-    #      | image carousel   | Hatchback | right               |
+    And a user selects the "Open Credit Card" Inventory on the Dashboard
+    And the user chooses the following responses in the Optional Narrative:
+      | choiceType     | choice                                                       | navigationDirection |
+      | image carousel | $500 bonus and 3% cash back at your favorite online retailer | right               |
+    And a user selects the "Date someone" Optional Narrative in the "Personal Life" Inventory on the Dashboard
+    And the user chooses the following responses in the Optional Narrative:
+      | choiceType | choice | navigationDirection |
+      | phone app  | Jenn   | right               |
+    And a user selects the "Buy a car" Optional Narrative in the "Car" Inventory on the Dashboard
+    And the user chooses the following responses in the Optional Narrative:
+      | choiceType | choice     | navigationDirection |
+      | phone app  | Roma Scoot | right               |
     And a user clicks Continue on the Optional Narratives Dashboard
     And a user clicks Continue on the Lesson Checkpoint Page
 
@@ -254,31 +254,60 @@ Feature: 1002 Complete Simulator Essentials 6
       # OK That's it for now! I heard Ria is back from the military, let's go see what she's up to.
       | text stack | OK                                   |
     And a user goes through the storyboards
-    #  And a user selects the "Get Married" Optional Narrative from the Dashboard
-    #  And the user chooses the following responses in the Optional Narrative Chat with Tess:
-    #    | carouselOrSlider | choice                                                          |
-    #    # Would you like to get married?
-    #    |                  | Yes                                                             |
-    #    # What kind of wedding do you imagine?
-    #    |                  | Modest, don't want to break the bank                            |
-    #    # What % of this wedding will you be paying for?
-    #    | slider           | 80%                                                             |
-    #    # What's the venue like?
-    #    |                  | A charming wedding facility ($$)                                |
-    #    # How big is the guest list?
-    #    |                  | Extended family and social circles ($$)                         |
-    #    # How is the wedding party dressed?
-    #    |                  | Formal ($$)                                                     |
-    #    # How about meals?
-    #    |                  | Reasonably good catering ($$)                                   |
-    #    # And the bar tab?
-    #    |                  | Free drinks... until 8pm ($$)                                   |
-    #    # What kind of music?
-    #    |                  | Hired professional DJ ($$)                                      |
-    #    # Where is the honeymoon?
-    #    |                  | Let's kick this thing off: An unforgettable trip overseas ($$$) |
-    #    # Let's head back to the dashboard.
-    #    |                  | OK                                                              |
+    And a user selects the "Get married" Optional Narrative in the "Personal Life" Inventory on the Dashboard
+    And the user chooses the following responses in the Optional Narrative Chat with Tess:
+      | choiceType | choice                                                          |
+      #
+      # Would you like to get married?
+      | text stack | Yes                                                             |
+      #
+      # What kind of wedding do you imagine?
+      | text stack | Modest, don't want to break the bank                            |
+      #
+      # What % of this wedding will you be paying for?
+      | slider     | 80%                                                             |
+      #
+      # What's the venue like?
+      | text stack | A charming wedding facility ($$)                                |
+      #
+      # How big is the guest list?
+      | text stack | Extended family and social circles ($$)                         |
+      #
+      # How is the wedding party dressed?
+      | text stack | Formal ($$)                                                     |
+      #
+      # How about meals?
+      | text stack | Reasonably good catering ($$)                                   |
+      #
+      # And the bar tab?
+      | text stack | Free drinks... until 8pm ($$)                                   |
+      #
+      # What kind of music?
+      | text stack | Hired professional DJ ($$)                                      |
+      #
+      # Where is the honeymoon?
+      | text stack | Let's kick this thing off: An unforgettable trip overseas ($$$) |
+      #
+      # Let's head back to the dashboard.
+      | text stack | OK                                                              |
+    And a user selects the "Change residence" Optional Narrative in the "Residence" Inventory on the Dashboard
+    And the user chooses the following responses in the Optional Narrative Chat with Tess:
+      | choiceType | choice                                         |
+      #
+      # Would you like to change the region that you're living in?
+      | text stack | Yes                                            |
+      #
+      # What region would you like to move to?
+      | text stack | A Southern city (Like Atlanta, or New Orleans) |
+      #
+      # Where would you like to live?
+      | text stack | A two bedroom apartment $1,652/mo              |
+      #
+      # Would you like to live with a roommate?
+      | text stack | I'll have 1 roommate                           |
+      #
+      # Let's head back to the dashboard.
+      | text stack | OK                                             |
     And a user clicks Continue on the Optional Narratives Dashboard
     And a user clicks Continue on the Lesson Checkpoint Page
 
@@ -594,7 +623,7 @@ Feature: 1002 Complete Simulator Essentials 6
       | slider     | 16%                                                                |
       #
       # How would you like to invest your money in this account?
-      | text stack | High risk strategy                                         |
+      | text stack | High risk strategy                                                 |
       #
       # Would you like to buy an investment property?
       | text stack | No that's a terrible idea                                          |
@@ -663,7 +692,7 @@ Feature: 1002 Complete Simulator Essentials 6
       #
       # OK, that's it for your lifestyle in your senior years, let's move on.
       | text stack | Ok                                                           |
- #   And a user completes the V2 Post-Course Assessment
- #   And a user clicks Continue on the Optional Narratives Dashboard
- #   And a user clicks Continue on the Simulator Conclusion Page
- #   ## Do I want to add some assertion step here or something????
+    And a user completes the V2 Post-Course Assessment
+    And a user clicks Continue on the Optional Narratives Dashboard
+    And a user clicks Continue on the Simulator Conclusion Page
+    ## Do I want to add some assertion step here or something????

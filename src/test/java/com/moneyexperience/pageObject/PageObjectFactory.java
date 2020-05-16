@@ -54,5 +54,13 @@ public class PageObjectFactory {
 	public AssessmentV2Page getAssessmentV2Page() {
 		return (AssessmentV2Page) appContext.getBean("assessmentV2Page");
 	}
+	
+	public InventoryPage getInventoryPage() {
+		return (InventoryPage) appContext.getBean("inventoryPage");
+	}
+	
+	public DashboardPage getDashboardPage() {
+		return (DashboardPage) appContext.getBean("dashboardPage");
+	}
 
 }

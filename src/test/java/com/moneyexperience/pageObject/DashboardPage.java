@@ -31,7 +31,7 @@ public class DashboardPage extends AbstractPage {
 	@FindBy(css = "button[color = '$white'] > p[data-testid]")
 	private WebElement continueButton;
 
-	//// The icons for the optional narratives
+	//// The inventory icons
 	@FindBy(css = "button > img[src*='credit']")
 	private WebElement creditCardIcon;
 
@@ -41,8 +41,8 @@ public class DashboardPage extends AbstractPage {
 	@FindBy(css = "button > img[src*='/car']")
 	private WebElement carIcon;
 
-	@FindBy(css = "button > img[src*='HEART']")
-	private WebElement datingIcon;
+	@FindBy(css = "button > img[src*='dating']")
+	private WebElement personalLifeIcon;
 
 	@FindBy(css = "button > img[src*='marriage']")
 	private WebElement getMarriedIcon;
@@ -51,7 +51,7 @@ public class DashboardPage extends AbstractPage {
 	private WebElement haveAChildIcon;
 
 	@FindBy(css = "button > img[src*='travel']")
-	private WebElement takeATripIcon;
+	private WebElement travelIcon;
 
 	@FindBy(css = "button > img[src*='401k']")
 	private WebElement four01kIcon;
@@ -59,7 +59,7 @@ public class DashboardPage extends AbstractPage {
 	@FindBy(css = "button > img[src*='529']")
 	private WebElement five29Icon;
 
-	@FindBy(css = "button > img[src*='HOME']")
+	@FindBy(css = "button > img[src*='Residence']")
 	private WebElement changeResidenceIcon;
 
 	@FindBy(css = "button > img[src$='invest.png']")
@@ -100,10 +100,10 @@ public class DashboardPage extends AbstractPage {
 		return pageObjectFactory.getChatPage();
 	}
 
-	public ChatPage clickDatingIcon() {
-		waitForElement(datingIcon);
-		datingIcon.click();
-		return pageObjectFactory.getChatPage();
+	public InventoryPage clickPersonalLifeIcon() {
+		waitForElement(personalLifeIcon);
+		personalLifeIcon.click();
+		return pageObjectFactory.getInventoryPage();
 	}
 
 	public ChatPage clickMarriageIcon() {
@@ -118,10 +118,10 @@ public class DashboardPage extends AbstractPage {
 		return pageObjectFactory.getChatPage();
 	}
 
-	public ChatPage clickTakeATripIcon() {
-		waitForElement(takeATripIcon);
-		takeATripIcon.click();
-		return pageObjectFactory.getChatPage();
+	public InventoryPage clickTakeATripIcon() {
+		waitForElement(travelIcon);
+		travelIcon.click();
+		return pageObjectFactory.getInventoryPage();
 	}
 
 	public ChatPage clickFour01kIcon() {

@@ -131,6 +131,7 @@ public class Stepdefs {
 
 	////// response steps //////////////////////////
 
+	@Given("the user chooses the following responses in the Optional Narrative Chat with Tess:")
 	@Given("a user chooses the following responses in the Chat with Tess:")
 	public void a_user_chooses_the_following_responses_in_the_Chat_with_Tess(DataTable responses) {
 		List<Map<String, String>> list = responses.asMaps(String.class, String.class);
@@ -144,16 +145,15 @@ public class Stepdefs {
 		}
 	}
 
-	@Given("a user selects the {string} Optional Narrative from the Dashboard")
-	public void a_user_selects_the_Optional_Narrative_from_the_Dashboard(String optionalNarrativeChoice) {
-		lessonService.chooseOptionalNarrative(optionalNarrativeChoice);
+	@Given("a user selects the {string} Optional Narrative in the {string} Inventory on the Dashboard")
+	public void a_user_selects_the_Optional_Narrative_in_the_Inventory_on_the_Dashboard(String optionalNarrative,
+			String inventoryIcon) {
+		lessonService.chooseInventoryThenOptionalNarrative(optionalNarrative, inventoryIcon);
 	}
-
-	// Added just to differentiate the wording of interacting with Tess in an
-	// Optional Narrative from the Lesson Chats
-	@Given("the user chooses the following responses in the Optional Narrative Chat with Tess:")
-	public void the_user_choses_the_following_responses_in_the_Optional_Narrative_with_Tess(DataTable responses) {
-		a_user_chooses_the_following_responses_in_the_Chat_with_Tess(responses);
+	
+	@Given("a user selects the {string} Inventory on the Dashboard")
+	public void a_user_selects_the_Inventory_on_the_Dashboard(String inventoryIcon) {
+		lessonService.clickInventoryIcon(inventoryIcon.toLowerCase());
 	}
 
 	@Given("the user chooses the following responses in the Optional Narrative:")
@@ -181,7 +181,7 @@ public class Stepdefs {
 	public void a_user_completes_the_V2_Baseline_Assessment_if_the_user_has_not_completed_it_before() {
 		responseService.answerV2AssessmentQuestions("baseline");
 	}
-	
+
 	@Given("a user completes the V2 Post-Course Assessment")
 	public void a_user_completes_the_V2_Post_Course_Assessment() {
 		responseService.answerV2AssessmentQuestions("post");
