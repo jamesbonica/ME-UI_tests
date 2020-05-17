@@ -3,6 +3,7 @@ package com.moneyexperience.service;
 import java.util.List;
 
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import com.moneyexperience.pageObject.AssessmentV2Page;
 import com.moneyexperience.pageObject.ChatPage;
 import com.moneyexperience.pageObject.ConfirmPrioritiesPage;
 import com.moneyexperience.pageObject.DashboardPage;
+import com.moneyexperience.pageObject.InventoryPage;
 import com.moneyexperience.pageObject.LessonCheckpointPage;
 import com.moneyexperience.pageObject.LessonIntroPage;
 import com.moneyexperience.pageObject.SetPrioritiesPage;
@@ -63,6 +65,9 @@ public class LessonService {
 	SimulatorConclusionPage simulatorConclusionPage;
 
 	@Autowired
+	InventoryPage inventoryPage;
+
+	@Autowired
 	PropertiesLoader propertiesLoader;
 
 	public void clickBeginButton() {
@@ -111,9 +116,7 @@ public class LessonService {
 	}
 
 	public void clickContinueOnONDashboard() {
-		if (dashboardPage.imReadyButtonPresent()) {
-				dashboardPage.dismissImReadyButton();
-		}
+		dismissImReadyButtonIfPresent();
 		dashboardPage.clickContinueButton();
 
 	}
@@ -123,31 +126,59 @@ public class LessonService {
 
 	}
 
-	public void chooseOptionalNarrative(String optionalNarrativeChoice) {
-		optionalNarrativeChoice = optionalNarrativeChoice.toLowerCase();
+	public void dismissImReadyButtonIfPresent() {
+		if (dashboardPage.imReadyButtonPresent()) {
+			dashboardPage.dismissImReadyButton();
+		}
+	}
 
-		if (optionalNarrativeChoice.contains("credit")) {
+	public void chooseInventoryThenOptionalNarrative(String optionalNarrativeChoice, String inventoryIcon) {
+		dismissImReadyButtonIfPresent();
+
+		clickInventoryIcon(inventoryIcon.toLowerCase());
+
+		selectOptionalNarrative(optionalNarrativeChoice.toLowerCase());
+
+	}
+
+	private void selectOptionalNarrative(String optionalNarrativeChoice) {
+		List<WebElement> oNList = inventoryPage.getEnabledOptionalNarrativeButtons();
+
+		for (WebElement w : oNList) {
+			if (w.getText().trim().equalsIgnoreCase(optionalNarrativeChoice)) {
+				w.click();
+				break;
+			}
+		}
+
+	}
+
+	public void clickInventoryIcon(String inventoryIcon) {
+
+		dismissImReadyButtonIfPresent();
+
+		if (inventoryIcon.contains("credit")) {
 			dashboardPage.clickCreditCardIcon();
-		} else if (optionalNarrativeChoice.contains("career")) {
+		} else if (inventoryIcon.equalsIgnoreCase("career")) {
 			dashboardPage.clickChangeCareerIcon();
-		} else if (optionalNarrativeChoice.contains("car")) {
+		} else if (inventoryIcon.equalsIgnoreCase("car")) {
 			dashboardPage.clickBuyACarIcon();
-		} else if (optionalNarrativeChoice.contains("dating")) {
-			dashboardPage.clickDatingIcon();
-		} else if (optionalNarrativeChoice.contains("married")) {
-			dashboardPage.clickMarriageIcon();
-		} else if (optionalNarrativeChoice.contains("child")) {
-			dashboardPage.clickHaveAChildIcon();
-		} else if (optionalNarrativeChoice.contains("trip")) {
+		} else if (inventoryIcon.contains("personal")) {
+			dashboardPage.clickPersonalLifeIcon();
+		} else if (inventoryIcon.contains("family")) {
+			dashboardPage.clickFamilyIcon();
+		} else if (inventoryIcon.contains("travel")) {
 			dashboardPage.clickTakeATripIcon();
-		} else if (optionalNarrativeChoice.contains("401k")) {
+		} else if (inventoryIcon.contains("401k")) {
 			dashboardPage.clickFour01kIcon();
-		} else if (optionalNarrativeChoice.contains("529")) {
-			dashboardPage.clickFive29Icon();
-		} else if (optionalNarrativeChoice.contains("residence")) {
+		} else if (inventoryIcon.contains("residence")) {
 			dashboardPage.clickChangeResidenceIconIcon();
-		} else if (optionalNarrativeChoice.contains("investment")) {
+		} else if (inventoryIcon.contains("education")) {
+			dashboardPage.clickEducationIcon();
+		} else if (inventoryIcon.equalsIgnoreCase("invest")) {
 			dashboardPage.clickInvestmentIcon();
+		} else if (inventoryIcon.contains("investment property")) {
+			dashboardPage.clickInverstmentPropertyIcon();
 		} else {
 			throw new NoSuchElementException("There is not a choice matching what is in the step");
 		}

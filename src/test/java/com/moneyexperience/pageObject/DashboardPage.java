@@ -31,39 +31,39 @@ public class DashboardPage extends AbstractPage {
 	@FindBy(css = "button[color = '$white'] > p[data-testid]")
 	private WebElement continueButton;
 
-	//// The icons for the optional narratives
+	//// The inventory icons
 	@FindBy(css = "button > img[src*='credit']")
 	private WebElement creditCardIcon;
 
-	@FindBy(css = "button > img[src*='CAREER']")
+	@FindBy(css = "button > img[src*='career']")
 	private WebElement careerIcon;
 
-	@FindBy(css = "button > img[src*='/car']")
+	@FindBy(css = "button > img[src*='/car/']")
 	private WebElement carIcon;
 
-	@FindBy(css = "button > img[src*='HEART']")
-	private WebElement datingIcon;
-
-	@FindBy(css = "button > img[src*='marriage']")
-	private WebElement getMarriedIcon;
+	@FindBy(css = "button > img[src*='dating']")
+	private WebElement personalLifeIcon;
 
 	@FindBy(css = "button > img[src*='child']")
-	private WebElement haveAChildIcon;
+	private WebElement familyIcon;
 
 	@FindBy(css = "button > img[src*='travel']")
-	private WebElement takeATripIcon;
+	private WebElement travelIcon;
 
 	@FindBy(css = "button > img[src*='401k']")
 	private WebElement four01kIcon;
 
-	@FindBy(css = "button > img[src*='529']")
-	private WebElement five29Icon;
-
-	@FindBy(css = "button > img[src*='HOME']")
+	@FindBy(css = "button > img[src*='Residence']")
 	private WebElement changeResidenceIcon;
+	
+	@FindBy(css = "button > img[src*='residence/']")
+	private WebElement investmentPropertyIcon;
 
-	@FindBy(css = "button > img[src$='invest.png']")
+	@FindBy(css = "button > img[src*='invest']")
 	private WebElement investmentIcon;
+
+	@FindBy(css = "button > img[src*='education']")
+	private WebElement educationIcon;
 
 	public DashboardPage(EventFiringWebDriver driver) {
 		this.driver = driver;
@@ -100,39 +100,27 @@ public class DashboardPage extends AbstractPage {
 		return pageObjectFactory.getChatPage();
 	}
 
-	public ChatPage clickDatingIcon() {
-		waitForElement(datingIcon);
-		datingIcon.click();
+	public InventoryPage clickPersonalLifeIcon() {
+		waitForElement(personalLifeIcon);
+		personalLifeIcon.click();
+		return pageObjectFactory.getInventoryPage();
+	}
+
+	public ChatPage clickFamilyIcon() {
+		waitForElement(familyIcon);
+		familyIcon.click();
 		return pageObjectFactory.getChatPage();
 	}
 
-	public ChatPage clickMarriageIcon() {
-		waitForElement(getMarriedIcon);
-		getMarriedIcon.click();
-		return pageObjectFactory.getChatPage();
-	}
-
-	public ChatPage clickHaveAChildIcon() {
-		waitForElement(haveAChildIcon);
-		haveAChildIcon.click();
-		return pageObjectFactory.getChatPage();
-	}
-
-	public ChatPage clickTakeATripIcon() {
-		waitForElement(takeATripIcon);
-		takeATripIcon.click();
-		return pageObjectFactory.getChatPage();
+	public InventoryPage clickTakeATripIcon() {
+		waitForElement(travelIcon);
+		travelIcon.click();
+		return pageObjectFactory.getInventoryPage();
 	}
 
 	public ChatPage clickFour01kIcon() {
 		waitForElement(four01kIcon);
 		four01kIcon.click();
-		return pageObjectFactory.getChatPage();
-	}
-
-	public ChatPage clickFive29Icon() {
-		waitForElement(five29Icon);
-		five29Icon.click();
 		return pageObjectFactory.getChatPage();
 	}
 
@@ -145,6 +133,18 @@ public class DashboardPage extends AbstractPage {
 	public ChatPage clickInvestmentIcon() {
 		waitForElement(investmentIcon);
 		investmentIcon.click();
+		return pageObjectFactory.getChatPage();
+	}
+
+	public ChatPage clickEducationIcon() {
+		waitForElement(educationIcon);
+		educationIcon.click();
+		return pageObjectFactory.getChatPage();
+	}
+	
+	public ChatPage clickInverstmentPropertyIcon() {
+		waitForElement(investmentPropertyIcon);
+		investmentPropertyIcon.click();
 		return pageObjectFactory.getChatPage();
 	}
 
