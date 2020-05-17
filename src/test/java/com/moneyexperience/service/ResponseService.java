@@ -280,11 +280,13 @@ public class ResponseService {
 		} else {
 			// Get list of questions, responses
 			List<SurveyQuestionAndResponse> surveyList = createV2SurveyQuestionAndAnswerList();
+			int surveyCover = 0;
 
 			int escapeHatch = 0;
 
 			while (!page.equalsIgnoreCase("beyond survey")) {
 				if (page.equalsIgnoreCase("survey cover")) {
+					surveyCover++;
 					assessmentV2Page.clickBeginAndContinueButton();
 					page = lessonService.inV2SurveyOrBeyondIt();
 				} else if (page.equalsIgnoreCase("survey body")) {
@@ -352,8 +354,8 @@ public class ResponseService {
 				}
 
 				escapeHatch++;
-				if (escapeHatch > 10) {
-					throw new NoSuchElementException("Something went wrong in the survey!!!");
+				if (surveyCover == 2) {
+					break;
 				}
 
 				page = lessonService.inV2SurveyOrBeyondIt();

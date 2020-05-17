@@ -70,7 +70,7 @@ public class ChatPage extends AbstractPage {
 	@FindBy(css = "div[class*='slider-control-centerright']")
 	private WebElement rightNavArrowPhoneApp;
 
-	@FindBy(css = "div[div[class*='slider-control-centerleft']]")
+	@FindBy(css = "div[class*='slider-control-centerleft']")
 	private WebElement leftNavArrowPhoneApp;
 
 	@FindBy(css = "input[aria-label = 'amount-slider']")
@@ -166,10 +166,12 @@ public class ChatPage extends AbstractPage {
 	private void clickNavArrow(String navigationDirection, String appType) {
 		if (appType.contains("phone")) {
 			if (navigationDirection.equalsIgnoreCase("left")) {
-				waitForElement(leftNavArrow);
-				leftNavArrow.click();
+				waitForElement(leftNavArrowPhoneApp);
+				pause(.25);
+				leftNavArrowPhoneApp.click();
 			} else {
 				waitForElement(rightNavArrowPhoneApp);
+				pause(.25);
 				rightNavArrowPhoneApp.click();
 			}
 

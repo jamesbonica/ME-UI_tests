@@ -32,7 +32,7 @@ Feature: 1002 Complete Simulator Essentials 6
       # Anyway that's the basic idea. Now let's meet the others, and think about your life into your early 20s.
       | text stack | OK        |
     And a user goes through the storyboards
-    And A user clicks Go when Tess sends a new message
+    And a user clicks Go when Tess sends a new message
     And a user chooses the following responses in the Chat with Tess:
       | choiceType | choice                                          |
       #
@@ -89,12 +89,16 @@ Feature: 1002 Complete Simulator Essentials 6
     And a user selects the "Take a trip" Optional Narrative in the "Travel" Inventory on the Dashboard
     And the user chooses the following responses in the Optional Narrative Chat with Tess:
       | choiceType | choice                                  |
+      #
       # Would you like to take a trip somewhere?
       | text stack | Probably                                |
+      #
       # Where would you like to go?
       | text stack | Outdoor adventure in New Zealand $3,000 |
+      #
       # A week in ... Still interested?
       | text stack | Book it!                                |
+      #
       # For now, let's go back to the dashboard.
       | text stack | OK                                      |
     And a user clicks Continue on the Optional Narratives Dashboard
@@ -118,7 +122,7 @@ Feature: 1002 Complete Simulator Essentials 6
       | Social Good |
       | Free Time   |
     And a user goes through the storyboards
-    And A user clicks Go when Tess sends a new message
+    And a user clicks Go when Tess sends a new message
     And a user chooses the following responses in the Chat with Tess:
       | choiceType | choice                                             |
       #
@@ -367,42 +371,74 @@ Feature: 1002 Complete Simulator Essentials 6
       #
       # OK, let's move onto your dashboard.
       | text stack | OK                                                       |
-    #  And a user selects the "Have a Child" Optional Narrative from the Dashboard
-    #  And the user chooses the following responses in the Optional Narrative Chat with Tess:
-    #    | carouselOrSlider | choice                                             | navigationDirection |
-    #    # Would you like to start a family, or add to the one you've started?
-    #    |                  | Yes                                                |                     |
-    #    # How many children would you like to have at this age?
-    #    |                  |                                                  2 |                     |
-    #    # OK! Congrats! ...
-    #    |                  | Yay!                                               |                     |
-    #    #  |                  | Great!                                         |                     |
-    #    # What kind of childcare do you envision for your kids?
-    #    | text carousel    | I'll bring them to a daycare facility $12,000/year | left                |
-    #    # What type of primary school would you like your children to attend?
-    #    |                  | Public school $0/year                              |                     |
-    #    # What about college?
-    #    | text carousel    | In-state university                                | right               |
-    #    # Will you help them pay for college?
-    #    |                  | Yes                                                |                     |
-    #    # The best way to do that is with a 529 account. Would you like to start or change your 529 contribution now?
-    #    |                  | Yes                                                |                     |
-    #    # How much of your paycheck would you like to contribute to a 529?
-    #    | slider           | 8%                                                 |                     |
-    #    # What kind of food will your kids eat?
-    #    |                  | Homemade with love ($$)                            |                     |
-    #    # What kind of clothes will they wear?
-    #    |                  | Who cares as long as it's clean ($$)               |                     |
-    #    # Who is babysitting them on datenight?
-    #    |                  | Teenage son/daughter of a family friend ($$)       |                     |
-    #    # How's that stroller?
-    #    |                  | Well-reviewed and on sale ($$)                     |                     |
-    #    # What kind of toys?
-    #    |                  | Lots of lights and noise ($$)                      |                     |
-    #    # OK great, that gives me a pretty good idea of how much kids will cost you!
-    #    |                  | OK                                                 |                     |
-    #    # Let's return to the dashboard.
-    #    |                  | OK                                                 |                     |
+    And a user selects the "Have a child" Optional Narrative in the "Family and 529" Inventory on the Dashboard
+    And the user chooses the following responses in the Optional Narrative Chat with Tess:
+      | choiceType | choice                                       |
+      #
+      # Would you like to start a family, or add to the one you've started?
+      | text stack | Yes                                          |
+      #
+      # How many children would you like to have at this age?
+      | text stack |                                            2 |
+      #
+      # OK! Congrats! ...
+      | text stack | Yay!                                         |
+      #
+      # What kind of childcare do you envision for your kids?
+      | text stack | My spouse will be a stay at home parent      |
+      #
+      # What type of primary school would you like your children to attend?
+      | text stack | Public school $0/year                        |
+      # What about college?
+      | text stack | In-state university                          |
+      #
+      # Will you help them pay for college?
+      | text stack | Yes                                          |
+      #
+      # The best way to do that is with a 529 account. Would you like to start or change your 529 contribution now?
+      | text stack | Yes                                          |
+      #
+      # How much of your paycheck would you like to contribute to a 529?
+      | slider     | 7%                                           |
+      #
+      # How would you like to invest your money in this account?
+      | text stack | Medium risk strategy                         |
+      #
+      # What kind of food will your kids eat?
+      | text stack | Homemade with love ($$)                      |
+      #
+      # What kind of clothes will they wear?
+      | text stack | Who cares as long as it's clean ($$)         |
+      #
+      # Who is babysitting them on datenight?
+      | text stack | Teenage son/daughter of a family friend ($$) |
+      #
+      # How's that stroller?
+      | text stack | Well-reviewed and on sale ($$)               |
+      #
+      # What kind of toys?
+      | text stack | Lots of lights and noise ($$)                |
+      #
+      # OK great, that gives me a pretty good idea of how much kids will cost you!
+      | text stack | OK                                           |
+      #
+      # Let's return to the dashboard.
+      | text stack | OK                                           |
+    And a user selects the "Change residence" Optional Narrative in the "Residence" Inventory on the Dashboard
+    And the user chooses the following responses in the Optional Narrative Chat with Tess:
+      | choiceType | choice                              |
+      #
+      # Would you like to change the region that you're living in?
+      | text stack | No                                  |
+      #
+      # Would you like to change your residence?
+      | text stack | Yes                                 |
+      #
+      # Where would you like to live?
+      | text stack | "Forever" Home $745,116 ($2,845/mo) |
+      #
+      # Let's head back to the dashboard.
+      | text stack | OK                                  |
     And a user clicks Continue on the Optional Narratives Dashboard
     And a user clicks Continue on the Lesson Checkpoint Page
 
@@ -471,6 +507,27 @@ Feature: 1002 Complete Simulator Essentials 6
       #
       # OK, let's move onto your dashboard.
       | text stack | OK                                                           |
+    And a user selects the "Take a trip" Optional Narrative in the "Travel" Inventory on the Dashboard
+    And the user chooses the following responses in the Optional Narrative Chat with Tess:
+      | choiceType | choice                                  |
+      #
+      # Would you like to take a trip somewhere?
+      | text stack | Probably                                |
+      #
+      # Where would you like to go?
+      | text stack | Visit the great cities of Europe $6,418 |
+      #
+      # A week in ... Still interested?
+      | text stack | Book it!                                |
+      #
+      # For now, let's go back to the dashboard.
+      | text stack | OK                                      |
+    And a user selects the "Sell this car" Optional Narrative in the "Car" Inventory on the Dashboard
+    And a user clicks Continue when Tess confirms the transaction
+    And a user selects the "Buy a car" Optional Narrative in the "Car" Inventory on the Dashboard
+    And the user chooses the following responses in the Optional Narrative:
+      | choiceType | choice              | navigationDirection |
+      | phone app  | F-ST Thunder Canyon | left                |
     And a user clicks Continue on the Optional Narratives Dashboard
     And a user clicks Continue on the Lesson Checkpoint Page
 
@@ -533,6 +590,77 @@ Feature: 1002 Complete Simulator Essentials 6
       #
       # OK, let's move onto your optional choices!
       | text stack | OK                                                  |
+    And a user selects the "Have a child" Optional Narrative in the "Family and 529" Inventory on the Dashboard
+    And the user chooses the following responses in the Optional Narrative Chat with Tess:
+      | choiceType | choice                                       |
+      #
+      # Would you like to start a family, or add to the one you've started?
+      | text stack | Yes                                          |
+      #
+      # How many children would you like to have at this age?
+      | text stack |                                            1 |
+      #
+      # OK! Congrats! ...
+      | text stack | Yay!                                         |
+      #
+      # What kind of childcare do you envision for your kids?
+      | text stack | My spouse will be a stay at home parent      |
+      #
+      # What type of primary school would you like your children to attend?
+      | text stack | Private school $9,538/year                   |
+      # What about college?
+      | text stack | In-state university                          |
+      #
+      # Will you help them pay for college?
+      | text stack | Yes                                          |
+      #
+      # The best way to do that is with a 529 account. Would you like to start or change your 529 contribution now?
+      | text stack | Yes                                          |
+      #
+      # How much of your paycheck would you like to contribute to a 529?
+      | slider     | 9%                                           |
+      #
+      # How would you like to invest your money in this account?
+      | text stack | Medium risk strategy                         |
+      #
+      # What kind of food will your kids eat?
+      | text stack | Homemade with love ($$)                      |
+      #
+      # What kind of clothes will they wear?
+      | text stack | Who cares as long as it's clean ($$)         |
+      #
+      # Who is babysitting them on datenight?
+      | text stack | Teenage son/daughter of a family friend ($$) |
+      #
+      # How's that stroller?
+      | text stack | Well-reviewed and on sale ($$)               |
+      #
+      # What kind of toys?
+      | text stack | Lots of lights and noise ($$)                |
+      #
+      # OK great, that gives me a pretty good idea of how much kids will cost you!
+      | text stack | OK                                           |
+      #
+      # Let's return to the dashboard.
+      | text stack | OK                                           |
+    And a user selects the "Continue education" Optional Narrative in the "Education" Inventory on the Dashboard
+    And the user chooses the following responses in the Optional Narrative Chat with Tess:
+      | choiceType | choice                                   |
+      #
+      # Would you like to go back to school?
+      | text stack | Yes, get an advanced degree              |
+      #
+      # What type of advanced degree?
+      | text stack | Masters of Business Administration (MBA) |
+      #
+      # What type of school will you attend for your advanced degree?
+      | text stack | In-State University                      |
+      #
+      # How much financial support will you get from family, scholarships, or other means?
+      | slider     |                                   20,000 |
+      #
+      # Let's head back to the dashboard.
+      | text stack | Ok                                       |
     And a user clicks Continue on the Optional Narratives Dashboard
     And a user clicks Continue on the Lesson Checkpoint Page
 
@@ -592,6 +720,39 @@ Feature: 1002 Complete Simulator Essentials 6
       #
       # OK, let's move onto your dashboard.
       | text stack | OK                                                             |
+    And a user selects the "Purchase an investment property" Optional Narrative in the "Investment Property" Inventory on the Dashboard
+    And the user chooses the following responses in the Optional Narrative Chat with Tess:
+      | choiceType | choice                                          |
+      #
+      # Would you like to buy an investment property?
+      | text stack | Yeah that's a good idea                         |
+      #
+      # What region would you like to buy the property?
+      | text stack | A smaller, up & coming city (Like Portland, ME) |
+      #
+      # What type of property would you like to buy?
+      | text stack | House on the beach $2,421/mo                    |
+      #
+      # Would you like to purchase this option?
+      | text stack | Yes                                             |
+      #
+      # Let's head back to the dashboard.
+      | text stack | Ok                                              |
+    And a user selects the "Change 401k contribution" Optional Narrative in the "401k" Inventory on the Dashboard
+    And the user chooses the following responses in the Optional Narrative Chat with Tess:
+      | choiceType | choice             |
+      #
+      # Would you like to start or change your contribution to a 401k account?
+      | text stack | Yes                |
+      #
+      # How much of each paycheck would you like to contribute?
+      | slider     | 12%                |
+      #
+      # How would you like to invest your money in this account?
+      | text stack | High risk strategy |
+      #
+      # Let's return to the dashboard.
+      | text stack | Ok                 |
     And a user clicks Continue on the Optional Narratives Dashboard
     And a user clicks Continue on the Lesson Checkpoint Page
 
@@ -645,6 +806,20 @@ Feature: 1002 Complete Simulator Essentials 6
       #
       # OK, let's move on!
       | text stack | OK                                                                 |
+    And a user selects the "Change careers" Optional Narrative in the "Career" Inventory on the Dashboard
+    And the user chooses the following responses in the Optional Narrative Chat with Tess:
+      | choiceType | choice                  |
+      #
+      # What type of work do you want to do?
+      | text stack | Something in healthcare |
+      #
+      # What kind of healthcare career?
+      | text stack | Fitness instructor      |
+      #
+      # Do you plan to work full-time or part-time?
+      | text stack | Full-time               |
+      # And that's it! You can always change your mind again later.
+      | text stack | Ok                      |
     And a user clicks Continue on the Optional Narratives Dashboard
     And a user clicks Continue on the Lesson Checkpoint Page
 
@@ -693,6 +868,23 @@ Feature: 1002 Complete Simulator Essentials 6
       # OK, that's it for your lifestyle in your senior years, let's move on.
       | text stack | Ok                                                           |
     And a user completes the V2 Post-Course Assessment
+    And a user selects the "Sell this house" Optional Narrative in the "Residence" Inventory on the Dashboard
+    And a user clicks Continue when Tess confirms the transaction
+    And a user selects the "Change investment contribution" Optional Narrative in the "Invest" Inventory on the Dashboard
+    And a user chooses the following responses in the Chat with Tess:
+      | choiceType | choice             |
+      #
+      # Would you like to invest some of your savings in stocks or bonds?
+      | text stack | Yes                |
+      #
+      # How much of your available savings would you like to invest?
+      | slider     | 75%                |
+      #
+      # How would you like to invest your money in this account?
+      | text stack | High risk strategy |
+      #
+      # Let's return to the dashboard.
+      | text stack | Ok                 |
     And a user clicks Continue on the Optional Narratives Dashboard
     And a user clicks Continue on the Simulator Conclusion Page
     ## Do I want to add some assertion step here or something????

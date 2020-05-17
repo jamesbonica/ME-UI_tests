@@ -106,6 +106,8 @@ public class Stepdefs {
 		lessonService.goThroughStoryBoards();
 	}
 
+	@Given("a user clicks Continue when Tess confirms the transaction")
+	@Given("a user clicks Go when Tess sends a new message")
 	@Given("A user clicks Go when Tess sends a new message")
 	public void a_user_clicks_Go_when_Tess_sends_a_new_message() {
 		lessonService.clickGotoChatWithTess();

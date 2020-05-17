@@ -23,8 +23,11 @@ public class InventoryPage extends AbstractPage {
 	@Autowired
 	PageObjectFactory pageObjectFactory;
 
-	@FindBy(css = "button > p[data-testid]")
+	@FindBy(css = "button[color='$white'] > p[data-testid]")
 	private WebElement backButton;
+	
+	@FindBy(css = "div[height='10rem'] > p")
+	private WebElement inventoryImageTextbox;
 	
 	@FindBy(css = "img[src *='assets']")
 	private WebElement inventoryImage;
@@ -41,7 +44,7 @@ public class InventoryPage extends AbstractPage {
 	}
 	
 	public List<WebElement> getEnabledOptionalNarrativeButtons(){
-		waitForElement(inventoryImage);
+		waitForElement(inventoryImageTextbox);
 		return driver.findElements(By.cssSelector("div[width='80%'] > button:not([disabled])"));
 	}
 

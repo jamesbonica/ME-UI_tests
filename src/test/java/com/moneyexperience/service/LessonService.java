@@ -159,26 +159,26 @@ public class LessonService {
 
 		if (inventoryIcon.contains("credit")) {
 			dashboardPage.clickCreditCardIcon();
-		} else if (inventoryIcon.contains("career")) {
+		} else if (inventoryIcon.equalsIgnoreCase("career")) {
 			dashboardPage.clickChangeCareerIcon();
-		} else if (inventoryIcon.contains("car")) {
+		} else if (inventoryIcon.equalsIgnoreCase("car")) {
 			dashboardPage.clickBuyACarIcon();
 		} else if (inventoryIcon.contains("personal")) {
 			dashboardPage.clickPersonalLifeIcon();
-		} else if (inventoryIcon.contains("married")) {
-			dashboardPage.clickMarriageIcon();
-		} else if (inventoryIcon.contains("child")) {
-			dashboardPage.clickHaveAChildIcon();
+		} else if (inventoryIcon.contains("family")) {
+			dashboardPage.clickFamilyIcon();
 		} else if (inventoryIcon.contains("travel")) {
 			dashboardPage.clickTakeATripIcon();
 		} else if (inventoryIcon.contains("401k")) {
 			dashboardPage.clickFour01kIcon();
-		} else if (inventoryIcon.contains("529")) {
-			dashboardPage.clickFive29Icon();
 		} else if (inventoryIcon.contains("residence")) {
 			dashboardPage.clickChangeResidenceIconIcon();
-		} else if (inventoryIcon.contains("investment")) {
+		} else if (inventoryIcon.contains("education")) {
+			dashboardPage.clickEducationIcon();
+		} else if (inventoryIcon.equalsIgnoreCase("invest")) {
 			dashboardPage.clickInvestmentIcon();
+		} else if (inventoryIcon.contains("investment property")) {
+			dashboardPage.clickInverstmentPropertyIcon();
 		} else {
 			throw new NoSuchElementException("There is not a choice matching what is in the step");
 		}
