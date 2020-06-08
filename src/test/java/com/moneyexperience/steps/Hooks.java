@@ -68,8 +68,9 @@ public class Hooks {
 	public void tearDown(Scenario scenario) {
 
 		if (scenario.isFailed()) {
+
 			final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-			scenario.embed(screenshot, "image/png", ""); // stick it in the report
+			scenario.attach(screenshot, "image/png", ""); // stick it in the report
 		}
 
 		if (!driver.getCurrentUrl().equals("data:,")) {

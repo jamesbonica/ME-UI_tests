@@ -66,9 +66,8 @@ public class DriverBean {
 				WebDriverManager.chromedriver().setup();
 				// desiredCapabilities.setCapability(CapabilityType.SUPPORTS_APPLICATION_CACHE,false);
 				chromeOptions.setCapability(CapabilityType.SUPPORTS_APPLICATION_CACHE, false);
-				chromeOptions.addArguments("--disable-features=VizDisplayCompositor");;
+				chromeOptions.addArguments("--disable-features=VizDisplayCompositor");
 				driver = new ChromeDriver(chromeOptions); 
-
 				break;
 			case "edge":
 				System.out.println("Edge Driver....");

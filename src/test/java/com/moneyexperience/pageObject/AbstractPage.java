@@ -26,6 +26,7 @@ public class AbstractPage {
 	// menu
 	@FindBy(css = "div[role = 'navigation'] + div > button + p")
 	protected WebElement lessonTitleAndNumberElement;
+	
 
 	// Here because Tess's Instructions must be dismissed on multiple pages
 	@FindBy(css = "button[data-testid = 'ready-button']")
@@ -33,6 +34,9 @@ public class AbstractPage {
 
 	@FindAll(@FindBy(css = "button[data-testid = 'ready-button']"))
 	protected List<WebElement> imReadyButtonList;
+	
+	@FindAll(@FindBy(css = "img[data-testid = 'story-img']"))
+	protected List<WebElement> storyBoardImageList;
 	
 	@FindBy(css ="div[data-testid = 'age-string']")
 	protected WebElement lessonAgeRange;
@@ -61,7 +65,7 @@ public class AbstractPage {
 
 	public AbstractPage waitForElement(WebElement element) {
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, 6);
+			WebDriverWait wait = new WebDriverWait(driver, 40);
 			wait.until(ExpectedConditions.elementToBeClickable(element));
 		} catch (TimeoutException t) {
 			System.out.println(element.toString() + " not found");
@@ -112,7 +116,7 @@ public class AbstractPage {
 	
 	// The Storyboards do not have an age range displayed
 	public boolean notOnStoryBoardPage() {
-		return (lessonAgeRangeList.size() > 0 || imReadyButtonList.size() > 0);
+		return (lessonAgeRangeList.size() > 0 || imReadyButtonList.size() > 0 || storyBoardImageList.size() == 0);
 	}
 	
 

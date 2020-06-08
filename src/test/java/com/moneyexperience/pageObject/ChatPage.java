@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Point;
@@ -147,7 +148,11 @@ public class ChatPage extends AbstractPage {
 			// System.out.println("uIText " + uIText);
 
 			if (uIText.equalsIgnoreCase(choice)) {
-				carouselCenterClickable.click();
+				try {
+					carouselCenterClickable.click();
+				} catch (ElementNotInteractableException e) {
+					carouselCenterClickable.click();
+				}
 				break;
 			} else {
 				clickNavArrow(navigationDirection, appType);
@@ -187,7 +192,6 @@ public class ChatPage extends AbstractPage {
 		}
 
 	}
-
 
 	private void waitUntilElementReturnsString(WebElement imageCarouselCenterOption) {
 		int counter = 0;
