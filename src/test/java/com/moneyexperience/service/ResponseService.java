@@ -274,6 +274,9 @@ public class ResponseService {
 
 		// Do an initial check to see if the survey stuff is even applicable
 		String page = lessonService.inV2SurveyOrBeyondIt();
+		
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> page is " + page);
+
 
 		if (page.equalsIgnoreCase("beyond survey")) {
 			// Do nothing
@@ -282,18 +285,19 @@ public class ResponseService {
 			List<SurveyQuestionAndResponse> surveyList = createV2SurveyQuestionAndAnswerList();
 			int surveyCover = 0;
 
-			int escapeHatch = 0;
-
 			while (!page.equalsIgnoreCase("beyond survey")) {
 				if (page.equalsIgnoreCase("survey cover")) {
 					surveyCover++;
 					assessmentV2Page.clickBeginAndContinueButton();
+					
 					page = lessonService.inV2SurveyOrBeyondIt();
+					System.out.println("=============================== page is " + page);
 				} else if (page.equalsIgnoreCase("survey body")) {
 					// answer questions
 
 					// get amount of questions on page
 					int questions = assessmentV2Page.getAmountOfQuestionsOnPage();
+					System.out.println("------------------- questions is "+ questions);
 
 					int counter = 0;
 
@@ -353,7 +357,6 @@ public class ResponseService {
 
 				}
 
-				escapeHatch++;
 				if (surveyCover == 2) {
 					break;
 				}

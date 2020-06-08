@@ -60,6 +60,11 @@ public class AssessmentV2Page extends AbstractPage {
 		nextButton.click();
 		pause(.25);
 	}
+	
+	public AssessmentV2Page waitForNextButton() {
+		waitForElement(nextButton);
+		return this;
+	}
 
 	public boolean nextButtonPresent() {
 		return nextButtonList.size() > 0;

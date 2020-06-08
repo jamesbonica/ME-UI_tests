@@ -127,7 +127,7 @@ Feature: 1002 Complete Simulator Essentials 6
       | choiceType | choice                                             |
       #
       # Your adult life is beginning to take shape! What would you like to do?
-      | text stack | Start a new career or change my career             |
+      | text stack | Start a career or change my job                    |
       #
       # What kind of career are you looking for?
       | text stack | Something in business                              |
@@ -867,7 +867,7 @@ Feature: 1002 Complete Simulator Essentials 6
       #
       # OK, that's it for your lifestyle in your senior years, let's move on.
       | text stack | Ok                                                           |
-    And a user completes the V2 Post-Course Assessment
+     And a user completes the V2 Post-Course Assessment
     And a user selects the "Sell this house" Optional Narrative in the "Residence" Inventory on the Dashboard
     And a user clicks Continue when Tess confirms the transaction
     And a user selects the "Change investment contribution" Optional Narrative in the "Invest" Inventory on the Dashboard

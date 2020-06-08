@@ -206,8 +206,8 @@ public class LessonService {
 	public String inV2SurveyOrBeyondIt() {
 		String currentPage = "";
 		int counter = 0;
-		while (counter < 10) {
-
+		while (counter < 30) {
+			setPrioritiesPage.pause(.5);
 			// Begin button is present you're on Survey Cover
 			if (assessmentV2Page.meBigLogoPresent()) {
 				currentPage = "Survey Cover";
@@ -223,9 +223,10 @@ public class LessonService {
 				currentPage = "Beyond Survey";
 				break;
 			}
+			
 
 			// This can be any page to use this Pause method
-			setPrioritiesPage.pause(.5);
+			setPrioritiesPage.pause(.25);
 			counter++;
 		}
 
