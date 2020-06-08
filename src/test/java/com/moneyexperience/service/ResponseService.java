@@ -53,8 +53,10 @@ public class ResponseService {
 			chatPage.selectOptionInTextStack(choice).clickSendButton();
 		} else if (choiceType.equalsIgnoreCase("slider")) {
 			chatPage.selectSlider(choice).clickNumberSendButton();
-		} else if (choiceType.equalsIgnoreCase("dating app")) {
-			chatPage.selectDatingOption(choice, navigationDirection);
+		} else if (choiceType.equalsIgnoreCase("phone app")) {
+			chatPage.selectPhoneAppOption(choice, navigationDirection);
+		} else if (choiceType.equals("image carousel")) {
+			chatPage.selectOptionInImageCarousel(choice, navigationDirection).clickSendButton();
 		} else if (choiceType.equals("")) {
 			chatPage.selectOption(choice).clickSendButton();
 		}
@@ -92,7 +94,6 @@ public class ResponseService {
 		while (counter < questionsOnPage) {
 			// Get text of the question
 			String question = assessmentPage.getQuestionText(counter + 1);
-			
 
 			String userAnswer = "";
 
@@ -273,24 +274,30 @@ public class ResponseService {
 
 		// Do an initial check to see if the survey stuff is even applicable
 		String page = lessonService.inV2SurveyOrBeyondIt();
+		
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> page is " + page);
+
 
 		if (page.equalsIgnoreCase("beyond survey")) {
 			// Do nothing
 		} else {
 			// Get list of questions, responses
 			List<SurveyQuestionAndResponse> surveyList = createV2SurveyQuestionAndAnswerList();
-
-			int escapeHatch = 0;
+			int surveyCover = 0;
 
 			while (!page.equalsIgnoreCase("beyond survey")) {
 				if (page.equalsIgnoreCase("survey cover")) {
+					surveyCover++;
 					assessmentV2Page.clickBeginAndContinueButton();
+					
 					page = lessonService.inV2SurveyOrBeyondIt();
+					System.out.println("=============================== page is " + page);
 				} else if (page.equalsIgnoreCase("survey body")) {
 					// answer questions
 
 					// get amount of questions on page
 					int questions = assessmentV2Page.getAmountOfQuestionsOnPage();
+					System.out.println("------------------- questions is "+ questions);
 
 					int counter = 0;
 
@@ -350,13 +357,12 @@ public class ResponseService {
 
 				}
 
-				escapeHatch++;
-				if (escapeHatch > 10) {
-					throw new NoSuchElementException("Something went wrong in the survey!!!");
+				if (surveyCover == 2) {
+					break;
 				}
 
 				page = lessonService.inV2SurveyOrBeyondIt();
-			//	System.out.println("page at end of loop is " + page);
+				// System.out.println("page at end of loop is " + page);
 
 			}
 

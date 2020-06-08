@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Point;
@@ -40,20 +41,20 @@ public class ChatPage extends AbstractPage {
 	@FindAll(@FindBy(css = "button[id^= 'user_response_']"))
 	private List<WebElement> textResponseStack;
 
-	@FindAll(@FindBy(css = "li[style^='order:']"))
+	@FindAll(@FindBy(css = "li"))
 	private List<WebElement> carouselOptionList;
 
 	@FindBy(css = "li[style = 'order: 2;'] > button")
 	private WebElement textCarouselCenterOption;
 
-	@FindBy(css = "li[style = 'order: 2;'] h3")
+	@FindBy(css = "li[class='slider-slide slide-visible'] div[data-testid] > button[data-testid] h3")
 	private WebElement imageCarouselCenterOption;
 
-	@FindBy(css = "li[style = 'order: 1;'] h2")
-	private WebElement datingCarouselCenterOption;
+	@FindBy(css = "li[class *= 'slide-visible'] h2")
+	private WebElement phoneAppCenterOption;
 
-	@FindBy(css = "li[style = 'order: 1;'] button")
-	private WebElement datingAppSelectButton;
+	@FindBy(css = "li[class *= 'slide-visible'] button > p")
+	private WebElement phoneAppSelectButton;
 
 	@FindAll(@FindBy(css = "ul > li > button[id^='user_response']"))
 	private List<WebElement> textOptionList;
@@ -61,11 +62,17 @@ public class ChatPage extends AbstractPage {
 	@FindBy(css = "ul > li > button[id^='user_response_0']")
 	private WebElement firstTextOption;
 
-	@FindBy(css = "button[type='left']")
+	@FindBy(css = "button[value='left']")
 	private WebElement leftNavArrow;
 
-	@FindBy(css = "button[type='right']")
+	@FindBy(css = "button[value='right']")
 	private WebElement rightNavArrow;
+
+	@FindBy(css = "div[class*='slider-control-centerright']")
+	private WebElement rightNavArrowPhoneApp;
+
+	@FindBy(css = "div[class*='slider-control-centerleft']")
+	private WebElement leftNavArrowPhoneApp;
 
 	@FindBy(css = "input[aria-label = 'amount-slider']")
 	private WebElement inputSlider;
@@ -76,14 +83,11 @@ public class ChatPage extends AbstractPage {
 	@FindBy(css = "div[font-family = 'Knockout-JuniorWelterweight'] > button")
 	private WebElement inputSliderMinusButton;
 
-	@FindBy(css = "button[data-testid='multi-choice-send-button']")
+	@FindBy(css = "button[data-testid*='send-button']")
 	private WebElement sendButton;
 
 	@FindBy(css = "button[data-testid='send-number-button']")
 	private WebElement numberSendButton;
-
-	@FindBy(css = "button[class]:not([disabled]) > div[class='loadedContent']")
-	private WebElement selectButtonImageCarousel;
 
 	@FindAll(@FindBy(css = "footer"))
 	private List<WebElement> footerList;
@@ -107,7 +111,8 @@ public class ChatPage extends AbstractPage {
 			counter++;
 
 			if (counter == textResponseStack.size()) {
-				throw new NoSuchElementException("The choice: \"" + choice + "\" listed in the in the feature file is not present in the Content");
+				throw new NoSuchElementException("The choice: \"" + choice
+						+ "\" listed in the in the feature file is not present in the Content");
 			}
 		}
 
@@ -117,45 +122,73 @@ public class ChatPage extends AbstractPage {
 
 	public ChatPage selectOptionInImageCarousel(String choice, String navigationDirection) {
 		selectOptionInCarousel(choice, navigationDirection, carouselOptionList, imageCarouselCenterOption,
-				selectButtonImageCarousel);
+				imageCarouselCenterOption, "imageCarousel");
 		return this;
 	}
 
-	public ChatPage selectDatingOption(String choice, String navigationDirection) {
-		selectOptionInCarousel(choice, navigationDirection, carouselOptionList, datingCarouselCenterOption,
-				datingAppSelectButton);
+	public ChatPage selectPhoneAppOption(String choice, String navigationDirection) {
+		selectOptionInCarousel(choice, navigationDirection, carouselOptionList, phoneAppCenterOption,
+				phoneAppSelectButton, "phoneApp");
 		return this;
 
 	}
 
 	private void selectOptionInCarousel(String choice, String navigationDirection, List<WebElement> carouselOptionList,
-			WebElement imageCarouselCenterOption, WebElement carouselCenterClickable) {
+			WebElement imageCarouselCenterOption, WebElement carouselCenterClickable, String appType) {
 		// Get the total amount of options
 		waitForElementInChat(imageCarouselCenterOption);
-		int textCarouselOptions = carouselOptionList.size();
-		int count = 0;
-		do {
+
+		String uIText = "";
+		int counter = 0;
+
+		while (counter <= carouselOptionList.size()) {
 			waitUntilElementReturnsString(imageCarouselCenterOption);
-			if (imageCarouselCenterOption.getText().toLowerCase().startsWith(choice.toLowerCase())) {
+			uIText = imageCarouselCenterOption.getText().trim();
 
-				carouselCenterClickable.click();
-				break;
+			// System.out.println("uIText " + uIText);
 
-			} else {
-				if (navigationDirection.equalsIgnoreCase("left")) {
-					leftNavArrow.click();
-
-				} else {
-					rightNavArrow.click();
+			if (uIText.equalsIgnoreCase(choice)) {
+				try {
+					carouselCenterClickable.click();
+				} catch (ElementNotInteractableException e) {
+					carouselCenterClickable.click();
 				}
+				break;
+			} else {
+				clickNavArrow(navigationDirection, appType);
 			}
-			count++;
 
-		} while (count < textCarouselOptions);
+			counter++;
 
-		if (count == textCarouselOptions) {
+			if (counter == (carouselOptionList.size() + 1)) {
 
-			throw new NoSuchElementException(choice + " is not an option.");
+				throw new NoSuchElementException(choice + " is not an option.");
+			}
+		}
+
+	}
+
+	private void clickNavArrow(String navigationDirection, String appType) {
+		if (appType.contains("phone")) {
+			if (navigationDirection.equalsIgnoreCase("left")) {
+				waitForElement(leftNavArrowPhoneApp);
+				pause(.25);
+				leftNavArrowPhoneApp.click();
+			} else {
+				waitForElement(rightNavArrowPhoneApp);
+				pause(.25);
+				rightNavArrowPhoneApp.click();
+			}
+
+		} else if (appType.contains("image")) {
+			if (navigationDirection.equalsIgnoreCase("left")) {
+				waitForElement(leftNavArrow);
+				leftNavArrow.click();
+			} else {
+				waitForElement(rightNavArrow);
+				pause(.4);
+				rightNavArrow.click();
+			}
 		}
 
 	}
