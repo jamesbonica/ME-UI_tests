@@ -29,10 +29,10 @@ public class UserMenuPage extends AbstractPage {
 	@FindBy(css = "button > img[src*='burger']")
 	private WebElement hamburgerIcon;
 
-	@FindBy(css = "nav[font-family] > div button:not([display]):last-of-type")
+	@FindBy(css = "nav[height='100%'] > div button:not([display]):last-of-type")
 	private WebElement resetProgressButton;
 
-	@FindAll(@FindBy(css = "nav[font-family] > div button:not([display]):last-of-type"))
+	@FindAll(@FindBy(css = "nav[height='100%'] > div button:not([display]):last-of-type"))
 	private List<WebElement> resetProgressButtonList;
 
 	@FindBy(css = "nav svg + span")
