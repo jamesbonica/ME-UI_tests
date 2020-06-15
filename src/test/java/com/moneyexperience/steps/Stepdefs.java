@@ -152,7 +152,8 @@ public class Stepdefs {
 			String inventoryIcon) {
 		lessonService.chooseInventoryThenOptionalNarrative(optionalNarrative, inventoryIcon);
 	}
-	
+
+	@Given("a user selects the {string} Optional Narrative on the Initial Assumptions Dashobard")
 	@Given("a user selects the {string} Inventory on the Dashboard")
 	public void a_user_selects_the_Inventory_on_the_Dashboard(String inventoryIcon) {
 		lessonService.clickInventoryIcon(inventoryIcon.toLowerCase());
