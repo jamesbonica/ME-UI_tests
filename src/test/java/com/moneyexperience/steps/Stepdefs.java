@@ -190,4 +190,9 @@ public class Stepdefs {
 		responseService.answerV2AssessmentQuestions("post");
 	}
 
+	@Given("a user accepts the Terms of Use if the user has not logged in before")
+	public void a_user_accepts_the_Terms_of_Use_if_the_user_has_not_logged_in_before() {
+		userService.acceptToSAndPPAgreement();
+	}
+
 }
