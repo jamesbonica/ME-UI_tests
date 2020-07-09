@@ -100,4 +100,11 @@ public class UserService {
 		}
 	}
 
+	public void acceptToSAndPPAgreement() {
+
+		if (lessonIntroPage.agreementModalPresent()) {
+			lessonIntroPage.clickAcceptUserAgreementButton();
+		}
+	}
+
 }
