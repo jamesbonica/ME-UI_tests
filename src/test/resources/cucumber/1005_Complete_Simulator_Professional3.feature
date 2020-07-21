@@ -211,9 +211,17 @@ Feature: 1005 Complete Simulator Professional 3
       | text stack | OK                                                            |
     And a user goes through the storyboards
     And a user selects the "Open Credit Card" Inventory on the Dashboard
-    And the user chooses the following responses in the Optional Narrative:
-      | choiceType     | choice                                                           | navigationDirection |
-      | image carousel | 50,000 point sign up bonus + Earn 3x points on dining and travel | right               |
+    And the user chooses the following responses in the Optional Narrative Chat with Tess:
+      | choiceType | choice              |
+      #
+      # Some credit cards offer rewards or cash back to incentivize you to use the card. Would you like to choose a different credit card?
+      | text stack | Retail Rewards Card |
+      #
+      # A retail rewards card lets you earn points and provides discounts when you spend online at your favorite retailer.
+      | text stack | Sign me up          |
+      #
+      # ...Remember...you still have to pay off your credit card in full every month to avoid paying interest on the debt! Let's head back to the dashboard.
+      | text stack | OK                  |
     And a user selects the "Take a trip" Optional Narrative in the "Travel" Inventory on the Dashboard
     And the user chooses the following responses in the Optional Narrative Chat with Tess:
       | choiceType | choice                                                    |
@@ -454,8 +462,8 @@ Feature: 1005 Complete Simulator Professional 3
       #
       # Let's return to the dashboard.
       | text stack | OK                                           |
-    And a user clicks Continue on the Optional Narratives Dashboard
-    And a user clicks Continue on the Lesson Checkpoint Page
+#    And a user clicks Continue on the Optional Narratives Dashboard
+#    And a user clicks Continue on the Lesson Checkpoint Page
 
   @Lesson5
   Scenario: User completes Lesson 5

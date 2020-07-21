@@ -27,8 +27,11 @@ public class LessonIntroPage extends AbstractPage {
 	@FindBy(css = "button[data-testid = 'begin-button']")
 	private WebElement beginButton;
 
-	@FindAll(@FindBy(css = "div[data-testid = 'lesson-img']"))
+	@FindAll(@FindBy(css = "img[src *= 'lessonstart']"))
 	private List<WebElement> splashImageList;
+	
+	@FindAll(@FindBy(css = "div[data-testid = 'lesson-img']"))
+	private List<WebElement> oldSplashImageList;
 
 	@FindBy(css = "footer")
 	private WebElement footer;
@@ -57,7 +60,7 @@ public class LessonIntroPage extends AbstractPage {
 
 	public boolean onLessonStartPage() {
 		waitForElement(lessonTitleAndNumberElement);
-		return splashImageList.size() > 0;
+		return splashImageList.size() > 0 || oldSplashImageList.size() > 0;
 	}
 
 	public boolean lessonDesiredLesson(Integer lessonNumber) {
