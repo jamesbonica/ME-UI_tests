@@ -100,7 +100,7 @@ Feature: 1004 Complete Simulator Essentials 7
       | text stack | Book it!                                |
       #
       # For now, let's go back to the dashboard.
-      | text stack | OK                                      |
+     | text stack | OK                                      |
     And a user clicks Continue on the Optional Narratives Dashboard
     And a user clicks Continue on the Lesson Checkpoint Page
 
@@ -184,9 +184,18 @@ Feature: 1004 Complete Simulator Essentials 7
       | text stack | Ok                                                 |
     And a user goes through the storyboards
     And a user selects the "Open Credit Card" Inventory on the Dashboard
-    And the user chooses the following responses in the Optional Narrative:
-      | choiceType     | choice                                                       | navigationDirection |
-      | image carousel | $500 bonus and 3% cash back at your favorite online retailer | right               |
+    And a user goes through the storyboards
+    And the user chooses the following responses in the Optional Narrative Chat with Tess:
+      | choiceType | choice              |
+      #
+      # Some credit cards offer rewards or cash back to incentivize you to use the card. Would you like to choose a different credit card?
+      | text stack | Retail Rewards Card |
+      #
+      # A retail rewards card lets you earn points and provides discounts when you spend online at your favorite retailer.
+      | text stack | Sign me up          |
+      #
+      # ...Remember...you still have to pay off your credit card in full every month to avoid paying interest on the debt! Let's head back to the dashboard.
+      | text stack | OK                  |
     And a user selects the "Date someone" Optional Narrative in the "Personal Life" Inventory on the Dashboard
     And the user chooses the following responses in the Optional Narrative:
       | choiceType | choice | navigationDirection |
