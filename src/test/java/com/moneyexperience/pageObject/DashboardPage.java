@@ -55,7 +55,7 @@ public class DashboardPage extends AbstractPage {
 
 	@FindBy(css = "button > img[src*='Residence']")
 	private WebElement changeResidenceIcon;
-	
+
 	@FindBy(css = "button > img[src*='residence/']")
 	private WebElement investmentPropertyIcon;
 
@@ -141,7 +141,7 @@ public class DashboardPage extends AbstractPage {
 		educationIcon.click();
 		return pageObjectFactory.getChatPage();
 	}
-	
+
 	public ChatPage clickInverstmentPropertyIcon() {
 		waitForElement(investmentPropertyIcon);
 		investmentPropertyIcon.click();

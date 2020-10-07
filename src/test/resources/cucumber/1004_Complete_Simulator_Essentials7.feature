@@ -9,6 +9,7 @@ Feature: 1004 Complete Simulator Essentials 7
   @Lesson1
   Scenario: User completes Lesson 1
     Given a user "configured user 1" logs in to ME with password "for configured user 1"
+    And a user accepts the Terms of Use if the user has not logged in before
     And a user resets the user progress to Lesson 1
     And a user clicks the Begin Button at the start of the lesson
     And a user completes the V2 Baseline Assessment if the user has not completed it before
@@ -39,19 +40,22 @@ Feature: 1004 Complete Simulator Essentials 7
       # Do you plan to attend college after high school?
       | text stack | Yes I'm going to college                        |
       #
-      # Will you need to take out student loans?
-      | text stack | Yeah, I'll need loans                           |
+      # What kind of school do you plan to go to?
+      | text stack | In-State University $10,125/year                |
       #
-      #  Do you know how much your student loans will be?
+      # Now that you know the costs, would you like to stick with this choice or pick a different school?
+      | text stack | Stick with this choice                          |
+      #
+      # Will you have any financial help paying for school? This can include money from family, scholarships, Pell Grants, etc.
       | text stack | Yes                                             |
       #
-      #  How much will your loans be?
-      | slider     |                                          80,000 |
+      # In approximate dollars, how much help will you have in total?
+      | slider     |                                          10,000 |
       #
-      # What kind of school do you plan to go to?
-      | text stack | In-state University                             |
+      # The total remaining costs for your education are $30,500. How do you plan to pay for it?
+      | text stack | I'll take out student loans                     |
       #
-      # You've selected a summer job already, but do you plan to have a job while in school?
+      # Do you plan to have a job while in school?
       | text stack | Yes                                             |
       #
       # What kind of job are you most likely to get?
@@ -82,7 +86,10 @@ Feature: 1004 Complete Simulator Essentials 7
       | text stack | A smaller, up & coming city (Like Portland, ME) |
       #
       # What kind of place would you like to live in?
-      | text stack | Rent-free with Family $0/mo                     |
+      | text stack | On-Campus Dorm                                  |
+      #
+      # Are you sure you want to live in a dorm?
+      | text stack | Yes                                             |
       #
       # Ready to move on?
       | text stack | Yes                                             |
@@ -100,7 +107,7 @@ Feature: 1004 Complete Simulator Essentials 7
       | text stack | Book it!                                |
       #
       # For now, let's go back to the dashboard.
-     | text stack | OK                                      |
+      | text stack | OK                                      |
     And a user clicks Continue on the Optional Narratives Dashboard
     And a user clicks Continue on the Lesson Checkpoint Page
 
@@ -317,7 +324,7 @@ Feature: 1004 Complete Simulator Essentials 7
       | text stack | A two bedroom apartment $1,652/mo              |
       #
       # Would you like to live with a roommate?
-      | text stack | I'll have 1 roommate                           |
+      | text stack | I'll live with my significant other            |
       #
       # Let's head back to the dashboard.
       | text stack | OK                                             |
@@ -380,6 +387,7 @@ Feature: 1004 Complete Simulator Essentials 7
       #
       # OK, let's move onto your dashboard.
       | text stack | OK                                                       |
+    And a user goes through the "Injury" Wildcard
     And a user selects the "Have a child" Optional Narrative in the "Family and 529" Inventory on the Dashboard
     And the user chooses the following responses in the Optional Narrative Chat with Tess:
       | choiceType | choice                                       |
@@ -516,6 +524,7 @@ Feature: 1004 Complete Simulator Essentials 7
       #
       # OK, let's move onto your dashboard.
       | text stack | OK                                                           |
+    And a user goes through the "Home Flood" Wildcard
     And a user selects the "Take a trip" Optional Narrative in the "Travel" Inventory on the Dashboard
     And the user chooses the following responses in the Optional Narrative Chat with Tess:
       | choiceType | choice                                  |
@@ -599,6 +608,7 @@ Feature: 1004 Complete Simulator Essentials 7
       #
       # OK, let's move onto your optional choices!
       | text stack | OK                                                  |
+    And a user goes through the "Divorce" Wildcard
     And a user selects the "Have a child" Optional Narrative in the "Family and 529" Inventory on the Dashboard
     And the user chooses the following responses in the Optional Narrative Chat with Tess:
       | choiceType | choice                                       |
@@ -663,10 +673,13 @@ Feature: 1004 Complete Simulator Essentials 7
       | text stack | Masters of Business Administration (MBA) |
       #
       # What type of school will you attend for your advanced degree?
-      | text stack | In-State University                      |
+      | text stack | In-State University $35,500/year         |
       #
       # How much financial support will you get from family, scholarships, or other means?
       | slider     |                                   20,000 |
+      #
+      # How do you plan to pay for it?
+      | text stack | I'll pay for it myself                   |
       #
       # Let's head back to the dashboard.
       | text stack | Ok                                       |
@@ -729,6 +742,7 @@ Feature: 1004 Complete Simulator Essentials 7
       #
       # OK, let's move onto your dashboard.
       | text stack | OK                                                             |
+    And a user goes through the "Inheritance" Wildcard
     And a user selects the "Purchase an investment property" Optional Narrative in the "Investment Property" Inventory on the Dashboard
     And the user chooses the following responses in the Optional Narrative Chat with Tess:
       | choiceType | choice                                          |
@@ -815,6 +829,7 @@ Feature: 1004 Complete Simulator Essentials 7
       #
       # OK, let's move on!
       | text stack | OK                                                                 |
+      And a user goes through the "Market Crash" Wildcard
     And a user selects the "Change careers" Optional Narrative in the "Career" Inventory on the Dashboard
     And the user chooses the following responses in the Optional Narrative Chat with Tess:
       | choiceType | choice                  |

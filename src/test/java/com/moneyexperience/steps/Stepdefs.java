@@ -128,6 +128,11 @@ public class Stepdefs {
 	public void a_user_clicks_Continue_on_the_Simulator_Conclusion_Page() {
 		lessonService.clickContinueOnTheSimulatorConclusionPage();
 	}
+	
+	@Given("a user goes through the {string} Wildcard")
+	public void a_user_goes_through_the_Wildcard(String wildcardName) {
+	    lessonService.goThroughWildcard();
+	}
 
 	////////////////////////////////////////////
 
