@@ -20,6 +20,7 @@ import com.moneyexperience.pageObject.LessonIntroPage;
 import com.moneyexperience.pageObject.SetPrioritiesPage;
 import com.moneyexperience.pageObject.SimulatorConclusionPage;
 import com.moneyexperience.pageObject.StoryBoardPage;
+import com.moneyexperience.pageObject.WildcardPage;
 
 import config.PropertiesLoader;
 
@@ -66,6 +67,9 @@ public class LessonService {
 
 	@Autowired
 	InventoryPage inventoryPage;
+
+	@Autowired
+	WildcardPage wildcardPage;
 
 	@Autowired
 	PropertiesLoader propertiesLoader;
@@ -223,7 +227,6 @@ public class LessonService {
 				currentPage = "Beyond Survey";
 				break;
 			}
-			
 
 			// This can be any page to use this Pause method
 			setPrioritiesPage.pause(.25);
@@ -235,6 +238,11 @@ public class LessonService {
 
 	public void clickContinueOnTheSimulatorConclusionPage() {
 		simulatorConclusionPage.clickContinueButton();
+
+	}
+
+	public void goThroughWildcard() {
+		wildcardPage.clickCoverContinueButton().clickActionCompleteButtonButton();
 
 	}
 

@@ -9,6 +9,7 @@ Feature: 1003 Complete Simulator Professional 6
   @Lesson1
   Scenario: User completes Lesson 1
     Given a user "configured user 1" logs in to ME with password "for configured user 1"
+    And a user accepts the Terms of Use if the user has not logged in before
     And a user resets the user progress to Lesson 1
     And a user clicks the Begin Button at the start of the lesson
     And a user completes the V2 Baseline Assessment if the user has not completed it before

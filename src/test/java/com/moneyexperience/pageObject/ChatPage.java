@@ -158,6 +158,7 @@ public class ChatPage extends AbstractPage {
 				clickNavArrow(navigationDirection, appType);
 			}
 
+			pause(.15);
 			counter++;
 
 			if (counter == (carouselOptionList.size() + 1)) {
