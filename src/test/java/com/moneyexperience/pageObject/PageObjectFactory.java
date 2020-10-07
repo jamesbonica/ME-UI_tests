@@ -50,17 +50,21 @@ public class PageObjectFactory {
 	public ConfirmPrioritiesPage getConfirmPrioritiesPage() {
 		return (ConfirmPrioritiesPage) appContext.getBean("confirmPrioritiesPage");
 	}
-	
+
 	public AssessmentV2Page getAssessmentV2Page() {
 		return (AssessmentV2Page) appContext.getBean("assessmentV2Page");
 	}
-	
+
 	public InventoryPage getInventoryPage() {
 		return (InventoryPage) appContext.getBean("inventoryPage");
 	}
-	
+
 	public DashboardPage getDashboardPage() {
 		return (DashboardPage) appContext.getBean("dashboardPage");
+	}
+
+	public WildcardPage getWildcardPage() {
+		return (WildcardPage) appContext.getBean("wildcardPage");
 	}
 
 }

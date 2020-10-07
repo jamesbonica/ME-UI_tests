@@ -240,7 +240,7 @@ Feature: 1005 Complete Simulator Professional 3
     And a user selects the "Date someone" Optional Narrative in the "Personal Life" Inventory on the Dashboard
     And the user chooses the following responses in the Optional Narrative:
       | choiceType | choice | navigationDirection |
-      | phone app  | Chris  | left                |
+      | phone app  | Sean  | left                |
     And a user clicks Continue on the Optional Narratives Dashboard
     And a user clicks Continue on the Lesson Checkpoint Page
 
@@ -298,6 +298,7 @@ Feature: 1005 Complete Simulator Professional 3
       # OK, that's it for now!
       | text stack | OK                                   |
     And a user goes through the storyboards
+    And a user goes through the "Injury" Wildcard
     And a user selects the "Get married" Optional Narrative in the "Personal Life" Inventory on the Dashboard
     And the user chooses the following responses in the Optional Narrative Chat with Tess:
       | choiceType | choice                                                          |
@@ -394,6 +395,7 @@ Feature: 1005 Complete Simulator Professional 3
       # OK, let's move on.
       | text stack | OK                                                       |
     And a user goes through the storyboards
+    And a user goes through the "Apartment Flood" Wildcard
     And a user selects the "Change residence" Optional Narrative in the "Residence" Inventory on the Dashboard
     And the user chooses the following responses in the Optional Narrative Chat with Tess:
       | choiceType | choice                              |
@@ -462,8 +464,8 @@ Feature: 1005 Complete Simulator Professional 3
       #
       # Let's return to the dashboard.
       | text stack | OK                                           |
-#    And a user clicks Continue on the Optional Narratives Dashboard
-#    And a user clicks Continue on the Lesson Checkpoint Page
+    And a user clicks Continue on the Optional Narratives Dashboard
+    And a user clicks Continue on the Lesson Checkpoint Page
 
   @Lesson5
   Scenario: User completes Lesson 5
@@ -525,6 +527,7 @@ Feature: 1005 Complete Simulator Professional 3
       # OK, let's move on.
       | text stack | OK                                                     |
     And a user goes through the storyboards
+    And a user goes through the "Divorce" Wildcard
     And a user selects the "Sell this car" Optional Narrative in the "Car" Inventory on the Dashboard
     And a user clicks Continue when Tess confirms the transaction
     And a user selects the "Buy a car" Optional Narrative in the "Car" Inventory on the Dashboard
@@ -533,25 +536,22 @@ Feature: 1005 Complete Simulator Professional 3
       | phone app  | Yogoto Sietti | left                |
     And a user selects the "Continue education" Optional Narrative in the "Education" Inventory on the Dashboard
     And the user chooses the following responses in the Optional Narrative Chat with Tess:
-      | choiceType | choice                       |
+      | choiceType | choice                           |
       #
       # Would you like to go back to school?
-      | text stack | Yes, get an undergrad degree |
+      | text stack | Yes, get an undergrad degree     |
       #
-      # Do you know if you'll need to take out student loans?
-      | text stack | Yes                          |
+      # What type of school do you plan to attend?
+      | text stack | In-State University $10,125/year |
       #
-      # Do you know how much your student loans are going to be?
-      | text stack | Yes                          |
+      # How much financial support (in total) will you get from family, scholarships, or other means?
+      | slider     |                           20,000 |
       #
-      # How much will your student loans be in total?
-      | slider     |                       50,000 |
-      #
-      # What kind of school do you plan to go to?
-      | text stack | In-State University          |
+      # How do you plan to pay for it?
+      | text stack | I'll take out student loans      |
       #
       # Let's head back to the dashboard.
-      | text stack | Ok                           |
+      | text stack | Ok                               |
     And a user clicks Continue on the Optional Narratives Dashboard
     And a user clicks Continue on the Lesson Checkpoint Page
 
@@ -625,10 +625,13 @@ Feature: 1005 Complete Simulator Professional 3
       | text stack | A Different Type of Masters Degree |
       #
       # What type of school will you attend for your advanced degree?
-      | text stack | Online School                      |
+      | text stack | Online School $15,000/year         |
       #
       # How much financial support will you get from family, scholarships, or other means?
-      | slider     |                             20,000 |
+      | slider     |                             10,000 |
+      #
+      # How do you plan to pay for it?
+      | text stack | I'll pay for it myself             |
       #
       # Let's head back to the dashboard.
       | text stack | Ok                                 |
@@ -676,6 +679,7 @@ Feature: 1005 Complete Simulator Professional 3
       #
       # OK, let's move onto your dashboard.
       | text stack | OK                                                             |
+    And a user goes through the "Inheritance" Wildcard  
     And a user selects the "Change careers" Optional Narrative in the "Career" Inventory on the Dashboard
     And the user chooses the following responses in the Optional Narrative Chat with Tess:
       | choiceType | choice                |
@@ -752,6 +756,7 @@ Feature: 1005 Complete Simulator Professional 3
       #
       # OK, let's move on!
       | text stack | OK                                                                |
+    And a user goes through the "Market Crash" Wildcard
     And a user clicks Continue on the Optional Narratives Dashboard
     And a user clicks Continue on the Lesson Checkpoint Page
 
