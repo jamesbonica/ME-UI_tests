@@ -1,22 +1,24 @@
 package com.moneyexperience.steps;
 
+import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
+
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.test.context.ContextConfiguration;
 
 import com.moneyexperience.service.LessonService;
 import com.moneyexperience.service.ResponseService;
 import com.moneyexperience.service.UserService;
 
 import config.ScenarioSession;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
-import io.cucumber.java.en.Then;
 import io.cucumber.datatable.DataTable;
-
-import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import io.cucumber.spring.CucumberContextConfiguration;
 
 /**
  * 
@@ -26,6 +28,8 @@ import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
  */
 
 @Scope(SCOPE_CUCUMBER_GLUE)
+@CucumberContextConfiguration
+@ContextConfiguration("classpath:cucumber.xml")
 public class Stepdefs {
 
 	@Autowired
