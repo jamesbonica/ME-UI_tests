@@ -245,12 +245,13 @@ public class ChatPage extends AbstractPage {
 			throw new NoSuchElementException("The value entered is more than the max value of the slider");
 		}
 		if (convertedChoice == 0) {
-			inputSliderMinusButton.click();
+			// 10/14/20 -- Do nothing with new default 0 selected with Sliders
+			// inputSliderMinusButton.click();
 		} else {
 
 			int clicks = convertedChoice / Integer.valueOf(inputSlider.getAttribute("step"));
 
-			for (int i = 0; i <= clicks; i++) {
+			for (int i = 0; i < clicks; i++) {
 				inputSliderPlusButton.click();
 			}
 		}
