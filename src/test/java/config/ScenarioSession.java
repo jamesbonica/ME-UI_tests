@@ -41,12 +41,13 @@ public class ScenarioSession {
 
 	public void takeScreenShot(String name) {
 		final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-		scenario.embed(screenshot, "image/png", name); // stick it in the report
+		scenario.attach(screenshot, "image/png", name); // stick it in the report
 
 	}
 
 	public void writeToReport(String s) {
-		scenario.write(s);
+	//	scenario.write(s);
+		scenario.attach(s, "text/html", "name");
 	}
 
 	public String getStoryBoardSrc() {

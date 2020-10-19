@@ -65,7 +65,7 @@ public class AbstractPage {
 
 	public AbstractPage waitForElement(WebElement element) {
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, 3);
+			WebDriverWait wait = new WebDriverWait(driver, 40);
 			wait.until(ExpectedConditions.elementToBeClickable(element));
 		} catch (TimeoutException t) {
 			System.out.println(element.toString() + " not found");
