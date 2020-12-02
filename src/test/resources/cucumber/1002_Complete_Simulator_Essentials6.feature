@@ -190,8 +190,8 @@ Feature: 1002 Complete Simulator Essentials 6
       | image carousel | $500 bonus and 3% cash back at your favorite online retailer | right               |
     And a user selects the "Date someone" Optional Narrative in the "Personal Life" Inventory on the Dashboard
     And the user chooses the following responses in the Optional Narrative:
-      | choiceType | choice | navigationDirection |
-      | phone app  | Brianna   | right               |
+      | choiceType | choice  | navigationDirection |
+      | phone app  | Brianna | right               |
     And a user selects the "Buy a car" Optional Narrative in the "Car" Inventory on the Dashboard
     And the user chooses the following responses in the Optional Narrative:
       | choiceType | choice     | navigationDirection |
@@ -747,7 +747,7 @@ Feature: 1002 Complete Simulator Essentials 6
       | text stack | Yes                |
       #
       # How much of each paycheck would you like to contribute?
-      | slider     | 12%                 |
+      | slider     | 12%                |
       #
       # How would you like to invest your money in this account?
       | text stack | High risk strategy |
@@ -807,20 +807,20 @@ Feature: 1002 Complete Simulator Essentials 6
       #
       # OK, let's move on!
       | text stack | OK                                                                 |
-#    And a user selects the "Change careers" Optional Narrative in the "Career" Inventory on the Dashboard
-#    And the user chooses the following responses in the Optional Narrative Chat with Tess:
-#      | choiceType | choice                  |
-#      #
-#      # What type of work do you want to do?
-#      | text stack | Something in healthcare |
-#      #
-#      # What kind of healthcare career?
-#      | text stack | Fitness instructor      |
-#      #
-#      # Do you plan to work full-time or part-time?
-#      | text stack | Full-time               |
-#      # And that's it! You can always change your mind again later.
-#      | text stack | Ok                      |
+    And a user selects the "Change careers" Optional Narrative in the "Career" Inventory on the Dashboard
+    And the user chooses the following responses in the Optional Narrative Chat with Tess:
+      | choiceType | choice                  |
+      #
+      # What type of work do you want to do?
+      | text stack | Something in healthcare |
+      #
+      # What kind of healthcare career?
+      | text stack | Fitness instructor      |
+      #
+      # Do you plan to work full-time or part-time?
+      | text stack | Full-time               |
+      # And that's it! You can always change your mind again later.
+      | text stack | Ok                      |
     And a user clicks Continue on the Optional Narratives Dashboard
     And a user clicks Continue on the Lesson Checkpoint Page
 

@@ -182,7 +182,9 @@ public class LessonService {
 		} else if (inventoryIcon.equalsIgnoreCase("invest")) {
 			dashboardPage.clickInvestmentIcon();
 		} else if (inventoryIcon.contains("investment property")) {
-			dashboardPage.clickInverstmentPropertyIcon();
+			dashboardPage.clickInvestmentPropertyIcon();
+		} else if (inventoryIcon.contains("region")) {
+			dashboardPage.clickRegionIcon();
 		} else {
 			throw new NoSuchElementException("There is not a choice matching what is in the step");
 		}
