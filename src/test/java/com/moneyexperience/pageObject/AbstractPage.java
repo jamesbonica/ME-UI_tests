@@ -44,7 +44,7 @@ public class AbstractPage {
 	@FindAll(@FindBy(css ="div[data-testid = 'age-string']"))
 	protected List<WebElement> lessonAgeRangeList;
 	
-	@FindBy(css = "div[width= '100%'] > button > img[src *= '.png']")
+	@FindBy(css = "div[width= '100%'] > button > img[alt *= 'speaking']")
 	protected WebElement tessIcon;
 	
 	@FindAll(@FindBy(css ="div[width= '100%'] > button > img[src *= '.png']"))

@@ -26,55 +26,52 @@ Feature: 1005 Complete Simulator Professional 3
       | Social Good |
       | Free Time   |
     And a user chooses the following responses in the Chat with Tess:
-      | choiceType | choice                                   |
+      | choiceType | choice                              |
       #
       # Would you like to simulate a college education?
-      | text stack | Yes                                      |
+      | text stack | Yes                                 |
       #
       # From what type of school would you like this degree to be from?
-      | text stack | Two-Year Community College               |
+      | text stack | Two-Year Community College          |
       #
       # Would you like to simulate any student loan debt?
-      | slider     |                                   20,000 |
+      | slider     |                              20,000 |
       #
       # What type of job would you like to simulate?
-      | text stack | Something in healthcare                  |
+      | text stack | Something in healthcare             |
       #
       # What kind of healthcare career?
-      | text stack | Nurse                                    |
+      | text stack | Nurse                               |
       #
       # Would you like to use this salary or simulate your own custom salary for this job?
-      | text stack | Simulate a custom salary                 |
+      | text stack | Simulate a custom salary            |
       #
       # Approximately, what is the annual salary you would like to simulate?
-      | slider     |                                   55,000 |
+      | slider     |                              55,000 |
       #
       # Would you like to simulate any savings?
-      | slider     |                                   10,000 |
-      #
-      # What best describes the place you'd like to live?
-      | text stack | A Midwestern city (Like Chicago, Denver) |
+      | slider     |                              10,000 |
       #
       # What are your eating habits like?
-      | text stack | Easy in the microwave ($)                |
+      | text stack | Easy in the microwave ($)           |
       #
       # What's your travel style?
-      | text stack | Tent and a backpack ($)                  |
+      | text stack | Tent and a backpack ($)             |
       #
       # What's your average weekend like?
-      | text stack | Weekend away ($$$)                       |
+      | text stack | Weekend away ($$$)                  |
       #
       # What is your fitness routine like?
-      | text stack | A morning run ($)                        |
+      | text stack | A morning run ($)                   |
       #
       # What is your gadget status?
-      | text stack | Old phone with a cracked screen ($)      |
+      | text stack | Old phone with a cracked screen ($) |
       #
       # What best describes your fashion choices
-      | text stack | Thrift-store treasure hunt ($)           |
+      | text stack | Thrift-store treasure hunt ($)      |
       #
       # Are you ready to move on?
-      | text stack | Yes                                      |
+      | text stack | Yes                                 |
     And a user selects the "Residence" Optional Narrative on the Initial Assumptions Dashobard
     And the user chooses the following responses in the Optional Narrative Chat with Tess:
       | choiceType | choice |
@@ -201,11 +198,20 @@ Feature: 1005 Complete Simulator Professional 3
       # OK last question about buying stuff. What will you spend on a bed?
       | text stack | I'll look for deals online ($$)                               |
       #
-      # Would you like to try living in a different region?
-      | text stack | No                                                            |
+      # What region would you like to live in?
+      | text stack | The Midwest                                                   |
       #
-      # Would you like to change your living situation by renting or buying a new place?
-      | text stack | No, stay where I am                                           |
+      # What best describes the neighborhood where you will be living in the midwest?
+      | text stack | A small city                                                  |
+      #
+      # Where would you like to live? You may need to live with roommates to afford it.
+      | text stack | A two bedroom apartment $1,009/mo                             |
+      #
+      # Would you still like to choose this option?
+      | text stack | Yes                                                           |
+      #
+      # Would you like to live with a roommate?
+      | text stack | I'll have 1 roommate                                          |
       #
       # OK, that's it for now! Let's move on.
       | text stack | OK                                                            |
@@ -240,7 +246,7 @@ Feature: 1005 Complete Simulator Professional 3
     And a user selects the "Date someone" Optional Narrative in the "Personal Life" Inventory on the Dashboard
     And the user chooses the following responses in the Optional Narrative:
       | choiceType | choice | navigationDirection |
-      | phone app  | Sean  | left                |
+      | phone app  | Sean   | left                |
     And a user clicks Continue on the Optional Narratives Dashboard
     And a user clicks Continue on the Lesson Checkpoint Page
 
@@ -401,13 +407,16 @@ Feature: 1005 Complete Simulator Professional 3
       | choiceType | choice                              |
       #
       # Would you like to change the region that you're living in?
-      | text stack | No                                  |
-      #
-      # Would you like to change your residence?
       | text stack | Yes                                 |
       #
-      # Where would you like to live?
-      | text stack | "Forever" Home $716,182 ($2,735/mo) |
+      # What region would you like to move to?
+      | text stack | The Midwest                         |
+      #
+      # What best describes the neighborhood where you will be living in the midwest?
+      | text stack | A large city                        |
+      #
+      # Where would you like to live? You may need to live with roommates to afford it.
+      | text stack | "Forever" Home $746,024 ($2,849/mo) |
       #
       # Let's head back to the dashboard.
       | text stack | OK                                  |
@@ -433,9 +442,6 @@ Feature: 1005 Complete Simulator Professional 3
       | text stack | In-state university                          |
       #
       # Will you help them pay for college?
-      | text stack | Yes                                          |
-      #
-      # The best way to do that is with a 529 account. Would you like to start or change your 529 contribution now?
       | text stack | Yes                                          |
       #
       # How much of your paycheck would you like to contribute to a 529?
@@ -679,7 +685,7 @@ Feature: 1005 Complete Simulator Professional 3
       #
       # OK, let's move onto your dashboard.
       | text stack | OK                                                             |
-    And a user goes through the "Inheritance" Wildcard  
+    And a user goes through the "Inheritance" Wildcard
     And a user selects the "Change careers" Optional Narrative in the "Career" Inventory on the Dashboard
     And the user chooses the following responses in the Optional Narrative Chat with Tess:
       | choiceType | choice                |
@@ -731,10 +737,13 @@ Feature: 1005 Complete Simulator Professional 3
       | text stack | Maybe, let me browse.                                             |
       #
       # What region would you like to buy the property?
-      | text stack | A Southern city (Like Atlanta, or New Orleans)                    |
+      | text stack | The South                                                         |
+      #
+      # What best describes the neighborhood where you will buy the property?
+      | text stack | A small city                                                      |
       #
       # What type of property would you like to buy?
-      | text stack | House on the beach $2,723/mo                                      |
+      | text stack | House on the beach $2,269/mo                                      |
       #
       # Would you like to purchase this option?
       | text stack | Yes                                                               |

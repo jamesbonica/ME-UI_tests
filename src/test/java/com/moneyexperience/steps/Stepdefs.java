@@ -132,10 +132,10 @@ public class Stepdefs {
 	public void a_user_clicks_Continue_on_the_Simulator_Conclusion_Page() {
 		lessonService.clickContinueOnTheSimulatorConclusionPage();
 	}
-	
+
 	@Given("a user goes through the {string} Wildcard")
 	public void a_user_goes_through_the_Wildcard(String wildcardName) {
-	    lessonService.goThroughWildcard();
+		lessonService.goThroughWildcard();
 	}
 
 	////////////////////////////////////////////
@@ -203,5 +203,6 @@ public class Stepdefs {
 	public void a_user_accepts_the_Terms_of_Use_if_the_user_has_not_logged_in_before() {
 		userService.acceptToSAndPPAgreement();
 	}
+
 
 }
