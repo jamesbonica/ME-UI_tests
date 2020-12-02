@@ -64,6 +64,10 @@ public class DashboardPage extends AbstractPage {
 
 	@FindBy(css = "button > img[src*='education']")
 	private WebElement educationIcon;
+	
+	@FindBy(css = "button > img[src*='region']")
+	private WebElement regionIcon;
+
 
 	public DashboardPage(EventFiringWebDriver driver) {
 		this.driver = driver;
@@ -142,9 +146,15 @@ public class DashboardPage extends AbstractPage {
 		return pageObjectFactory.getChatPage();
 	}
 
-	public ChatPage clickInverstmentPropertyIcon() {
+	public ChatPage clickInvestmentPropertyIcon() {
 		waitForElement(investmentPropertyIcon);
 		investmentPropertyIcon.click();
+		return pageObjectFactory.getChatPage();
+	}
+	
+	public ChatPage clickRegionIcon() {
+		waitForElement(regionIcon);
+		regionIcon.click();
 		return pageObjectFactory.getChatPage();
 	}
 

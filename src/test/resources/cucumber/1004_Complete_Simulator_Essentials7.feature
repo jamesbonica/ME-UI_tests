@@ -35,64 +35,60 @@ Feature: 1004 Complete Simulator Essentials 7
     And a user goes through the storyboards
     And a user clicks Go when Tess sends a new message
     And a user chooses the following responses in the Chat with Tess:
-      | choiceType | choice                                          |
+      | choiceType | choice                            |
       #
       # Do you plan to attend college after high school?
-      | text stack | Yes I'm going to college                        |
+      | text stack | Yes I'm going to college          |
       #
       # What kind of school do you plan to go to?
-      | text stack | In-State University $10,125/year                |
+      | text stack | In-State University $10,125/year  |
       #
       # Now that you know the costs, would you like to stick with this choice or pick a different school?
-      | text stack | Stick with this choice                          |
+      | text stack | Stick with this choice            |
       #
       # Will you have any financial help paying for school? This can include money from family, scholarships, Pell Grants, etc.
-      | text stack | Yes                                             |
+      | text stack | Yes                               |
       #
       # In approximate dollars, how much help will you have in total?
-      | slider     |                                          10,000 |
+      | slider     |                            10,000 |
       #
       # The total remaining costs for your education are $30,500. How do you plan to pay for it?
-      | text stack | I'll take out student loans                     |
+      | text stack | I'll take out student loans       |
       #
       # Do you plan to have a job while in school?
-      | text stack | Yes                                             |
+      | text stack | Yes                               |
       #
       # What kind of job are you most likely to get?
-      | text stack | Fitness Instructor                              |
+      | text stack | Fitness Instructor                |
       #
       # Do you plan to work full-time or part-time?
-      | text stack | Part-time                                       |
+      | text stack | Part-time                         |
       #
       # What are your eating habits like?
-      | text stack | Fresh and organic ($$)                          |
+      | text stack | Fresh and organic ($$)            |
       #
       # What's your travel style?
-      | text stack | Tent and a backpack ($)                         |
+      | text stack | Tent and a backpack ($)           |
       #
       # What's your average weekend like?
-      | text stack | Out on the town ($$)                            |
+      | text stack | Out on the town ($$)              |
       #
       # What is your fitness routine like?
-      | text stack | A morning run ($)                               |
+      | text stack | A morning run ($)                 |
       #
       # What is your gadget status?
-      | text stack | Last year's model works fine ($$)               |
+      | text stack | Last year's model works fine ($$) |
       #
       # What best describes your fashion choices?
-      | text stack | Thrift-store treasure hunt ($)                  |
-      #
-      # What best describes the region where you will be living?
-      | text stack | A smaller, up & coming city (Like Portland, ME) |
+      | text stack | Thrift-store treasure hunt ($)    |
       #
       # What kind of place would you like to live in?
-      | text stack | On-Campus Dorm                                  |
-      #
+      | text stack | On-Campus Dorm                    |
       # Are you sure you want to live in a dorm?
-      | text stack | Yes                                             |
+      | text stack | Yes                               |
       #
       # Ready to move on?
-      | text stack | Yes                                             |
+      | text stack | Yes                               |
     And a user selects the "Take a trip" Optional Narrative in the "Travel" Inventory on the Dashboard
     And the user chooses the following responses in the Optional Narrative Chat with Tess:
       | choiceType | choice                                  |
@@ -173,10 +169,10 @@ Feature: 1004 Complete Simulator Essentials 7
       | text stack | I'll look for deals online ($$)                    |
       #
       #  What region would you like to live in?
-      | text stack | A smaller, up & coming city (Like Portland, ME)    |
+      | text stack | The Northeast                                      |
       #
-      # Would you still like to live in a smaller up & coming city like Portland, Maine?
-      | text stack | Yes                                                |
+      # What best describes the neighborhood where you will be living in the northeast?
+      | text stack | A small city                                       |
       #
       # Where would you like to live?
       | text stack | Studio Apartment $1,012/mo                         |
@@ -310,24 +306,27 @@ Feature: 1004 Complete Simulator Essentials 7
       #
       # Let's head back to the dashboard.
       | text stack | OK                                                              |
-    And a user selects the "Change residence" Optional Narrative in the "Residence" Inventory on the Dashboard
+    And a user selects the "Change region" Optional Narrative in the "Region" Inventory on the Dashboard
     And the user chooses the following responses in the Optional Narrative Chat with Tess:
-      | choiceType | choice                                         |
+      | choiceType | choice                              |
       #
       # Would you like to change the region that you're living in?
-      | text stack | Yes                                            |
+      | text stack | Yes                                 |
       #
       # What region would you like to move to?
-      | text stack | A Southern city (Like Atlanta, or New Orleans) |
+      | text stack | The South                           |
+      #
+      # What best describes the neighborhood where you will be living in the south?
+      | text stack | A large city                        |
       #
       # Where would you like to live?
-      | text stack | A two bedroom apartment $1,652/mo              |
+      | text stack | A two bedroom apartment $1,463/mo   |
       #
       # Would you like to live with a roommate?
-      | text stack | I'll live with my significant other            |
+      | text stack | I'll live with my significant other |
       #
       # Let's head back to the dashboard.
-      | text stack | OK                                             |
+      | text stack | OK                                  |
     And a user clicks Continue on the Optional Narratives Dashboard
     And a user clicks Continue on the Lesson Checkpoint Page
 
@@ -412,9 +411,6 @@ Feature: 1004 Complete Simulator Essentials 7
       # Will you help them pay for college?
       | text stack | Yes                                          |
       #
-      # The best way to do that is with a 529 account. Would you like to start or change your 529 contribution now?
-      | text stack | Yes                                          |
-      #
       # How much of your paycheck would you like to contribute to a 529?
       | slider     | 7%                                           |
       #
@@ -452,7 +448,7 @@ Feature: 1004 Complete Simulator Essentials 7
       | text stack | Yes                                 |
       #
       # Where would you like to live?
-      | text stack | "Forever" Home $745,116 ($2,845/mo) |
+      | text stack | "Forever" Home $659,739 ($2,519/mo) |
       #
       # Let's head back to the dashboard.
       | text stack | OK                                  |
@@ -633,9 +629,6 @@ Feature: 1004 Complete Simulator Essentials 7
       # Will you help them pay for college?
       | text stack | Yes                                          |
       #
-      # The best way to do that is with a 529 account. Would you like to start or change your 529 contribution now?
-      | text stack | Yes                                          |
-      #
       # How much of your paycheck would you like to contribute to a 529?
       | slider     | 9%                                           |
       #
@@ -751,7 +744,10 @@ Feature: 1004 Complete Simulator Essentials 7
       | text stack | Yeah that's a good idea                         |
       #
       # What region would you like to buy the property?
-      | text stack | A smaller, up & coming city (Like Portland, ME) |
+      | text stack | The Northeast |
+      #
+      # What best describes the neighborhood where you will buy the property?
+      | text stack | A small city |
       #
       # What type of property would you like to buy?
       | text stack | House on the beach $2,421/mo                    |
@@ -829,7 +825,7 @@ Feature: 1004 Complete Simulator Essentials 7
       #
       # OK, let's move on!
       | text stack | OK                                                                 |
-      And a user goes through the "Market Crash" Wildcard
+    And a user goes through the "Market Crash" Wildcard
     And a user selects the "Change careers" Optional Narrative in the "Career" Inventory on the Dashboard
     And the user chooses the following responses in the Optional Narrative Chat with Tess:
       | choiceType | choice                  |
