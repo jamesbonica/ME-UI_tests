@@ -8,6 +8,9 @@ import org.springframework.context.annotation.PropertySource;
 @PropertySource("classpath:application-${spring.profiles.active}.properties")
 public class PropertiesLoader {
 
+	@Value("${assessment.test.url}")
+	private String assessmentTestUrl;
+	
 	@Value("${test.url}")
 	private String testUrl;
 
@@ -433,6 +436,14 @@ public class PropertiesLoader {
 	@Value("${post.survey.v2.answer24}")
 	private String postSurveyV2Answer24;
 
+	public String getAssessmentTestUrl() {
+		return assessmentTestUrl;
+	}
+
+	public void setAssessmentTestUrl(String assessmentTestUrl) {
+		this.assessmentTestUrl = assessmentTestUrl;
+	}
+	
 	public String getTestUrl() {
 		return testUrl;
 	}
