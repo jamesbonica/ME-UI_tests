@@ -1,5 +1,5 @@
 # ME-UI_tests
-This is thwe automated test project for Money Experience
+This is the automated test project for Money Experience
 
 Any Developer or QE will be able to use this locally. The only requirements are Java 8 and Maven.
 
