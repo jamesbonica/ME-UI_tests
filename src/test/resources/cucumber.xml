@@ -17,6 +17,9 @@
 		<context:component-scan base-package="com.moneyexperience.pageObject" />
 		<context:component-scan base-package="com.moneyexperience.service" />
 		<context:component-scan base-package="com.moneyexperience.steps" />
+		<context:component-scan base-package="com.elsevier.pageObject" />
+		<context:component-scan base-package="com.elsevier.service" />
+		<context:component-scan base-package="com.elsevier.steps" />
 		<context:component-scan base-package="spring" />
 	</beans>
 </beans>
