@@ -1,7 +1,6 @@
 # ME-UI_tests
-This is the automated test project for my former employer developed by me.
 
-Parts of these instructions are currently only applicable to the Master Branch.
+This is the automated test project for my former employer developed by me.
 
 Any Developer or QE will be able to use this locally. The only requirements are Java 8 and Maven.
 
